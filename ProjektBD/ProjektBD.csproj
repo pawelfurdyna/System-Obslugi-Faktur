@@ -87,6 +87,12 @@
     <Compile Include="FormKlientLista.Designer.cs">
       <DependentUpon>FormKlientLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNowaFaktura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNowaFaktura.Designer.cs">
+      <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStawkiVatLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlientLista.resx">
       <DependentUpon>FormKlientLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNowaFaktura.resx">
+      <DependentUpon>FormNowaFaktura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStawkiVatLista.resx">
       <DependentUpon>FormStawkiVatLista.cs</DependentUpon>

@@ -31,8 +31,11 @@ namespace ProjektBD
 
         private void btnNowaFaktura_Click(object sender, EventArgs e)
         {
-            string user = "Pawel";
-            lbUzytkownik.Text = "Użytkownik: " + user;
+            if ((Application.OpenForms["FormNowaFaktura"] as FormNowaFaktura) == null)
+            {
+                Form nowaFaktura = new FormNowaFaktura();
+                nowaFaktura.ShowDialog();
+            }
         }
 
         private void btnHistoriaFaktur_Click(object sender, EventArgs e)
