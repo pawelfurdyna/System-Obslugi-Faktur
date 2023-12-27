@@ -19,7 +19,7 @@ namespace ProjektBD
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            string zmienna = "Użytkownik: Pawel Furdyna";
+            string zmienna = "Użytkownik: ";
             lbUzytkownik.Text = zmienna;
             zegar.Start();
         }
