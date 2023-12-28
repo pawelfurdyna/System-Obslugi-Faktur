@@ -14,6 +14,7 @@ namespace ProjektBD
 {
     public partial class FormStawkiVatLista : Form
     {
+
         public FormStawkiVatLista()
         {
             InitializeComponent();
@@ -42,11 +43,13 @@ namespace ProjektBD
 
         private void btnEdytuj_Click(object sender, EventArgs e)
         {
+            int wiersz = dataGridView1.CurrentRow.Index;
+            int kolumna = dataGridView1.Columns.IndexOf(iDVATDataGridViewTextBoxColumn);
+            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
             if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
             {
-                Form stawkaVat = new FormStawkaVAT();
-                stawkaVat.Text = "Edytuj";
-                stawkaVat.ShowDialog();
+                Form stawkaVat = new FormStawkaVAT(true, nazwa);
+                stawkaVat.Show();
             }
         }
 
