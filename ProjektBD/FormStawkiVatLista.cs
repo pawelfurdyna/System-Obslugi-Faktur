@@ -21,14 +21,35 @@ namespace ProjektBD
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
             this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
-            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
-
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
+            {
+                Form stawkaVat = new FormStawkaVAT();
+                stawkaVat.Show();
+            }
+        }
+
+        private void btnEdytuj_Click(object sender, EventArgs e)
+        {
+
+            if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
+            {
+                Form stawkaVat = new FormStawkaVAT();
+                stawkaVat.Show();
+            }
+        }
+
+        private void btnUsun_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

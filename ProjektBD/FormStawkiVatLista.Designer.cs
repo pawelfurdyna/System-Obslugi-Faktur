@@ -80,18 +80,21 @@
             resources.ApplyResources(this.btnDodaj, "btnDodaj");
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // btnEdytuj
             // 
             resources.ApplyResources(this.btnEdytuj, "btnEdytuj");
             this.btnEdytuj.Name = "btnEdytuj";
             this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
             // btnUsun
             // 
             resources.ApplyResources(this.btnUsun, "btnUsun");
             this.btnUsun.Name = "btnUsun";
             this.btnUsun.UseVisualStyleBackColor = true;
+            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
             // bDdataSet
             // 
