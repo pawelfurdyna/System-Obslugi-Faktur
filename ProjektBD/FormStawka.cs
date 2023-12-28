@@ -63,7 +63,8 @@ namespace ProjektBD
                     }
                     catch (OracleException ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        conn.Close();
                     }
                 }
             }
@@ -93,25 +94,29 @@ namespace ProjektBD
                 try
                 {
                     conn.Open();
-                    
+
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected == 0)
+                        if (rowsAffected != 0)
                         {
-                            MessageBox.Show("No rows updated. Check if the row exists and the value of 'nazwa' is correct.");
+                            if (rowsAffected == 1)
+                            {
+                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show($"{rowsAffected} row(s) updated.");
-                        }
-                    }
 
-                    conn.Close();
+                        conn.Close();
+                    }
                 }
                 catch (OracleException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
             }
 

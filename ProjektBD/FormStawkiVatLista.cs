@@ -18,6 +18,12 @@ namespace ProjektBD
         public FormStawkiVatLista()
         {
             InitializeComponent();
+            this.Activated += new EventHandler(FormStawkiVatLista_Activated);
+        }
+        private void FormStawkiVatLista_Activated(object sender, EventArgs e)
+        {
+            // Refresh data when the form becomes active
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
         }
 
         private void FormStawkiVatLista_Load(object sender, EventArgs e)
@@ -49,7 +55,7 @@ namespace ProjektBD
             if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
             {
                 Form stawkaVat = new FormStawkaVAT(true, nazwa);
-                stawkaVat.Show();
+                stawkaVat.ShowDialog();
             }
         }
 
@@ -76,11 +82,11 @@ namespace ProjektBD
                                 {
                                     if(rowsAffected == 1)
                                     {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
                                     {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                 }
                             }
