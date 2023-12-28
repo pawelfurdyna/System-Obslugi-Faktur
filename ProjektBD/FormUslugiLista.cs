@@ -19,8 +19,10 @@ namespace ProjektBD
 
         private void FormUslugiLista_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.USLUGI' . Możesz go przenieść lub usunąć.
-            this.uSLUGITableAdapter.Fill(this.dataSetBD.USLUGI);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.USLUGA' . Możesz go przenieść lub usunąć.
+            this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDDataSet.USLUGA' . Możesz go przenieść lub usunąć.
+            this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
 
         }
 

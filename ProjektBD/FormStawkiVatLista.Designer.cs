@@ -37,18 +37,16 @@
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnUsun = new System.Windows.Forms.Button();
-            this.dataSetBD = new ProjektBD.DataSetBD();
-            this.sTAWKIVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sTAWKI_VATTableAdapter = new ProjektBD.DataSetBDTableAdapters.STAWKI_VATTableAdapter();
+            this.bDdataSet = new ProjektBD.BDDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.sTAWKAVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTAWKAVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sTAWKA_VATTableAdapter = new ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter();
+            this.iDVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pROCENTVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTAWKIVATBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTAWKIVATBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTAWKIVATBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTAWKAVATBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -82,32 +80,26 @@
             resources.ApplyResources(this.btnDodaj, "btnDodaj");
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // btnEdytuj
             // 
             resources.ApplyResources(this.btnEdytuj, "btnEdytuj");
             this.btnEdytuj.Name = "btnEdytuj";
             this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
             // btnUsun
             // 
             resources.ApplyResources(this.btnUsun, "btnUsun");
             this.btnUsun.Name = "btnUsun";
             this.btnUsun.UseVisualStyleBackColor = true;
+            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
-            // dataSetBD
+            // bDdataSet
             // 
-            this.dataSetBD.DataSetName = "DataSetBD";
-            this.dataSetBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sTAWKIVATBindingSource
-            // 
-            this.sTAWKIVATBindingSource.DataMember = "STAWKI_VAT";
-            this.sTAWKIVATBindingSource.DataSource = this.dataSetBD;
-            // 
-            // sTAWKI_VATTableAdapter
-            // 
-            this.sTAWKI_VATTableAdapter.ClearBeforeFill = true;
+            this.bDdataSet.DataSetName = "DataSetBD";
+            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView1
             // 
@@ -116,19 +108,28 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sTAWKAVATDataGridViewTextBoxColumn,
+            this.iDVATDataGridViewTextBoxColumn,
             this.pROCENTVATDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.sTAWKIVATBindingSource1;
+            this.dataGridView1.DataSource = this.sTAWKAVATBindingSource;
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             // 
-            // sTAWKAVATDataGridViewTextBoxColumn
+            // sTAWKAVATBindingSource
             // 
-            this.sTAWKAVATDataGridViewTextBoxColumn.DataPropertyName = "STAWKA_VAT";
-            resources.ApplyResources(this.sTAWKAVATDataGridViewTextBoxColumn, "sTAWKAVATDataGridViewTextBoxColumn");
-            this.sTAWKAVATDataGridViewTextBoxColumn.Name = "sTAWKAVATDataGridViewTextBoxColumn";
-            this.sTAWKAVATDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sTAWKAVATBindingSource.DataMember = "STAWKA_VAT";
+            this.sTAWKAVATBindingSource.DataSource = this.bDdataSet;
+            // 
+            // sTAWKA_VATTableAdapter
+            // 
+            this.sTAWKA_VATTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDVATDataGridViewTextBoxColumn
+            // 
+            this.iDVATDataGridViewTextBoxColumn.DataPropertyName = "ID_VAT";
+            resources.ApplyResources(this.iDVATDataGridViewTextBoxColumn, "iDVATDataGridViewTextBoxColumn");
+            this.iDVATDataGridViewTextBoxColumn.Name = "iDVATDataGridViewTextBoxColumn";
+            this.iDVATDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pROCENTVATDataGridViewTextBoxColumn
             // 
@@ -136,11 +137,6 @@
             resources.ApplyResources(this.pROCENTVATDataGridViewTextBoxColumn, "pROCENTVATDataGridViewTextBoxColumn");
             this.pROCENTVATDataGridViewTextBoxColumn.Name = "pROCENTVATDataGridViewTextBoxColumn";
             this.pROCENTVATDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sTAWKIVATBindingSource1
-            // 
-            this.sTAWKIVATBindingSource1.DataMember = "STAWKI_VAT";
-            this.sTAWKIVATBindingSource1.DataSource = this.dataSetBD;
             // 
             // FormStawkiVatLista
             // 
@@ -156,10 +152,9 @@
             this.Load += new System.EventHandler(this.FormStawkiVatLista_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTAWKIVATBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTAWKIVATBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTAWKAVATBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,12 +168,11 @@
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnEdytuj;
         private System.Windows.Forms.Button btnUsun;
-        private DataSetBD dataSetBD;
-        private System.Windows.Forms.BindingSource sTAWKIVATBindingSource;
-        private DataSetBDTableAdapters.STAWKI_VATTableAdapter sTAWKI_VATTableAdapter;
+        private BDDataSet bDdataSet;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource sTAWKAVATBindingSource;
+        private BDDataSetTableAdapters.STAWKA_VATTableAdapter sTAWKA_VATTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pROCENTVATDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource sTAWKIVATBindingSource1;
     }
 }

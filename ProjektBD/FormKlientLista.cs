@@ -24,9 +24,8 @@ namespace ProjektBD
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.KLIENT' . Możesz go przenieść lub usunąć.
-            this.kLIENTTableAdapter.Fill(this.dataSetBD.KLIENT);
-
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
+            this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
         }
 
         private void button1_Click(object sender, EventArgs e)

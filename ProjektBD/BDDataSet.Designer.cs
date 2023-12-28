@@ -20,9 +20,9 @@ namespace ProjektBD {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetBD")]
+    [global::System.Xml.Serialization.XmlRootAttribute("BDDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetBD : global::System.Data.DataSet {
+    public partial class BDDataSet : global::System.Data.DataSet {
         
         private FAKTURADataTable tableFAKTURA;
         
@@ -32,17 +32,29 @@ namespace ProjektBD {
         
         private POZYCJA_FAKTURYDataTable tablePOZYCJA_FAKTURY;
         
-        private STAWKI_VATDataTable tableSTAWKI_VAT;
+        private STAWKA_VATDataTable tableSTAWKA_VAT;
         
-        private USLUGIDataTable tableUSLUGI;
+        private USLUGADataTable tableUSLUGA;
         
         private UZYTKOWNIKDataTable tableUZYTKOWNIK;
+        
+        private global::System.Data.DataRelation relationFK_ID_KLIENTA;
+        
+        private global::System.Data.DataRelation relationFK_ID_UZYTKOWNIKA;
+        
+        private global::System.Data.DataRelation relationFK_NAZWA_FIRMY;
+        
+        private global::System.Data.DataRelation relationFK_ID_USLUGI;
+        
+        private global::System.Data.DataRelation relationFK_ID_VAT;
+        
+        private global::System.Data.DataRelation relationFK_NUMER_FAKTURY;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DataSetBD() {
+        public BDDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -53,7 +65,7 @@ namespace ProjektBD {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DataSetBD(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected BDDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -78,11 +90,11 @@ namespace ProjektBD {
                 if ((ds.Tables["POZYCJA_FAKTURY"] != null)) {
                     base.Tables.Add(new POZYCJA_FAKTURYDataTable(ds.Tables["POZYCJA_FAKTURY"]));
                 }
-                if ((ds.Tables["STAWKI_VAT"] != null)) {
-                    base.Tables.Add(new STAWKI_VATDataTable(ds.Tables["STAWKI_VAT"]));
+                if ((ds.Tables["STAWKA_VAT"] != null)) {
+                    base.Tables.Add(new STAWKA_VATDataTable(ds.Tables["STAWKA_VAT"]));
                 }
-                if ((ds.Tables["USLUGI"] != null)) {
-                    base.Tables.Add(new USLUGIDataTable(ds.Tables["USLUGI"]));
+                if ((ds.Tables["USLUGA"] != null)) {
+                    base.Tables.Add(new USLUGADataTable(ds.Tables["USLUGA"]));
                 }
                 if ((ds.Tables["UZYTKOWNIK"] != null)) {
                     base.Tables.Add(new UZYTKOWNIKDataTable(ds.Tables["UZYTKOWNIK"]));
@@ -149,9 +161,9 @@ namespace ProjektBD {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public STAWKI_VATDataTable STAWKI_VAT {
+        public STAWKA_VATDataTable STAWKA_VAT {
             get {
-                return this.tableSTAWKI_VAT;
+                return this.tableSTAWKA_VAT;
             }
         }
         
@@ -159,9 +171,9 @@ namespace ProjektBD {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public USLUGIDataTable USLUGI {
+        public USLUGADataTable USLUGA {
             get {
-                return this.tableUSLUGI;
+                return this.tableUSLUGA;
             }
         }
         
@@ -217,7 +229,7 @@ namespace ProjektBD {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetBD cln = ((DataSetBD)(base.Clone()));
+            BDDataSet cln = ((BDDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -254,11 +266,11 @@ namespace ProjektBD {
                 if ((ds.Tables["POZYCJA_FAKTURY"] != null)) {
                     base.Tables.Add(new POZYCJA_FAKTURYDataTable(ds.Tables["POZYCJA_FAKTURY"]));
                 }
-                if ((ds.Tables["STAWKI_VAT"] != null)) {
-                    base.Tables.Add(new STAWKI_VATDataTable(ds.Tables["STAWKI_VAT"]));
+                if ((ds.Tables["STAWKA_VAT"] != null)) {
+                    base.Tables.Add(new STAWKA_VATDataTable(ds.Tables["STAWKA_VAT"]));
                 }
-                if ((ds.Tables["USLUGI"] != null)) {
-                    base.Tables.Add(new USLUGIDataTable(ds.Tables["USLUGI"]));
+                if ((ds.Tables["USLUGA"] != null)) {
+                    base.Tables.Add(new USLUGADataTable(ds.Tables["USLUGA"]));
                 }
                 if ((ds.Tables["UZYTKOWNIK"] != null)) {
                     base.Tables.Add(new UZYTKOWNIKDataTable(ds.Tables["UZYTKOWNIK"]));
@@ -320,16 +332,16 @@ namespace ProjektBD {
                     this.tablePOZYCJA_FAKTURY.InitVars();
                 }
             }
-            this.tableSTAWKI_VAT = ((STAWKI_VATDataTable)(base.Tables["STAWKI_VAT"]));
+            this.tableSTAWKA_VAT = ((STAWKA_VATDataTable)(base.Tables["STAWKA_VAT"]));
             if ((initTable == true)) {
-                if ((this.tableSTAWKI_VAT != null)) {
-                    this.tableSTAWKI_VAT.InitVars();
+                if ((this.tableSTAWKA_VAT != null)) {
+                    this.tableSTAWKA_VAT.InitVars();
                 }
             }
-            this.tableUSLUGI = ((USLUGIDataTable)(base.Tables["USLUGI"]));
+            this.tableUSLUGA = ((USLUGADataTable)(base.Tables["USLUGA"]));
             if ((initTable == true)) {
-                if ((this.tableUSLUGI != null)) {
-                    this.tableUSLUGI.InitVars();
+                if ((this.tableUSLUGA != null)) {
+                    this.tableUSLUGA.InitVars();
                 }
             }
             this.tableUZYTKOWNIK = ((UZYTKOWNIKDataTable)(base.Tables["UZYTKOWNIK"]));
@@ -338,14 +350,20 @@ namespace ProjektBD {
                     this.tableUZYTKOWNIK.InitVars();
                 }
             }
+            this.relationFK_ID_KLIENTA = this.Relations["FK_ID_KLIENTA"];
+            this.relationFK_ID_UZYTKOWNIKA = this.Relations["FK_ID_UZYTKOWNIKA"];
+            this.relationFK_NAZWA_FIRMY = this.Relations["FK_NAZWA_FIRMY"];
+            this.relationFK_ID_USLUGI = this.Relations["FK_ID_USLUGI"];
+            this.relationFK_ID_VAT = this.Relations["FK_ID_VAT"];
+            this.relationFK_NUMER_FAKTURY = this.Relations["FK_NUMER_FAKTURY"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetBD";
+            this.DataSetName = "BDDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetBD1.xsd";
+            this.Namespace = "http://tempuri.org/BDDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableFAKTURA = new FAKTURADataTable();
@@ -356,12 +374,36 @@ namespace ProjektBD {
             base.Tables.Add(this.tableKLIENT);
             this.tablePOZYCJA_FAKTURY = new POZYCJA_FAKTURYDataTable();
             base.Tables.Add(this.tablePOZYCJA_FAKTURY);
-            this.tableSTAWKI_VAT = new STAWKI_VATDataTable();
-            base.Tables.Add(this.tableSTAWKI_VAT);
-            this.tableUSLUGI = new USLUGIDataTable();
-            base.Tables.Add(this.tableUSLUGI);
+            this.tableSTAWKA_VAT = new STAWKA_VATDataTable();
+            base.Tables.Add(this.tableSTAWKA_VAT);
+            this.tableUSLUGA = new USLUGADataTable();
+            base.Tables.Add(this.tableUSLUGA);
             this.tableUZYTKOWNIK = new UZYTKOWNIKDataTable();
             base.Tables.Add(this.tableUZYTKOWNIK);
+            this.relationFK_ID_KLIENTA = new global::System.Data.DataRelation("FK_ID_KLIENTA", new global::System.Data.DataColumn[] {
+                        this.tableKLIENT.ID_KLIENTAColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFAKTURA.ID_KLIENTAColumn}, false);
+            this.Relations.Add(this.relationFK_ID_KLIENTA);
+            this.relationFK_ID_UZYTKOWNIKA = new global::System.Data.DataRelation("FK_ID_UZYTKOWNIKA", new global::System.Data.DataColumn[] {
+                        this.tableUZYTKOWNIK.ID_UZYTKOWNIKAColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFAKTURA.ID_UZYTKOWNIKAColumn}, false);
+            this.Relations.Add(this.relationFK_ID_UZYTKOWNIKA);
+            this.relationFK_NAZWA_FIRMY = new global::System.Data.DataRelation("FK_NAZWA_FIRMY", new global::System.Data.DataColumn[] {
+                        this.tableFIRMA.NAZWA_FIRMYColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFAKTURA.NAZWA_FIRMYColumn}, false);
+            this.Relations.Add(this.relationFK_NAZWA_FIRMY);
+            this.relationFK_ID_USLUGI = new global::System.Data.DataRelation("FK_ID_USLUGI", new global::System.Data.DataColumn[] {
+                        this.tableUSLUGA.ID_USLUGIColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePOZYCJA_FAKTURY.ID_USLUGIColumn}, false);
+            this.Relations.Add(this.relationFK_ID_USLUGI);
+            this.relationFK_ID_VAT = new global::System.Data.DataRelation("FK_ID_VAT", new global::System.Data.DataColumn[] {
+                        this.tableSTAWKA_VAT.ID_VATColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePOZYCJA_FAKTURY.ID_VATColumn}, false);
+            this.Relations.Add(this.relationFK_ID_VAT);
+            this.relationFK_NUMER_FAKTURY = new global::System.Data.DataRelation("FK_NUMER_FAKTURY", new global::System.Data.DataColumn[] {
+                        this.tableFAKTURA.NUMER_FAKTURYColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePOZYCJA_FAKTURY.NUMER_FAKTURYColumn}, false);
+            this.Relations.Add(this.relationFK_NUMER_FAKTURY);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -390,13 +432,13 @@ namespace ProjektBD {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSTAWKI_VAT() {
+        private bool ShouldSerializeSTAWKA_VAT() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeUSLUGI() {
+        private bool ShouldSerializeUSLUGA() {
             return false;
         }
         
@@ -417,7 +459,7 @@ namespace ProjektBD {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetBD ds = new DataSetBD();
+            BDDataSet ds = new BDDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -474,10 +516,10 @@ namespace ProjektBD {
         public delegate void POZYCJA_FAKTURYRowChangeEventHandler(object sender, POZYCJA_FAKTURYRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void STAWKI_VATRowChangeEventHandler(object sender, STAWKI_VATRowChangeEvent e);
+        public delegate void STAWKA_VATRowChangeEventHandler(object sender, STAWKA_VATRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void USLUGIRowChangeEventHandler(object sender, USLUGIRowChangeEvent e);
+        public delegate void USLUGARowChangeEventHandler(object sender, USLUGARowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void UZYTKOWNIKRowChangeEventHandler(object sender, UZYTKOWNIKRowChangeEvent e);
@@ -629,19 +671,35 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FAKTURARow AddFAKTURARow(short NUMER_FAKTURY, System.DateTime DATA_WYSTAWIENIA, System.DateTime TERMIN_PLATNOSCI, short ID_KLIENTA, short ID_UZYTKOWNIKA, string NAZWA_FIRMY, string UWAGI) {
+            public FAKTURARow AddFAKTURARow(short NUMER_FAKTURY, System.DateTime DATA_WYSTAWIENIA, System.DateTime TERMIN_PLATNOSCI, KLIENTRow parentKLIENTRowByFK_ID_KLIENTA, UZYTKOWNIKRow parentUZYTKOWNIKRowByFK_ID_UZYTKOWNIKA, FIRMARow parentFIRMARowByFK_NAZWA_FIRMY, string UWAGI) {
                 FAKTURARow rowFAKTURARow = ((FAKTURARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NUMER_FAKTURY,
                         DATA_WYSTAWIENIA,
                         TERMIN_PLATNOSCI,
-                        ID_KLIENTA,
-                        ID_UZYTKOWNIKA,
-                        NAZWA_FIRMY,
+                        null,
+                        null,
+                        null,
                         UWAGI};
+                if ((parentKLIENTRowByFK_ID_KLIENTA != null)) {
+                    columnValuesArray[3] = parentKLIENTRowByFK_ID_KLIENTA[0];
+                }
+                if ((parentUZYTKOWNIKRowByFK_ID_UZYTKOWNIKA != null)) {
+                    columnValuesArray[4] = parentUZYTKOWNIKRowByFK_ID_UZYTKOWNIKA[0];
+                }
+                if ((parentFIRMARowByFK_NAZWA_FIRMY != null)) {
+                    columnValuesArray[5] = parentFIRMARowByFK_NAZWA_FIRMY[0];
+                }
                 rowFAKTURARow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFAKTURARow);
                 return rowFAKTURARow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FAKTURARow FindByNUMER_FAKTURY(short NUMER_FAKTURY) {
+                return ((FAKTURARow)(this.Rows.Find(new object[] {
+                            NUMER_FAKTURY})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -687,7 +745,10 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnNAZWA_FIRMY);
                 this.columnUWAGI = new global::System.Data.DataColumn("UWAGI", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUWAGI);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnNUMER_FAKTURY}, true));
                 this.columnNUMER_FAKTURY.AllowDBNull = false;
+                this.columnNUMER_FAKTURY.Unique = true;
                 this.columnDATA_WYSTAWIENIA.AllowDBNull = false;
                 this.columnTERMIN_PLATNOSCI.AllowDBNull = false;
                 this.columnID_KLIENTA.AllowDBNull = false;
@@ -763,7 +824,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -969,7 +1030,7 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FIRMARow AddFIRMARow(string NAZWA_FIRMY, decimal NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, short KONTO_BANKOWE, string TELEFON_FIRMOWY) {
+            public FIRMARow AddFIRMARow(string NAZWA_FIRMY, string NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, string KONTO_BANKOWE, string TELEFON_FIRMOWY) {
                 FIRMARow rowFIRMARow = ((FIRMARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NAZWA_FIRMY,
@@ -1022,7 +1083,7 @@ namespace ProjektBD {
             private void InitClass() {
                 this.columnNAZWA_FIRMY = new global::System.Data.DataColumn("NAZWA_FIRMY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNAZWA_FIRMY);
-                this.columnNIP = new global::System.Data.DataColumn("NIP", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnNIP = new global::System.Data.DataColumn("NIP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNIP);
                 this.columnULICA = new global::System.Data.DataColumn("ULICA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnULICA);
@@ -1030,7 +1091,7 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnKOD_POCZTOWY);
                 this.columnMIEJSCOWOSC = new global::System.Data.DataColumn("MIEJSCOWOSC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMIEJSCOWOSC);
-                this.columnKONTO_BANKOWE = new global::System.Data.DataColumn("KONTO_BANKOWE", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnKONTO_BANKOWE = new global::System.Data.DataColumn("KONTO_BANKOWE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKONTO_BANKOWE);
                 this.columnTELEFON_FIRMOWY = new global::System.Data.DataColumn("TELEFON_FIRMOWY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTELEFON_FIRMOWY);
@@ -1040,6 +1101,7 @@ namespace ProjektBD {
                 this.columnNAZWA_FIRMY.Unique = true;
                 this.columnNAZWA_FIRMY.MaxLength = 255;
                 this.columnNIP.AllowDBNull = false;
+                this.columnNIP.MaxLength = 20;
                 this.columnULICA.AllowDBNull = false;
                 this.columnULICA.MaxLength = 255;
                 this.columnKOD_POCZTOWY.AllowDBNull = false;
@@ -1047,6 +1109,7 @@ namespace ProjektBD {
                 this.columnMIEJSCOWOSC.AllowDBNull = false;
                 this.columnMIEJSCOWOSC.MaxLength = 255;
                 this.columnKONTO_BANKOWE.AllowDBNull = false;
+                this.columnKONTO_BANKOWE.MaxLength = 40;
                 this.columnTELEFON_FIRMOWY.AllowDBNull = false;
                 this.columnTELEFON_FIRMOWY.MaxLength = 25;
             }
@@ -1116,7 +1179,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1322,7 +1385,7 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KLIENTRow AddKLIENTRow(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, decimal TERMIN_PLATNOSCI) {
+            public KLIENTRow AddKLIENTRow(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, short TERMIN_PLATNOSCI) {
                 KLIENTRow rowKLIENTRow = ((KLIENTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_KLIENTA,
@@ -1385,7 +1448,7 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnNUMER_TELEFONU);
                 this.columnEMAIL = new global::System.Data.DataColumn("EMAIL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEMAIL);
-                this.columnTERMIN_PLATNOSCI = new global::System.Data.DataColumn("TERMIN_PLATNOSCI", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnTERMIN_PLATNOSCI = new global::System.Data.DataColumn("TERMIN_PLATNOSCI", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTERMIN_PLATNOSCI);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_KLIENTA}, true));
@@ -1469,7 +1532,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1541,7 +1604,7 @@ namespace ProjektBD {
             
             private global::System.Data.DataColumn columnID_USLUGI;
             
-            private global::System.Data.DataColumn columnSTAWKA_VAT;
+            private global::System.Data.DataColumn columnID_VAT;
             
             private global::System.Data.DataColumn columnILOSC;
             
@@ -1608,9 +1671,9 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn STAWKA_VATColumn {
+            public global::System.Data.DataColumn ID_VATColumn {
                 get {
-                    return this.columnSTAWKA_VAT;
+                    return this.columnID_VAT;
                 }
             }
             
@@ -1675,16 +1738,25 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public POZYCJA_FAKTURYRow AddPOZYCJA_FAKTURYRow(short ID_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string STAWKA_VAT, decimal ILOSC, decimal WARTOSC_NETTO, decimal WARTOSC_VAT) {
+            public POZYCJA_FAKTURYRow AddPOZYCJA_FAKTURYRow(short ID_POZYCJI, FAKTURARow parentFAKTURARowByFK_NUMER_FAKTURY, USLUGARow parentUSLUGARowByFK_ID_USLUGI, STAWKA_VATRow parentSTAWKA_VATRowByFK_ID_VAT, double ILOSC, double WARTOSC_NETTO, double WARTOSC_VAT) {
                 POZYCJA_FAKTURYRow rowPOZYCJA_FAKTURYRow = ((POZYCJA_FAKTURYRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_POZYCJI,
-                        NUMER_FAKTURY,
-                        ID_USLUGI,
-                        STAWKA_VAT,
+                        null,
+                        null,
+                        null,
                         ILOSC,
                         WARTOSC_NETTO,
                         WARTOSC_VAT};
+                if ((parentFAKTURARowByFK_NUMER_FAKTURY != null)) {
+                    columnValuesArray[1] = parentFAKTURARowByFK_NUMER_FAKTURY[0];
+                }
+                if ((parentUSLUGARowByFK_ID_USLUGI != null)) {
+                    columnValuesArray[2] = parentUSLUGARowByFK_ID_USLUGI[0];
+                }
+                if ((parentSTAWKA_VATRowByFK_ID_VAT != null)) {
+                    columnValuesArray[3] = parentSTAWKA_VATRowByFK_ID_VAT[0];
+                }
                 rowPOZYCJA_FAKTURYRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPOZYCJA_FAKTURYRow);
                 return rowPOZYCJA_FAKTURYRow;
@@ -1717,7 +1789,7 @@ namespace ProjektBD {
                 this.columnID_POZYCJI = base.Columns["ID_POZYCJI"];
                 this.columnNUMER_FAKTURY = base.Columns["NUMER_FAKTURY"];
                 this.columnID_USLUGI = base.Columns["ID_USLUGI"];
-                this.columnSTAWKA_VAT = base.Columns["STAWKA_VAT"];
+                this.columnID_VAT = base.Columns["ID_VAT"];
                 this.columnILOSC = base.Columns["ILOSC"];
                 this.columnWARTOSC_NETTO = base.Columns["WARTOSC_NETTO"];
                 this.columnWARTOSC_VAT = base.Columns["WARTOSC_VAT"];
@@ -1732,13 +1804,13 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnNUMER_FAKTURY);
                 this.columnID_USLUGI = new global::System.Data.DataColumn("ID_USLUGI", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID_USLUGI);
-                this.columnSTAWKA_VAT = new global::System.Data.DataColumn("STAWKA_VAT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTAWKA_VAT);
-                this.columnILOSC = new global::System.Data.DataColumn("ILOSC", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnID_VAT = new global::System.Data.DataColumn("ID_VAT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_VAT);
+                this.columnILOSC = new global::System.Data.DataColumn("ILOSC", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnILOSC);
-                this.columnWARTOSC_NETTO = new global::System.Data.DataColumn("WARTOSC_NETTO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnWARTOSC_NETTO = new global::System.Data.DataColumn("WARTOSC_NETTO", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWARTOSC_NETTO);
-                this.columnWARTOSC_VAT = new global::System.Data.DataColumn("WARTOSC_VAT", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnWARTOSC_VAT = new global::System.Data.DataColumn("WARTOSC_VAT", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWARTOSC_VAT);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_POZYCJI}, true));
@@ -1746,8 +1818,8 @@ namespace ProjektBD {
                 this.columnID_POZYCJI.Unique = true;
                 this.columnNUMER_FAKTURY.AllowDBNull = false;
                 this.columnID_USLUGI.AllowDBNull = false;
-                this.columnSTAWKA_VAT.AllowDBNull = false;
-                this.columnSTAWKA_VAT.MaxLength = 255;
+                this.columnID_VAT.AllowDBNull = false;
+                this.columnID_VAT.MaxLength = 255;
                 this.columnILOSC.AllowDBNull = false;
                 this.columnWARTOSC_NETTO.AllowDBNull = false;
                 this.columnWARTOSC_VAT.AllowDBNull = false;
@@ -1818,7 +1890,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1882,16 +1954,16 @@ namespace ProjektBD {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class STAWKI_VATDataTable : global::System.Data.TypedTableBase<STAWKI_VATRow> {
+        public partial class STAWKA_VATDataTable : global::System.Data.TypedTableBase<STAWKA_VATRow> {
             
-            private global::System.Data.DataColumn columnSTAWKA_VAT;
+            private global::System.Data.DataColumn columnID_VAT;
             
             private global::System.Data.DataColumn columnPROCENT_VAT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATDataTable() {
-                this.TableName = "STAWKI_VAT";
+            public STAWKA_VATDataTable() {
+                this.TableName = "STAWKA_VAT";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1899,7 +1971,7 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal STAWKI_VATDataTable(global::System.Data.DataTable table) {
+            internal STAWKA_VATDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1916,16 +1988,16 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected STAWKI_VATDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected STAWKA_VATDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn STAWKA_VATColumn {
+            public global::System.Data.DataColumn ID_VATColumn {
                 get {
-                    return this.columnSTAWKA_VAT;
+                    return this.columnID_VAT;
                 }
             }
             
@@ -1948,53 +2020,53 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRow this[int index] {
+            public STAWKA_VATRow this[int index] {
                 get {
-                    return ((STAWKI_VATRow)(this.Rows[index]));
+                    return ((STAWKA_VATRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event STAWKI_VATRowChangeEventHandler STAWKI_VATRowChanging;
+            public event STAWKA_VATRowChangeEventHandler STAWKA_VATRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event STAWKI_VATRowChangeEventHandler STAWKI_VATRowChanged;
+            public event STAWKA_VATRowChangeEventHandler STAWKA_VATRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event STAWKI_VATRowChangeEventHandler STAWKI_VATRowDeleting;
+            public event STAWKA_VATRowChangeEventHandler STAWKA_VATRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event STAWKI_VATRowChangeEventHandler STAWKI_VATRowDeleted;
+            public event STAWKA_VATRowChangeEventHandler STAWKA_VATRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSTAWKI_VATRow(STAWKI_VATRow row) {
+            public void AddSTAWKA_VATRow(STAWKA_VATRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRow AddSTAWKI_VATRow(string STAWKA_VAT, decimal PROCENT_VAT) {
-                STAWKI_VATRow rowSTAWKI_VATRow = ((STAWKI_VATRow)(this.NewRow()));
+            public STAWKA_VATRow AddSTAWKA_VATRow(string ID_VAT, short PROCENT_VAT) {
+                STAWKA_VATRow rowSTAWKA_VATRow = ((STAWKA_VATRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        STAWKA_VAT,
+                        ID_VAT,
                         PROCENT_VAT};
-                rowSTAWKI_VATRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSTAWKI_VATRow);
-                return rowSTAWKI_VATRow;
+                rowSTAWKA_VATRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSTAWKA_VATRow);
+                return rowSTAWKA_VATRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRow FindBySTAWKA_VAT(string STAWKA_VAT) {
-                return ((STAWKI_VATRow)(this.Rows.Find(new object[] {
-                            STAWKA_VAT})));
+            public STAWKA_VATRow FindByID_VAT(string ID_VAT) {
+                return ((STAWKA_VATRow)(this.Rows.Find(new object[] {
+                            ID_VAT})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                STAWKI_VATDataTable cln = ((STAWKI_VATDataTable)(base.Clone()));
+                STAWKA_VATDataTable cln = ((STAWKA_VATDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2002,55 +2074,55 @@ namespace ProjektBD {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new STAWKI_VATDataTable();
+                return new STAWKA_VATDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnSTAWKA_VAT = base.Columns["STAWKA_VAT"];
+                this.columnID_VAT = base.Columns["ID_VAT"];
                 this.columnPROCENT_VAT = base.Columns["PROCENT_VAT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnSTAWKA_VAT = new global::System.Data.DataColumn("STAWKA_VAT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTAWKA_VAT);
-                this.columnPROCENT_VAT = new global::System.Data.DataColumn("PROCENT_VAT", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnID_VAT = new global::System.Data.DataColumn("ID_VAT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_VAT);
+                this.columnPROCENT_VAT = new global::System.Data.DataColumn("PROCENT_VAT", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPROCENT_VAT);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSTAWKA_VAT}, true));
-                this.columnSTAWKA_VAT.AllowDBNull = false;
-                this.columnSTAWKA_VAT.Unique = true;
-                this.columnSTAWKA_VAT.MaxLength = 255;
+                                this.columnID_VAT}, true));
+                this.columnID_VAT.AllowDBNull = false;
+                this.columnID_VAT.Unique = true;
+                this.columnID_VAT.MaxLength = 255;
                 this.columnPROCENT_VAT.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRow NewSTAWKI_VATRow() {
-                return ((STAWKI_VATRow)(this.NewRow()));
+            public STAWKA_VATRow NewSTAWKA_VATRow() {
+                return ((STAWKA_VATRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new STAWKI_VATRow(builder);
+                return new STAWKA_VATRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(STAWKI_VATRow);
+                return typeof(STAWKA_VATRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.STAWKI_VATRowChanged != null)) {
-                    this.STAWKI_VATRowChanged(this, new STAWKI_VATRowChangeEvent(((STAWKI_VATRow)(e.Row)), e.Action));
+                if ((this.STAWKA_VATRowChanged != null)) {
+                    this.STAWKA_VATRowChanged(this, new STAWKA_VATRowChangeEvent(((STAWKA_VATRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2058,8 +2130,8 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.STAWKI_VATRowChanging != null)) {
-                    this.STAWKI_VATRowChanging(this, new STAWKI_VATRowChangeEvent(((STAWKI_VATRow)(e.Row)), e.Action));
+                if ((this.STAWKA_VATRowChanging != null)) {
+                    this.STAWKA_VATRowChanging(this, new STAWKA_VATRowChangeEvent(((STAWKA_VATRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2067,8 +2139,8 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.STAWKI_VATRowDeleted != null)) {
-                    this.STAWKI_VATRowDeleted(this, new STAWKI_VATRowChangeEvent(((STAWKI_VATRow)(e.Row)), e.Action));
+                if ((this.STAWKA_VATRowDeleted != null)) {
+                    this.STAWKA_VATRowDeleted(this, new STAWKA_VATRowChangeEvent(((STAWKA_VATRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2076,14 +2148,14 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.STAWKI_VATRowDeleting != null)) {
-                    this.STAWKI_VATRowDeleting(this, new STAWKI_VATRowChangeEvent(((STAWKI_VATRow)(e.Row)), e.Action));
+                if ((this.STAWKA_VATRowDeleting != null)) {
+                    this.STAWKA_VATRowDeleting(this, new STAWKA_VATRowChangeEvent(((STAWKA_VATRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSTAWKI_VATRow(STAWKI_VATRow row) {
+            public void RemoveSTAWKA_VATRow(STAWKA_VATRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2092,7 +2164,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2110,7 +2182,7 @@ namespace ProjektBD {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "STAWKI_VATDataTable";
+                attribute2.FixedValue = "STAWKA_VATDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2156,7 +2228,7 @@ namespace ProjektBD {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class USLUGIDataTable : global::System.Data.TypedTableBase<USLUGIRow> {
+        public partial class USLUGADataTable : global::System.Data.TypedTableBase<USLUGARow> {
             
             private global::System.Data.DataColumn columnID_USLUGI;
             
@@ -2168,8 +2240,8 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIDataTable() {
-                this.TableName = "USLUGI";
+            public USLUGADataTable() {
+                this.TableName = "USLUGA";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2177,7 +2249,7 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal USLUGIDataTable(global::System.Data.DataTable table) {
+            internal USLUGADataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2194,7 +2266,7 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected USLUGIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected USLUGADataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2242,55 +2314,55 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRow this[int index] {
+            public USLUGARow this[int index] {
                 get {
-                    return ((USLUGIRow)(this.Rows[index]));
+                    return ((USLUGARow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USLUGIRowChangeEventHandler USLUGIRowChanging;
+            public event USLUGARowChangeEventHandler USLUGARowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USLUGIRowChangeEventHandler USLUGIRowChanged;
+            public event USLUGARowChangeEventHandler USLUGARowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USLUGIRowChangeEventHandler USLUGIRowDeleting;
+            public event USLUGARowChangeEventHandler USLUGARowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USLUGIRowChangeEventHandler USLUGIRowDeleted;
+            public event USLUGARowChangeEventHandler USLUGARowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddUSLUGIRow(USLUGIRow row) {
+            public void AddUSLUGARow(USLUGARow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRow AddUSLUGIRow(short ID_USLUGI, string NAZWA, string CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY) {
-                USLUGIRow rowUSLUGIRow = ((USLUGIRow)(this.NewRow()));
+            public USLUGARow AddUSLUGARow(short ID_USLUGI, string NAZWA, double CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY) {
+                USLUGARow rowUSLUGARow = ((USLUGARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_USLUGI,
                         NAZWA,
                         CENA_JEDNOSTKOWA,
                         JEDNOSTKA_MIARY};
-                rowUSLUGIRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowUSLUGIRow);
-                return rowUSLUGIRow;
+                rowUSLUGARow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowUSLUGARow);
+                return rowUSLUGARow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRow FindByID_USLUGI(short ID_USLUGI) {
-                return ((USLUGIRow)(this.Rows.Find(new object[] {
+            public USLUGARow FindByID_USLUGI(short ID_USLUGI) {
+                return ((USLUGARow)(this.Rows.Find(new object[] {
                             ID_USLUGI})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                USLUGIDataTable cln = ((USLUGIDataTable)(base.Clone()));
+                USLUGADataTable cln = ((USLUGADataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2298,7 +2370,7 @@ namespace ProjektBD {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new USLUGIDataTable();
+                return new USLUGADataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2317,7 +2389,7 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnID_USLUGI);
                 this.columnNAZWA = new global::System.Data.DataColumn("NAZWA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNAZWA);
-                this.columnCENA_JEDNOSTKOWA = new global::System.Data.DataColumn("CENA_JEDNOSTKOWA", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCENA_JEDNOSTKOWA = new global::System.Data.DataColumn("CENA_JEDNOSTKOWA", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCENA_JEDNOSTKOWA);
                 this.columnJEDNOSTKA_MIARY = new global::System.Data.DataColumn("JEDNOSTKA_MIARY", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJEDNOSTKA_MIARY);
@@ -2328,35 +2400,34 @@ namespace ProjektBD {
                 this.columnNAZWA.AllowDBNull = false;
                 this.columnNAZWA.MaxLength = 255;
                 this.columnCENA_JEDNOSTKOWA.AllowDBNull = false;
-                this.columnCENA_JEDNOSTKOWA.MaxLength = 255;
                 this.columnJEDNOSTKA_MIARY.AllowDBNull = false;
                 this.columnJEDNOSTKA_MIARY.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRow NewUSLUGIRow() {
-                return ((USLUGIRow)(this.NewRow()));
+            public USLUGARow NewUSLUGARow() {
+                return ((USLUGARow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new USLUGIRow(builder);
+                return new USLUGARow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(USLUGIRow);
+                return typeof(USLUGARow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.USLUGIRowChanged != null)) {
-                    this.USLUGIRowChanged(this, new USLUGIRowChangeEvent(((USLUGIRow)(e.Row)), e.Action));
+                if ((this.USLUGARowChanged != null)) {
+                    this.USLUGARowChanged(this, new USLUGARowChangeEvent(((USLUGARow)(e.Row)), e.Action));
                 }
             }
             
@@ -2364,8 +2435,8 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.USLUGIRowChanging != null)) {
-                    this.USLUGIRowChanging(this, new USLUGIRowChangeEvent(((USLUGIRow)(e.Row)), e.Action));
+                if ((this.USLUGARowChanging != null)) {
+                    this.USLUGARowChanging(this, new USLUGARowChangeEvent(((USLUGARow)(e.Row)), e.Action));
                 }
             }
             
@@ -2373,8 +2444,8 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.USLUGIRowDeleted != null)) {
-                    this.USLUGIRowDeleted(this, new USLUGIRowChangeEvent(((USLUGIRow)(e.Row)), e.Action));
+                if ((this.USLUGARowDeleted != null)) {
+                    this.USLUGARowDeleted(this, new USLUGARowChangeEvent(((USLUGARow)(e.Row)), e.Action));
                 }
             }
             
@@ -2382,14 +2453,14 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.USLUGIRowDeleting != null)) {
-                    this.USLUGIRowDeleting(this, new USLUGIRowChangeEvent(((USLUGIRow)(e.Row)), e.Action));
+                if ((this.USLUGARowDeleting != null)) {
+                    this.USLUGARowDeleting(this, new USLUGARowChangeEvent(((USLUGARow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveUSLUGIRow(USLUGIRow row) {
+            public void RemoveUSLUGARow(USLUGARow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2398,7 +2469,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2416,7 +2487,7 @@ namespace ProjektBD {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "USLUGIDataTable";
+                attribute2.FixedValue = "USLUGADataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2736,7 +2807,7 @@ namespace ProjektBD {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetBD ds = new DataSetBD();
+                BDDataSet ds = new BDDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2885,6 +2956,50 @@ namespace ProjektBD {
                     this[this.tableFAKTURA.UWAGIColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public KLIENTRow KLIENTRow {
+                get {
+                    return ((KLIENTRow)(this.GetParentRow(this.Table.ParentRelations["FK_ID_KLIENTA"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ID_KLIENTA"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UZYTKOWNIKRow UZYTKOWNIKRow {
+                get {
+                    return ((UZYTKOWNIKRow)(this.GetParentRow(this.Table.ParentRelations["FK_ID_UZYTKOWNIKA"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ID_UZYTKOWNIKA"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FIRMARow FIRMARow {
+                get {
+                    return ((FIRMARow)(this.GetParentRow(this.Table.ParentRelations["FK_NAZWA_FIRMY"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_NAZWA_FIRMY"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public POZYCJA_FAKTURYRow[] GetPOZYCJA_FAKTURYRows() {
+                if ((this.Table.ChildRelations["FK_NUMER_FAKTURY"] == null)) {
+                    return new POZYCJA_FAKTURYRow[0];
+                }
+                else {
+                    return ((POZYCJA_FAKTURYRow[])(base.GetChildRows(this.Table.ChildRelations["FK_NUMER_FAKTURY"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2914,9 +3029,9 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal NIP {
+            public string NIP {
                 get {
-                    return ((decimal)(this[this.tableFIRMA.NIPColumn]));
+                    return ((string)(this[this.tableFIRMA.NIPColumn]));
                 }
                 set {
                     this[this.tableFIRMA.NIPColumn] = value;
@@ -2958,9 +3073,9 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short KONTO_BANKOWE {
+            public string KONTO_BANKOWE {
                 get {
-                    return ((short)(this[this.tableFIRMA.KONTO_BANKOWEColumn]));
+                    return ((string)(this[this.tableFIRMA.KONTO_BANKOWEColumn]));
                 }
                 set {
                     this[this.tableFIRMA.KONTO_BANKOWEColumn] = value;
@@ -2975,6 +3090,17 @@ namespace ProjektBD {
                 }
                 set {
                     this[this.tableFIRMA.TELEFON_FIRMOWYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FAKTURARow[] GetFAKTURARows() {
+                if ((this.Table.ChildRelations["FK_NAZWA_FIRMY"] == null)) {
+                    return new FAKTURARow[0];
+                }
+                else {
+                    return ((FAKTURARow[])(base.GetChildRows(this.Table.ChildRelations["FK_NAZWA_FIRMY"])));
                 }
             }
         }
@@ -3061,12 +3187,23 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TERMIN_PLATNOSCI {
+            public short TERMIN_PLATNOSCI {
                 get {
-                    return ((decimal)(this[this.tableKLIENT.TERMIN_PLATNOSCIColumn]));
+                    return ((short)(this[this.tableKLIENT.TERMIN_PLATNOSCIColumn]));
                 }
                 set {
                     this[this.tableKLIENT.TERMIN_PLATNOSCIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FAKTURARow[] GetFAKTURARows() {
+                if ((this.Table.ChildRelations["FK_ID_KLIENTA"] == null)) {
+                    return new FAKTURARow[0];
+                }
+                else {
+                    return ((FAKTURARow[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_KLIENTA"])));
                 }
             }
         }
@@ -3120,20 +3257,20 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string STAWKA_VAT {
+            public string ID_VAT {
                 get {
-                    return ((string)(this[this.tablePOZYCJA_FAKTURY.STAWKA_VATColumn]));
+                    return ((string)(this[this.tablePOZYCJA_FAKTURY.ID_VATColumn]));
                 }
                 set {
-                    this[this.tablePOZYCJA_FAKTURY.STAWKA_VATColumn] = value;
+                    this[this.tablePOZYCJA_FAKTURY.ID_VATColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ILOSC {
+            public double ILOSC {
                 get {
-                    return ((decimal)(this[this.tablePOZYCJA_FAKTURY.ILOSCColumn]));
+                    return ((double)(this[this.tablePOZYCJA_FAKTURY.ILOSCColumn]));
                 }
                 set {
                     this[this.tablePOZYCJA_FAKTURY.ILOSCColumn] = value;
@@ -3142,9 +3279,9 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal WARTOSC_NETTO {
+            public double WARTOSC_NETTO {
                 get {
-                    return ((decimal)(this[this.tablePOZYCJA_FAKTURY.WARTOSC_NETTOColumn]));
+                    return ((double)(this[this.tablePOZYCJA_FAKTURY.WARTOSC_NETTOColumn]));
                 }
                 set {
                     this[this.tablePOZYCJA_FAKTURY.WARTOSC_NETTOColumn] = value;
@@ -3153,49 +3290,93 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal WARTOSC_VAT {
+            public double WARTOSC_VAT {
                 get {
-                    return ((decimal)(this[this.tablePOZYCJA_FAKTURY.WARTOSC_VATColumn]));
+                    return ((double)(this[this.tablePOZYCJA_FAKTURY.WARTOSC_VATColumn]));
                 }
                 set {
                     this[this.tablePOZYCJA_FAKTURY.WARTOSC_VATColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public USLUGARow USLUGARow {
+                get {
+                    return ((USLUGARow)(this.GetParentRow(this.Table.ParentRelations["FK_ID_USLUGI"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ID_USLUGI"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public STAWKA_VATRow STAWKA_VATRow {
+                get {
+                    return ((STAWKA_VATRow)(this.GetParentRow(this.Table.ParentRelations["FK_ID_VAT"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ID_VAT"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FAKTURARow FAKTURARow {
+                get {
+                    return ((FAKTURARow)(this.GetParentRow(this.Table.ParentRelations["FK_NUMER_FAKTURY"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_NUMER_FAKTURY"]);
+                }
+            }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class STAWKI_VATRow : global::System.Data.DataRow {
+        public partial class STAWKA_VATRow : global::System.Data.DataRow {
             
-            private STAWKI_VATDataTable tableSTAWKI_VAT;
+            private STAWKA_VATDataTable tableSTAWKA_VAT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal STAWKI_VATRow(global::System.Data.DataRowBuilder rb) : 
+            internal STAWKA_VATRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSTAWKI_VAT = ((STAWKI_VATDataTable)(this.Table));
+                this.tableSTAWKA_VAT = ((STAWKA_VATDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string STAWKA_VAT {
+            public string ID_VAT {
                 get {
-                    return ((string)(this[this.tableSTAWKI_VAT.STAWKA_VATColumn]));
+                    return ((string)(this[this.tableSTAWKA_VAT.ID_VATColumn]));
                 }
                 set {
-                    this[this.tableSTAWKI_VAT.STAWKA_VATColumn] = value;
+                    this[this.tableSTAWKA_VAT.ID_VATColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal PROCENT_VAT {
+            public short PROCENT_VAT {
                 get {
-                    return ((decimal)(this[this.tableSTAWKI_VAT.PROCENT_VATColumn]));
+                    return ((short)(this[this.tableSTAWKA_VAT.PROCENT_VATColumn]));
                 }
                 set {
-                    this[this.tableSTAWKI_VAT.PROCENT_VATColumn] = value;
+                    this[this.tableSTAWKA_VAT.PROCENT_VATColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public POZYCJA_FAKTURYRow[] GetPOZYCJA_FAKTURYRows() {
+                if ((this.Table.ChildRelations["FK_ID_VAT"] == null)) {
+                    return new POZYCJA_FAKTURYRow[0];
+                }
+                else {
+                    return ((POZYCJA_FAKTURYRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_VAT"])));
                 }
             }
         }
@@ -3203,25 +3384,25 @@ namespace ProjektBD {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class USLUGIRow : global::System.Data.DataRow {
+        public partial class USLUGARow : global::System.Data.DataRow {
             
-            private USLUGIDataTable tableUSLUGI;
+            private USLUGADataTable tableUSLUGA;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal USLUGIRow(global::System.Data.DataRowBuilder rb) : 
+            internal USLUGARow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableUSLUGI = ((USLUGIDataTable)(this.Table));
+                this.tableUSLUGA = ((USLUGADataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public short ID_USLUGI {
                 get {
-                    return ((short)(this[this.tableUSLUGI.ID_USLUGIColumn]));
+                    return ((short)(this[this.tableUSLUGA.ID_USLUGIColumn]));
                 }
                 set {
-                    this[this.tableUSLUGI.ID_USLUGIColumn] = value;
+                    this[this.tableUSLUGA.ID_USLUGIColumn] = value;
                 }
             }
             
@@ -3229,21 +3410,21 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string NAZWA {
                 get {
-                    return ((string)(this[this.tableUSLUGI.NAZWAColumn]));
+                    return ((string)(this[this.tableUSLUGA.NAZWAColumn]));
                 }
                 set {
-                    this[this.tableUSLUGI.NAZWAColumn] = value;
+                    this[this.tableUSLUGA.NAZWAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CENA_JEDNOSTKOWA {
+            public double CENA_JEDNOSTKOWA {
                 get {
-                    return ((string)(this[this.tableUSLUGI.CENA_JEDNOSTKOWAColumn]));
+                    return ((double)(this[this.tableUSLUGA.CENA_JEDNOSTKOWAColumn]));
                 }
                 set {
-                    this[this.tableUSLUGI.CENA_JEDNOSTKOWAColumn] = value;
+                    this[this.tableUSLUGA.CENA_JEDNOSTKOWAColumn] = value;
                 }
             }
             
@@ -3251,10 +3432,21 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string JEDNOSTKA_MIARY {
                 get {
-                    return ((string)(this[this.tableUSLUGI.JEDNOSTKA_MIARYColumn]));
+                    return ((string)(this[this.tableUSLUGA.JEDNOSTKA_MIARYColumn]));
                 }
                 set {
-                    this[this.tableUSLUGI.JEDNOSTKA_MIARYColumn] = value;
+                    this[this.tableUSLUGA.JEDNOSTKA_MIARYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public POZYCJA_FAKTURYRow[] GetPOZYCJA_FAKTURYRows() {
+                if ((this.Table.ChildRelations["FK_ID_USLUGI"] == null)) {
+                    return new POZYCJA_FAKTURYRow[0];
+                }
+                else {
+                    return ((POZYCJA_FAKTURYRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_USLUGI"])));
                 }
             }
         }
@@ -3336,6 +3528,17 @@ namespace ProjektBD {
                 }
                 set {
                     this[this.tableUZYTKOWNIK.HASLOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FAKTURARow[] GetFAKTURARows() {
+                if ((this.Table.ChildRelations["FK_ID_UZYTKOWNIKA"] == null)) {
+                    return new FAKTURARow[0];
+                }
+                else {
+                    return ((FAKTURARow[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_UZYTKOWNIKA"])));
                 }
             }
         }
@@ -3480,22 +3683,22 @@ namespace ProjektBD {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class STAWKI_VATRowChangeEvent : global::System.EventArgs {
+        public class STAWKA_VATRowChangeEvent : global::System.EventArgs {
             
-            private STAWKI_VATRow eventRow;
+            private STAWKA_VATRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRowChangeEvent(STAWKI_VATRow row, global::System.Data.DataRowAction action) {
+            public STAWKA_VATRowChangeEvent(STAWKA_VATRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public STAWKI_VATRow Row {
+            public STAWKA_VATRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3514,22 +3717,22 @@ namespace ProjektBD {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class USLUGIRowChangeEvent : global::System.EventArgs {
+        public class USLUGARowChangeEvent : global::System.EventArgs {
             
-            private USLUGIRow eventRow;
+            private USLUGARow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRowChangeEvent(USLUGIRow row, global::System.Data.DataRowAction action) {
+            public USLUGARowChangeEvent(USLUGARow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USLUGIRow Row {
+            public USLUGARow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3579,7 +3782,7 @@ namespace ProjektBD {
         }
     }
 }
-namespace ProjektBD.DataSetBDTableAdapters {
+namespace ProjektBD.BDDataSetTableAdapters {
     
     
     /// <summary>
@@ -3711,11 +3914,76 @@ namespace ProjektBD.DataSetBDTableAdapters {
             tableMapping.ColumnMappings.Add("NAZWA_FIRMY", "NAZWA_FIRMY");
             tableMapping.ColumnMappings.Add("UWAGI", "UWAGI");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SYSTEM"".""FAKTURA"" WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""TERMIN_PLATNOSCI"" = :Original_TERMIN_PLATNOSCI) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA) AND (""NAZWA_FIRMY"" = :Original_NAZWA_FIRMY) AND (""UWAGI"" = :Original_UWAGI))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DATA_WYSTAWIENIA";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "DATA_WYSTAWIENIA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_TERMIN_PLATNOSCI";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "TERMIN_PLATNOSCI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_KLIENTA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_KLIENTA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_UZYTKOWNIKA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_UZYTKOWNIKA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NAZWA_FIRMY";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "NAZWA_FIRMY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_UWAGI";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "UWAGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO ""SYSTEM"".""FAKTURA"" (""NUMER_FAKTURY"", ""DATA_WYSTAWIENIA"", ""TERMIN_PLATNOSCI"", ""ID_KLIENTA"", ""ID_UZYTKOWNIKA"", ""NAZWA_FIRMY"", ""UWAGI"") VALUES (:NUMER_FAKTURY, :DATA_WYSTAWIENIA, :TERMIN_PLATNOSCI, :ID_KLIENTA, :ID_UZYTKOWNIKA, :NAZWA_FIRMY, :UWAGI)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NUMER_FAKTURY";
             param.DbType = global::System.Data.DbType.Int16;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
@@ -3769,6 +4037,125 @@ namespace ProjektBD.DataSetBDTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "UWAGI";
             this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""FAKTURA"" SET ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""DATA_WYSTAWIENIA"" = :DATA_WYSTAWIENIA, ""TERMIN_PLATNOSCI"" = :TERMIN_PLATNOSCI, ""ID_KLIENTA"" = :ID_KLIENTA, ""ID_UZYTKOWNIKA"" = :ID_UZYTKOWNIKA, ""NAZWA_FIRMY"" = :NAZWA_FIRMY, ""UWAGI"" = :UWAGI WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""TERMIN_PLATNOSCI"" = :Original_TERMIN_PLATNOSCI) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA) AND (""NAZWA_FIRMY"" = :Original_NAZWA_FIRMY) AND (""UWAGI"" = :Original_UWAGI))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "DATA_WYSTAWIENIA";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "DATA_WYSTAWIENIA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "TERMIN_PLATNOSCI";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "TERMIN_PLATNOSCI";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_KLIENTA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_KLIENTA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_UZYTKOWNIKA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_UZYTKOWNIKA";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "NAZWA_FIRMY";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "NAZWA_FIRMY";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "UWAGI";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "UWAGI";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_DATA_WYSTAWIENIA";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "DATA_WYSTAWIENIA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_TERMIN_PLATNOSCI";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "TERMIN_PLATNOSCI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_KLIENTA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_KLIENTA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_UZYTKOWNIKA";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_UZYTKOWNIKA";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NAZWA_FIRMY";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "NAZWA_FIRMY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_UWAGI";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "UWAGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3793,7 +4180,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.FAKTURADataTable dataTable) {
+        public virtual int Fill(BDDataSet.FAKTURADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3806,9 +4193,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.FAKTURADataTable GetData() {
+        public virtual BDDataSet.FAKTURADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.FAKTURADataTable dataTable = new DataSetBD.FAKTURADataTable();
+            BDDataSet.FAKTURADataTable dataTable = new BDDataSet.FAKTURADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3816,14 +4203,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.FAKTURADataTable dataTable) {
+        public virtual int Update(BDDataSet.FAKTURADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
+        public virtual int Update(BDDataSet dataSet) {
             return this.Adapter.Update(dataSet, "FAKTURA");
         }
         
@@ -3840,6 +4227,44 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(short Original_NUMER_FAKTURY, System.DateTime Original_DATA_WYSTAWIENIA, System.DateTime Original_TERMIN_PLATNOSCI, short Original_ID_KLIENTA, short Original_ID_UZYTKOWNIKA, string Original_NAZWA_FIRMY, string Original_UWAGI) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_NUMER_FAKTURY));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_DATA_WYSTAWIENIA));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_TERMIN_PLATNOSCI));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((short)(Original_ID_KLIENTA));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_ID_UZYTKOWNIKA));
+            if ((Original_NAZWA_FIRMY == null)) {
+                throw new global::System.ArgumentNullException("Original_NAZWA_FIRMY");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_NAZWA_FIRMY));
+            }
+            if ((Original_UWAGI == null)) {
+                throw new global::System.ArgumentNullException("Original_UWAGI");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_UWAGI));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3878,6 +4303,69 @@ namespace ProjektBD.DataSetBDTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(short NUMER_FAKTURY, System.DateTime DATA_WYSTAWIENIA, System.DateTime TERMIN_PLATNOSCI, short ID_KLIENTA, short ID_UZYTKOWNIKA, string NAZWA_FIRMY, string UWAGI, short Original_NUMER_FAKTURY, System.DateTime Original_DATA_WYSTAWIENIA, System.DateTime Original_TERMIN_PLATNOSCI, short Original_ID_KLIENTA, short Original_ID_UZYTKOWNIKA, string Original_NAZWA_FIRMY, string Original_UWAGI) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(NUMER_FAKTURY));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DATA_WYSTAWIENIA));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(TERMIN_PLATNOSCI));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(ID_KLIENTA));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((short)(ID_UZYTKOWNIKA));
+            if ((NAZWA_FIRMY == null)) {
+                throw new global::System.ArgumentNullException("NAZWA_FIRMY");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(NAZWA_FIRMY));
+            }
+            if ((UWAGI == null)) {
+                throw new global::System.ArgumentNullException("UWAGI");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(UWAGI));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_NUMER_FAKTURY));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_DATA_WYSTAWIENIA));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_TERMIN_PLATNOSCI));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((short)(Original_ID_KLIENTA));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(Original_ID_UZYTKOWNIKA));
+            if ((Original_NAZWA_FIRMY == null)) {
+                throw new global::System.ArgumentNullException("Original_NAZWA_FIRMY");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_NAZWA_FIRMY));
+            }
+            if ((Original_UWAGI == null)) {
+                throw new global::System.ArgumentNullException("Original_UWAGI");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_UWAGI));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime DATA_WYSTAWIENIA, System.DateTime TERMIN_PLATNOSCI, short ID_KLIENTA, short ID_UZYTKOWNIKA, string NAZWA_FIRMY, string UWAGI, short Original_NUMER_FAKTURY, System.DateTime Original_DATA_WYSTAWIENIA, System.DateTime Original_TERMIN_PLATNOSCI, short Original_ID_KLIENTA, short Original_ID_UZYTKOWNIKA, string Original_NAZWA_FIRMY, string Original_UWAGI) {
+            return this.Update(Original_NUMER_FAKTURY, DATA_WYSTAWIENIA, TERMIN_PLATNOSCI, ID_KLIENTA, ID_UZYTKOWNIKA, NAZWA_FIRMY, UWAGI, Original_NUMER_FAKTURY, Original_DATA_WYSTAWIENIA, Original_TERMIN_PLATNOSCI, Original_ID_KLIENTA, Original_ID_UZYTKOWNIKA, Original_NAZWA_FIRMY, Original_UWAGI);
         }
     }
     
@@ -4024,9 +4512,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_NIP";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
             param.SourceColumn = "NIP";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -4057,9 +4544,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_KONTO_BANKOWE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "KONTO_BANKOWE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -4087,9 +4573,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NIP";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
             param.SourceColumn = "NIP";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -4116,9 +4601,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "KONTO_BANKOWE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "KONTO_BANKOWE";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -4142,9 +4626,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NIP";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
             param.SourceColumn = "NIP";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -4171,9 +4654,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "KONTO_BANKOWE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "KONTO_BANKOWE";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -4194,9 +4676,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_NIP";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
             param.SourceColumn = "NIP";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -4227,9 +4708,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_KONTO_BANKOWE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 40;
             param.IsNullable = true;
             param.SourceColumn = "KONTO_BANKOWE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -4266,7 +4746,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.FIRMADataTable dataTable) {
+        public virtual int Fill(BDDataSet.FIRMADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4279,9 +4759,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.FIRMADataTable GetData() {
+        public virtual BDDataSet.FIRMADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.FIRMADataTable dataTable = new DataSetBD.FIRMADataTable();
+            BDDataSet.FIRMADataTable dataTable = new BDDataSet.FIRMADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4289,14 +4769,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.FIRMADataTable dataTable) {
+        public virtual int Update(BDDataSet.FIRMADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
+        public virtual int Update(BDDataSet dataSet) {
             return this.Adapter.Update(dataSet, "FIRMA");
         }
         
@@ -4319,14 +4799,19 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_NAZWA_FIRMY, decimal Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, short Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
+        public virtual int Delete(string Original_NAZWA_FIRMY, string Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, string Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
             if ((Original_NAZWA_FIRMY == null)) {
                 throw new global::System.ArgumentNullException("Original_NAZWA_FIRMY");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_NAZWA_FIRMY));
             }
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_NIP));
+            if ((Original_NIP == null)) {
+                throw new global::System.ArgumentNullException("Original_NIP");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_NIP));
+            }
             if ((Original_ULICA == null)) {
                 throw new global::System.ArgumentNullException("Original_ULICA");
             }
@@ -4345,7 +4830,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_MIEJSCOWOSC));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_KONTO_BANKOWE));
+            if ((Original_KONTO_BANKOWE == null)) {
+                throw new global::System.ArgumentNullException("Original_KONTO_BANKOWE");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_KONTO_BANKOWE));
+            }
             if ((Original_TELEFON_FIRMOWY == null)) {
                 throw new global::System.ArgumentNullException("Original_TELEFON_FIRMOWY");
             }
@@ -4372,14 +4862,19 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string NAZWA_FIRMY, decimal NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, short KONTO_BANKOWE, string TELEFON_FIRMOWY) {
+        public virtual int Insert(string NAZWA_FIRMY, string NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, string KONTO_BANKOWE, string TELEFON_FIRMOWY) {
             if ((NAZWA_FIRMY == null)) {
                 throw new global::System.ArgumentNullException("NAZWA_FIRMY");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(NAZWA_FIRMY));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(NIP));
+            if ((NIP == null)) {
+                throw new global::System.ArgumentNullException("NIP");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(NIP));
+            }
             if ((ULICA == null)) {
                 throw new global::System.ArgumentNullException("ULICA");
             }
@@ -4398,7 +4893,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(MIEJSCOWOSC));
             }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((short)(KONTO_BANKOWE));
+            if ((KONTO_BANKOWE == null)) {
+                throw new global::System.ArgumentNullException("KONTO_BANKOWE");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(KONTO_BANKOWE));
+            }
             if ((TELEFON_FIRMOWY == null)) {
                 throw new global::System.ArgumentNullException("TELEFON_FIRMOWY");
             }
@@ -4425,14 +4925,19 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NAZWA_FIRMY, decimal NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, short KONTO_BANKOWE, string TELEFON_FIRMOWY, string Original_NAZWA_FIRMY, decimal Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, short Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
+        public virtual int Update(string NAZWA_FIRMY, string NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, string KONTO_BANKOWE, string TELEFON_FIRMOWY, string Original_NAZWA_FIRMY, string Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, string Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
             if ((NAZWA_FIRMY == null)) {
                 throw new global::System.ArgumentNullException("NAZWA_FIRMY");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(NAZWA_FIRMY));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(NIP));
+            if ((NIP == null)) {
+                throw new global::System.ArgumentNullException("NIP");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(NIP));
+            }
             if ((ULICA == null)) {
                 throw new global::System.ArgumentNullException("ULICA");
             }
@@ -4451,7 +4956,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(MIEJSCOWOSC));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(KONTO_BANKOWE));
+            if ((KONTO_BANKOWE == null)) {
+                throw new global::System.ArgumentNullException("KONTO_BANKOWE");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(KONTO_BANKOWE));
+            }
             if ((TELEFON_FIRMOWY == null)) {
                 throw new global::System.ArgumentNullException("TELEFON_FIRMOWY");
             }
@@ -4464,7 +4974,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_NAZWA_FIRMY));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_NIP));
+            if ((Original_NIP == null)) {
+                throw new global::System.ArgumentNullException("Original_NIP");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_NIP));
+            }
             if ((Original_ULICA == null)) {
                 throw new global::System.ArgumentNullException("Original_ULICA");
             }
@@ -4483,7 +4998,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_MIEJSCOWOSC));
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_KONTO_BANKOWE));
+            if ((Original_KONTO_BANKOWE == null)) {
+                throw new global::System.ArgumentNullException("Original_KONTO_BANKOWE");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_KONTO_BANKOWE));
+            }
             if ((Original_TELEFON_FIRMOWY == null)) {
                 throw new global::System.ArgumentNullException("Original_TELEFON_FIRMOWY");
             }
@@ -4510,7 +5030,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(decimal NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, short KONTO_BANKOWE, string TELEFON_FIRMOWY, string Original_NAZWA_FIRMY, decimal Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, short Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
+        public virtual int Update(string NIP, string ULICA, string KOD_POCZTOWY, string MIEJSCOWOSC, string KONTO_BANKOWE, string TELEFON_FIRMOWY, string Original_NAZWA_FIRMY, string Original_NIP, string Original_ULICA, string Original_KOD_POCZTOWY, string Original_MIEJSCOWOSC, string Original_KONTO_BANKOWE, string Original_TELEFON_FIRMOWY) {
             return this.Update(Original_NAZWA_FIRMY, NIP, ULICA, KOD_POCZTOWY, MIEJSCOWOSC, KONTO_BANKOWE, TELEFON_FIRMOWY, Original_NAZWA_FIRMY, Original_NIP, Original_ULICA, Original_KOD_POCZTOWY, Original_MIEJSCOWOSC, Original_KONTO_BANKOWE, Original_TELEFON_FIRMOWY);
         }
     }
@@ -4699,8 +5219,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_TERMIN_PLATNOSCI";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "TERMIN_PLATNOSCI";
@@ -4757,8 +5277,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "TERMIN_PLATNOSCI";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "TERMIN_PLATNOSCI";
@@ -4812,8 +5332,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "TERMIN_PLATNOSCI";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "TERMIN_PLATNOSCI";
@@ -4869,8 +5389,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_TERMIN_PLATNOSCI";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "TERMIN_PLATNOSCI";
@@ -4900,7 +5420,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.KLIENTDataTable dataTable) {
+        public virtual int Fill(BDDataSet.KLIENTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4913,9 +5433,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.KLIENTDataTable GetData() {
+        public virtual BDDataSet.KLIENTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.KLIENTDataTable dataTable = new DataSetBD.KLIENTDataTable();
+            BDDataSet.KLIENTDataTable dataTable = new BDDataSet.KLIENTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4923,14 +5443,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.KLIENTDataTable dataTable) {
+        public virtual int Update(BDDataSet.KLIENTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
+        public virtual int Update(BDDataSet dataSet) {
             return this.Adapter.Update(dataSet, "KLIENT");
         }
         
@@ -4953,7 +5473,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, decimal Original_TERMIN_PLATNOSCI) {
+        public virtual int Delete(short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, short Original_TERMIN_PLATNOSCI) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_ID_KLIENTA));
             if ((Original_NAZWA == null)) {
                 throw new global::System.ArgumentNullException("Original_NAZWA");
@@ -4985,7 +5505,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_EMAIL));
             }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_TERMIN_PLATNOSCI));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_TERMIN_PLATNOSCI));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5006,7 +5526,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, decimal TERMIN_PLATNOSCI) {
+        public virtual int Insert(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, short TERMIN_PLATNOSCI) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID_KLIENTA));
             if ((NAZWA == null)) {
                 throw new global::System.ArgumentNullException("NAZWA");
@@ -5038,7 +5558,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(EMAIL));
             }
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(TERMIN_PLATNOSCI));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((short)(TERMIN_PLATNOSCI));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5059,7 +5579,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, decimal TERMIN_PLATNOSCI, short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, decimal Original_TERMIN_PLATNOSCI) {
+        public virtual int Update(short ID_KLIENTA, string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, short TERMIN_PLATNOSCI, short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, short Original_TERMIN_PLATNOSCI) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(ID_KLIENTA));
             if ((NAZWA == null)) {
                 throw new global::System.ArgumentNullException("NAZWA");
@@ -5091,7 +5611,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(EMAIL));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(TERMIN_PLATNOSCI));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(TERMIN_PLATNOSCI));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_ID_KLIENTA));
             if ((Original_NAZWA == null)) {
                 throw new global::System.ArgumentNullException("Original_NAZWA");
@@ -5123,7 +5643,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_EMAIL));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_TERMIN_PLATNOSCI));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_TERMIN_PLATNOSCI));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5144,7 +5664,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, decimal TERMIN_PLATNOSCI, short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, decimal Original_TERMIN_PLATNOSCI) {
+        public virtual int Update(string NAZWA, string ADRES, string NIP, string NUMER_TELEFONU, string EMAIL, short TERMIN_PLATNOSCI, short Original_ID_KLIENTA, string Original_NAZWA, string Original_ADRES, string Original_NIP, string Original_NUMER_TELEFONU, string Original_EMAIL, short Original_TERMIN_PLATNOSCI) {
             return this.Update(Original_ID_KLIENTA, NAZWA, ADRES, NIP, NUMER_TELEFONU, EMAIL, TERMIN_PLATNOSCI, Original_ID_KLIENTA, Original_NAZWA, Original_ADRES, Original_NIP, Original_NUMER_TELEFONU, Original_EMAIL, Original_TERMIN_PLATNOSCI);
         }
     }
@@ -5273,14 +5793,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
             tableMapping.ColumnMappings.Add("ID_POZYCJI", "ID_POZYCJI");
             tableMapping.ColumnMappings.Add("NUMER_FAKTURY", "NUMER_FAKTURY");
             tableMapping.ColumnMappings.Add("ID_USLUGI", "ID_USLUGI");
-            tableMapping.ColumnMappings.Add("STAWKA_VAT", "STAWKA_VAT");
+            tableMapping.ColumnMappings.Add("ID_VAT", "ID_VAT");
             tableMapping.ColumnMappings.Add("ILOSC", "ILOSC");
             tableMapping.ColumnMappings.Add("WARTOSC_NETTO", "WARTOSC_NETTO");
             tableMapping.ColumnMappings.Add("WARTOSC_VAT", "WARTOSC_VAT");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SYSTEM"".""POZYCJA_FAKTURY"" WHERE ((""ID_POZYCJI"" = :Original_ID_POZYCJI) AND (""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""ID_USLUGI"" = :Original_ID_USLUGI) AND (""STAWKA_VAT"" = :Original_STAWKA_VAT) AND (""ILOSC"" = :Original_ILOSC) AND (""WARTOSC_NETTO"" = :Original_WARTOSC_NETTO) AND (""WARTOSC_VAT"" = :Original_WARTOSC_VAT))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SYSTEM"".""POZYCJA_FAKTURY"" WHERE ((""ID_POZYCJI"" = :Original_ID_POZYCJI) AND (""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""ID_USLUGI"" = :Original_ID_USLUGI) AND (""ID_VAT"" = :Original_ID_VAT) AND (""ILOSC"" = :Original_ILOSC) AND (""WARTOSC_NETTO"" = :Original_WARTOSC_NETTO) AND (""WARTOSC_VAT"" = :Original_WARTOSC_VAT))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ID_POZYCJI";
@@ -5310,17 +5830,17 @@ namespace ProjektBD.DataSetBDTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_STAWKA_VAT";
+            param.ParameterName = "Original_ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ILOSC";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ILOSC";
@@ -5328,8 +5848,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_WARTOSC_NETTO";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_NETTO";
@@ -5337,8 +5857,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_WARTOSC_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_VAT";
@@ -5347,8 +5867,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"POZYCJA_FAKTURY\" (\"ID_POZYCJI\", \"NUMER_FAKTURY\", \"ID_USLUGI" +
-                "\", \"STAWKA_VAT\", \"ILOSC\", \"WARTOSC_NETTO\", \"WARTOSC_VAT\") VALUES (:ID_POZYCJI, :" +
-                "NUMER_FAKTURY, :ID_USLUGI, :STAWKA_VAT, :ILOSC, :WARTOSC_NETTO, :WARTOSC_VAT)";
+                "\", \"ID_VAT\", \"ILOSC\", \"WARTOSC_NETTO\", \"WARTOSC_VAT\") VALUES (:ID_POZYCJI, :NUME" +
+                "R_FAKTURY, :ID_USLUGI, :ID_VAT, :ILOSC, :WARTOSC_NETTO, :WARTOSC_VAT)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_POZYCJI";
@@ -5375,39 +5895,39 @@ namespace ProjektBD.DataSetBDTableAdapters {
             param.SourceColumn = "ID_USLUGI";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "STAWKA_VAT";
+            param.ParameterName = "ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ILOSC";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ILOSC";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "WARTOSC_NETTO";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_NETTO";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "WARTOSC_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_VAT";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""POZYCJA_FAKTURY"" SET ""ID_POZYCJI"" = :ID_POZYCJI, ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""ID_USLUGI"" = :ID_USLUGI, ""STAWKA_VAT"" = :STAWKA_VAT, ""ILOSC"" = :ILOSC, ""WARTOSC_NETTO"" = :WARTOSC_NETTO, ""WARTOSC_VAT"" = :WARTOSC_VAT WHERE ((""ID_POZYCJI"" = :Original_ID_POZYCJI) AND (""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""ID_USLUGI"" = :Original_ID_USLUGI) AND (""STAWKA_VAT"" = :Original_STAWKA_VAT) AND (""ILOSC"" = :Original_ILOSC) AND (""WARTOSC_NETTO"" = :Original_WARTOSC_NETTO) AND (""WARTOSC_VAT"" = :Original_WARTOSC_VAT))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""POZYCJA_FAKTURY"" SET ""ID_POZYCJI"" = :ID_POZYCJI, ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""ID_USLUGI"" = :ID_USLUGI, ""ID_VAT"" = :ID_VAT, ""ILOSC"" = :ILOSC, ""WARTOSC_NETTO"" = :WARTOSC_NETTO, ""WARTOSC_VAT"" = :WARTOSC_VAT WHERE ((""ID_POZYCJI"" = :Original_ID_POZYCJI) AND (""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""ID_USLUGI"" = :Original_ID_USLUGI) AND (""ID_VAT"" = :Original_ID_VAT) AND (""ILOSC"" = :Original_ILOSC) AND (""WARTOSC_NETTO"" = :Original_WARTOSC_NETTO) AND (""WARTOSC_VAT"" = :Original_WARTOSC_VAT))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_POZYCJI";
@@ -5434,32 +5954,32 @@ namespace ProjektBD.DataSetBDTableAdapters {
             param.SourceColumn = "ID_USLUGI";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "STAWKA_VAT";
+            param.ParameterName = "ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ILOSC";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ILOSC";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "WARTOSC_NETTO";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_NETTO";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "WARTOSC_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_VAT";
@@ -5492,17 +6012,17 @@ namespace ProjektBD.DataSetBDTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_STAWKA_VAT";
+            param.ParameterName = "Original_ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_ILOSC";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "ILOSC";
@@ -5510,8 +6030,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_WARTOSC_NETTO";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_NETTO";
@@ -5519,8 +6039,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_WARTOSC_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "WARTOSC_VAT";
@@ -5541,8 +6061,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_POZYCJI, NUMER_FAKTURY, ID_USLUGI, STAWKA_VAT, ILOSC, WARTOSC_NETTO, WA" +
-                "RTOSC_VAT FROM SYSTEM.POZYCJA_FAKTURY";
+            this._commandCollection[0].CommandText = "SELECT ID_POZYCJI, NUMER_FAKTURY, ID_USLUGI, ID_VAT, ILOSC, WARTOSC_NETTO, WARTOS" +
+                "C_VAT FROM SYSTEM.POZYCJA_FAKTURY";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5550,7 +6070,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.POZYCJA_FAKTURYDataTable dataTable) {
+        public virtual int Fill(BDDataSet.POZYCJA_FAKTURYDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5563,9 +6083,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.POZYCJA_FAKTURYDataTable GetData() {
+        public virtual BDDataSet.POZYCJA_FAKTURYDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.POZYCJA_FAKTURYDataTable dataTable = new DataSetBD.POZYCJA_FAKTURYDataTable();
+            BDDataSet.POZYCJA_FAKTURYDataTable dataTable = new BDDataSet.POZYCJA_FAKTURYDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5573,14 +6093,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.POZYCJA_FAKTURYDataTable dataTable) {
+        public virtual int Update(BDDataSet.POZYCJA_FAKTURYDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
+        public virtual int Update(BDDataSet dataSet) {
             return this.Adapter.Update(dataSet, "POZYCJA_FAKTURY");
         }
         
@@ -5603,19 +6123,19 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_STAWKA_VAT, decimal Original_ILOSC, decimal Original_WARTOSC_NETTO, decimal Original_WARTOSC_VAT) {
+        public virtual int Delete(short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, double Original_ILOSC, double Original_WARTOSC_NETTO, double Original_WARTOSC_VAT) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_ID_POZYCJI));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((short)(Original_NUMER_FAKTURY));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((short)(Original_ID_USLUGI));
-            if ((Original_STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("Original_STAWKA_VAT");
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_STAWKA_VAT));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_ID_VAT));
             }
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_ILOSC));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_WARTOSC_NETTO));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_WARTOSC_VAT));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_ILOSC));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_WARTOSC_NETTO));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_WARTOSC_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5636,19 +6156,19 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(short ID_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string STAWKA_VAT, decimal ILOSC, decimal WARTOSC_NETTO, decimal WARTOSC_VAT) {
+        public virtual int Insert(short ID_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, double ILOSC, double WARTOSC_NETTO, double WARTOSC_VAT) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID_POZYCJI));
             this.Adapter.InsertCommand.Parameters[1].Value = ((short)(NUMER_FAKTURY));
             this.Adapter.InsertCommand.Parameters[2].Value = ((short)(ID_USLUGI));
-            if ((STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("STAWKA_VAT");
+            if ((ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("ID_VAT");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(STAWKA_VAT));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ID_VAT));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(ILOSC));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(WARTOSC_NETTO));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(WARTOSC_VAT));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(ILOSC));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(WARTOSC_NETTO));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((double)(WARTOSC_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5669,31 +6189,31 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(short ID_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string STAWKA_VAT, decimal ILOSC, decimal WARTOSC_NETTO, decimal WARTOSC_VAT, short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_STAWKA_VAT, decimal Original_ILOSC, decimal Original_WARTOSC_NETTO, decimal Original_WARTOSC_VAT) {
+        public virtual int Update(short ID_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, double ILOSC, double WARTOSC_NETTO, double WARTOSC_VAT, short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, double Original_ILOSC, double Original_WARTOSC_NETTO, double Original_WARTOSC_VAT) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(ID_POZYCJI));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((short)(NUMER_FAKTURY));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((short)(ID_USLUGI));
-            if ((STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("STAWKA_VAT");
+            if ((ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("ID_VAT");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(STAWKA_VAT));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ID_VAT));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(ILOSC));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(WARTOSC_NETTO));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(WARTOSC_VAT));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(ILOSC));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(WARTOSC_NETTO));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(WARTOSC_VAT));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_ID_POZYCJI));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((short)(Original_NUMER_FAKTURY));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((short)(Original_ID_USLUGI));
-            if ((Original_STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("Original_STAWKA_VAT");
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_STAWKA_VAT));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_ID_VAT));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_ILOSC));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_WARTOSC_NETTO));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_WARTOSC_VAT));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_ILOSC));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Original_WARTOSC_NETTO));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_WARTOSC_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5714,8 +6234,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(short NUMER_FAKTURY, short ID_USLUGI, string STAWKA_VAT, decimal ILOSC, decimal WARTOSC_NETTO, decimal WARTOSC_VAT, short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_STAWKA_VAT, decimal Original_ILOSC, decimal Original_WARTOSC_NETTO, decimal Original_WARTOSC_VAT) {
-            return this.Update(Original_ID_POZYCJI, NUMER_FAKTURY, ID_USLUGI, STAWKA_VAT, ILOSC, WARTOSC_NETTO, WARTOSC_VAT, Original_ID_POZYCJI, Original_NUMER_FAKTURY, Original_ID_USLUGI, Original_STAWKA_VAT, Original_ILOSC, Original_WARTOSC_NETTO, Original_WARTOSC_VAT);
+        public virtual int Update(short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, double ILOSC, double WARTOSC_NETTO, double WARTOSC_VAT, short Original_ID_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, double Original_ILOSC, double Original_WARTOSC_NETTO, double Original_WARTOSC_VAT) {
+            return this.Update(Original_ID_POZYCJI, NUMER_FAKTURY, ID_USLUGI, ID_VAT, ILOSC, WARTOSC_NETTO, WARTOSC_VAT, Original_ID_POZYCJI, Original_NUMER_FAKTURY, Original_ID_USLUGI, Original_ID_VAT, Original_ILOSC, Original_WARTOSC_NETTO, Original_WARTOSC_VAT);
         }
     }
     
@@ -5728,7 +6248,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class STAWKI_VATTableAdapter : global::System.ComponentModel.Component {
+    public partial class STAWKA_VATTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
         
@@ -5742,7 +6262,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public STAWKI_VATTableAdapter() {
+        public STAWKA_VATTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -5839,27 +6359,27 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "STAWKI_VAT";
-            tableMapping.ColumnMappings.Add("STAWKA_VAT", "STAWKA_VAT");
+            tableMapping.DataSetTable = "STAWKA_VAT";
+            tableMapping.ColumnMappings.Add("ID_VAT", "ID_VAT");
             tableMapping.ColumnMappings.Add("PROCENT_VAT", "PROCENT_VAT");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SYSTEM\".\"STAWKI_VAT\" WHERE ((\"STAWKA_VAT\" = :Original_STAWKA_VAT) AN" +
-                "D (\"PROCENT_VAT\" = :Original_PROCENT_VAT))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SYSTEM\".\"STAWKA_VAT\" WHERE ((\"ID_VAT\" = :Original_ID_VAT) AND (\"PROC" +
+                "ENT_VAT\" = :Original_PROCENT_VAT))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_STAWKA_VAT";
+            param.ParameterName = "Original_ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PROCENT_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "PROCENT_VAT";
@@ -5867,57 +6387,57 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"STAWKI_VAT\" (\"STAWKA_VAT\", \"PROCENT_VAT\") VALUES (:STAWKA_V" +
-                "AT, :PROCENT_VAT)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"STAWKA_VAT\" (\"ID_VAT\", \"PROCENT_VAT\") VALUES (:ID_VAT, :PRO" +
+                "CENT_VAT)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "STAWKA_VAT";
+            param.ParameterName = "ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PROCENT_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "PROCENT_VAT";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE \"SYSTEM\".\"STAWKI_VAT\" SET \"STAWKA_VAT\" = :STAWKA_VAT, \"PROCENT_VAT\" = :PRO" +
-                "CENT_VAT WHERE ((\"STAWKA_VAT\" = :Original_STAWKA_VAT) AND (\"PROCENT_VAT\" = :Orig" +
-                "inal_PROCENT_VAT))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"SYSTEM\".\"STAWKA_VAT\" SET \"ID_VAT\" = :ID_VAT, \"PROCENT_VAT\" = :PROCENT_VAT" +
+                " WHERE ((\"ID_VAT\" = :Original_ID_VAT) AND (\"PROCENT_VAT\" = :Original_PROCENT_VAT" +
+                "))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "STAWKA_VAT";
+            param.ParameterName = "ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PROCENT_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "PROCENT_VAT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_STAWKA_VAT";
+            param.ParameterName = "Original_ID_VAT";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
             param.IsNullable = true;
-            param.SourceColumn = "STAWKA_VAT";
+            param.SourceColumn = "ID_VAT";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PROCENT_VAT";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "PROCENT_VAT";
@@ -5938,7 +6458,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT STAWKA_VAT, PROCENT_VAT FROM SYSTEM.STAWKI_VAT";
+            this._commandCollection[0].CommandText = "SELECT ID_VAT, PROCENT_VAT FROM SYSTEM.STAWKA_VAT";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5946,7 +6466,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.STAWKI_VATDataTable dataTable) {
+        public virtual int Fill(BDDataSet.STAWKA_VATDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5959,9 +6479,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.STAWKI_VATDataTable GetData() {
+        public virtual BDDataSet.STAWKA_VATDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.STAWKI_VATDataTable dataTable = new DataSetBD.STAWKI_VATDataTable();
+            BDDataSet.STAWKA_VATDataTable dataTable = new BDDataSet.STAWKA_VATDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5969,15 +6489,15 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.STAWKI_VATDataTable dataTable) {
+        public virtual int Update(BDDataSet.STAWKA_VATDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
-            return this.Adapter.Update(dataSet, "STAWKI_VAT");
+        public virtual int Update(BDDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "STAWKA_VAT");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5999,14 +6519,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_STAWKA_VAT, decimal Original_PROCENT_VAT) {
-            if ((Original_STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("Original_STAWKA_VAT");
+        public virtual int Delete(string Original_ID_VAT, short Original_PROCENT_VAT) {
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_STAWKA_VAT));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ID_VAT));
             }
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_PROCENT_VAT));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((short)(Original_PROCENT_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6027,14 +6547,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string STAWKA_VAT, decimal PROCENT_VAT) {
-            if ((STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("STAWKA_VAT");
+        public virtual int Insert(string ID_VAT, short PROCENT_VAT) {
+            if ((ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("ID_VAT");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(STAWKA_VAT));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID_VAT));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(PROCENT_VAT));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(PROCENT_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6055,21 +6575,21 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string STAWKA_VAT, decimal PROCENT_VAT, string Original_STAWKA_VAT, decimal Original_PROCENT_VAT) {
-            if ((STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("STAWKA_VAT");
+        public virtual int Update(string ID_VAT, short PROCENT_VAT, string Original_ID_VAT, short Original_PROCENT_VAT) {
+            if ((ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("ID_VAT");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(STAWKA_VAT));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ID_VAT));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(PROCENT_VAT));
-            if ((Original_STAWKA_VAT == null)) {
-                throw new global::System.ArgumentNullException("Original_STAWKA_VAT");
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((short)(PROCENT_VAT));
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_STAWKA_VAT));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_ID_VAT));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Original_PROCENT_VAT));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(Original_PROCENT_VAT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6090,8 +6610,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(decimal PROCENT_VAT, string Original_STAWKA_VAT, decimal Original_PROCENT_VAT) {
-            return this.Update(Original_STAWKA_VAT, PROCENT_VAT, Original_STAWKA_VAT, Original_PROCENT_VAT);
+        public virtual int Update(short PROCENT_VAT, string Original_ID_VAT, short Original_PROCENT_VAT) {
+            return this.Update(Original_ID_VAT, PROCENT_VAT, Original_ID_VAT, Original_PROCENT_VAT);
         }
     }
     
@@ -6104,7 +6624,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class USLUGITableAdapter : global::System.ComponentModel.Component {
+    public partial class USLUGATableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
         
@@ -6118,7 +6638,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public USLUGITableAdapter() {
+        public USLUGATableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -6215,7 +6735,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "USLUGI";
+            tableMapping.DataSetTable = "USLUGA";
             tableMapping.ColumnMappings.Add("ID_USLUGI", "ID_USLUGI");
             tableMapping.ColumnMappings.Add("NAZWA", "NAZWA");
             tableMapping.ColumnMappings.Add("CENA_JEDNOSTKOWA", "CENA_JEDNOSTKOWA");
@@ -6223,7 +6743,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SYSTEM\".\"USLUGI\" WHERE ((\"ID_USLUGI\" = :Original_ID_USLUGI) AND (\"NA" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SYSTEM\".\"USLUGA\" WHERE ((\"ID_USLUGI\" = :Original_ID_USLUGI) AND (\"NA" +
                 "ZWA\" = :Original_NAZWA) AND (\"CENA_JEDNOSTKOWA\" = :Original_CENA_JEDNOSTKOWA) AN" +
                 "D (\"JEDNOSTKA_MIARY\" = :Original_JEDNOSTKA_MIARY))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
@@ -6246,8 +6766,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CENA_JEDNOSTKOWA";
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 255;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
+            param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "CENA_JEDNOSTKOWA";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -6262,7 +6783,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"USLUGI\" (\"ID_USLUGI\", \"NAZWA\", \"CENA_JEDNOSTKOWA\", \"JEDNOST" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"USLUGA\" (\"ID_USLUGI\", \"NAZWA\", \"CENA_JEDNOSTKOWA\", \"JEDNOST" +
                 "KA_MIARY\") VALUES (:ID_USLUGI, :NAZWA, :CENA_JEDNOSTKOWA, :JEDNOSTKA_MIARY)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
@@ -6282,8 +6803,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CENA_JEDNOSTKOWA";
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 255;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
+            param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "CENA_JEDNOSTKOWA";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -6296,7 +6818,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""USLUGI"" SET ""ID_USLUGI"" = :ID_USLUGI, ""NAZWA"" = :NAZWA, ""CENA_JEDNOSTKOWA"" = :CENA_JEDNOSTKOWA, ""JEDNOSTKA_MIARY"" = :JEDNOSTKA_MIARY WHERE ((""ID_USLUGI"" = :Original_ID_USLUGI) AND (""NAZWA"" = :Original_NAZWA) AND (""CENA_JEDNOSTKOWA"" = :Original_CENA_JEDNOSTKOWA) AND (""JEDNOSTKA_MIARY"" = :Original_JEDNOSTKA_MIARY))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""USLUGA"" SET ""ID_USLUGI"" = :ID_USLUGI, ""NAZWA"" = :NAZWA, ""CENA_JEDNOSTKOWA"" = :CENA_JEDNOSTKOWA, ""JEDNOSTKA_MIARY"" = :JEDNOSTKA_MIARY WHERE ((""ID_USLUGI"" = :Original_ID_USLUGI) AND (""NAZWA"" = :Original_NAZWA) AND (""CENA_JEDNOSTKOWA"" = :Original_CENA_JEDNOSTKOWA) AND (""JEDNOSTKA_MIARY"" = :Original_JEDNOSTKA_MIARY))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "ID_USLUGI";
@@ -6315,8 +6837,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "CENA_JEDNOSTKOWA";
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 255;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
+            param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "CENA_JEDNOSTKOWA";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -6346,8 +6869,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_CENA_JEDNOSTKOWA";
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
-            param.Size = 255;
+            param.DbType = global::System.Data.DbType.Double;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Double;
+            param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "CENA_JEDNOSTKOWA";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -6375,7 +6899,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_USLUGI, NAZWA, CENA_JEDNOSTKOWA, JEDNOSTKA_MIARY FROM SYSTEM.USLUGI";
+            this._commandCollection[0].CommandText = "SELECT ID_USLUGI, NAZWA, CENA_JEDNOSTKOWA, JEDNOSTKA_MIARY FROM SYSTEM.USLUGA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6383,7 +6907,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.USLUGIDataTable dataTable) {
+        public virtual int Fill(BDDataSet.USLUGADataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6396,9 +6920,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.USLUGIDataTable GetData() {
+        public virtual BDDataSet.USLUGADataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.USLUGIDataTable dataTable = new DataSetBD.USLUGIDataTable();
+            BDDataSet.USLUGADataTable dataTable = new BDDataSet.USLUGADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6406,15 +6930,15 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.USLUGIDataTable dataTable) {
+        public virtual int Update(BDDataSet.USLUGADataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
-            return this.Adapter.Update(dataSet, "USLUGI");
+        public virtual int Update(BDDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "USLUGA");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6436,7 +6960,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(short Original_ID_USLUGI, string Original_NAZWA, string Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
+        public virtual int Delete(short Original_ID_USLUGI, string Original_NAZWA, double Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_ID_USLUGI));
             if ((Original_NAZWA == null)) {
                 throw new global::System.ArgumentNullException("Original_NAZWA");
@@ -6444,12 +6968,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_NAZWA));
             }
-            if ((Original_CENA_JEDNOSTKOWA == null)) {
-                throw new global::System.ArgumentNullException("Original_CENA_JEDNOSTKOWA");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_CENA_JEDNOSTKOWA));
-            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_CENA_JEDNOSTKOWA));
             if ((Original_JEDNOSTKA_MIARY == null)) {
                 throw new global::System.ArgumentNullException("Original_JEDNOSTKA_MIARY");
             }
@@ -6476,7 +6995,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(short ID_USLUGI, string NAZWA, string CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY) {
+        public virtual int Insert(short ID_USLUGI, string NAZWA, double CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID_USLUGI));
             if ((NAZWA == null)) {
                 throw new global::System.ArgumentNullException("NAZWA");
@@ -6484,12 +7003,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(NAZWA));
             }
-            if ((CENA_JEDNOSTKOWA == null)) {
-                throw new global::System.ArgumentNullException("CENA_JEDNOSTKOWA");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(CENA_JEDNOSTKOWA));
-            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(CENA_JEDNOSTKOWA));
             if ((JEDNOSTKA_MIARY == null)) {
                 throw new global::System.ArgumentNullException("JEDNOSTKA_MIARY");
             }
@@ -6516,7 +7030,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(short ID_USLUGI, string NAZWA, string CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY, short Original_ID_USLUGI, string Original_NAZWA, string Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
+        public virtual int Update(short ID_USLUGI, string NAZWA, double CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY, short Original_ID_USLUGI, string Original_NAZWA, double Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(ID_USLUGI));
             if ((NAZWA == null)) {
                 throw new global::System.ArgumentNullException("NAZWA");
@@ -6524,12 +7038,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(NAZWA));
             }
-            if ((CENA_JEDNOSTKOWA == null)) {
-                throw new global::System.ArgumentNullException("CENA_JEDNOSTKOWA");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(CENA_JEDNOSTKOWA));
-            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(CENA_JEDNOSTKOWA));
             if ((JEDNOSTKA_MIARY == null)) {
                 throw new global::System.ArgumentNullException("JEDNOSTKA_MIARY");
             }
@@ -6543,12 +7052,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_NAZWA));
             }
-            if ((Original_CENA_JEDNOSTKOWA == null)) {
-                throw new global::System.ArgumentNullException("Original_CENA_JEDNOSTKOWA");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_CENA_JEDNOSTKOWA));
-            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_CENA_JEDNOSTKOWA));
             if ((Original_JEDNOSTKA_MIARY == null)) {
                 throw new global::System.ArgumentNullException("Original_JEDNOSTKA_MIARY");
             }
@@ -6575,7 +7079,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string NAZWA, string CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY, short Original_ID_USLUGI, string Original_NAZWA, string Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
+        public virtual int Update(string NAZWA, double CENA_JEDNOSTKOWA, string JEDNOSTKA_MIARY, short Original_ID_USLUGI, string Original_NAZWA, double Original_CENA_JEDNOSTKOWA, string Original_JEDNOSTKA_MIARY) {
             return this.Update(Original_ID_USLUGI, NAZWA, CENA_JEDNOSTKOWA, JEDNOSTKA_MIARY, Original_ID_USLUGI, Original_NAZWA, Original_CENA_JEDNOSTKOWA, Original_JEDNOSTKA_MIARY);
         }
     }
@@ -6932,7 +7436,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetBD.UZYTKOWNIKDataTable dataTable) {
+        public virtual int Fill(BDDataSet.UZYTKOWNIKDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6945,9 +7449,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetBD.UZYTKOWNIKDataTable GetData() {
+        public virtual BDDataSet.UZYTKOWNIKDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetBD.UZYTKOWNIKDataTable dataTable = new DataSetBD.UZYTKOWNIKDataTable();
+            BDDataSet.UZYTKOWNIKDataTable dataTable = new BDDataSet.UZYTKOWNIKDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6955,14 +7459,14 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD.UZYTKOWNIKDataTable dataTable) {
+        public virtual int Update(BDDataSet.UZYTKOWNIKDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetBD dataSet) {
+        public virtual int Update(BDDataSet dataSet) {
             return this.Adapter.Update(dataSet, "UZYTKOWNIK");
         }
         
@@ -7197,9 +7701,9 @@ namespace ProjektBD.DataSetBDTableAdapters {
         
         private POZYCJA_FAKTURYTableAdapter _pOZYCJA_FAKTURYTableAdapter;
         
-        private STAWKI_VATTableAdapter _sTAWKI_VATTableAdapter;
+        private STAWKA_VATTableAdapter _sTAWKA_VATTableAdapter;
         
-        private USLUGITableAdapter _uSLUGITableAdapter;
+        private USLUGATableAdapter _uSLUGATableAdapter;
         
         private UZYTKOWNIKTableAdapter _uZYTKOWNIKTableAdapter;
         
@@ -7279,12 +7783,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public STAWKI_VATTableAdapter STAWKI_VATTableAdapter {
+        public STAWKA_VATTableAdapter STAWKA_VATTableAdapter {
             get {
-                return this._sTAWKI_VATTableAdapter;
+                return this._sTAWKA_VATTableAdapter;
             }
             set {
-                this._sTAWKI_VATTableAdapter = value;
+                this._sTAWKA_VATTableAdapter = value;
             }
         }
         
@@ -7293,12 +7797,12 @@ namespace ProjektBD.DataSetBDTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public USLUGITableAdapter USLUGITableAdapter {
+        public USLUGATableAdapter USLUGATableAdapter {
             get {
-                return this._uSLUGITableAdapter;
+                return this._uSLUGATableAdapter;
             }
             set {
-                this._uSLUGITableAdapter = value;
+                this._uSLUGATableAdapter = value;
             }
         }
         
@@ -7351,13 +7855,13 @@ namespace ProjektBD.DataSetBDTableAdapters {
                             && (this._pOZYCJA_FAKTURYTableAdapter.Connection != null))) {
                     return this._pOZYCJA_FAKTURYTableAdapter.Connection;
                 }
-                if (((this._sTAWKI_VATTableAdapter != null) 
-                            && (this._sTAWKI_VATTableAdapter.Connection != null))) {
-                    return this._sTAWKI_VATTableAdapter.Connection;
+                if (((this._sTAWKA_VATTableAdapter != null) 
+                            && (this._sTAWKA_VATTableAdapter.Connection != null))) {
+                    return this._sTAWKA_VATTableAdapter.Connection;
                 }
-                if (((this._uSLUGITableAdapter != null) 
-                            && (this._uSLUGITableAdapter.Connection != null))) {
-                    return this._uSLUGITableAdapter.Connection;
+                if (((this._uSLUGATableAdapter != null) 
+                            && (this._uSLUGATableAdapter.Connection != null))) {
+                    return this._uSLUGATableAdapter.Connection;
                 }
                 if (((this._uZYTKOWNIKTableAdapter != null) 
                             && (this._uZYTKOWNIKTableAdapter.Connection != null))) {
@@ -7388,10 +7892,10 @@ namespace ProjektBD.DataSetBDTableAdapters {
                 if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._sTAWKI_VATTableAdapter != null)) {
+                if ((this._sTAWKA_VATTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._uSLUGITableAdapter != null)) {
+                if ((this._uSLUGATableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._uZYTKOWNIKTableAdapter != null)) {
@@ -7406,17 +7910,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(DataSetBD dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(BDDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._fAKTURATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._fAKTURATableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._fIRMATableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.FIRMA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -7435,39 +7930,48 @@ namespace ProjektBD.DataSetBDTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.POZYCJA_FAKTURY.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pOZYCJA_FAKTURYTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._sTAWKI_VATTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.STAWKI_VAT.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._sTAWKI_VATTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._uSLUGITableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.USLUGI.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._uSLUGITableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._uZYTKOWNIKTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.UZYTKOWNIK.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._uZYTKOWNIKTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._fAKTURATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._fAKTURATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._sTAWKA_VATTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.STAWKA_VAT.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sTAWKA_VATTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._uSLUGATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.USLUGA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._uSLUGATableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.POZYCJA_FAKTURY.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pOZYCJA_FAKTURYTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7479,16 +7983,8 @@ namespace ProjektBD.DataSetBDTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(DataSetBD dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(BDDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._fAKTURATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._fAKTURATableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._fIRMATableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.FIRMA.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -7505,35 +8001,43 @@ namespace ProjektBD.DataSetBDTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.POZYCJA_FAKTURY.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pOZYCJA_FAKTURYTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._sTAWKI_VATTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.STAWKI_VAT.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._sTAWKI_VATTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._uSLUGITableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.USLUGI.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._uSLUGITableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._uZYTKOWNIKTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.UZYTKOWNIK.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._uZYTKOWNIKTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._fAKTURATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._fAKTURATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._sTAWKA_VATTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.STAWKA_VAT.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sTAWKA_VATTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._uSLUGATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.USLUGA.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._uSLUGATableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.POZYCJA_FAKTURY.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pOZYCJA_FAKTURYTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7545,37 +8049,45 @@ namespace ProjektBD.DataSetBDTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(DataSetBD dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(BDDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._uZYTKOWNIKTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UZYTKOWNIK.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._uZYTKOWNIKTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._uSLUGITableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.USLUGI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._uSLUGITableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._sTAWKI_VATTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.STAWKI_VAT.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._sTAWKI_VATTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._pOZYCJA_FAKTURYTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.POZYCJA_FAKTURY.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._pOZYCJA_FAKTURYTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uSLUGATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.USLUGA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uSLUGATableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._sTAWKA_VATTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.STAWKA_VAT.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sTAWKA_VATTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._fAKTURATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._fAKTURATableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uZYTKOWNIKTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.UZYTKOWNIK.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uZYTKOWNIKTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7592,14 +8104,6 @@ namespace ProjektBD.DataSetBDTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._fIRMATableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._fAKTURATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.FAKTURA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._fAKTURATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7635,7 +8139,7 @@ namespace ProjektBD.DataSetBDTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(DataSetBD dataSet) {
+        public virtual int UpdateAll(BDDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
@@ -7662,13 +8166,13 @@ namespace ProjektBD.DataSetBDTableAdapters {
                 throw new global::System.ArgumentException("Dla wszystkich obiektów TableAdapter, którymi zarządza obiekt TableAdapterManager" +
                         ", muszą być używane te same parametry połączenia.");
             }
-            if (((this._sTAWKI_VATTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sTAWKI_VATTableAdapter.Connection) == false))) {
+            if (((this._sTAWKA_VATTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sTAWKA_VATTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Dla wszystkich obiektów TableAdapter, którymi zarządza obiekt TableAdapterManager" +
                         ", muszą być używane te same parametry połączenia.");
             }
-            if (((this._uSLUGITableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._uSLUGITableAdapter.Connection) == false))) {
+            if (((this._uSLUGATableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._uSLUGATableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Dla wszystkich obiektów TableAdapter, którymi zarządza obiekt TableAdapterManager" +
                         ", muszą być używane te same parametry połączenia.");
             }
@@ -7746,22 +8250,22 @@ namespace ProjektBD.DataSetBDTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._pOZYCJA_FAKTURYTableAdapter.Adapter);
                     }
                 }
-                if ((this._sTAWKI_VATTableAdapter != null)) {
-                    revertConnections.Add(this._sTAWKI_VATTableAdapter, this._sTAWKI_VATTableAdapter.Connection);
-                    this._sTAWKI_VATTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
-                    this._sTAWKI_VATTableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
-                    if (this._sTAWKI_VATTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sTAWKI_VATTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sTAWKI_VATTableAdapter.Adapter);
+                if ((this._sTAWKA_VATTableAdapter != null)) {
+                    revertConnections.Add(this._sTAWKA_VATTableAdapter, this._sTAWKA_VATTableAdapter.Connection);
+                    this._sTAWKA_VATTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
+                    this._sTAWKA_VATTableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
+                    if (this._sTAWKA_VATTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._sTAWKA_VATTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._sTAWKA_VATTableAdapter.Adapter);
                     }
                 }
-                if ((this._uSLUGITableAdapter != null)) {
-                    revertConnections.Add(this._uSLUGITableAdapter, this._uSLUGITableAdapter.Connection);
-                    this._uSLUGITableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
-                    this._uSLUGITableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
-                    if (this._uSLUGITableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._uSLUGITableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._uSLUGITableAdapter.Adapter);
+                if ((this._uSLUGATableAdapter != null)) {
+                    revertConnections.Add(this._uSLUGATableAdapter, this._uSLUGATableAdapter.Connection);
+                    this._uSLUGATableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(workConnection));
+                    this._uSLUGATableAdapter.Transaction = ((global::Oracle.ManagedDataAccess.Client.OracleTransaction)(workTransaction));
+                    if (this._uSLUGATableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._uSLUGATableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._uSLUGATableAdapter.Adapter);
                     }
                 }
                 if ((this._uZYTKOWNIKTableAdapter != null)) {
@@ -7847,13 +8351,13 @@ namespace ProjektBD.DataSetBDTableAdapters {
                     this._pOZYCJA_FAKTURYTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._pOZYCJA_FAKTURYTableAdapter]));
                     this._pOZYCJA_FAKTURYTableAdapter.Transaction = null;
                 }
-                if ((this._sTAWKI_VATTableAdapter != null)) {
-                    this._sTAWKI_VATTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._sTAWKI_VATTableAdapter]));
-                    this._sTAWKI_VATTableAdapter.Transaction = null;
+                if ((this._sTAWKA_VATTableAdapter != null)) {
+                    this._sTAWKA_VATTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._sTAWKA_VATTableAdapter]));
+                    this._sTAWKA_VATTableAdapter.Transaction = null;
                 }
-                if ((this._uSLUGITableAdapter != null)) {
-                    this._uSLUGITableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._uSLUGITableAdapter]));
-                    this._uSLUGITableAdapter.Transaction = null;
+                if ((this._uSLUGATableAdapter != null)) {
+                    this._uSLUGATableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._uSLUGATableAdapter]));
+                    this._uSLUGATableAdapter.Transaction = null;
                 }
                 if ((this._uZYTKOWNIKTableAdapter != null)) {
                     this._uZYTKOWNIKTableAdapter.Connection = ((global::Oracle.ManagedDataAccess.Client.OracleConnection)(revertConnections[this._uZYTKOWNIKTableAdapter]));

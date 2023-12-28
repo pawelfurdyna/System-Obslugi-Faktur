@@ -92,6 +92,11 @@
     </Compile>
     <Compile Include="FormNowaFaktura.Designer.cs">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    <Compile Include="FormStawka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStawka.Designer.cs">
+      <DependentUpon>FormStawka.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStawkiVatLista.cs">
       <SubType>Form</SubType>
@@ -127,6 +132,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNowaFaktura.resx">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    <EmbeddedResource Include="FormStawka.resx">
+      <DependentUpon>FormStawka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStawkiVatLista.resx">
       <DependentUpon>FormStawkiVatLista.cs</DependentUpon>
