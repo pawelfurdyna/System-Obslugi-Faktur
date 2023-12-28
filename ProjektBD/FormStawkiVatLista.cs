@@ -19,8 +19,10 @@ namespace ProjektBD
 
         private void FormStawkiVatLista_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.STAWKI_VAT' . Możesz go przenieść lub usunąć.
-            this.sTAWKI_VATTableAdapter.Fill(this.dataSetBD.STAWKI_VAT);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
 
         }
 

@@ -31,8 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUslugiLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.uSLUGIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetBD = new ProjektBD.DataSetBD();
+            this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,15 +39,16 @@
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
-            this.uSLUGITableAdapter = new ProjektBD.DataSetBDTableAdapters.USLUGITableAdapter();
+            this.uSLUGABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uSLUGATableAdapter = new ProjektBD.BDDataSetTableAdapters.USLUGATableAdapter();
             this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSLUGIBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -62,7 +62,7 @@
             this.nAZWADataGridViewTextBoxColumn,
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn,
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.uSLUGIBindingSource;
+            this.dataGridView1.DataSource = this.uSLUGABindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -70,15 +70,10 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // uSLUGIBindingSource
+            // bDdataSet
             // 
-            this.uSLUGIBindingSource.DataMember = "USLUGI";
-            this.uSLUGIBindingSource.DataSource = this.dataSetBD;
-            // 
-            // dataSetBD
-            // 
-            this.dataSetBD.DataSetName = "DataSetBD";
-            this.dataSetBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.bDdataSet.DataSetName = "BDDataSet";
+            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // menuStrip1
             // 
@@ -139,45 +134,42 @@
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
             // 
-            // uSLUGITableAdapter
+            // uSLUGABindingSource
             // 
-            this.uSLUGITableAdapter.ClearBeforeFill = true;
+            this.uSLUGABindingSource.DataMember = "USLUGA";
+            this.uSLUGABindingSource.DataSource = this.bDdataSet;
+            // 
+            // uSLUGATableAdapter
+            // 
+            this.uSLUGATableAdapter.ClearBeforeFill = true;
             // 
             // iDUSLUGIDataGridViewTextBoxColumn
             // 
-            this.iDUSLUGIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.iDUSLUGIDataGridViewTextBoxColumn.DataPropertyName = "ID_USLUGI";
             this.iDUSLUGIDataGridViewTextBoxColumn.HeaderText = "ID_USLUGI";
             this.iDUSLUGIDataGridViewTextBoxColumn.Name = "iDUSLUGIDataGridViewTextBoxColumn";
             this.iDUSLUGIDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDUSLUGIDataGridViewTextBoxColumn.Width = 89;
             // 
             // nAZWADataGridViewTextBoxColumn
             // 
-            this.nAZWADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
             this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
             this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
             this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
-            this.nAZWADataGridViewTextBoxColumn.Width = 72;
             // 
             // cENAJEDNOSTKOWADataGridViewTextBoxColumn
             // 
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.DataPropertyName = "CENA_JEDNOSTKOWA";
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.HeaderText = "CENA_JEDNOSTKOWA";
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.Name = "cENAJEDNOSTKOWADataGridViewTextBoxColumn";
             this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.ReadOnly = true;
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.Width = 150;
             // 
             // jEDNOSTKAMIARYDataGridViewTextBoxColumn
             // 
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.DataPropertyName = "JEDNOSTKA_MIARY";
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.HeaderText = "JEDNOSTKA_MIARY";
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.Name = "jEDNOSTKAMIARYDataGridViewTextBoxColumn";
             this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.ReadOnly = true;
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.Width = 136;
             // 
             // FormUslugiLista
             // 
@@ -195,10 +187,10 @@
             this.Text = " Uslugi";
             this.Load += new System.EventHandler(this.FormUslugiLista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSLUGIBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,9 +205,9 @@
         private System.Windows.Forms.Button btnUsun;
         private System.Windows.Forms.Button btnEdytuj;
         private System.Windows.Forms.Button btnDodaj;
-        private DataSetBD dataSetBD;
-        private System.Windows.Forms.BindingSource uSLUGIBindingSource;
-        private DataSetBDTableAdapters.USLUGITableAdapter uSLUGITableAdapter;
+        private BDDataSet bDdataSet;
+        private System.Windows.Forms.BindingSource uSLUGABindingSource;
+        private BDDataSetTableAdapters.USLUGATableAdapter uSLUGATableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDUSLUGIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nAZWADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cENAJEDNOSTKOWADataGridViewTextBoxColumn;

@@ -118,27 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
+    <value>125, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="zakończToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="zakończToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zamknij Okno</value>
-  </data>
-  <data name="plikToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
-  </data>
-  <data name="plikToolStripMenuItem.Text" xml:space="preserve">
-    <value>Plik</value>
-  </data>
-  <data name="pomocToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="pomocToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pomoc</value>
-  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -163,6 +145,24 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="plikToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 20</value>
+  </data>
+  <data name="plikToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="zakończToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="zakończToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zamknij Okno</value>
+  </data>
+  <data name="pomocToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="pomocToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pomoc</value>
   </data>
   <data name="btnDodaj.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 385</value>
@@ -236,23 +236,17 @@
   <data name="&gt;&gt;btnUsun.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="dataSetBD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>247, 17</value>
+  <metadata name="bDdataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
-  <metadata name="sTAWKIVATBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>355, 17</value>
-  </metadata>
-  <metadata name="sTAWKI_VATTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>543, 17</value>
-  </metadata>
-  <data name="sTAWKAVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>STAWKA_VAT</value>
+  <data name="iDVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ID_VAT</value>
   </data>
   <data name="pROCENTVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>PROCENT_VAT</value>
   </data>
-  <metadata name="sTAWKIVATBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>728, 17</value>
+  <metadata name="sTAWKAVATBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>240, 17</value>
   </metadata>
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
@@ -275,6 +269,9 @@
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="sTAWKA_VATTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>432, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2595,28 +2592,28 @@
   <data name="&gt;&gt;pomocToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataSetBD.Name" xml:space="preserve">
-    <value>dataSetBD</value>
+  <data name="&gt;&gt;bDdataSet.Name" xml:space="preserve">
+    <value>bDdataSet</value>
   </data>
-  <data name="&gt;&gt;dataSetBD.Type" xml:space="preserve">
-    <value>ProjektBD.DataSetBD, DataSetBD1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;bDdataSet.Type" xml:space="preserve">
+    <value>ProjektBD.BDDataSet, BDDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;sTAWKIVATBindingSource.Name" xml:space="preserve">
-    <value>sTAWKIVATBindingSource</value>
+  <data name="&gt;&gt;sTAWKAVATBindingSource.Name" xml:space="preserve">
+    <value>sTAWKAVATBindingSource</value>
   </data>
-  <data name="&gt;&gt;sTAWKIVATBindingSource.Type" xml:space="preserve">
+  <data name="&gt;&gt;sTAWKAVATBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;sTAWKI_VATTableAdapter.Name" xml:space="preserve">
-    <value>sTAWKI_VATTableAdapter</value>
+  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Name" xml:space="preserve">
+    <value>sTAWKA_VATTableAdapter</value>
   </data>
-  <data name="&gt;&gt;sTAWKI_VATTableAdapter.Type" xml:space="preserve">
-    <value>ProjektBD.DataSetBDTableAdapters.STAWKI_VATTableAdapter, DataSetBD1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Type" xml:space="preserve">
+    <value>ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter, BDDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;sTAWKAVATDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>sTAWKAVATDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;iDVATDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>iDVATDataGridViewTextBoxColumn</value>
   </data>
-  <data name="&gt;&gt;sTAWKAVATDataGridViewTextBoxColumn.Type" xml:space="preserve">
+  <data name="&gt;&gt;iDVATDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pROCENTVATDataGridViewTextBoxColumn.Name" xml:space="preserve">
@@ -2624,12 +2621,6 @@
   </data>
   <data name="&gt;&gt;pROCENTVATDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sTAWKIVATBindingSource1.Name" xml:space="preserve">
-    <value>sTAWKIVATBindingSource1</value>
-  </data>
-  <data name="&gt;&gt;sTAWKIVATBindingSource1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormStawkiVatLista</value>

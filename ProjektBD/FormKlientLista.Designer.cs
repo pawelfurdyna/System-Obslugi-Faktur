@@ -31,8 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKlientLista));
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.kLIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetBD = new ProjektBD.DataSetBD();
+            this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +39,8 @@
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnUsun = new System.Windows.Forms.Button();
-            this.kLIENTTableAdapter = new ProjektBD.DataSetBDTableAdapters.KLIENTTableAdapter();
+            this.kLIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kLIENTTableAdapter = new ProjektBD.BDDataSetTableAdapters.KLIENTTableAdapter();
             this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aDRESDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +49,9 @@
             this.eMAILDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tERMINPLATNOSCIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvData
@@ -76,15 +76,10 @@
             this.dgvData.TabIndex = 0;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // kLIENTBindingSource
+            // bDdataSet
             // 
-            this.kLIENTBindingSource.DataMember = "KLIENT";
-            this.kLIENTBindingSource.DataSource = this.dataSetBD;
-            // 
-            // dataSetBD
-            // 
-            this.dataSetBD.DataSetName = "DataSetBD";
-            this.dataSetBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.bDdataSet.DataSetName = "DataSetBD";
+            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // menuStrip1
             // 
@@ -146,72 +141,63 @@
             this.btnUsun.Text = "Usun";
             this.btnUsun.UseVisualStyleBackColor = true;
             // 
+            // kLIENTBindingSource
+            // 
+            this.kLIENTBindingSource.DataMember = "KLIENT";
+            this.kLIENTBindingSource.DataSource = this.bDdataSet;
+            // 
             // kLIENTTableAdapter
             // 
             this.kLIENTTableAdapter.ClearBeforeFill = true;
             // 
             // iDKLIENTADataGridViewTextBoxColumn
             // 
-            this.iDKLIENTADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
             this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "ID_KLIENTA";
             this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
             this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDKLIENTADataGridViewTextBoxColumn.Width = 94;
             // 
             // nAZWADataGridViewTextBoxColumn
             // 
-            this.nAZWADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
             this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
             this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
             this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
-            this.nAZWADataGridViewTextBoxColumn.Width = 72;
             // 
             // aDRESDataGridViewTextBoxColumn
             // 
-            this.aDRESDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.aDRESDataGridViewTextBoxColumn.DataPropertyName = "ADRES";
             this.aDRESDataGridViewTextBoxColumn.HeaderText = "ADRES";
             this.aDRESDataGridViewTextBoxColumn.Name = "aDRESDataGridViewTextBoxColumn";
             this.aDRESDataGridViewTextBoxColumn.ReadOnly = true;
-            this.aDRESDataGridViewTextBoxColumn.Width = 69;
             // 
             // nIPDataGridViewTextBoxColumn
             // 
-            this.nIPDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.nIPDataGridViewTextBoxColumn.DataPropertyName = "NIP";
             this.nIPDataGridViewTextBoxColumn.HeaderText = "NIP";
             this.nIPDataGridViewTextBoxColumn.Name = "nIPDataGridViewTextBoxColumn";
             this.nIPDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nIPDataGridViewTextBoxColumn.Width = 50;
             // 
             // nUMERTELEFONUDataGridViewTextBoxColumn
             // 
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.nUMERTELEFONUDataGridViewTextBoxColumn.DataPropertyName = "NUMER_TELEFONU";
             this.nUMERTELEFONUDataGridViewTextBoxColumn.HeaderText = "NUMER_TELEFONU";
             this.nUMERTELEFONUDataGridViewTextBoxColumn.Name = "nUMERTELEFONUDataGridViewTextBoxColumn";
             this.nUMERTELEFONUDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.Width = 135;
             // 
             // eMAILDataGridViewTextBoxColumn
             // 
-            this.eMAILDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.eMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL";
             this.eMAILDataGridViewTextBoxColumn.HeaderText = "EMAIL";
             this.eMAILDataGridViewTextBoxColumn.Name = "eMAILDataGridViewTextBoxColumn";
             this.eMAILDataGridViewTextBoxColumn.ReadOnly = true;
-            this.eMAILDataGridViewTextBoxColumn.Width = 64;
             // 
             // tERMINPLATNOSCIDataGridViewTextBoxColumn
             // 
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.tERMINPLATNOSCIDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_PLATNOSCI";
             this.tERMINPLATNOSCIDataGridViewTextBoxColumn.HeaderText = "TERMIN_PLATNOSCI";
             this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Name = "tERMINPLATNOSCIDataGridViewTextBoxColumn";
             this.tERMINPLATNOSCIDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Width = 140;
             // 
             // FormKlientLista
             // 
@@ -230,10 +216,10 @@
             this.Text = "Klienci";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,9 +234,9 @@
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnEdytuj;
         private System.Windows.Forms.Button btnUsun;
-        private DataSetBD dataSetBD;
+        private BDDataSet bDdataSet;
         private System.Windows.Forms.BindingSource kLIENTBindingSource;
-        private DataSetBDTableAdapters.KLIENTTableAdapter kLIENTTableAdapter;
+        private BDDataSetTableAdapters.KLIENTTableAdapter kLIENTTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDKLIENTADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nAZWADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aDRESDataGridViewTextBoxColumn;

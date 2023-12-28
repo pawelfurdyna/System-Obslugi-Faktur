@@ -19,10 +19,8 @@ namespace ProjektBD
 
         private void FormHistoriaFakturLista_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.UZYTKOWNIK' . Możesz go przenieść lub usunąć.
-            this.uZYTKOWNIKTableAdapter.Fill(this.dataSetBD.UZYTKOWNIK);
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.FAKTURA' . Możesz go przenieść lub usunąć.
-            this.fAKTURATableAdapter.Fill(this.dataSetBD.FAKTURA);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.FAKTURA' . Możesz go przenieść lub usunąć.
+            this.fAKTURATableAdapter.Fill(this.bDdataSet.FAKTURA);
 
         }
 

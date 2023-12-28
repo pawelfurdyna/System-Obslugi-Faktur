@@ -19,8 +19,8 @@ namespace ProjektBD
 
         private void FormUzytkownicyLista_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.UZYTKOWNIK' . Możesz go przenieść lub usunąć.
-            this.uZYTKOWNIKTableAdapter.Fill(this.dataSetBD.UZYTKOWNIK);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.UZYTKOWNIK' . Możesz go przenieść lub usunąć.
+            this.uZYTKOWNIKTableAdapter.Fill(this.bDdataSet.UZYTKOWNIK);
 
         }
 
