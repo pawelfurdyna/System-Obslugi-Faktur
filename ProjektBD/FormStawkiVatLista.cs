@@ -49,7 +49,7 @@ namespace ProjektBD
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("test");
         }
     }
 }
