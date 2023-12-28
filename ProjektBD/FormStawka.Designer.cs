@@ -106,6 +106,7 @@
             this.Name = "FormStawkaVAT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stawka VAT";
+            this.Load += new System.EventHandler(this.FormStawkaVAT_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,15 +14,78 @@ namespace ProjektBD
 {
     public partial class FormStawkaVAT : Form
     {
-        public FormStawkaVAT()
+        private string query = "";
+        private bool edycja;
+        private string nazwa;
+
+        public FormStawkaVAT(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
+            this.edycja = edycja;
+            this.nazwa = nazwa;
+            this.Load += FormStawkaVAT_Load;
+        }
+
+        private void FormStawkaVAT_Load(object sender, EventArgs e)
+        {
+            if (edycja)
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
+
+                using (OracleConnection conn = new OracleConnection(connectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        using (OracleCommand cmd = new OracleCommand("SELECT PROCENT_VAT FROM STAWKA_VAT WHERE ID_VAT = :nazwa", conn))
+                        {
+                            cmd.Parameters.Add(new OracleParameter("nazwa", nazwa));
+                            OracleDataReader rdr = cmd.ExecuteReader();
+                            if (rdr.Read())
+                            {
+                                string procent_vat = rdr["PROCENT_VAT"].ToString();
+                                tbProcentVAT.Text = procent_vat;
+                            }
+                        }
+                        using (OracleCommand cmd = new OracleCommand("SELECT ID_VAT FROM STAWKA_VAT WHERE ID_VAT = :nazwa", conn))
+                        {
+                            cmd.Parameters.Add(new OracleParameter("nazwa", nazwa));
+                            OracleDataReader rdr = cmd.ExecuteReader();
+                            if (rdr.Read())
+                            {
+                                string id_vat = rdr["ID_VAT"].ToString();
+                                tbNazwa.Text = id_vat;
+                            }
+                        }
+
+                        conn.Close();
+                    }
+                    catch (OracleException ex)
+                    {
+                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        conn.Close();
+                    }
+                }
+            }
+            
         }
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
             string nazwa = this.tbNazwa.Text;
             string procentVat = this.tbProcentVAT.Text;
+
+            if (edycja)
+            {
+                tbNazwa.Enabled = false;
+                query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{procentVat}' WHERE ID_VAT = '{nazwa}'";
+            }
+            else
+            {
+                tbNazwa.Enabled = true;
+                query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{nazwa}', '{procentVat}')";
+            }
 
             string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
 
@@ -31,19 +94,29 @@ namespace ProjektBD
                 try
                 {
                     conn.Open();
-                    
-                    using (OracleCommand cmd = new OracleCommand("INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES (:nazwa, :procentVat)", conn))
-                    {
-                        cmd.Parameters.Add(new OracleParameter("nazwa", nazwa));
-                        cmd.Parameters.Add(new OracleParameter("procentVat", procentVat));
 
-                        cmd.ExecuteNonQuery();
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected != 0)
+                        {
+                            if (rowsAffected == 1)
+                            {
+                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+
+                        conn.Close();
                     }
                 }
                 catch (OracleException ex)
                 {
-                    // Handle exception
-                    // For example, you can log the exception or show a message to the user
+                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.Close();
                 }
             }
 
@@ -54,5 +127,7 @@ namespace ProjektBD
         {
             this.Close();
         }
+
+        
     }
 }
