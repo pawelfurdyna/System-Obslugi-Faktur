@@ -239,6 +239,12 @@
   <metadata name="bDdataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="iDVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="pROCENTVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Procent VAT</value>
+  </data>
   <metadata name="sTAWKAVATBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>240, 17</value>
   </metadata>
@@ -263,18 +269,9 @@
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="sTAWKAVATBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>240, 17</value>
-  </metadata>
   <metadata name="sTAWKA_VATTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>432, 17</value>
   </metadata>
-  <data name="iDVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Nazwa</value>
-  </data>
-  <data name="pROCENTVATDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Procent VAT</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2601,18 +2598,6 @@
   <data name="&gt;&gt;bDdataSet.Type" xml:space="preserve">
     <value>ProjektBD.BDDataSet, BDDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;sTAWKAVATBindingSource.Name" xml:space="preserve">
-    <value>sTAWKAVATBindingSource</value>
-  </data>
-  <data name="&gt;&gt;sTAWKAVATBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Name" xml:space="preserve">
-    <value>sTAWKA_VATTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Type" xml:space="preserve">
-    <value>ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter, BDDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;iDVATDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>iDVATDataGridViewTextBoxColumn</value>
   </data>
@@ -2624,6 +2609,18 @@
   </data>
   <data name="&gt;&gt;pROCENTVATDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sTAWKAVATBindingSource.Name" xml:space="preserve">
+    <value>sTAWKAVATBindingSource</value>
+  </data>
+  <data name="&gt;&gt;sTAWKAVATBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Name" xml:space="preserve">
+    <value>sTAWKA_VATTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;sTAWKA_VATTableAdapter.Type" xml:space="preserve">
+    <value>ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter, BDDataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormStawkiVatLista</value>

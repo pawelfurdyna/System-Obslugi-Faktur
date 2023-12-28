@@ -18,7 +18,14 @@ namespace ProjektBD
         {
             InitializeComponent();
         }
+        private void FormStawkaVAT_Load(object sender, EventArgs e)
+        {
+        
+        }
+        public void Test()
+        {
 
+        }
         private void btnZapisz_Click(object sender, EventArgs e)
         {
             string nazwa = this.tbNazwa.Text;
@@ -54,5 +61,7 @@ namespace ProjektBD
         {
             this.Close();
         }
+
+
     }
 }

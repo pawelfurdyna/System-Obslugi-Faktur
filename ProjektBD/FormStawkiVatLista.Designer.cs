@@ -39,10 +39,10 @@
             this.btnUsun = new System.Windows.Forms.Button();
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.sTAWKAVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sTAWKA_VATTableAdapter = new ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter();
             this.iDVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pROCENTVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTAWKAVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sTAWKA_VATTableAdapter = new ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -114,15 +114,7 @@
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            // 
-            // sTAWKAVATBindingSource
-            // 
-            this.sTAWKAVATBindingSource.DataMember = "STAWKA_VAT";
-            this.sTAWKAVATBindingSource.DataSource = this.bDdataSet;
-            // 
-            // sTAWKA_VATTableAdapter
-            // 
-            this.sTAWKA_VATTableAdapter.ClearBeforeFill = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // iDVATDataGridViewTextBoxColumn
             // 
@@ -137,6 +129,15 @@
             resources.ApplyResources(this.pROCENTVATDataGridViewTextBoxColumn, "pROCENTVATDataGridViewTextBoxColumn");
             this.pROCENTVATDataGridViewTextBoxColumn.Name = "pROCENTVATDataGridViewTextBoxColumn";
             this.pROCENTVATDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sTAWKAVATBindingSource
+            // 
+            this.sTAWKAVATBindingSource.DataMember = "STAWKA_VAT";
+            this.sTAWKAVATBindingSource.DataSource = this.bDdataSet;
+            // 
+            // sTAWKA_VATTableAdapter
+            // 
+            this.sTAWKA_VATTableAdapter.ClearBeforeFill = true;
             // 
             // FormStawkiVatLista
             // 
