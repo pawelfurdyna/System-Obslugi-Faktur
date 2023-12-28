@@ -51,21 +51,21 @@
             this.lbTerminZaplaty = new System.Windows.Forms.Label();
             this.tbTerminZaplaty = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bDdataSet = new ProjektBD.BDDataSet();
             this.lbSporzadzil = new System.Windows.Forms.Label();
             this.tbSporzadzil = new System.Windows.Forms.TextBox();
-            this.dataSetBD = new ProjektBD.DataSetBD();
             this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pOZYCJA_FAKTURYTableAdapter = new ProjektBD.DataSetBDTableAdapters.POZYCJA_FAKTURYTableAdapter();
+            this.pOZYCJA_FAKTURYTableAdapter = new ProjektBD.BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter();
             this.iDPOZYCJIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTAWKAVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iLOSCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wARTOSCNETTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wARTOSCVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOZYCJAFAKTURYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.zakończToolStripMenuItem.Text = "Zamknij Okno";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -237,7 +237,7 @@
             this.iDPOZYCJIDataGridViewTextBoxColumn,
             this.nUMERFAKTURYDataGridViewTextBoxColumn,
             this.iDUSLUGIDataGridViewTextBoxColumn,
-            this.sTAWKAVATDataGridViewTextBoxColumn,
+            this.iDVATDataGridViewTextBoxColumn,
             this.iLOSCDataGridViewTextBoxColumn,
             this.wARTOSCNETTODataGridViewTextBoxColumn,
             this.wARTOSCVATDataGridViewTextBoxColumn});
@@ -246,6 +246,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(800, 227);
             this.dataGridView1.TabIndex = 35;
+            // 
+            // bDdataSet
+            // 
+            this.bDdataSet.DataSetName = "DataSetBD";
+            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lbSporzadzil
             // 
@@ -263,15 +268,10 @@
             this.tbSporzadzil.Size = new System.Drawing.Size(296, 20);
             this.tbSporzadzil.TabIndex = 36;
             // 
-            // dataSetBD
-            // 
-            this.dataSetBD.DataSetName = "DataSetBD";
-            this.dataSetBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // pOZYCJAFAKTURYBindingSource
             // 
             this.pOZYCJAFAKTURYBindingSource.DataMember = "POZYCJA_FAKTURY";
-            this.pOZYCJAFAKTURYBindingSource.DataSource = this.dataSetBD;
+            this.pOZYCJAFAKTURYBindingSource.DataSource = this.bDdataSet;
             // 
             // pOZYCJA_FAKTURYTableAdapter
             // 
@@ -295,11 +295,11 @@
             this.iDUSLUGIDataGridViewTextBoxColumn.HeaderText = "ID_USLUGI";
             this.iDUSLUGIDataGridViewTextBoxColumn.Name = "iDUSLUGIDataGridViewTextBoxColumn";
             // 
-            // sTAWKAVATDataGridViewTextBoxColumn
+            // iDVATDataGridViewTextBoxColumn
             // 
-            this.sTAWKAVATDataGridViewTextBoxColumn.DataPropertyName = "STAWKA_VAT";
-            this.sTAWKAVATDataGridViewTextBoxColumn.HeaderText = "STAWKA_VAT";
-            this.sTAWKAVATDataGridViewTextBoxColumn.Name = "sTAWKAVATDataGridViewTextBoxColumn";
+            this.iDVATDataGridViewTextBoxColumn.DataPropertyName = "ID_VAT";
+            this.iDVATDataGridViewTextBoxColumn.HeaderText = "ID_VAT";
+            this.iDVATDataGridViewTextBoxColumn.Name = "iDVATDataGridViewTextBoxColumn";
             // 
             // iLOSCDataGridViewTextBoxColumn
             // 
@@ -351,7 +351,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOZYCJAFAKTURYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -383,13 +383,14 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbSporzadzil;
         private System.Windows.Forms.TextBox tbSporzadzil;
-        private DataSetBD dataSetBD;
+        private BDDataSet bDdataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pOZYCJAFAKTURYBindingSource;
-        private DataSetBDTableAdapters.POZYCJA_FAKTURYTableAdapter pOZYCJA_FAKTURYTableAdapter;
+        private BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter pOZYCJA_FAKTURYTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDPOZYCJIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nUMERFAKTURYDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDUSLUGIDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iLOSCDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCNETTODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCVATDataGridViewTextBoxColumn;

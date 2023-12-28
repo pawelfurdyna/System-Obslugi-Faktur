@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="FormNowaFaktura.Designer.cs">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStawka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +133,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNowaFaktura.resx">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStawka.resx">
       <DependentUpon>FormStawka.cs</DependentUpon>
     </EmbeddedResource>

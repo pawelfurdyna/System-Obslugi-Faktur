@@ -24,8 +24,8 @@ namespace ProjektBD
 
         private void FormNowaFaktura_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'dataSetBD.POZYCJA_FAKTURY' . Możesz go przenieść lub usunąć.
-            this.pOZYCJA_FAKTURYTableAdapter.Fill(this.dataSetBD.POZYCJA_FAKTURY);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.POZYCJA_FAKTURY' . Możesz go przenieść lub usunąć.
+            this.pOZYCJA_FAKTURYTableAdapter.Fill(this.bDdataSet.POZYCJA_FAKTURY);
 
         }
     }
