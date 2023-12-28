@@ -39,7 +39,6 @@ namespace ProjektBD
 
         private void btnEdytuj_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
             if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
             {
                 Form stawkaVat = new FormStawkaVAT();
@@ -49,7 +48,7 @@ namespace ProjektBD
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
+
         }
     }
 }
