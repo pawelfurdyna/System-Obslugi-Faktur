@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUzytkownicyLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iMIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nAZWISKODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rOLADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lOGINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hASLODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uZYTKOWNIKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,18 +46,11 @@
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
-            this.uZYTKOWNIKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uZYTKOWNIKTableAdapter = new ProjektBD.BDDataSetTableAdapters.UZYTKOWNIKTableAdapter();
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iMIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nAZWISKODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rOLADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lOGINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hASLODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -72,6 +72,53 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 338);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // iDUZYTKOWNIKADataGridViewTextBoxColumn
+            // 
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iMIEDataGridViewTextBoxColumn
+            // 
+            this.iMIEDataGridViewTextBoxColumn.DataPropertyName = "IMIE";
+            this.iMIEDataGridViewTextBoxColumn.HeaderText = "IMIE";
+            this.iMIEDataGridViewTextBoxColumn.Name = "iMIEDataGridViewTextBoxColumn";
+            this.iMIEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nAZWISKODataGridViewTextBoxColumn
+            // 
+            this.nAZWISKODataGridViewTextBoxColumn.DataPropertyName = "NAZWISKO";
+            this.nAZWISKODataGridViewTextBoxColumn.HeaderText = "NAZWISKO";
+            this.nAZWISKODataGridViewTextBoxColumn.Name = "nAZWISKODataGridViewTextBoxColumn";
+            this.nAZWISKODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rOLADataGridViewTextBoxColumn
+            // 
+            this.rOLADataGridViewTextBoxColumn.DataPropertyName = "ROLA";
+            this.rOLADataGridViewTextBoxColumn.HeaderText = "ROLA";
+            this.rOLADataGridViewTextBoxColumn.Name = "rOLADataGridViewTextBoxColumn";
+            this.rOLADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lOGINDataGridViewTextBoxColumn
+            // 
+            this.lOGINDataGridViewTextBoxColumn.DataPropertyName = "LOGIN";
+            this.lOGINDataGridViewTextBoxColumn.HeaderText = "LOGIN";
+            this.lOGINDataGridViewTextBoxColumn.Name = "lOGINDataGridViewTextBoxColumn";
+            this.lOGINDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hASLODataGridViewTextBoxColumn
+            // 
+            this.hASLODataGridViewTextBoxColumn.DataPropertyName = "HASLO";
+            this.hASLODataGridViewTextBoxColumn.HeaderText = "HASLO";
+            this.hASLODataGridViewTextBoxColumn.Name = "hASLODataGridViewTextBoxColumn";
+            this.hASLODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uZYTKOWNIKBindingSource
+            // 
+            this.uZYTKOWNIKBindingSource.DataMember = "UZYTKOWNIK";
+            this.uZYTKOWNIKBindingSource.DataSource = this.bDdataSet;
             // 
             // bDdataSet
             // 
@@ -118,6 +165,7 @@
             this.btnUsun.TabIndex = 19;
             this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
+            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
             // btnEdytuj
             // 
@@ -127,6 +175,7 @@
             this.btnEdytuj.TabIndex = 18;
             this.btnEdytuj.Text = "Edytuj";
             this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
             // btnDodaj
             // 
@@ -136,57 +185,11 @@
             this.btnDodaj.TabIndex = 17;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
-            // 
-            // uZYTKOWNIKBindingSource
-            // 
-            this.uZYTKOWNIKBindingSource.DataMember = "UZYTKOWNIK";
-            this.uZYTKOWNIKBindingSource.DataSource = this.bDdataSet;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // uZYTKOWNIKTableAdapter
             // 
             this.uZYTKOWNIKTableAdapter.ClearBeforeFill = true;
-            // 
-            // iDUZYTKOWNIKADataGridViewTextBoxColumn
-            // 
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iMIEDataGridViewTextBoxColumn
-            // 
-            this.iMIEDataGridViewTextBoxColumn.DataPropertyName = "IMIE";
-            this.iMIEDataGridViewTextBoxColumn.HeaderText = "IMIE";
-            this.iMIEDataGridViewTextBoxColumn.Name = "iMIEDataGridViewTextBoxColumn";
-            this.iMIEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nAZWISKODataGridViewTextBoxColumn
-            // 
-            this.nAZWISKODataGridViewTextBoxColumn.DataPropertyName = "NAZWISKO";
-            this.nAZWISKODataGridViewTextBoxColumn.HeaderText = "NAZWISKO";
-            this.nAZWISKODataGridViewTextBoxColumn.Name = "nAZWISKODataGridViewTextBoxColumn";
-            this.nAZWISKODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rOLADataGridViewTextBoxColumn
-            // 
-            this.rOLADataGridViewTextBoxColumn.DataPropertyName = "ROLA";
-            this.rOLADataGridViewTextBoxColumn.HeaderText = "ROLA";
-            this.rOLADataGridViewTextBoxColumn.Name = "rOLADataGridViewTextBoxColumn";
-            this.rOLADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lOGINDataGridViewTextBoxColumn
-            // 
-            this.lOGINDataGridViewTextBoxColumn.DataPropertyName = "LOGIN";
-            this.lOGINDataGridViewTextBoxColumn.HeaderText = "LOGIN";
-            this.lOGINDataGridViewTextBoxColumn.Name = "lOGINDataGridViewTextBoxColumn";
-            this.lOGINDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hASLODataGridViewTextBoxColumn
-            // 
-            this.hASLODataGridViewTextBoxColumn.DataPropertyName = "HASLO";
-            this.hASLODataGridViewTextBoxColumn.HeaderText = "HASLO";
-            this.hASLODataGridViewTextBoxColumn.Name = "hASLODataGridViewTextBoxColumn";
-            this.hASLODataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormUzytkownicyLista
             // 
@@ -200,14 +203,14 @@
             this.Controls.Add(this.btnDodaj);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUzytkownicyLista";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uzytkownicy";
             this.Load += new System.EventHandler(this.FormUzytkownicyLista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

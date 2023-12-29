@@ -1,37 +1,35 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using System.Configuration;
-
-
 
 namespace ProjektBD
 {
-    public partial class FormStawkaVAT : Form
+    public partial class FormUzytkownik : Form
     {
         private string query = "";
         private bool edycja;
         private string nazwa;
         ObslugaBazy ob = new ObslugaBazy();
-        string encja = "STAWKA_VAT";
-        string klucz = "ID_VAT";
+        string encja = "UZYTKOWNIK";
+        string klucz = "ID_UZYTKOWNIKA";
 
-        public FormStawkaVAT(bool edycja = false, string nazwa = "")
+        public FormUzytkownik(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            this.Load += FormStawkaVAT_Load;
+            this.Load += FormUzytkownik_Load;
         }
 
-        private void FormStawkaVAT_Load(object sender, EventArgs e)
+        private void FormUzytkownik_Load(object sender, EventArgs e)
         {
             if (edycja)
             {
@@ -42,7 +40,9 @@ namespace ProjektBD
                     try
                     {
                         conn.Open();
-                        ob.wypelnijTextBoxZEncji(conn,encja, klucz, nazwa, new TextBox[] { tbNazwa, tbProcentVAT }, new string[] { "ID_VAT", "PROCENT_VAT"});
+                        ob.wypelnijTextBoxZEncji(conn, encja, klucz, nazwa, 
+                            new TextBox[] { tbIdUzytkownika, tbImie, tbNazwisko, tbRola, tbLogin, tbHaslo }, 
+                            new string[] { "ID_UZYTKOWNIKA", "IMIE", "NAZWISKO", "ROLA", "LOGIN", "HASLO"});
                         conn.Close();
                     }
                     catch (OracleException ex)
@@ -52,20 +52,20 @@ namespace ProjektBD
                     }
                 }
             }
-            
+
         }
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
             if (edycja)
             {
-                tbNazwa.Enabled = false;
-                query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
+                tbIdUzytkownika.Enabled = false;
+                //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
             }
             else
             {
-                tbNazwa.Enabled = true;
-                query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{this.tbNazwa.Text}', '{this.tbProcentVAT.Text}')";
+                tbIdUzytkownika.Enabled = true;
+                //query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{this.tbNazwa.Text}', '{this.tbProcentVAT.Text}')";
             }
 
             string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
@@ -108,7 +108,5 @@ namespace ProjektBD
         {
             this.Close();
         }
-
-        
     }
 }
