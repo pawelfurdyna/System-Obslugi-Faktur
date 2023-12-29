@@ -22,6 +22,20 @@ namespace ProjektBD
             string zmienna = "Użytkownik: ";
             lbUzytkownik.Text = zmienna;
             zegar.Start();
+            ObslugaBazy ob = new ObslugaBazy();
+            if (ob.WczytajFirme("FIRMA") == "")
+            {
+                if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
+                {
+                    Form firma = new FormFirma(true);
+                    firma.ShowDialog();
+                }
+            }
+            ob = new ObslugaBazy();
+            if (ob.WczytajFirme("FIRMA") == "")
+            {
+                Application.Exit();
+            }
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -78,7 +92,7 @@ namespace ProjektBD
             if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
             {
                 ObslugaBazy ob = new ObslugaBazy();
-                Form firma = new FormFirma(ob.WczytajFirme("FIRMA"));
+                Form firma = new FormFirma(false, ob.WczytajFirme("FIRMA"));
                 firma.ShowDialog();
             }
         }

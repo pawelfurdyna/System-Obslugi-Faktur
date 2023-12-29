@@ -14,19 +14,44 @@ namespace ProjektBD
 {
     public partial class FormFirma : Form
     {
-        private string query = "";
         private string nazwa;
+        private bool nowy = false;
         string encja = "FIRMA";
         string klucz = "NAZWA_FIRMY";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY" };
 
-        public FormFirma(string nazwa = "")
+        public FormFirma(bool nowy = false, string nazwa = "")
         {
             InitializeComponent();
+            this.nowy = nowy;
             this.nazwa = nazwa;
             tb = new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy };
-            this.Load += FormFirma_Load;
+            if (!nowy)
+            {
+                this.btnZapisz.Location = new System.Drawing.Point(238, 231);
+                this.Load += FormFirma_Load;
+            }
+            else
+            {
+                this.lbKodPocztowy.Enabled = true;
+                this.lbKontoBankowe.Enabled = true;
+                this.lbMiejscowosc.Enabled = true;
+                this.lbNazwaFirmy.Enabled = true;
+                this.lbNip.Enabled = true;
+                this.lbTelefonFirmowy.Enabled = true;
+                this.lbUlica.Enabled = true;
+                this.tbKodPocztowy.Enabled = true;
+                this.tbKontoBankowe.Enabled = true;
+                this.tbMiejscowosc.Enabled = true;
+                this.tbNazwaFirmy.Enabled = true;
+                this.tbNip.Enabled = true;
+                this.tbTelefonFirmowy.Enabled = true;
+                this.tbUlica.Enabled = true;
+                this.btnZapisz.Visible = true;
+                this.btnEdytuj.Visible = false;
+                this.btnZapisz.Location = new System.Drawing.Point(319, 229);
+            }
         }
 
         private void FormFirma_Load(object sender, EventArgs e)
@@ -75,8 +100,8 @@ namespace ProjektBD
                 this.tbUlica.Enabled = false;
                 this.btnZapisz.Visible = false;
                 this.btnEdytuj.Text = "Edytuj";
-                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
             }
+            ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
@@ -87,7 +112,16 @@ namespace ProjektBD
         private void btnZapisz_Click(object sender, EventArgs e)
         {
             ObslugaBazy ob = new ObslugaBazy();
-            ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+            if (nowy)
+            {
+                ob.DodajRekord(encja, tb, atrybuty);
+                this.Close();
+            }
+            else
+            {
+                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                btnEdit_Click(sender, e);
+            }
         }
     }
 }
