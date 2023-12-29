@@ -14,7 +14,6 @@ namespace ProjektBD
 {
     public partial class FormKlientLista : Form
     {
-        string nazwa;
         internal static string encja = "KLIENT";
         internal static string klucz = "ID_KLIENTA";
         public FormKlientLista()

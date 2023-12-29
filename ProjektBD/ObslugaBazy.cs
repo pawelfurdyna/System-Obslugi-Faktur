@@ -50,6 +50,40 @@ namespace ProjektBD
         }
         #endregion
 
+        #region WypelnijTextBox
+        public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty )
+        {
+            string formattedStringAtrybuty = string.Join(", ", atrybuty);
+            OracleCommand cmd = new OracleCommand($"SELECT {formattedStringAtrybuty} FROM {encja}", this.conn);
+            try
+            {
+                this.conn.Open();
+                OracleDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    string temp = "";
+                    for (int i = 0; i < atrybuty.Length; i++)
+                    {
+                        temp += rdr[atrybuty[i]].ToString();
+                        if (i < atrybuty.Length - 1)
+                        {
+                            temp += " ";
+                        }
+                    }
+                    cb.Items.Add(temp);
+                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
+        #endregion
+
         #region UsunRekord
         public void UsunRekord(string encja, string klucz, string nazwa)
         {
@@ -188,35 +222,44 @@ namespace ProjektBD
         }
         #endregion
 
-        public string WczytajFirme(string encja)
+        #region SELECT
+        public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true)
         {
-            string query = $"SELECT * FROM {encja}";
+            string query = "";
             string temp = "";
-
-            using (this.conn)
+            if (warunek)
             {
-                using (OracleCommand cmd = new OracleCommand(query, this.conn))
-                {
-                    try
-                    {
-                        this.conn.Open();
-                        OracleDataReader rdr = cmd.ExecuteReader();
-                        if (rdr.Read())
-                        {
-                            temp = rdr["NAZWA_FIRMY"].ToString();
-                        }
-                        this.conn.Close();
-                        return temp;
-                    }
-                    catch (OracleException ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                        return temp;
-                    }
-                }
+                query = $"SELECT {atrybut} FROM {encja} WHERE {klucz} = '{wartoscSzukana}'";
             }
+            else
+            {
+                query = $"SELECT {atrybut} FROM {encja}";
+            }
+            
+            OracleCommand cmd = new OracleCommand(query, this.conn);
+            try
+            {
+                this.conn.Open();
+                OracleDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    temp = rdr[atrybut].ToString();
+                }
+                return temp;
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return temp;
+            }
+            finally 
+            { 
+                this.conn.Close(); 
+            }
+
         }
     }
+    #endregion
 }
+
 

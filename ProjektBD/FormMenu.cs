@@ -23,7 +23,7 @@ namespace ProjektBD
             lbUzytkownik.Text = zmienna;
             zegar.Start();
             ObslugaBazy ob = new ObslugaBazy();
-            if (ob.WczytajFirme("FIRMA") == "")
+            if (ob.Select("FIRMA","NAZWA_FIRMY","","",false) == "")
             {
                 if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
                 {
@@ -32,7 +32,7 @@ namespace ProjektBD
                 }
             }
             ob = new ObslugaBazy();
-            if (ob.WczytajFirme("FIRMA") == "")
+            if (ob.Select("FIRMA", "NAZWA_FIRMY", "", "", false) == "")
             {
                 Application.Exit();
             }
@@ -92,7 +92,7 @@ namespace ProjektBD
             if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
             {
                 ObslugaBazy ob = new ObslugaBazy();
-                Form firma = new FormFirma(false, ob.WczytajFirme("FIRMA"));
+                Form firma = new FormFirma(false, ob.Select("FIRMA", "NAZWA_FIRMY", "", "", false));
                 firma.ShowDialog();
             }
         }
