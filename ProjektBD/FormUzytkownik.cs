@@ -15,7 +15,6 @@ namespace ProjektBD
 {
     public partial class FormUzytkownik : Form
     {
-        private string query = "";
         private bool edycja;
         private string nazwa;
         ObslugaBazy ob = new ObslugaBazy();
