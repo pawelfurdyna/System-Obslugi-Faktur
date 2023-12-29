@@ -14,6 +14,10 @@ namespace ProjektBD
 {
     public partial class FormUslugiLista : Form
     {
+        string nazwa;
+        ObslugaBazy ob = new ObslugaBazy();
+        internal static string encja = "USLUGA";
+        internal static string klucz = "ID_USLUGI";
         public FormUslugiLista()
         {
             InitializeComponent();
@@ -64,44 +68,7 @@ namespace ProjektBD
             int wiersz = dataGridView1.CurrentRow.Index;
             int kolumna = dataGridView1.Columns.IndexOf(iDUSLUGIDataGridViewTextBoxColumn);
             string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
-            DialogResult dr = MessageBox.Show($"Czy napewno chcesz usunąć \"{nazwa}\" ?",
-                      "Usunąć?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            switch (dr)
-            {
-                case DialogResult.Yes:
-                    string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-                    using (OracleConnection conn = new OracleConnection(connectionString))
-                    {
-                        try
-                        {
-                            conn.Open();
-                            using (OracleCommand cmd = new OracleCommand($"DELETE FROM STAWKA_VAT WHERE id_vat='{nazwa}'", conn))
-                            {
-                                int rowsAffected = cmd.ExecuteNonQuery();
-                                if (rowsAffected != 0)
-                                {
-                                    if (rowsAffected == 1)
-                                    {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                }
-                            }
-                            conn.Close();
-                        }
-                        catch (OracleException ex)
-                        {
-                            MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            conn.Close();
-                        }
-                    }
-                    break;
-                case DialogResult.No:
-                    break;
-            }
+            ob.UsunRekord(encja, klucz, nazwa);
         }
     }
 }

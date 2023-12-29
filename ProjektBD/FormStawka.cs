@@ -42,7 +42,7 @@ namespace ProjektBD
                     try
                     {
                         conn.Open();
-                        ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, new TextBox[] { tbNazwa, tbProcentVAT }, new string[] { "ID_VAT", "PROCENT_VAT"});
+                        ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, new TextBox[] { tbNazwa, tbProcentVAT }, new string[] { "ID_VAT", "PROCENT_VAT"});
                         conn.Close();
                     }
                     catch (OracleException ex)

@@ -40,7 +40,7 @@ namespace ProjektBD
                     try
                     {
                         conn.Open();
-                        ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, 
+                        ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, 
                             new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy}, 
                             new string[] { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY"});
                         conn.Close();
