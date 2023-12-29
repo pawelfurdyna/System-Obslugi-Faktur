@@ -15,7 +15,6 @@ namespace ProjektBD
     public partial class FormStawkiVatLista : Form
     {
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         internal static string encja = "STAWKA_VAT";
         internal static string klucz = "ID_VAT";
 
@@ -65,6 +64,7 @@ namespace ProjektBD
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
+            ObslugaBazy ob = new ObslugaBazy();
             int wiersz = dataGridView1.CurrentRow.Index;
             int kolumna = dataGridView1.Columns.IndexOf(iDVATDataGridViewTextBoxColumn);
             string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();

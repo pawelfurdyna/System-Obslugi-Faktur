@@ -15,7 +15,6 @@ namespace ProjektBD
     public partial class FormUzytkownicyLista : Form
     {
         string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         internal static string encja = "UZYTKOWNIK";
         internal static string klucz = "ID_UZYTKOWNIKA";
         public FormUzytkownicyLista()
@@ -66,6 +65,7 @@ namespace ProjektBD
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
+            ObslugaBazy ob = new ObslugaBazy();
             int wiersz = dataGridView1.CurrentRow.Index;
             int kolumna = dataGridView1.Columns.IndexOf(iDUZYTKOWNIKADataGridViewTextBoxColumn);
             string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();

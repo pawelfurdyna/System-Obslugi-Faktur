@@ -15,7 +15,6 @@ namespace ProjektBD
     public partial class FormKlientLista : Form
     {
         string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         internal static string encja = "KLIENT";
         internal static string klucz = "ID_KLIENTA";
         public FormKlientLista()
@@ -65,6 +64,7 @@ namespace ProjektBD
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
+            ObslugaBazy ob = new ObslugaBazy();
             int wiersz = dgvData.CurrentRow.Index;
             int kolumna = dgvData.Columns.IndexOf(iDKLIENTADataGridViewTextBoxColumn);
             string nazwa = dgvData.Rows[wiersz].Cells[kolumna].Value.ToString();
