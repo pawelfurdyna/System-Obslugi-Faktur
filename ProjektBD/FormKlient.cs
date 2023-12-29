@@ -12,24 +12,23 @@ using System.Windows.Forms;
 
 namespace ProjektBD
 {
-    public partial class FormFirma : Form
+    public partial class FormKlient : Form
     {
         private string query = "";
         private bool edycja;
         private string nazwa;
         ObslugaBazy ob = new ObslugaBazy();
-        string encja = "FIRMA";
-        string klucz = "NAZWA_FIRMY";
-
-        public FormFirma(bool edycja = true, string nazwa = "Serwis Komputerowy PCPROM")
+        string encja = "KLIENT";
+        string klucz = "ID_KLIENTA";
+        public FormKlient(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            this.Load += FormFirma_Load;
+            this.Load += FormKlient_Load;
         }
 
-        private void FormFirma_Load(object sender, EventArgs e)
+        private void FormKlient_Load(object sender, EventArgs e)
         {
             if (edycja)
             {
@@ -41,8 +40,8 @@ namespace ProjektBD
                     {
                         conn.Open();
                         ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, 
-                            new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy}, 
-                            new string[] { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY"});
+                            new TextBox[] { tbIdKlienta, tbNazwa, tbAdres, tbNip, tbNumerTelefonu, tbEmail, tbTerminPlatnosci }, 
+                            new string[] { "ID_KLIENTA", "NAZWA", "ADRES", "NIP", "NUMER_TELEFONU", "EMAIL", "TERMIN_PLATNOSCI"});
                         conn.Close();
                     }
                     catch (OracleException ex)
@@ -55,56 +54,18 @@ namespace ProjektBD
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnZapisz_Click(object sender, EventArgs e)
         {
-            if (this.btnEdytuj.Text == "Edytuj")
+            if (edycja)
             {
-                this.lbKodPocztowy.Enabled = true;
-                this.lbKontoBankowe.Enabled = true;
-                this.lbMiejscowosc.Enabled = true;
-                this.lbNazwaFirmy.Enabled = true;
-                this.lbNip.Enabled = true;
-                this.lbTelefonFirmowy.Enabled = true;
-                this.lbUlica.Enabled = true;
-                this.tbKodPocztowy.Enabled = true;
-                this.tbKontoBankowe.Enabled = true;
-                this.tbMiejscowosc.Enabled = true;
-                this.tbNazwaFirmy.Enabled = true;
-                this.tbNip.Enabled = true;
-                this.tbTelefonFirmowy.Enabled = true;
-                this.tbUlica.Enabled = true;
-                this.btnZapisz.Visible = true;
-                this.btnEdytuj.Text = "Anuluj";
+                tbNazwa.Enabled = false;
+                //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbNazwa.Text}' WHERE ID_VAT = '{this.tbIdKlienta.Text}'";
             }
             else
             {
-                this.lbKodPocztowy.Enabled = false;
-                this.lbKontoBankowe.Enabled = false;
-                this.lbMiejscowosc.Enabled = false;
-                this.lbNazwaFirmy.Enabled = false;
-                this.lbNip.Enabled = false;
-                this.lbTelefonFirmowy.Enabled = false;
-                this.lbUlica.Enabled = false;
-                this.tbKodPocztowy.Enabled = false;
-                this.tbKontoBankowe.Enabled = false;
-                this.tbMiejscowosc.Enabled = false;
-                this.tbNazwaFirmy.Enabled = false;
-                this.tbNip.Enabled = false;
-                this.tbTelefonFirmowy.Enabled = false;
-                this.tbUlica.Enabled = false;
-                this.btnZapisz.Visible = false;
-                this.btnEdytuj.Text = "Edytuj";
+                tbNazwa.Enabled = true;
+                //query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{this.tbIdKlienta.Text}', '{this.tbNazwa.Text}')";
             }
-        }
-
-        private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnZapisz_Click(object sender, EventArgs e)
-        {
-            //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
 
             string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
 
@@ -138,6 +99,13 @@ namespace ProjektBD
                     conn.Close();
                 }
             }
+
+            this.Close();
+        }
+
+        private void btnAnuluj_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

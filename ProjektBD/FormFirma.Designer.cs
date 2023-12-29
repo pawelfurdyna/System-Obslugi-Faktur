@@ -200,7 +200,7 @@
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.zakończToolStripMenuItem.Text = "Zamknij Okno";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -222,7 +222,7 @@
             // 
             // btnZapisz
             // 
-            this.btnZapisz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnZapisz.BackColor = System.Drawing.SystemColors.Control;
             this.btnZapisz.Location = new System.Drawing.Point(238, 231);
             this.btnZapisz.Name = "btnZapisz";
             this.btnZapisz.Size = new System.Drawing.Size(75, 23);
@@ -230,6 +230,7 @@
             this.btnZapisz.Text = "Zapisz";
             this.btnZapisz.UseVisualStyleBackColor = false;
             this.btnZapisz.Visible = false;
+            this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
             // 
             // FormFirma
             // 

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using System.Configuration;
 
+
+
 namespace ProjektBD
 {
     public partial class FormStawkaVAT : Form
@@ -17,6 +19,9 @@ namespace ProjektBD
         private string query = "";
         private bool edycja;
         private string nazwa;
+        ObslugaBazy ob = new ObslugaBazy();
+        string encja = "STAWKA_VAT";
+        string klucz = "ID_VAT";
 
         public FormStawkaVAT(bool edycja = false, string nazwa = "")
         {
@@ -37,28 +42,7 @@ namespace ProjektBD
                     try
                     {
                         conn.Open();
-
-                        using (OracleCommand cmd = new OracleCommand("SELECT PROCENT_VAT FROM STAWKA_VAT WHERE ID_VAT = :nazwa", conn))
-                        {
-                            cmd.Parameters.Add(new OracleParameter("nazwa", nazwa));
-                            OracleDataReader rdr = cmd.ExecuteReader();
-                            if (rdr.Read())
-                            {
-                                string procent_vat = rdr["PROCENT_VAT"].ToString();
-                                tbProcentVAT.Text = procent_vat;
-                            }
-                        }
-                        using (OracleCommand cmd = new OracleCommand("SELECT ID_VAT FROM STAWKA_VAT WHERE ID_VAT = :nazwa", conn))
-                        {
-                            cmd.Parameters.Add(new OracleParameter("nazwa", nazwa));
-                            OracleDataReader rdr = cmd.ExecuteReader();
-                            if (rdr.Read())
-                            {
-                                string id_vat = rdr["ID_VAT"].ToString();
-                                tbNazwa.Text = id_vat;
-                            }
-                        }
-
+                        ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, new TextBox[] { tbNazwa, tbProcentVAT }, new string[] { "ID_VAT", "PROCENT_VAT"});
                         conn.Close();
                     }
                     catch (OracleException ex)
@@ -73,18 +57,15 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            string nazwa = this.tbNazwa.Text;
-            string procentVat = this.tbProcentVAT.Text;
-
             if (edycja)
             {
                 tbNazwa.Enabled = false;
-                query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{procentVat}' WHERE ID_VAT = '{nazwa}'";
+                query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
             }
             else
             {
                 tbNazwa.Enabled = true;
-                query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{nazwa}', '{procentVat}')";
+                query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{this.tbNazwa.Text}', '{this.tbProcentVAT.Text}')";
             }
 
             string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
