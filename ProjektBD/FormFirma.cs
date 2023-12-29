@@ -15,48 +15,29 @@ namespace ProjektBD
     public partial class FormFirma : Form
     {
         private string query = "";
-        private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "FIRMA";
         string klucz = "NAZWA_FIRMY";
+        TextBox[] tb = new TextBox[] { };
+        string[] atrybuty = { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY" };
 
-        public FormFirma(bool edycja = true, string nazwa = "Serwis Komputerowy PCPROM")
+        public FormFirma(string nazwa = "")
         {
             InitializeComponent();
-            this.edycja = edycja;
             this.nazwa = nazwa;
+            tb = new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy };
             this.Load += FormFirma_Load;
         }
 
         private void FormFirma_Load(object sender, EventArgs e)
         {
-            if (edycja)
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-                using (OracleConnection conn = new OracleConnection(connectionString))
-                {
-                    try
-                    {
-                        conn.Open();
-                        ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, 
-                            new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy}, 
-                            new string[] { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY"});
-                        conn.Close();
-                    }
-                    catch (OracleException ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                    }
-                }
-            }
-
+            ObslugaBazy ob = new ObslugaBazy();
+            ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            ObslugaBazy ob = new ObslugaBazy();
             if (this.btnEdytuj.Text == "Edytuj")
             {
                 this.lbKodPocztowy.Enabled = true;
@@ -94,6 +75,7 @@ namespace ProjektBD
                 this.tbUlica.Enabled = false;
                 this.btnZapisz.Visible = false;
                 this.btnEdytuj.Text = "Edytuj";
+                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
             }
         }
 
@@ -104,40 +86,8 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
-
-            string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-            using (OracleConnection conn = new OracleConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-
-                    using (OracleCommand cmd = new OracleCommand(query, conn))
-                    {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        conn.Close();
-                    }
-                }
-                catch (OracleException ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    conn.Close();
-                }
-            }
+            ObslugaBazy ob = new ObslugaBazy();
+            ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
         }
     }
 }

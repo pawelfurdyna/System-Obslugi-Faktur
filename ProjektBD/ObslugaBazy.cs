@@ -1,9 +1,11 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,7 +107,7 @@ namespace ProjektBD
                 }
             }
             string query = $"INSERT INTO {encja} ({formattedStringAtrybuty}) VALUES ('{formattedStringTb}')";
-            
+
             using (this.conn)
             {
                 try
@@ -185,6 +187,36 @@ namespace ProjektBD
             }
         }
         #endregion
+
+        public string WczytajFirme(string encja)
+        {
+            string query = $"SELECT * FROM {encja}";
+            string temp = "";
+
+            using (this.conn)
+            {
+                using (OracleCommand cmd = new OracleCommand(query, this.conn))
+                {
+                    try
+                    {
+                        this.conn.Open();
+                        OracleDataReader rdr = cmd.ExecuteReader();
+                        if (rdr.Read())
+                        {
+                            temp = rdr["NAZWA_FIRMY"].ToString();
+                        }
+                        this.conn.Close();
+                        return temp;
+                    }
+                    catch (OracleException ex)
+                    {
+                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        conn.Close();
+                        return temp;
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -77,7 +77,8 @@ namespace ProjektBD
         {
             if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
             {
-                Form firma = new FormFirma();
+                ObslugaBazy ob = new ObslugaBazy();
+                Form firma = new FormFirma(ob.WczytajFirme("FIRMA"));
                 firma.ShowDialog();
             }
         }
