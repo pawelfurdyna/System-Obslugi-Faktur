@@ -41,7 +41,6 @@
             this.lbDataWystawienia = new System.Windows.Forms.Label();
             this.tbAdresKlienta = new System.Windows.Forms.TextBox();
             this.tbMiejsceWystawienia = new System.Windows.Forms.TextBox();
-            this.tbSposobZaplaty = new System.Windows.Forms.TextBox();
             this.tbDataWykonaniaUslugi = new System.Windows.Forms.TextBox();
             this.tbDataWystawienia = new System.Windows.Forms.TextBox();
             this.tbNipKlienta = new System.Windows.Forms.TextBox();
@@ -51,11 +50,6 @@
             this.lbTerminZaplaty = new System.Windows.Forms.Label();
             this.tbTerminZaplaty = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bDdataSet = new ProjektBD.BDDataSet();
-            this.lbSporzadzil = new System.Windows.Forms.Label();
-            this.tbSporzadzil = new System.Windows.Forms.TextBox();
-            this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pOZYCJA_FAKTURYTableAdapter = new ProjektBD.BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter();
             this.iDPOZYCJIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +57,26 @@
             this.iLOSCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wARTOSCNETTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wARTOSCVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDdataSet = new ProjektBD.BDDataSet();
+            this.lbSporzadzil = new System.Windows.Forms.Label();
+            this.pOZYCJA_FAKTURYTableAdapter = new ProjektBD.BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter();
+            this.cbKlient = new System.Windows.Forms.ComboBox();
+            this.kLIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lbKlient = new System.Windows.Forms.Label();
+            this.cbSposobZaplaty = new System.Windows.Forms.ComboBox();
+            this.kLIENTTableAdapter = new ProjektBD.BDDataSetTableAdapters.KLIENTTableAdapter();
+            this.btZapisz = new System.Windows.Forms.Button();
+            this.btAnuluj = new System.Windows.Forms.Button();
+            this.cbUzytkownik = new System.Windows.Forms.ComboBox();
+            this.uZYTKOWNIKBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uZYTKOWNIKTableAdapter = new ProjektBD.BDDataSetTableAdapters.UZYTKOWNIKTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOZYCJAFAKTURYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,7 +114,7 @@
             // lbAdresKlienta
             // 
             this.lbAdresKlienta.AutoSize = true;
-            this.lbAdresKlienta.Location = new System.Drawing.Point(12, 86);
+            this.lbAdresKlienta.Location = new System.Drawing.Point(12, 112);
             this.lbAdresKlienta.Name = "lbAdresKlienta";
             this.lbAdresKlienta.Size = new System.Drawing.Size(71, 13);
             this.lbAdresKlienta.TabIndex = 32;
@@ -113,7 +123,7 @@
             // lbMiejsceWystawienia
             // 
             this.lbMiejsceWystawienia.AutoSize = true;
-            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(11, 112);
+            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(11, 131);
             this.lbMiejsceWystawienia.Name = "lbMiejsceWystawienia";
             this.lbMiejsceWystawienia.Size = new System.Drawing.Size(106, 13);
             this.lbMiejsceWystawienia.TabIndex = 31;
@@ -148,24 +158,17 @@
             // 
             // tbAdresKlienta
             // 
-            this.tbAdresKlienta.Location = new System.Drawing.Point(122, 79);
+            this.tbAdresKlienta.Location = new System.Drawing.Point(122, 105);
             this.tbAdresKlienta.Name = "tbAdresKlienta";
             this.tbAdresKlienta.Size = new System.Drawing.Size(276, 20);
             this.tbAdresKlienta.TabIndex = 27;
             // 
             // tbMiejsceWystawienia
             // 
-            this.tbMiejsceWystawienia.Location = new System.Drawing.Point(122, 105);
+            this.tbMiejsceWystawienia.Location = new System.Drawing.Point(122, 131);
             this.tbMiejsceWystawienia.Name = "tbMiejsceWystawienia";
             this.tbMiejsceWystawienia.Size = new System.Drawing.Size(276, 20);
             this.tbMiejsceWystawienia.TabIndex = 26;
-            // 
-            // tbSposobZaplaty
-            // 
-            this.tbSposobZaplaty.Location = new System.Drawing.Point(552, 79);
-            this.tbSposobZaplaty.Name = "tbSposobZaplaty";
-            this.tbSposobZaplaty.Size = new System.Drawing.Size(262, 20);
-            this.tbSposobZaplaty.TabIndex = 25;
             // 
             // tbDataWykonaniaUslugi
             // 
@@ -183,7 +186,7 @@
             // 
             // tbNipKlienta
             // 
-            this.tbNipKlienta.Location = new System.Drawing.Point(122, 53);
+            this.tbNipKlienta.Location = new System.Drawing.Point(122, 79);
             this.tbNipKlienta.Name = "tbNipKlienta";
             this.tbNipKlienta.Size = new System.Drawing.Size(276, 20);
             this.tbNipKlienta.TabIndex = 22;
@@ -191,7 +194,7 @@
             // lbNipKlienta
             // 
             this.lbNipKlienta.AutoSize = true;
-            this.lbNipKlienta.Location = new System.Drawing.Point(12, 60);
+            this.lbNipKlienta.Location = new System.Drawing.Point(12, 86);
             this.lbNipKlienta.Name = "lbNipKlienta";
             this.lbNipKlienta.Size = new System.Drawing.Size(62, 13);
             this.lbNipKlienta.TabIndex = 21;
@@ -218,9 +221,10 @@
             this.lbTerminZaplaty.AutoSize = true;
             this.lbTerminZaplaty.Location = new System.Drawing.Point(428, 112);
             this.lbTerminZaplaty.Name = "lbTerminZaplaty";
-            this.lbTerminZaplaty.Size = new System.Drawing.Size(80, 13);
+            this.lbTerminZaplaty.Size = new System.Drawing.Size(103, 13);
             this.lbTerminZaplaty.TabIndex = 34;
-            this.lbTerminZaplaty.Text = "Termin zapłaty:";
+            this.lbTerminZaplaty.Text = "Termin zapłaty (dni):";
+            this.lbTerminZaplaty.Visible = false;
             // 
             // tbTerminZaplaty
             // 
@@ -228,6 +232,7 @@
             this.tbTerminZaplaty.Name = "tbTerminZaplaty";
             this.tbTerminZaplaty.Size = new System.Drawing.Size(262, 20);
             this.tbTerminZaplaty.TabIndex = 33;
+            this.tbTerminZaplaty.Visible = false;
             // 
             // dataGridView1
             // 
@@ -242,40 +247,10 @@
             this.wARTOSCNETTODataGridViewTextBoxColumn,
             this.wARTOSCVATDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.pOZYCJAFAKTURYBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 153);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 170);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 227);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 210);
             this.dataGridView1.TabIndex = 35;
-            // 
-            // bDdataSet
-            // 
-            this.bDdataSet.DataSetName = "DataSetBD";
-            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lbSporzadzil
-            // 
-            this.lbSporzadzil.AutoSize = true;
-            this.lbSporzadzil.Location = new System.Drawing.Point(12, 399);
-            this.lbSporzadzil.Name = "lbSporzadzil";
-            this.lbSporzadzil.Size = new System.Drawing.Size(60, 13);
-            this.lbSporzadzil.TabIndex = 37;
-            this.lbSporzadzil.Text = "Sporządził:";
-            // 
-            // tbSporzadzil
-            // 
-            this.tbSporzadzil.Location = new System.Drawing.Point(102, 392);
-            this.tbSporzadzil.Name = "tbSporzadzil";
-            this.tbSporzadzil.Size = new System.Drawing.Size(296, 20);
-            this.tbSporzadzil.TabIndex = 36;
-            // 
-            // pOZYCJAFAKTURYBindingSource
-            // 
-            this.pOZYCJAFAKTURYBindingSource.DataMember = "POZYCJA_FAKTURY";
-            this.pOZYCJAFAKTURYBindingSource.DataSource = this.bDdataSet;
-            // 
-            // pOZYCJA_FAKTURYTableAdapter
-            // 
-            this.pOZYCJA_FAKTURYTableAdapter.ClearBeforeFill = true;
             // 
             // iDPOZYCJIDataGridViewTextBoxColumn
             // 
@@ -319,13 +294,122 @@
             this.wARTOSCVATDataGridViewTextBoxColumn.HeaderText = "WARTOSC_VAT";
             this.wARTOSCVATDataGridViewTextBoxColumn.Name = "wARTOSCVATDataGridViewTextBoxColumn";
             // 
+            // pOZYCJAFAKTURYBindingSource
+            // 
+            this.pOZYCJAFAKTURYBindingSource.DataMember = "POZYCJA_FAKTURY";
+            this.pOZYCJAFAKTURYBindingSource.DataSource = this.bDdataSet;
+            // 
+            // bDdataSet
+            // 
+            this.bDdataSet.DataSetName = "DataSetBD";
+            this.bDdataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lbSporzadzil
+            // 
+            this.lbSporzadzil.AutoSize = true;
+            this.lbSporzadzil.Location = new System.Drawing.Point(12, 399);
+            this.lbSporzadzil.Name = "lbSporzadzil";
+            this.lbSporzadzil.Size = new System.Drawing.Size(60, 13);
+            this.lbSporzadzil.TabIndex = 37;
+            this.lbSporzadzil.Text = "Sporządził:";
+            // 
+            // pOZYCJA_FAKTURYTableAdapter
+            // 
+            this.pOZYCJA_FAKTURYTableAdapter.ClearBeforeFill = true;
+            // 
+            // cbKlient
+            // 
+            this.cbKlient.DataSource = this.kLIENTBindingSource;
+            this.cbKlient.DisplayMember = "NAZWA";
+            this.cbKlient.FormattingEnabled = true;
+            this.cbKlient.Location = new System.Drawing.Point(122, 52);
+            this.cbKlient.Name = "cbKlient";
+            this.cbKlient.Size = new System.Drawing.Size(276, 21);
+            this.cbKlient.TabIndex = 38;
+            this.cbKlient.ValueMember = "ID_KLIENTA";
+            this.cbKlient.SelectedIndexChanged += new System.EventHandler(this.cbKlient_SelectedIndexChanged);
+            // 
+            // kLIENTBindingSource
+            // 
+            this.kLIENTBindingSource.DataMember = "KLIENT";
+            this.kLIENTBindingSource.DataSource = this.bDdataSet;
+            // 
+            // lbKlient
+            // 
+            this.lbKlient.AutoSize = true;
+            this.lbKlient.Location = new System.Drawing.Point(12, 60);
+            this.lbKlient.Name = "lbKlient";
+            this.lbKlient.Size = new System.Drawing.Size(36, 13);
+            this.lbKlient.TabIndex = 39;
+            this.lbKlient.Text = "Klient:";
+            // 
+            // cbSposobZaplaty
+            // 
+            this.cbSposobZaplaty.FormattingEnabled = true;
+            this.cbSposobZaplaty.Items.AddRange(new object[] {
+            "Gotówka",
+            "Przelew"});
+            this.cbSposobZaplaty.Location = new System.Drawing.Point(552, 79);
+            this.cbSposobZaplaty.Name = "cbSposobZaplaty";
+            this.cbSposobZaplaty.Size = new System.Drawing.Size(262, 21);
+            this.cbSposobZaplaty.TabIndex = 40;
+            this.cbSposobZaplaty.SelectedIndexChanged += new System.EventHandler(this.cbSposobZaplaty_SelectedIndexChanged);
+            // 
+            // kLIENTTableAdapter
+            // 
+            this.kLIENTTableAdapter.ClearBeforeFill = true;
+            // 
+            // btZapisz
+            // 
+            this.btZapisz.Location = new System.Drawing.Point(658, 415);
+            this.btZapisz.Name = "btZapisz";
+            this.btZapisz.Size = new System.Drawing.Size(75, 23);
+            this.btZapisz.TabIndex = 41;
+            this.btZapisz.Text = "Zapisz";
+            this.btZapisz.UseVisualStyleBackColor = true;
+            this.btZapisz.Click += new System.EventHandler(this.btZapisz_Click);
+            // 
+            // btAnuluj
+            // 
+            this.btAnuluj.Location = new System.Drawing.Point(739, 415);
+            this.btAnuluj.Name = "btAnuluj";
+            this.btAnuluj.Size = new System.Drawing.Size(75, 23);
+            this.btAnuluj.TabIndex = 42;
+            this.btAnuluj.Text = "Anuluj";
+            this.btAnuluj.UseVisualStyleBackColor = true;
+            this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
+            // 
+            // cbUzytkownik
+            // 
+            this.cbUzytkownik.FormattingEnabled = true;
+            this.cbUzytkownik.Location = new System.Drawing.Point(78, 396);
+            this.cbUzytkownik.Name = "cbUzytkownik";
+            this.cbUzytkownik.Size = new System.Drawing.Size(319, 21);
+            this.cbUzytkownik.TabIndex = 43;
+            this.cbUzytkownik.Tag = "";
+            this.cbUzytkownik.SelectedIndexChanged += new System.EventHandler(this.cbUzytkownik_SelectedIndexChanged);
+            // 
+            // uZYTKOWNIKBindingSource
+            // 
+            this.uZYTKOWNIKBindingSource.DataMember = "UZYTKOWNIK";
+            this.uZYTKOWNIKBindingSource.DataSource = this.bDdataSet;
+            // 
+            // uZYTKOWNIKTableAdapter
+            // 
+            this.uZYTKOWNIKTableAdapter.ClearBeforeFill = true;
+            // 
             // FormNowaFaktura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 450);
+            this.Controls.Add(this.cbUzytkownik);
+            this.Controls.Add(this.btAnuluj);
+            this.Controls.Add(this.btZapisz);
+            this.Controls.Add(this.cbSposobZaplaty);
+            this.Controls.Add(this.lbKlient);
+            this.Controls.Add(this.cbKlient);
             this.Controls.Add(this.lbSporzadzil);
-            this.Controls.Add(this.tbSporzadzil);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbTerminZaplaty);
             this.Controls.Add(this.tbTerminZaplaty);
@@ -336,7 +420,6 @@
             this.Controls.Add(this.lbDataWystawienia);
             this.Controls.Add(this.tbAdresKlienta);
             this.Controls.Add(this.tbMiejsceWystawienia);
-            this.Controls.Add(this.tbSposobZaplaty);
             this.Controls.Add(this.tbDataWykonaniaUslugi);
             this.Controls.Add(this.tbDataWystawienia);
             this.Controls.Add(this.tbNipKlienta);
@@ -351,8 +434,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOZYCJAFAKTURYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,7 +456,6 @@
         private System.Windows.Forms.Label lbDataWystawienia;
         private System.Windows.Forms.TextBox tbAdresKlienta;
         private System.Windows.Forms.TextBox tbMiejsceWystawienia;
-        private System.Windows.Forms.TextBox tbSposobZaplaty;
         private System.Windows.Forms.TextBox tbDataWykonaniaUslugi;
         private System.Windows.Forms.TextBox tbDataWystawienia;
         private System.Windows.Forms.TextBox tbNipKlienta;
@@ -382,7 +466,6 @@
         private System.Windows.Forms.TextBox tbTerminZaplaty;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbSporzadzil;
-        private System.Windows.Forms.TextBox tbSporzadzil;
         private BDDataSet bDdataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pOZYCJAFAKTURYBindingSource;
@@ -394,5 +477,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iLOSCDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCNETTODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCVATDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox cbKlient;
+        private System.Windows.Forms.Label lbKlient;
+        private System.Windows.Forms.ComboBox cbSposobZaplaty;
+        private System.Windows.Forms.BindingSource kLIENTBindingSource;
+        private BDDataSetTableAdapters.KLIENTTableAdapter kLIENTTableAdapter;
+        private System.Windows.Forms.Button btZapisz;
+        private System.Windows.Forms.Button btAnuluj;
+        private System.Windows.Forms.ComboBox cbUzytkownik;
+        private System.Windows.Forms.BindingSource uZYTKOWNIKBindingSource;
+        private BDDataSetTableAdapters.UZYTKOWNIKTableAdapter uZYTKOWNIKTableAdapter;
     }
 }

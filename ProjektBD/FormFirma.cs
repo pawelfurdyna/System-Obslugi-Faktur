@@ -14,49 +14,55 @@ namespace ProjektBD
 {
     public partial class FormFirma : Form
     {
-        private string query = "";
-        private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
+        private bool nowy = false;
         string encja = "FIRMA";
         string klucz = "NAZWA_FIRMY";
+        TextBox[] tb = new TextBox[] { };
+        string[] atrybuty = { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY" };
 
-        public FormFirma(bool edycja = true, string nazwa = "Serwis Komputerowy PCPROM")
+        public FormFirma(bool nowy = false, string nazwa = "")
         {
             InitializeComponent();
-            this.edycja = edycja;
+            this.nowy = nowy;
             this.nazwa = nazwa;
-            this.Load += FormFirma_Load;
+            tb = new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy };
+            if (!nowy)
+            {
+                this.btnZapisz.Location = new System.Drawing.Point(238, 231);
+                this.Load += FormFirma_Load;
+            }
+            else
+            {
+                this.lbKodPocztowy.Enabled = true;
+                this.lbKontoBankowe.Enabled = true;
+                this.lbMiejscowosc.Enabled = true;
+                this.lbNazwaFirmy.Enabled = true;
+                this.lbNip.Enabled = true;
+                this.lbTelefonFirmowy.Enabled = true;
+                this.lbUlica.Enabled = true;
+                this.tbKodPocztowy.Enabled = true;
+                this.tbKontoBankowe.Enabled = true;
+                this.tbMiejscowosc.Enabled = true;
+                this.tbNazwaFirmy.Enabled = true;
+                this.tbNip.Enabled = true;
+                this.tbTelefonFirmowy.Enabled = true;
+                this.tbUlica.Enabled = true;
+                this.btnZapisz.Visible = true;
+                this.btnEdytuj.Visible = false;
+                this.btnZapisz.Location = new System.Drawing.Point(319, 229);
+            }
         }
 
         private void FormFirma_Load(object sender, EventArgs e)
         {
-            if (edycja)
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-                using (OracleConnection conn = new OracleConnection(connectionString))
-                {
-                    try
-                    {
-                        conn.Open();
-                        ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, 
-                            new TextBox[] { tbNazwaFirmy, tbNip, tbUlica, tbKodPocztowy, tbMiejscowosc, tbKontoBankowe, tbTelefonFirmowy}, 
-                            new string[] { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY"});
-                        conn.Close();
-                    }
-                    catch (OracleException ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                    }
-                }
-            }
-
+            ObslugaBazy ob = new ObslugaBazy();
+            ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            ObslugaBazy ob = new ObslugaBazy();
             if (this.btnEdytuj.Text == "Edytuj")
             {
                 this.lbKodPocztowy.Enabled = true;
@@ -95,6 +101,7 @@ namespace ProjektBD
                 this.btnZapisz.Visible = false;
                 this.btnEdytuj.Text = "Edytuj";
             }
+            ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,39 +111,16 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
-
-            string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-            using (OracleConnection conn = new OracleConnection(connectionString))
+            ObslugaBazy ob = new ObslugaBazy();
+            if (nowy)
             {
-                try
-                {
-                    conn.Open();
-
-                    using (OracleCommand cmd = new OracleCommand(query, conn))
-                    {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        conn.Close();
-                    }
-                }
-                catch (OracleException ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    conn.Close();
-                }
+                ob.DodajRekord(encja, tb, atrybuty);
+                this.Close();
+            }
+            else
+            {
+                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                btnEdit_Click(sender, e);
             }
         }
     }

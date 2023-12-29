@@ -121,6 +121,24 @@
     <value>125, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="zakończToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="zakończToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zamknij Okno</value>
+  </data>
+  <data name="plikToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 20</value>
+  </data>
+  <data name="plikToolStripMenuItem.Text" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="pomocToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="pomocToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -145,24 +163,6 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="plikToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
-  </data>
-  <data name="plikToolStripMenuItem.Text" xml:space="preserve">
-    <value>Plik</value>
-  </data>
-  <data name="zakończToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="zakończToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zamknij Okno</value>
-  </data>
-  <data name="pomocToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
-  </data>
-  <data name="pomocToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pomoc</value>
   </data>
   <data name="btnDodaj.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 385</value>

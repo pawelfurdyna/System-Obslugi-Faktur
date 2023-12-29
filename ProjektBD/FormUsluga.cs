@@ -14,18 +14,20 @@ namespace ProjektBD
 {
     public partial class FormUsluga : Form
     {
-        private string query = "";
         private bool edycja;
         private string nazwa;
         ObslugaBazy ob = new ObslugaBazy();
         string encja = "USLUGA";
         string klucz = "ID_USLUGI";
+        TextBox[] tb = new TextBox[] { };
+        string[] atrybuty = { "ID_USLUGI", "NAZWA", "CENA_JEDNOSTKOWA", "JEDNOSTKA_MIARY" };
 
-        public FormUsluga(bool edycja = false, string nazwa = "")
+    public FormUsluga(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
+            tb = new TextBox[] { tbIdUslugi, tbNazwa, tbCenaJednostkowa, tbJednostkaMiary };
             this.Load += FormUsluga_Load;
         }
 
@@ -33,75 +35,22 @@ namespace ProjektBD
         {
             if (edycja)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-                using (OracleConnection conn = new OracleConnection(connectionString))
-                {
-                    try
-                    {
-                        conn.Open();
-                        ob.wypelnijTextBoxZEncji(encja, klucz, nazwa, 
-                            new TextBox[] { tbIdUslugi, tbNazwa, tbCenaJednostkowa, tbJednostkaMiary }, 
-                            new string[] { "ID_USLUGI", "NAZWA", "CENA_JEDNOSTKOWA", "JEDNOSTKA_MIARY" });
-                        conn.Close();
-                    }
-                    catch (OracleException ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                    }
-                }
+                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
             }
-
         }
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
             if (edycja)
             {
-                tbIdUslugi.Enabled = false;
-                //query = $"UPDATE STAWKA_VAT SET PROCENT_VAT = '{this.tbProcentVAT.Text}' WHERE ID_VAT = '{this.tbNazwa.Text}'";
+                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                this.Close();
             }
             else
             {
-                tbIdUslugi.Enabled = true;
-                //query = $"INSERT INTO SYSTEM.STAWKA_VAT (ID_VAT, PROCENT_VAT) VALUES ('{this.tbNazwa.Text}', '{this.tbProcentVAT.Text}')";
+                ob.DodajRekord(encja, tb, atrybuty);
+                this.Close();
             }
-
-            string connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
-
-            using (OracleConnection conn = new OracleConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-
-                    using (OracleCommand cmd = new OracleCommand(query, conn))
-                    {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie zapisano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        conn.Close();
-                    }
-                }
-                catch (OracleException ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    conn.Close();
-                }
-            }
-
-            this.Close();
         }
 
         private void btnAnuluj_Click(object sender, EventArgs e)
