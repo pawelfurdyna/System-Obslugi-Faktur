@@ -20,7 +20,7 @@ namespace ProjektBD
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            string zmienna = "Użytkownik: ";
+            string zmienna = "Użytkownik: " + FormLogowanie.obecnyUzytkownik;
             lbUzytkownik.Text = zmienna;
             zegar.Start();
             ObslugaBazy ob = new ObslugaBazy();
@@ -124,6 +124,12 @@ namespace ProjektBD
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing) { Application.Exit(); }
+        }
+
+        private void btWyloguj_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+            Environment.Exit(0);
         }
     }
 }

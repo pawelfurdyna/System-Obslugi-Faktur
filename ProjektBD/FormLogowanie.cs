@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,20 @@ namespace ProjektBD
 {
     public partial class FormLogowanie : Form
     {
-        ObslugaBazy ob = new ObslugaBazy();
+        static ObslugaBazy ob = new ObslugaBazy();
+        internal static string obecnyUzytkownik = "";
+        internal static string login = "";
+        internal static string idPobrane = "";
+        internal static int idUzytkownika;
         public FormLogowanie()
         {
             InitializeComponent();
             tbLogin.Focus();
         }
-        
+
         private void btZaloguj_Click(object sender, EventArgs e)
         {
-            string login, haslo,zwrot;
+            string  haslo,zwrot;
             login = tbLogin.Text;
             haslo = tbHaslo.Text;
 
@@ -31,6 +36,9 @@ namespace ProjektBD
                 zwrot = ob.Select("UZYTKOWNIK", "HASLO", "LOGIN", tbLogin.Text.ToString(), true);
                 if (haslo == zwrot && !String.IsNullOrEmpty(haslo))
                 {
+                    obecnyUzytkownik = ob.Select("UZYTKOWNIK", "IMIE", "LOGIN", tbLogin.Text.ToString(), true);
+                    obecnyUzytkownik += " ";
+                    obecnyUzytkownik += ob.Select("UZYTKOWNIK", "NAZWISKO", "LOGIN", tbLogin.Text.ToString(), true);
                     Form menu = new SystemObslugiFaktur();
                     menu.Show();
                     this.Hide();
@@ -48,31 +56,20 @@ namespace ProjektBD
                 MessageBox.Show("Wystąpił nieznany błąd!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);  
             }    
         }
+        public static int AktywnyUzytkownik()
+        {
+            idPobrane = ob.Select("UZYTKOWNIK", "ID_UZYTKOWNIKA", "LOGIN", login, true);
+            Int32.TryParse(idPobrane, out idUzytkownika);
+            return (idUzytkownika - 1);
+        }
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void FormLogowanie_Load(object sender, EventArgs e)
         {
             tbLogin.Focus();
-        }
-
-        private void tbLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btZaloguj_Click(sender, e);
-            }
-        }
-
-        private void tbHaslo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btZaloguj_Click(sender, e);
-            }
         }
     }
 }

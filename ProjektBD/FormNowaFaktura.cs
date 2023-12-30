@@ -41,8 +41,8 @@ namespace ProjektBD
             #endregion
 
             cbKlient.SelectedItem = null;
-            cbUzytkownik.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
+            cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
 
             #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
@@ -122,7 +122,6 @@ namespace ProjektBD
         {
             this.Close();
         }
-
         #region Zdarzenia do sprawdzania typów pól numerycznych
         private void tbNrFaktury_KeyPress(object sender, KeyPressEventArgs e)
         {

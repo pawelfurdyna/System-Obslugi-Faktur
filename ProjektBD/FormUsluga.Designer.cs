@@ -112,6 +112,7 @@
             // 
             // btnAnuluj
             // 
+            this.btnAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnuluj.Location = new System.Drawing.Point(117, 124);
             this.btnAnuluj.Name = "btnAnuluj";
             this.btnAnuluj.Size = new System.Drawing.Size(75, 23);
@@ -132,8 +133,10 @@
             // 
             // FormUsluga
             // 
+            this.AcceptButton = this.btnZapisz;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnAnuluj;
             this.ClientSize = new System.Drawing.Size(214, 161);
             this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.btnZapisz);
