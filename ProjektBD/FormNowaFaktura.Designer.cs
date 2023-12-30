@@ -396,7 +396,6 @@
             this.cbUzytkownik.Size = new System.Drawing.Size(319, 21);
             this.cbUzytkownik.TabIndex = 43;
             this.cbUzytkownik.Tag = "";
-            this.cbUzytkownik.SelectedIndexChanged += new System.EventHandler(this.cbUzytkownik_SelectedIndexChanged);
             // 
             // uZYTKOWNIKBindingSource
             // 

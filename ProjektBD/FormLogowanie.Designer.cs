@@ -43,7 +43,7 @@
             this.label1.Location = new System.Drawing.Point(11, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Login: ";
             // 
             // label2
@@ -52,7 +52,7 @@
             this.label2.Location = new System.Drawing.Point(11, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Hasło:";
             // 
             // tbHaslo
@@ -61,17 +61,17 @@
             this.tbHaslo.Name = "tbHaslo";
             this.tbHaslo.PasswordChar = '*';
             this.tbHaslo.Size = new System.Drawing.Size(165, 20);
-            this.tbHaslo.TabIndex = 3;
+            this.tbHaslo.TabIndex = 2;
             this.tbHaslo.UseSystemPasswordChar = true;
-            this.tbHaslo.TextChanged += new System.EventHandler(this.tbHaslo_TextChanged);
+            this.tbHaslo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbHaslo_KeyDown);
             // 
             // tbLogin
             // 
             this.tbLogin.Location = new System.Drawing.Point(57, 21);
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(165, 20);
-            this.tbLogin.TabIndex = 4;
-            this.tbLogin.TextChanged += new System.EventHandler(this.tbLogin_TextChanged);
+            this.tbLogin.TabIndex = 1;
+            this.tbLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLogin_KeyDown);
             // 
             // btZaloguj
             // 
@@ -79,7 +79,7 @@
             this.btZaloguj.Location = new System.Drawing.Point(66, 86);
             this.btZaloguj.Name = "btZaloguj";
             this.btZaloguj.Size = new System.Drawing.Size(75, 23);
-            this.btZaloguj.TabIndex = 5;
+            this.btZaloguj.TabIndex = 3;
             this.btZaloguj.Text = "Zaloguj";
             this.btZaloguj.UseVisualStyleBackColor = false;
             this.btZaloguj.Click += new System.EventHandler(this.btZaloguj_Click);
@@ -89,7 +89,7 @@
             this.btAnuluj.Location = new System.Drawing.Point(147, 86);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(75, 23);
-            this.btAnuluj.TabIndex = 6;
+            this.btAnuluj.TabIndex = 4;
             this.btAnuluj.Text = "Anuluj";
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
@@ -114,7 +114,6 @@
             this.Name = "FormLogowanie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logowanie";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogowanie_FormClosing);
             this.Load += new System.EventHandler(this.FormLogowanie_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
