@@ -57,5 +57,15 @@ namespace ProjektBD
         {
             this.Close();
         }
+
+        private void tbIdKlienta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
+        }
+
+        private void tbTerminPlatnosci_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
+        }
     }
 }

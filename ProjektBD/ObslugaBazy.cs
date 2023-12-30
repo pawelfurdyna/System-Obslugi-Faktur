@@ -246,8 +246,83 @@ namespace ProjektBD
             }
 
         }
+        #endregion
+
+        #region SprawdzTyp
+        public void SprawdzTyp(object sender, KeyPressEventArgs e, bool typFloat = false)
+        {
+            TextBox textBox = sender as TextBox;
+            if (typFloat)
+            {
+                // Check for non-control, non-digit, and non-decimal point characters
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+                {
+                    e.Handled = true;
+                }
+
+                // Check if the decimal point is already there in the TextBox
+                if (e.KeyChar == ',' && textBox.Text.IndexOf(',') > -1)
+                {
+                    e.Handled = true;
+                }
+
+                // Allow only two numbers after the decimal point
+                if (textBox.Text.Contains(',') && char.IsDigit(e.KeyChar))
+                {
+                    int decimalPointPosition = textBox.Text.IndexOf(',');
+                    int cursorPosition = textBox.SelectionStart;
+
+                    // Check if the cursor is after the decimal point and if there are already two digits after it
+                    if (cursorPosition > decimalPointPosition && textBox.Text.Length - decimalPointPosition > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            else
+            {
+                // Check for non-control, non-digit
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        #endregion
+
+        #region FormatowanieDaty
+        public void FormatowanieDaty(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            // Allow only digits and control characters (like backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            int caretPosition = textBox.SelectionStart;
+            int textLength = textBox.Text.Length;
+
+            // Limit the total length to 10 characters (DD-MM-YYYY)
+            if (!char.IsControl(e.KeyChar) && textLength >= 10 && caretPosition >= textLength)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Automatically insert hyphen after DD and MM
+            if (char.IsDigit(e.KeyChar) && (caretPosition == 1 || caretPosition == 4) && caretPosition == textLength)
+            {
+                // Append the digit and a hyphen if the length allows
+                textBox.Text = textBox.Text.Insert(caretPosition, e.KeyChar + "-");
+                e.Handled = true;
+                textBox.SelectionStart = caretPosition + 2; // Move the caret after the new hyphen
+            }
+        }
+        #endregion
     }
-    #endregion
 }
 
 

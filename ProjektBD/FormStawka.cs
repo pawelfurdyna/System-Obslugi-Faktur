@@ -61,6 +61,9 @@ namespace ProjektBD
             this.Close();
         }
 
-        
+        private void tbProcentVAT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
+        }
     }
 }

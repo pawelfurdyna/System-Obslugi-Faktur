@@ -183,10 +183,14 @@
             this.tbDataWystawienia.Name = "tbDataWystawienia";
             this.tbDataWystawienia.Size = new System.Drawing.Size(262, 20);
             this.tbDataWystawienia.TabIndex = 23;
+            this.tbDataWystawienia.TextChanged += new System.EventHandler(this.tbDataWystawienia_TextChanged);
+            this.tbDataWystawienia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWystawienia_KeyPress);
+            this.tbDataWystawienia.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWystawienia_Validating);
             // 
             // tbNipKlienta
             // 
             this.tbNipKlienta.Location = new System.Drawing.Point(122, 79);
+            this.tbNipKlienta.MaxLength = 11;
             this.tbNipKlienta.Name = "tbNipKlienta";
             this.tbNipKlienta.Size = new System.Drawing.Size(276, 20);
             this.tbNipKlienta.TabIndex = 22;
@@ -203,9 +207,11 @@
             // tbNrFaktury
             // 
             this.tbNrFaktury.Location = new System.Drawing.Point(122, 27);
+            this.tbNrFaktury.MaxLength = 4;
             this.tbNrFaktury.Name = "tbNrFaktury";
             this.tbNrFaktury.Size = new System.Drawing.Size(276, 20);
             this.tbNrFaktury.TabIndex = 20;
+            this.tbNrFaktury.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNrFaktury_KeyPress);
             // 
             // lbNrFaktury
             // 
@@ -229,10 +235,12 @@
             // tbTerminZaplaty
             // 
             this.tbTerminZaplaty.Location = new System.Drawing.Point(552, 105);
+            this.tbTerminZaplaty.MaxLength = 2;
             this.tbTerminZaplaty.Name = "tbTerminZaplaty";
             this.tbTerminZaplaty.Size = new System.Drawing.Size(262, 20);
             this.tbTerminZaplaty.TabIndex = 33;
             this.tbTerminZaplaty.Visible = false;
+            this.tbTerminZaplaty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminZaplaty_KeyPress);
             // 
             // dataGridView1
             // 

@@ -61,6 +61,7 @@
             this.tbProcentVAT.Name = "tbProcentVAT";
             this.tbProcentVAT.Size = new System.Drawing.Size(100, 20);
             this.tbProcentVAT.TabIndex = 3;
+            this.tbProcentVAT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProcentVAT_KeyPress);
             // 
             // lbProcentVAT
             // 

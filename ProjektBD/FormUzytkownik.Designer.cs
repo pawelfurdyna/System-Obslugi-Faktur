@@ -61,6 +61,7 @@
             this.tbIdUzytkownika.Name = "tbIdUzytkownika";
             this.tbIdUzytkownika.Size = new System.Drawing.Size(100, 20);
             this.tbIdUzytkownika.TabIndex = 1;
+            this.tbIdUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUzytkownika_KeyPress);
             // 
             // tbImie
             // 
