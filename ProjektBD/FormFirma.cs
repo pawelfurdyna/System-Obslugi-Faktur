@@ -122,5 +122,10 @@ namespace ProjektBD
                 btnEdit_Click(sender, e);
             }
         }
+
+        private void FormFirma_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
