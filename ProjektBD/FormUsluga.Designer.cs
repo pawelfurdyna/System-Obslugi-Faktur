@@ -63,6 +63,7 @@
             this.tbCenaJednostkowa.Name = "tbCenaJednostkowa";
             this.tbCenaJednostkowa.Size = new System.Drawing.Size(100, 20);
             this.tbCenaJednostkowa.TabIndex = 13;
+            this.tbCenaJednostkowa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCenaJednostkowa_KeyPress);
             // 
             // lbCenaJednostkowa
             // 
@@ -95,6 +96,7 @@
             this.tbIdUslugi.Name = "tbIdUslugi";
             this.tbIdUslugi.Size = new System.Drawing.Size(100, 20);
             this.tbIdUslugi.TabIndex = 9;
+            this.tbIdUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUslugi_KeyPress);
             // 
             // lbIdUslugi
             // 

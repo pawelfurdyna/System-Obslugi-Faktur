@@ -133,6 +133,7 @@
             this.tbIdKlienta.Name = "tbIdKlienta";
             this.tbIdKlienta.Size = new System.Drawing.Size(100, 20);
             this.tbIdKlienta.TabIndex = 13;
+            this.tbIdKlienta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdKlienta_KeyPress);
             // 
             // lbIdKlienta
             // 
@@ -149,6 +150,7 @@
             this.tbTerminPlatnosci.Name = "tbTerminPlatnosci";
             this.tbTerminPlatnosci.Size = new System.Drawing.Size(100, 20);
             this.tbTerminPlatnosci.TabIndex = 25;
+            this.tbTerminPlatnosci.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminPlatnosci_KeyPress);
             // 
             // lbTerminPlatnosci
             // 
