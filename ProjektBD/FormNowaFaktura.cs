@@ -142,24 +142,9 @@ namespace ProjektBD
             ob.WalidacjaDaty(sender, e);
         }
 
-        private void btnDodaj_Click(object sender, EventArgs e)
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void btnEdytuj_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUsun_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
-        {
-            if (dataGridView1.CurrentCell != null && dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["usluga"]?.Index)
+            if (e != null && e.RowIndex >= 0)
             {
                 var uslugaCell = dataGridView1.CurrentCell as DataGridViewComboBoxCell;
                 var currentRowIndex = dataGridView1.CurrentCell.RowIndex;
@@ -172,10 +157,31 @@ namespace ProjektBD
 
                     string jmValue = ob.Select("USLUGA", "JEDNOSTKA_MIARY", "NAZWA", selectedUsluga);
                     string cenaJednostkowaValue = ob.Select("USLUGA", "CENA_JEDNOSTKOWA", "NAZWA", selectedUsluga);
-
                     // Update the cells
                     jmCell.Value = jmValue;
                     cenaJednostkowaCell.Value = cenaJednostkowaValue;
+
+                }
+            }
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.IsCurrentCellDirty)
+            {
+                dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                dataGridView1.EndEdit();
+            }
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn)
+            {
+                dataGridView1.BeginEdit(true);
+                if (dataGridView1.EditingControl is System.Windows.Forms.ComboBox comboBox)
+                {
+                    comboBox.DroppedDown = true;
                 }
             }
         }
