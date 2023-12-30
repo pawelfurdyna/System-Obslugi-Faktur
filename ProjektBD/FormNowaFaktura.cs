@@ -109,7 +109,7 @@ namespace ProjektBD
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void tbNrFaktury_KeyPress(object sender, KeyPressEventArgs e)
