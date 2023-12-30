@@ -22,6 +22,8 @@ namespace ProjektBD
         {
             string zmienna = "Użytkownik: ";
             lbUzytkownik.Text = zmienna;
+            Form login = new FormLogowanie();
+            login.ShowDialog();
             zegar.Start();
             ObslugaBazy ob = new ObslugaBazy();
             if (ob.Select("FIRMA","NAZWA_FIRMY","","",false) == "")
