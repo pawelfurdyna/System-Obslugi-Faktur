@@ -16,13 +16,13 @@ namespace ProjektBD
     {
         private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "KLIENT";
         string klucz = "ID_KLIENTA";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "ID_KLIENTA", "NAZWA", "ADRES", "NIP", "NUMER_TELEFONU", "EMAIL", "TERMIN_PLATNOSCI" };
+        ObslugaBazy ob = new ObslugaBazy();
 
-    public FormKlient(bool edycja = false, string nazwa = "")
+        public FormKlient(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
@@ -56,6 +56,16 @@ namespace ProjektBD
         private void btnAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tbIdKlienta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
+        }
+
+        private void tbTerminPlatnosci_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
         }
     }
 }

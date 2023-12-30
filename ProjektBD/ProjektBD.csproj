@@ -81,6 +81,12 @@
     <Compile Include="FormKlient.Designer.cs">
       <DependentUpon>FormKlient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogowanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogowanie.Designer.cs">
+      <DependentUpon>FormLogowanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,7 @@
       <DependentUpon>FormUzytkownik.cs</DependentUpon>
     </Compile>
     <Compile Include="ObslugaBazy.cs" />
+    <Compile Include="PozycjaFaktury.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormFirma.resx">
@@ -146,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlient.resx">
       <DependentUpon>FormKlient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogowanie.resx">
+      <DependentUpon>FormLogowanie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>

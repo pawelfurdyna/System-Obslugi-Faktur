@@ -44,6 +44,7 @@
             // tbJednostkaMiary
             // 
             this.tbJednostkaMiary.Location = new System.Drawing.Point(108, 94);
+            this.tbJednostkaMiary.MaxLength = 255;
             this.tbJednostkaMiary.Name = "tbJednostkaMiary";
             this.tbJednostkaMiary.Size = new System.Drawing.Size(100, 20);
             this.tbJednostkaMiary.TabIndex = 15;
@@ -63,6 +64,7 @@
             this.tbCenaJednostkowa.Name = "tbCenaJednostkowa";
             this.tbCenaJednostkowa.Size = new System.Drawing.Size(100, 20);
             this.tbCenaJednostkowa.TabIndex = 13;
+            this.tbCenaJednostkowa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCenaJednostkowa_KeyPress);
             // 
             // lbCenaJednostkowa
             // 
@@ -76,6 +78,7 @@
             // tbNazwa
             // 
             this.tbNazwa.Location = new System.Drawing.Point(108, 42);
+            this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
             this.tbNazwa.TabIndex = 11;
@@ -92,9 +95,11 @@
             // tbIdUslugi
             // 
             this.tbIdUslugi.Location = new System.Drawing.Point(108, 16);
+            this.tbIdUslugi.MaxLength = 4;
             this.tbIdUslugi.Name = "tbIdUslugi";
             this.tbIdUslugi.Size = new System.Drawing.Size(100, 20);
             this.tbIdUslugi.TabIndex = 9;
+            this.tbIdUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUslugi_KeyPress);
             // 
             // lbIdUslugi
             // 

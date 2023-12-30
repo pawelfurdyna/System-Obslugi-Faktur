@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoriaFakturLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nAZWAFIRMYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uWAGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fAKTURABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,19 +47,11 @@
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
-            this.fAKTURABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fAKTURATableAdapter = new ProjektBD.BDDataSetTableAdapters.FAKTURATableAdapter();
-            this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nAZWAFIRMYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uWAGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -74,6 +74,60 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 338);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // nUMERFAKTURYDataGridViewTextBoxColumn
+            // 
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.DataPropertyName = "NUMER_FAKTURY";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.HeaderText = "NUMER_FAKTURY";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.Name = "nUMERFAKTURYDataGridViewTextBoxColumn";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dATAWYSTAWIENIADataGridViewTextBoxColumn
+            // 
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYSTAWIENIA";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.HeaderText = "DATA_WYSTAWIENIA";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.Name = "dATAWYSTAWIENIADataGridViewTextBoxColumn";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tERMINPLATNOSCIDataGridViewTextBoxColumn
+            // 
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_PLATNOSCI";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.HeaderText = "TERMIN_PLATNOSCI";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Name = "tERMINPLATNOSCIDataGridViewTextBoxColumn";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDKLIENTADataGridViewTextBoxColumn
+            // 
+            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
+            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "ID_KLIENTA";
+            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
+            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDUZYTKOWNIKADataGridViewTextBoxColumn
+            // 
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nAZWAFIRMYDataGridViewTextBoxColumn
+            // 
+            this.nAZWAFIRMYDataGridViewTextBoxColumn.DataPropertyName = "NAZWA_FIRMY";
+            this.nAZWAFIRMYDataGridViewTextBoxColumn.HeaderText = "NAZWA_FIRMY";
+            this.nAZWAFIRMYDataGridViewTextBoxColumn.Name = "nAZWAFIRMYDataGridViewTextBoxColumn";
+            this.nAZWAFIRMYDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uWAGIDataGridViewTextBoxColumn
+            // 
+            this.uWAGIDataGridViewTextBoxColumn.DataPropertyName = "UWAGI";
+            this.uWAGIDataGridViewTextBoxColumn.HeaderText = "UWAGI";
+            this.uWAGIDataGridViewTextBoxColumn.Name = "uWAGIDataGridViewTextBoxColumn";
+            this.uWAGIDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fAKTURABindingSource
+            // 
+            this.fAKTURABindingSource.DataMember = "FAKTURA";
+            this.fAKTURABindingSource.DataSource = this.bDdataSet;
             // 
             // bDdataSet
             // 
@@ -138,64 +192,11 @@
             this.btnDodaj.TabIndex = 17;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
-            // 
-            // fAKTURABindingSource
-            // 
-            this.fAKTURABindingSource.DataMember = "FAKTURA";
-            this.fAKTURABindingSource.DataSource = this.bDdataSet;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // fAKTURATableAdapter
             // 
             this.fAKTURATableAdapter.ClearBeforeFill = true;
-            // 
-            // nUMERFAKTURYDataGridViewTextBoxColumn
-            // 
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.DataPropertyName = "NUMER_FAKTURY";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.HeaderText = "NUMER_FAKTURY";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.Name = "nUMERFAKTURYDataGridViewTextBoxColumn";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dATAWYSTAWIENIADataGridViewTextBoxColumn
-            // 
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYSTAWIENIA";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.HeaderText = "DATA_WYSTAWIENIA";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.Name = "dATAWYSTAWIENIADataGridViewTextBoxColumn";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tERMINPLATNOSCIDataGridViewTextBoxColumn
-            // 
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_PLATNOSCI";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.HeaderText = "TERMIN_PLATNOSCI";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Name = "tERMINPLATNOSCIDataGridViewTextBoxColumn";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDKLIENTADataGridViewTextBoxColumn
-            // 
-            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
-            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "ID_KLIENTA";
-            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
-            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDUZYTKOWNIKADataGridViewTextBoxColumn
-            // 
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nAZWAFIRMYDataGridViewTextBoxColumn
-            // 
-            this.nAZWAFIRMYDataGridViewTextBoxColumn.DataPropertyName = "NAZWA_FIRMY";
-            this.nAZWAFIRMYDataGridViewTextBoxColumn.HeaderText = "NAZWA_FIRMY";
-            this.nAZWAFIRMYDataGridViewTextBoxColumn.Name = "nAZWAFIRMYDataGridViewTextBoxColumn";
-            this.nAZWAFIRMYDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uWAGIDataGridViewTextBoxColumn
-            // 
-            this.uWAGIDataGridViewTextBoxColumn.DataPropertyName = "UWAGI";
-            this.uWAGIDataGridViewTextBoxColumn.HeaderText = "UWAGI";
-            this.uWAGIDataGridViewTextBoxColumn.Name = "uWAGIDataGridViewTextBoxColumn";
-            this.uWAGIDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormHistoriaFakturLista
             // 
@@ -213,10 +214,10 @@
             this.Text = "Historia Faktur";
             this.Load += new System.EventHandler(this.FormHistoriaFakturLista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

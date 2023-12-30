@@ -16,13 +16,13 @@ namespace ProjektBD
     {
         private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "USLUGA";
         string klucz = "ID_USLUGI";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "ID_USLUGI", "NAZWA", "CENA_JEDNOSTKOWA", "JEDNOSTKA_MIARY" };
+        ObslugaBazy ob = new ObslugaBazy();
 
-    public FormUsluga(bool edycja = false, string nazwa = "")
+        public FormUsluga(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
@@ -56,6 +56,16 @@ namespace ProjektBD
         private void btnAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tbCenaJednostkowa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           ob.SprawdzTyp(sender, e, true);
+        }
+
+        private void tbIdUslugi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
         }
     }
 }

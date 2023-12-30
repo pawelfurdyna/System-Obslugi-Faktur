@@ -12,6 +12,7 @@ namespace ProjektBD
 {
     public partial class SystemObslugiFaktur : Form
     {
+        ObslugaBazy ob = new ObslugaBazy();
         public SystemObslugiFaktur()
         {
             InitializeComponent();
@@ -91,7 +92,6 @@ namespace ProjektBD
         {
             if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
             {
-                ObslugaBazy ob = new ObslugaBazy();
                 Form firma = new FormFirma(false, ob.Select("FIRMA", "NAZWA_FIRMY", "", "", false));
                 firma.ShowDialog();
             }
@@ -120,6 +120,10 @@ namespace ProjektBD
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing) { Application.Exit(); }
         }
     }
 }

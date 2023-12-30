@@ -49,6 +49,7 @@
             // tbNazwa
             // 
             this.tbNazwa.Location = new System.Drawing.Point(95, 6);
+            this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
             this.tbNazwa.TabIndex = 1;
@@ -56,9 +57,11 @@
             // tbProcentVAT
             // 
             this.tbProcentVAT.Location = new System.Drawing.Point(95, 32);
+            this.tbProcentVAT.MaxLength = 4;
             this.tbProcentVAT.Name = "tbProcentVAT";
             this.tbProcentVAT.Size = new System.Drawing.Size(100, 20);
             this.tbProcentVAT.TabIndex = 3;
+            this.tbProcentVAT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProcentVAT_KeyPress);
             // 
             // lbProcentVAT
             // 

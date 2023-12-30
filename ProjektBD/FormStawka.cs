@@ -18,14 +18,14 @@ namespace ProjektBD
     {
         private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "STAWKA_VAT";
         string klucz = "ID_VAT";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "ID_VAT", "PROCENT_VAT" };
+        ObslugaBazy ob = new ObslugaBazy();
 
 
-    public FormStawkaVAT(bool edycja = false, string nazwa = "")
+        public FormStawkaVAT(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
@@ -61,6 +61,9 @@ namespace ProjektBD
             this.Close();
         }
 
-        
+        private void tbProcentVAT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
+        }
     }
 }

@@ -50,13 +50,15 @@
             this.lbTerminZaplaty = new System.Windows.Forms.Label();
             this.tbTerminZaplaty = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iDPOZYCJIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iLOSCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wARTOSCNETTODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wARTOSCVATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cenaJednostkowa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.netto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.procentVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.lbSporzadzil = new System.Windows.Forms.Label();
@@ -71,12 +73,15 @@
             this.cbUzytkownik = new System.Windows.Forms.ComboBox();
             this.uZYTKOWNIKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uZYTKOWNIKTableAdapter = new ProjektBD.BDDataSetTableAdapters.UZYTKOWNIKTableAdapter();
+            this.uSLUGABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uSLUGATableAdapter = new ProjektBD.BDDataSetTableAdapters.USLUGATableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pOZYCJAFAKTURYBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -176,6 +181,8 @@
             this.tbDataWykonaniaUslugi.Name = "tbDataWykonaniaUslugi";
             this.tbDataWykonaniaUslugi.Size = new System.Drawing.Size(262, 20);
             this.tbDataWykonaniaUslugi.TabIndex = 24;
+            this.tbDataWykonaniaUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWykonaniaUslugi_KeyPress);
+            this.tbDataWykonaniaUslugi.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWykonaniaUslugi_Validating);
             // 
             // tbDataWystawienia
             // 
@@ -183,10 +190,13 @@
             this.tbDataWystawienia.Name = "tbDataWystawienia";
             this.tbDataWystawienia.Size = new System.Drawing.Size(262, 20);
             this.tbDataWystawienia.TabIndex = 23;
+            this.tbDataWystawienia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWystawienia_KeyPress);
+            this.tbDataWystawienia.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWystawienia_Validating);
             // 
             // tbNipKlienta
             // 
             this.tbNipKlienta.Location = new System.Drawing.Point(122, 79);
+            this.tbNipKlienta.MaxLength = 11;
             this.tbNipKlienta.Name = "tbNipKlienta";
             this.tbNipKlienta.Size = new System.Drawing.Size(276, 20);
             this.tbNipKlienta.TabIndex = 22;
@@ -203,9 +213,11 @@
             // tbNrFaktury
             // 
             this.tbNrFaktury.Location = new System.Drawing.Point(122, 27);
+            this.tbNrFaktury.MaxLength = 4;
             this.tbNrFaktury.Name = "tbNrFaktury";
             this.tbNrFaktury.Size = new System.Drawing.Size(276, 20);
             this.tbNrFaktury.TabIndex = 20;
+            this.tbNrFaktury.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNrFaktury_KeyPress);
             // 
             // lbNrFaktury
             // 
@@ -229,70 +241,80 @@
             // tbTerminZaplaty
             // 
             this.tbTerminZaplaty.Location = new System.Drawing.Point(552, 105);
+            this.tbTerminZaplaty.MaxLength = 2;
             this.tbTerminZaplaty.Name = "tbTerminZaplaty";
             this.tbTerminZaplaty.Size = new System.Drawing.Size(262, 20);
             this.tbTerminZaplaty.TabIndex = 33;
             this.tbTerminZaplaty.Visible = false;
+            this.tbTerminZaplaty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminZaplaty_KeyPress);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDPOZYCJIDataGridViewTextBoxColumn,
-            this.nUMERFAKTURYDataGridViewTextBoxColumn,
-            this.iDUSLUGIDataGridViewTextBoxColumn,
-            this.iDVATDataGridViewTextBoxColumn,
-            this.iLOSCDataGridViewTextBoxColumn,
-            this.wARTOSCNETTODataGridViewTextBoxColumn,
-            this.wARTOSCVATDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.pOZYCJAFAKTURYBindingSource;
+            this.lp,
+            this.usluga,
+            this.jm,
+            this.ilosc,
+            this.cenaJednostkowa,
+            this.netto,
+            this.procentVat,
+            this.wartoscVat,
+            this.wartoscBrutto});
             this.dataGridView1.Location = new System.Drawing.Point(14, 170);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 210);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 220);
             this.dataGridView1.TabIndex = 35;
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             // 
-            // iDPOZYCJIDataGridViewTextBoxColumn
+            // lp
             // 
-            this.iDPOZYCJIDataGridViewTextBoxColumn.DataPropertyName = "ID_POZYCJI";
-            this.iDPOZYCJIDataGridViewTextBoxColumn.HeaderText = "ID_POZYCJI";
-            this.iDPOZYCJIDataGridViewTextBoxColumn.Name = "iDPOZYCJIDataGridViewTextBoxColumn";
+            this.lp.HeaderText = "Lp.";
+            this.lp.Name = "lp";
             // 
-            // nUMERFAKTURYDataGridViewTextBoxColumn
+            // usluga
             // 
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.DataPropertyName = "NUMER_FAKTURY";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.HeaderText = "NUMER_FAKTURY";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.Name = "nUMERFAKTURYDataGridViewTextBoxColumn";
+            this.usluga.HeaderText = "Usługa";
+            this.usluga.Name = "usluga";
+            this.usluga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.usluga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // iDUSLUGIDataGridViewTextBoxColumn
+            // jm
             // 
-            this.iDUSLUGIDataGridViewTextBoxColumn.DataPropertyName = "ID_USLUGI";
-            this.iDUSLUGIDataGridViewTextBoxColumn.HeaderText = "ID_USLUGI";
-            this.iDUSLUGIDataGridViewTextBoxColumn.Name = "iDUSLUGIDataGridViewTextBoxColumn";
+            this.jm.HeaderText = "j.m.";
+            this.jm.Name = "jm";
             // 
-            // iDVATDataGridViewTextBoxColumn
+            // ilosc
             // 
-            this.iDVATDataGridViewTextBoxColumn.DataPropertyName = "ID_VAT";
-            this.iDVATDataGridViewTextBoxColumn.HeaderText = "ID_VAT";
-            this.iDVATDataGridViewTextBoxColumn.Name = "iDVATDataGridViewTextBoxColumn";
+            this.ilosc.HeaderText = "Ilość";
+            this.ilosc.Name = "ilosc";
             // 
-            // iLOSCDataGridViewTextBoxColumn
+            // cenaJednostkowa
             // 
-            this.iLOSCDataGridViewTextBoxColumn.DataPropertyName = "ILOSC";
-            this.iLOSCDataGridViewTextBoxColumn.HeaderText = "ILOSC";
-            this.iLOSCDataGridViewTextBoxColumn.Name = "iLOSCDataGridViewTextBoxColumn";
+            this.cenaJednostkowa.HeaderText = "Cena jednostkowa";
+            this.cenaJednostkowa.Name = "cenaJednostkowa";
             // 
-            // wARTOSCNETTODataGridViewTextBoxColumn
+            // netto
             // 
-            this.wARTOSCNETTODataGridViewTextBoxColumn.DataPropertyName = "WARTOSC_NETTO";
-            this.wARTOSCNETTODataGridViewTextBoxColumn.HeaderText = "WARTOSC_NETTO";
-            this.wARTOSCNETTODataGridViewTextBoxColumn.Name = "wARTOSCNETTODataGridViewTextBoxColumn";
+            this.netto.HeaderText = "Wartość Netto";
+            this.netto.Name = "netto";
             // 
-            // wARTOSCVATDataGridViewTextBoxColumn
+            // procentVat
             // 
-            this.wARTOSCVATDataGridViewTextBoxColumn.DataPropertyName = "WARTOSC_VAT";
-            this.wARTOSCVATDataGridViewTextBoxColumn.HeaderText = "WARTOSC_VAT";
-            this.wARTOSCVATDataGridViewTextBoxColumn.Name = "wARTOSCVATDataGridViewTextBoxColumn";
+            this.procentVat.HeaderText = "%VAT";
+            this.procentVat.Name = "procentVat";
+            // 
+            // wartoscVat
+            // 
+            this.wartoscVat.HeaderText = "Wartość VAT";
+            this.wartoscVat.Name = "wartoscVat";
+            // 
+            // wartoscBrutto
+            // 
+            this.wartoscBrutto.HeaderText = "Wartość Brutto";
+            this.wartoscBrutto.Name = "wartoscBrutto";
             // 
             // pOZYCJAFAKTURYBindingSource
             // 
@@ -387,7 +409,6 @@
             this.cbUzytkownik.Size = new System.Drawing.Size(319, 21);
             this.cbUzytkownik.TabIndex = 43;
             this.cbUzytkownik.Tag = "";
-            this.cbUzytkownik.SelectedIndexChanged += new System.EventHandler(this.cbUzytkownik_SelectedIndexChanged);
             // 
             // uZYTKOWNIKBindingSource
             // 
@@ -397,6 +418,15 @@
             // uZYTKOWNIKTableAdapter
             // 
             this.uZYTKOWNIKTableAdapter.ClearBeforeFill = true;
+            // 
+            // uSLUGABindingSource
+            // 
+            this.uSLUGABindingSource.DataMember = "USLUGA";
+            this.uSLUGABindingSource.DataSource = this.bDdataSet;
+            // 
+            // uSLUGATableAdapter
+            // 
+            this.uSLUGATableAdapter.ClearBeforeFill = true;
             // 
             // FormNowaFaktura
             // 
@@ -429,6 +459,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNowaFaktura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nowa Faktura";
             this.Load += new System.EventHandler(this.FormNowaFaktura_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -438,6 +469,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,13 +502,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pOZYCJAFAKTURYBindingSource;
         private BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter pOZYCJA_FAKTURYTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDPOZYCJIDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nUMERFAKTURYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDUSLUGIDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDVATDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iLOSCDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCNETTODataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wARTOSCVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.ComboBox cbKlient;
         private System.Windows.Forms.Label lbKlient;
         private System.Windows.Forms.ComboBox cbSposobZaplaty;
@@ -487,5 +512,16 @@
         private System.Windows.Forms.ComboBox cbUzytkownik;
         private System.Windows.Forms.BindingSource uZYTKOWNIKBindingSource;
         private BDDataSetTableAdapters.UZYTKOWNIKTableAdapter uZYTKOWNIKTableAdapter;
+        private System.Windows.Forms.BindingSource uSLUGABindingSource;
+        private BDDataSetTableAdapters.USLUGATableAdapter uSLUGATableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lp;
+        private System.Windows.Forms.DataGridViewComboBoxColumn usluga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ilosc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cenaJednostkowa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn netto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn procentVat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wartoscVat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wartoscBrutto;
     }
 }

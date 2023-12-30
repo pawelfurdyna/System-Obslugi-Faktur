@@ -50,6 +50,7 @@
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(104, 142);
+            this.tbEmail.MaxLength = 255;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(100, 20);
             this.tbEmail.TabIndex = 23;
@@ -66,6 +67,7 @@
             // tbNumerTelefonu
             // 
             this.tbNumerTelefonu.Location = new System.Drawing.Point(104, 116);
+            this.tbNumerTelefonu.MaxLength = 20;
             this.tbNumerTelefonu.Name = "tbNumerTelefonu";
             this.tbNumerTelefonu.Size = new System.Drawing.Size(100, 20);
             this.tbNumerTelefonu.TabIndex = 21;
@@ -82,6 +84,7 @@
             // tbNip
             // 
             this.tbNip.Location = new System.Drawing.Point(104, 90);
+            this.tbNip.MaxLength = 11;
             this.tbNip.Name = "tbNip";
             this.tbNip.Size = new System.Drawing.Size(100, 20);
             this.tbNip.TabIndex = 19;
@@ -98,6 +101,7 @@
             // tbAdres
             // 
             this.tbAdres.Location = new System.Drawing.Point(104, 64);
+            this.tbAdres.MaxLength = 255;
             this.tbAdres.Name = "tbAdres";
             this.tbAdres.Size = new System.Drawing.Size(100, 20);
             this.tbAdres.TabIndex = 17;
@@ -114,6 +118,7 @@
             // tbNazwa
             // 
             this.tbNazwa.Location = new System.Drawing.Point(104, 38);
+            this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
             this.tbNazwa.TabIndex = 15;
@@ -130,9 +135,11 @@
             // tbIdKlienta
             // 
             this.tbIdKlienta.Location = new System.Drawing.Point(104, 12);
+            this.tbIdKlienta.MaxLength = 4;
             this.tbIdKlienta.Name = "tbIdKlienta";
             this.tbIdKlienta.Size = new System.Drawing.Size(100, 20);
             this.tbIdKlienta.TabIndex = 13;
+            this.tbIdKlienta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdKlienta_KeyPress);
             // 
             // lbIdKlienta
             // 
@@ -146,9 +153,11 @@
             // tbTerminPlatnosci
             // 
             this.tbTerminPlatnosci.Location = new System.Drawing.Point(104, 168);
+            this.tbTerminPlatnosci.MaxLength = 2;
             this.tbTerminPlatnosci.Name = "tbTerminPlatnosci";
             this.tbTerminPlatnosci.Size = new System.Drawing.Size(100, 20);
             this.tbTerminPlatnosci.TabIndex = 25;
+            this.tbTerminPlatnosci.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminPlatnosci_KeyPress);
             // 
             // lbTerminPlatnosci
             // 

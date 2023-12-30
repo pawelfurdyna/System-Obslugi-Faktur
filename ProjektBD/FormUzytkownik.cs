@@ -17,13 +17,13 @@ namespace ProjektBD
     {
         private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "UZYTKOWNIK";
         string klucz = "ID_UZYTKOWNIKA";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "ID_UZYTKOWNIKA", "IMIE", "NAZWISKO", "ROLA", "LOGIN", "HASLO" };
+        ObslugaBazy ob = new ObslugaBazy();
 
-    public FormUzytkownik(bool edycja = false, string nazwa = "")
+        public FormUzytkownik(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
@@ -57,6 +57,11 @@ namespace ProjektBD
         private void btnAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tbIdUzytkownika_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ob.SprawdzTyp(sender, e);
         }
     }
 }

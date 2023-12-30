@@ -57,13 +57,16 @@
             // tbIdUzytkownika
             // 
             this.tbIdUzytkownika.Location = new System.Drawing.Point(100, 13);
+            this.tbIdUzytkownika.MaxLength = 4;
             this.tbIdUzytkownika.Name = "tbIdUzytkownika";
             this.tbIdUzytkownika.Size = new System.Drawing.Size(100, 20);
             this.tbIdUzytkownika.TabIndex = 1;
+            this.tbIdUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUzytkownika_KeyPress);
             // 
             // tbImie
             // 
             this.tbImie.Location = new System.Drawing.Point(100, 39);
+            this.tbImie.MaxLength = 255;
             this.tbImie.Name = "tbImie";
             this.tbImie.Size = new System.Drawing.Size(100, 20);
             this.tbImie.TabIndex = 3;
@@ -80,6 +83,7 @@
             // tbNazwisko
             // 
             this.tbNazwisko.Location = new System.Drawing.Point(100, 65);
+            this.tbNazwisko.MaxLength = 255;
             this.tbNazwisko.Name = "tbNazwisko";
             this.tbNazwisko.Size = new System.Drawing.Size(100, 20);
             this.tbNazwisko.TabIndex = 5;
@@ -96,6 +100,7 @@
             // tbRola
             // 
             this.tbRola.Location = new System.Drawing.Point(100, 91);
+            this.tbRola.MaxLength = 255;
             this.tbRola.Name = "tbRola";
             this.tbRola.Size = new System.Drawing.Size(100, 20);
             this.tbRola.TabIndex = 7;
@@ -112,6 +117,7 @@
             // tbLogin
             // 
             this.tbLogin.Location = new System.Drawing.Point(100, 117);
+            this.tbLogin.MaxLength = 255;
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(100, 20);
             this.tbLogin.TabIndex = 9;
@@ -128,6 +134,7 @@
             // tbHaslo
             // 
             this.tbHaslo.Location = new System.Drawing.Point(100, 143);
+            this.tbHaslo.MaxLength = 255;
             this.tbHaslo.Name = "tbHaslo";
             this.tbHaslo.Size = new System.Drawing.Size(100, 20);
             this.tbHaslo.TabIndex = 11;
