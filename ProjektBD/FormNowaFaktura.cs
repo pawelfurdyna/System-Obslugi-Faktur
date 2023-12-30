@@ -120,7 +120,7 @@ namespace ProjektBD
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         #region Zdarzenia do sprawdzania typów pól numerycznych

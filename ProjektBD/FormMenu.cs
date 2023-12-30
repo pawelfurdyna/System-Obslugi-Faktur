@@ -121,5 +121,9 @@ namespace ProjektBD
         {
             this.Close();
         }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing) { Application.Exit(); }
+        }
     }
 }
