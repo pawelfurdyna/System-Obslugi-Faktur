@@ -38,17 +38,32 @@ namespace ProjektBD
             ObslugaBazy ob = new ObslugaBazy();
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
 
-            //wygeneroiwać numer faktury 1/2023
-            //data wystawienia /wykonania na dzien dzisiejszy  01-01-2023
+
+
+            string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false);
+            if (int.TryParse(temp, out int number))
+            {
+                number++;
+                tbNrFaktury.Text = number.ToString();
+                tbNrFaktury.Enabled = false;
+            }
+            else
+            {
+                tbNrFaktury.Enabled = true;
+            }
+
+
+
+            tbDataWystawienia.Text = DateTime.Today.ToString("dd-MM-yyyy");
+            tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("dd-MM-yyyy");
+            tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
             //sporzadził ma sie wypełniać z uzytkownika
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //nazwa klienta odczytać id 
-            //po id zapytać o adres, nip i termin zapłaty
-            //ze zwróconych danych wypełnić pola.
-            
+            string temp = ob.Select("KLIENT", "ID_KLIENTA", "NAZWA", cbKlient.Text);
+            ob.WypelnijTextBoxZEncji("KLIENT", "ID_KLIENTA", temp, new System.Windows.Forms.TextBox[] { tbAdresKlienta, tbNipKlienta, tbTerminZaplaty }, new string[] { "ADRES", "NIP", "TERMIN_PLATNOSCI" });
         }
 
         private void cbSposobZaplaty_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,19 +112,17 @@ namespace ProjektBD
 
         private void tbDataWystawienia_Validating(object sender, CancelEventArgs e)
         {
-            DateTime parsedDate;
-
-            // Check if the entered date is in the correct format and is a valid date
-            if (!DateTime.TryParseExact(tbDataWystawienia.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
-            {
-                MessageBox.Show("Invalid date format. Please enter the date in DD-MM-YYYY format.");
-                e.Cancel = true; // Prevent focus from shifting away from the TextBox
-            }
+            ob.WalidacjaDaty(sender, e);
         }
 
-        private void tbDataWystawienia_TextChanged(object sender, EventArgs e)
+        private void tbDataWykonaniaUslugi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            ob.FormatowanieDaty(sender, e);
+        }
+
+        private void tbDataWykonaniaUslugi_Validating(object sender, CancelEventArgs e)
+        {
+            ob.WalidacjaDaty(sender, e);
         }
     }
 }

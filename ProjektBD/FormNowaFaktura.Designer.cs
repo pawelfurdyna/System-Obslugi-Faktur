@@ -176,6 +176,8 @@
             this.tbDataWykonaniaUslugi.Name = "tbDataWykonaniaUslugi";
             this.tbDataWykonaniaUslugi.Size = new System.Drawing.Size(262, 20);
             this.tbDataWykonaniaUslugi.TabIndex = 24;
+            this.tbDataWykonaniaUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWykonaniaUslugi_KeyPress);
+            this.tbDataWykonaniaUslugi.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWykonaniaUslugi_Validating);
             // 
             // tbDataWystawienia
             // 
@@ -183,7 +185,6 @@
             this.tbDataWystawienia.Name = "tbDataWystawienia";
             this.tbDataWystawienia.Size = new System.Drawing.Size(262, 20);
             this.tbDataWystawienia.TabIndex = 23;
-            this.tbDataWystawienia.TextChanged += new System.EventHandler(this.tbDataWystawienia_TextChanged);
             this.tbDataWystawienia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWystawienia_KeyPress);
             this.tbDataWystawienia.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWystawienia_Validating);
             // 

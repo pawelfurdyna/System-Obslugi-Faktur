@@ -3,7 +3,9 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -319,6 +321,21 @@ namespace ProjektBD
                 textBox.Text = textBox.Text.Insert(caretPosition, e.KeyChar + "-");
                 e.Handled = true;
                 textBox.SelectionStart = caretPosition + 2; // Move the caret after the new hyphen
+            }
+        }
+        #endregion
+
+        #region WalidacjaDaty
+        public void WalidacjaDaty(object sender, CancelEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            DateTime parsedDate;
+
+            // Check if the entered date is in the correct format and is a valid date
+            if (!DateTime.TryParseExact(textBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                MessageBox.Show("Zły format daty. Proszę wprowadzić datę w formacie DD-MM-YYYY.");
+                e.Cancel = true; // Prevent focus from shifting away from the TextBox
             }
         }
         #endregion
