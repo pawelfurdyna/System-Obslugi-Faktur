@@ -22,36 +22,37 @@ namespace ProjektBD
             this.connectionString = ConfigurationManager.ConnectionStrings["ProjektBD.Properties.Settings.ConnectionString"].ConnectionString;
             this.conn = new OracleConnection(connectionString);
         }
+
         #region WypelnijTextBox
         public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
         {
             for (int i = 0; i < atrybuty.Length; i++)
             {
-                using (OracleCommand cmd = new OracleCommand($"SELECT {atrybuty[i]} FROM {encja} WHERE {klucz} = '{nazwa}'", this.conn))
+                OracleCommand cmd = new OracleCommand($"SELECT {atrybuty[i]} FROM {encja} WHERE {klucz} = '{nazwa}'", this.conn);
+                try
                 {
-                    try
+                    this.conn.Open();
+                    OracleDataReader rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
                     {
-                        this.conn.Open();
-                        OracleDataReader rdr = cmd.ExecuteReader();
-                        if (rdr.Read())
-                        {
-                            string temp = rdr[atrybuty[i]].ToString();
-                            tb[i].Text = temp;
-                        }
-                        this.conn.Close();
+                        string temp = rdr[atrybuty[i]].ToString();
+                        tb[i].Text = temp;
                     }
-                    catch (OracleException ex)
-                    {
-                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        conn.Close();
-                    }
+                }
+                catch (OracleException ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    this.conn.Close();
                 }
             }
         }
         #endregion
 
         #region WypelnijTextBox
-        public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty )
+        public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
             OracleCommand cmd = new OracleCommand($"SELECT {formattedStringAtrybuty} FROM {encja}", this.conn);
@@ -92,33 +93,30 @@ namespace ProjektBD
             switch (dr)
             {
                 case DialogResult.Yes:
-                    using (this.conn)
+                    OracleCommand cmd = new OracleCommand($"DELETE FROM {encja} WHERE {klucz}='{nazwa}'", this.conn);
+                    try
                     {
-                        try
+                        this.conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected != 0)
                         {
-                            this.conn.Open();
-                            using (OracleCommand cmd = new OracleCommand($"DELETE FROM {encja} WHERE {klucz}='{nazwa}'", this.conn))
+                            if (rowsAffected == 1)
                             {
-                                int rowsAffected = cmd.ExecuteNonQuery();
-                                if (rowsAffected != 0)
-                                {
-                                    if (rowsAffected == 1)
-                                    {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                }
+                                MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            this.conn.Close();
+                            else
+                            {
+                                MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
-                        catch (OracleException ex)
-                        {
-                            MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            this.conn.Close();
-                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        this.conn.Close();
                     }
                     break;
                 case DialogResult.No:
@@ -142,35 +140,30 @@ namespace ProjektBD
             }
             string query = $"INSERT INTO {encja} ({formattedStringAtrybuty}) VALUES ('{formattedStringTb}')";
 
-            using (this.conn)
+            OracleCommand cmd = new OracleCommand(query, this.conn);
+            try
             {
-                try
+                this.conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected != 0)
                 {
-                    this.conn.Open();
-
-                    using (OracleCommand cmd = new OracleCommand(query, this.conn))
+                    if (rowsAffected == 1)
                     {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie dodano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie dodano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        this.conn.Close();
+                        MessageBox.Show($"Poprawnie dodano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Poprawnie dodano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (OracleException ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.conn.Close();
-                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.conn.Close();
             }
         }
         #endregion
@@ -189,35 +182,30 @@ namespace ProjektBD
             }
             string query = $"UPDATE {encja} SET {formattedString} WHERE {klucz}='{nazwa}'";
 
-            using (this.conn)
+            OracleCommand cmd = new OracleCommand(query, this.conn);
+            try
             {
-                try
+                this.conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected != 0)
                 {
-                    this.conn.Open();
-
-                    using (OracleCommand cmd = new OracleCommand(query, this.conn))
+                    if (rowsAffected == 1)
                     {
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        this.conn.Close();
+                        MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (OracleException ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.conn.Close();
-                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.conn.Close();
             }
         }
         #endregion
@@ -235,7 +223,7 @@ namespace ProjektBD
             {
                 query = $"SELECT {atrybut} FROM {encja}";
             }
-            
+
             OracleCommand cmd = new OracleCommand(query, this.conn);
             try
             {
@@ -252,9 +240,9 @@ namespace ProjektBD
                 MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return temp;
             }
-            finally 
-            { 
-                this.conn.Close(); 
+            finally
+            {
+                this.conn.Close();
             }
 
         }

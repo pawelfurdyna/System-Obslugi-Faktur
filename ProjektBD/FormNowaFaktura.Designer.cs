@@ -429,6 +429,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNowaFaktura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nowa Faktura";
             this.Load += new System.EventHandler(this.FormNowaFaktura_Load);
             this.menuStrip1.ResumeLayout(false);

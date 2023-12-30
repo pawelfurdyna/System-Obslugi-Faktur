@@ -16,13 +16,13 @@ namespace ProjektBD
     {
         private bool edycja;
         private string nazwa;
-        ObslugaBazy ob = new ObslugaBazy();
         string encja = "KLIENT";
         string klucz = "ID_KLIENTA";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "ID_KLIENTA", "NAZWA", "ADRES", "NIP", "NUMER_TELEFONU", "EMAIL", "TERMIN_PLATNOSCI" };
+        ObslugaBazy ob = new ObslugaBazy();
 
-    public FormKlient(bool edycja = false, string nazwa = "")
+        public FormKlient(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;

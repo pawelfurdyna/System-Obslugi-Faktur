@@ -20,6 +20,7 @@ namespace ProjektBD
         string klucz = "NAZWA_FIRMY";
         TextBox[] tb = new TextBox[] { };
         string[] atrybuty = { "NAZWA_FIRMY", "NIP", "ULICA", "KOD_POCZTOWY", "MIEJSCOWOSC", "KONTO_BANKOWE", "TELEFON_FIRMOWY" };
+        ObslugaBazy ob = new ObslugaBazy();
 
         public FormFirma(bool nowy = false, string nazwa = "")
         {
@@ -56,13 +57,12 @@ namespace ProjektBD
 
         private void FormFirma_Load(object sender, EventArgs e)
         {
-            ObslugaBazy ob = new ObslugaBazy();
+            
             ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            ObslugaBazy ob = new ObslugaBazy();
             if (this.btnEdytuj.Text == "Edytuj")
             {
                 this.lbKodPocztowy.Enabled = true;
@@ -111,7 +111,6 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            ObslugaBazy ob = new ObslugaBazy();
             if (nowy)
             {
                 ob.DodajRekord(encja, tb, atrybuty);
