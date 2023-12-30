@@ -12,6 +12,7 @@ namespace ProjektBD
 {
     public partial class SystemObslugiFaktur : Form
     {
+        ObslugaBazy ob = new ObslugaBazy();
         public SystemObslugiFaktur()
         {
             InitializeComponent();
@@ -19,9 +20,23 @@ namespace ProjektBD
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            string zmienna = "Użytkownik: ";
+            string zmienna = "Użytkownik: " + FormLogowanie.obecnyUzytkownik;
             lbUzytkownik.Text = zmienna;
             zegar.Start();
+            ObslugaBazy ob = new ObslugaBazy();
+            if (ob.Select("FIRMA","NAZWA_FIRMY","","",false) == "")
+            {
+                if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
+                {
+                    Form firma = new FormFirma(true);
+                    firma.ShowDialog();
+                }
+            }
+            ob = new ObslugaBazy();
+            if (ob.Select("FIRMA", "NAZWA_FIRMY", "", "", false) == "")
+            {
+                Application.Exit();
+            }
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -31,8 +46,11 @@ namespace ProjektBD
 
         private void btnNowaFaktura_Click(object sender, EventArgs e)
         {
-            string user = "Pawel";
-            lbUzytkownik.Text = "Użytkownik: " + user;
+            if ((Application.OpenForms["FormNowaFaktura"] as FormNowaFaktura) == null)
+            {
+                Form nowaFaktura = new FormNowaFaktura();
+                nowaFaktura.ShowDialog();
+            }
         }
 
         private void btnHistoriaFaktur_Click(object sender, EventArgs e)
@@ -74,7 +92,7 @@ namespace ProjektBD
         {
             if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
             {
-                Form firma = new FormFirma();
+                Form firma = new FormFirma(false, ob.Select("FIRMA", "NAZWA_FIRMY", "", "", false));
                 firma.ShowDialog();
             }
         }
@@ -102,6 +120,16 @@ namespace ProjektBD
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing) { Application.Exit(); }
+        }
+
+        private void btWyloguj_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+            Environment.Exit(0);
         }
     }
 }

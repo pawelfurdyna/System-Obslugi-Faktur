@@ -75,6 +75,18 @@
     <Compile Include="FormHistoriaFakturLista.Designer.cs">
       <DependentUpon>FormHistoriaFakturLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormKlient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKlient.Designer.cs">
+      <DependentUpon>FormKlient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogowanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogowanie.Designer.cs">
+      <DependentUpon>FormLogowanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </Compile>
     <Compile Include="FormKlientLista.Designer.cs">
       <DependentUpon>FormKlientLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNowaFaktura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNowaFaktura.Designer.cs">
+      <DependentUpon>FormNowaFaktura.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStawka.cs">
       <SubType>Form</SubType>
@@ -99,6 +117,12 @@
     <Compile Include="FormStawkiVatLista.Designer.cs">
       <DependentUpon>FormStawkiVatLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUsluga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsluga.Designer.cs">
+      <DependentUpon>FormUsluga.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUslugiLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +135,14 @@
     <Compile Include="FormUzytkownicyLista.Designer.cs">
       <DependentUpon>FormUzytkownicyLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUzytkownik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUzytkownik.Designer.cs">
+      <DependentUpon>FormUzytkownik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObslugaBazy.cs" />
+    <Compile Include="PozycjaFaktury.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormFirma.resx">
@@ -119,11 +151,20 @@
     <EmbeddedResource Include="FormHistoriaFakturLista.resx">
       <DependentUpon>FormHistoriaFakturLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormKlient.resx">
+      <DependentUpon>FormKlient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogowanie.resx">
+      <DependentUpon>FormLogowanie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlientLista.resx">
       <DependentUpon>FormKlientLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNowaFaktura.resx">
+      <DependentUpon>FormNowaFaktura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStawka.resx">
       <DependentUpon>FormStawka.cs</DependentUpon>
@@ -131,11 +172,17 @@
     <EmbeddedResource Include="FormStawkiVatLista.resx">
       <DependentUpon>FormStawkiVatLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUsluga.resx">
+      <DependentUpon>FormUsluga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormUslugiLista.resx">
       <DependentUpon>FormUslugiLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUzytkownicyLista.resx">
       <DependentUpon>FormUzytkownicyLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUzytkownik.resx">
+      <DependentUpon>FormUzytkownik.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

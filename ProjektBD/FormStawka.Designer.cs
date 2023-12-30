@@ -49,6 +49,7 @@
             // tbNazwa
             // 
             this.tbNazwa.Location = new System.Drawing.Point(95, 6);
+            this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
             this.tbNazwa.TabIndex = 1;
@@ -56,9 +57,11 @@
             // tbProcentVAT
             // 
             this.tbProcentVAT.Location = new System.Drawing.Point(95, 32);
+            this.tbProcentVAT.MaxLength = 4;
             this.tbProcentVAT.Name = "tbProcentVAT";
             this.tbProcentVAT.Size = new System.Drawing.Size(100, 20);
             this.tbProcentVAT.TabIndex = 3;
+            this.tbProcentVAT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProcentVAT_KeyPress);
             // 
             // lbProcentVAT
             // 
@@ -81,6 +84,7 @@
             // 
             // btnAnuluj
             // 
+            this.btnAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnuluj.Location = new System.Drawing.Point(117, 63);
             this.btnAnuluj.Name = "btnAnuluj";
             this.btnAnuluj.Size = new System.Drawing.Size(75, 23);
@@ -91,8 +95,10 @@
             // 
             // FormStawkaVAT
             // 
+            this.AcceptButton = this.btnZapisz;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnAnuluj;
             this.ClientSize = new System.Drawing.Size(204, 98);
             this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.btnZapisz);
@@ -106,6 +112,7 @@
             this.Name = "FormStawkaVAT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stawka VAT";
+            this.Load += new System.EventHandler(this.FormStawkaVAT_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

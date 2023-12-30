@@ -28,5 +28,10 @@ namespace ProjektBD
         {
             this.Close();
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

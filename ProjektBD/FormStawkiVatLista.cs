@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,9 +14,19 @@ namespace ProjektBD
 {
     public partial class FormStawkiVatLista : Form
     {
+        internal static string encja = "STAWKA_VAT";
+        internal static string klucz = "ID_VAT";
+        ObslugaBazy ob = new ObslugaBazy();
+
         public FormStawkiVatLista()
         {
             InitializeComponent();
+            this.Activated += new EventHandler(FormStawkiVatLista_Activated);
+        }
+        private void FormStawkiVatLista_Activated(object sender, EventArgs e)
+        {
+            // Refresh data when the form becomes active
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
         }
 
         private void FormStawkiVatLista_Load(object sender, EventArgs e)
@@ -33,23 +45,33 @@ namespace ProjektBD
             if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
             {
                 Form stawkaVat = new FormStawkaVAT();
-                stawkaVat.Show();
+                stawkaVat.Text = "Dodaj";
+                stawkaVat.ShowDialog();
             }
         }
 
         private void btnEdytuj_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
+            int wiersz = dataGridView1.CurrentRow.Index;
+            int kolumna = dataGridView1.Columns.IndexOf(iDVATDataGridViewTextBoxColumn);
+            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
             if ((Application.OpenForms["FormStawkaVAT"] as FormStawkaVAT) == null)
             {
-                Form stawkaVat = new FormStawkaVAT();
-                stawkaVat.Show();
+                Form stawkaVat = new FormStawkaVAT(true, nazwa);
+                stawkaVat.ShowDialog();
             }
         }
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-
+            int wiersz = dataGridView1.CurrentRow.Index;
+            int kolumna = dataGridView1.Columns.IndexOf(iDVATDataGridViewTextBoxColumn);
+            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
+            ob.UsunRekord(encja, klucz, nazwa);
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

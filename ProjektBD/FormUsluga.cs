@@ -1,44 +1,41 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using System.Configuration;
-
-
 
 namespace ProjektBD
 {
-    public partial class FormStawkaVAT : Form
+    public partial class FormUsluga : Form
     {
         private bool edycja;
         private string nazwa;
-        string encja = "STAWKA_VAT";
-        string klucz = "ID_VAT";
+        string encja = "USLUGA";
+        string klucz = "ID_USLUGI";
         TextBox[] tb = new TextBox[] { };
-        string[] atrybuty = { "ID_VAT", "PROCENT_VAT" };
+        string[] atrybuty = { "ID_USLUGI", "NAZWA", "CENA_JEDNOSTKOWA", "JEDNOSTKA_MIARY" };
         ObslugaBazy ob = new ObslugaBazy();
 
-
-        public FormStawkaVAT(bool edycja = false, string nazwa = "")
+        public FormUsluga(bool edycja = false, string nazwa = "")
         {
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            tb = new TextBox[] { tbNazwa, tbProcentVAT };
-            this.Load += FormStawkaVAT_Load;
+            tb = new TextBox[] { tbIdUslugi, tbNazwa, tbCenaJednostkowa, tbJednostkaMiary };
+            this.Load += FormUsluga_Load;
         }
 
-        private void FormStawkaVAT_Load(object sender, EventArgs e)
+        private void FormUsluga_Load(object sender, EventArgs e)
         {
             if (edycja)
             {
-                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb , atrybuty);
+                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
             }
         }
 
@@ -61,7 +58,12 @@ namespace ProjektBD
             this.Close();
         }
 
-        private void tbProcentVAT_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbCenaJednostkowa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           ob.SprawdzTyp(sender, e, true);
+        }
+
+        private void tbIdUslugi_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.SprawdzTyp(sender, e);
         }
