@@ -29,42 +29,50 @@ namespace ProjektBD
 
         private void FormNowaFaktura_Load(object sender, EventArgs e)
         {
+            #region Adaptery
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.USLUGA' . Możesz go przenieść lub usunąć.
             this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
             this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.POZYCJA_FAKTURY' . Możesz go przenieść lub usunąć.
             this.pOZYCJA_FAKTURYTableAdapter.Fill(this.bDdataSet.POZYCJA_FAKTURY);
+            #endregion
+
             cbKlient.SelectedItem = null;
-            cbUzytkownik.SelectedItem = null;
-            ObslugaBazy ob = new ObslugaBazy();
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
+            cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
 
-            #region DataGrid
-            // Remove the existing 'usluga' column
+            #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
-
-            // Create a new DataGridViewComboBoxColumn
             DataGridViewComboBoxColumn uslugaColumn = new DataGridViewComboBoxColumn
             {
                 Name = "usluga",
                 HeaderText = "Usługa",
                 DataSource = uSLUGABindingSource,
-                DataPropertyName = "NAZWA", // Bind this column to the 'NAZWA' property
+                DataPropertyName = "NAZWA",
                 DisplayMember = "NAZWA",
                 ValueMember = "NAZWA",
                 AutoComplete = true
             };
+            dataGridView1.Columns.Insert(0, uslugaColumn);
 
-            // Add the new column to the DataGridView
-            dataGridView1.Columns.Insert(1, uslugaColumn);
-
-
-
-
-
+            dataGridView1.Columns.Remove("procentVat");
+            DataGridViewComboBoxColumn procentVat = new DataGridViewComboBoxColumn
+            {
+                Name = "procentVat",
+                HeaderText = "%VAT",
+                DataSource = sTAWKAVATBindingSource,
+                DataPropertyName = "ID_VAT",
+                DisplayMember = "ID_VAT",
+                ValueMember = "ID_VAT",
+                AutoComplete = true
+            };
+            dataGridView1.Columns.Insert(5, procentVat);
             #endregion
 
+            #region Wpisanie kolejnego numeru faktury
             string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false);
             if (int.TryParse(temp, out int number))
             {
@@ -76,10 +84,13 @@ namespace ProjektBD
             {
                 tbNrFaktury.Enabled = true;
             }
+            #endregion
 
+            #region Wypełnienie domyślnymi wartościami dat i miejsca
             tbDataWystawienia.Text = DateTime.Today.ToString("dd-MM-yyyy");
             tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("dd-MM-yyyy");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
+            #endregion
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,14 +115,14 @@ namespace ProjektBD
 
         private void btZapisz_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        #region Zdarzenia do sprawdzania typów pól numerycznych
         private void tbNrFaktury_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.SprawdzTyp(sender, e);
@@ -121,7 +132,9 @@ namespace ProjektBD
         {
             ob.SprawdzTyp(sender, e);
         }
+        #endregion
 
+        #region Zdarzenia do pól dat
         private void tbDataWystawienia_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.FormatowanieDaty(sender, e);
@@ -141,26 +154,61 @@ namespace ProjektBD
         {
             ob.WalidacjaDaty(sender, e);
         }
+        #endregion
 
+        #region Zdarzenia do obsługi DataGridView
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e != null && e.RowIndex >= 0)
             {
-                var uslugaCell = dataGridView1.CurrentCell as DataGridViewComboBoxCell;
-                var currentRowIndex = dataGridView1.CurrentCell.RowIndex;
-                var jmCell = dataGridView1.Rows[currentRowIndex].Cells["jm"];
-                var cenaJednostkowaCell = dataGridView1.Rows[currentRowIndex].Cells["cenaJednostkowa"];
-
-                if (uslugaCell != null && uslugaCell.Value != null && jmCell != null && cenaJednostkowaCell != null)
+                if (e.ColumnIndex == dataGridView1.Columns["usluga"]?.Index)
                 {
-                    string selectedUsluga = uslugaCell.Value.ToString();
+                    var uslugaCell = dataGridView1.Rows[e.RowIndex].Cells["usluga"] as DataGridViewComboBoxCell;
+                    var jmCell = dataGridView1.Rows[e.RowIndex].Cells["jm"];
+                    var cenaJednostkowaCell = dataGridView1.Rows[e.RowIndex].Cells["cenaJednostkowa"];
 
-                    string jmValue = ob.Select("USLUGA", "JEDNOSTKA_MIARY", "NAZWA", selectedUsluga);
-                    string cenaJednostkowaValue = ob.Select("USLUGA", "CENA_JEDNOSTKOWA", "NAZWA", selectedUsluga);
-                    // Update the cells
-                    jmCell.Value = jmValue;
-                    cenaJednostkowaCell.Value = cenaJednostkowaValue;
+                    if (uslugaCell != null && uslugaCell.Value != null && jmCell != null && cenaJednostkowaCell != null)
+                    {
+                        string selectedUsluga = uslugaCell.Value.ToString();
 
+                        string jmValue = ob.Select("USLUGA", "JEDNOSTKA_MIARY", "NAZWA", selectedUsluga);
+                        string cenaJednostkowaValue = ob.Select("USLUGA", "CENA_JEDNOSTKOWA", "NAZWA", selectedUsluga);
+
+                        jmCell.Value = jmValue;
+                        cenaJednostkowaCell.Value = cenaJednostkowaValue;
+                    }
+                }
+                if (e.ColumnIndex == dataGridView1.Columns["ilosc"]?.Index || e.ColumnIndex == dataGridView1.Columns["usluga"]?.Index)
+                {
+                    var iloscCell = dataGridView1.Rows[e.RowIndex].Cells["ilosc"];
+                    var cenaJednostkowaCell = dataGridView1.Rows[e.RowIndex].Cells["cenaJednostkowa"];
+                    var resultCell = dataGridView1.Rows[e.RowIndex].Cells["wartoscNetto"];
+                    if (iloscCell != null && cenaJednostkowaCell != null)
+                    {
+                        float.TryParse(iloscCell.Value?.ToString(), out float iloscValue);
+                        float.TryParse(cenaJednostkowaCell.Value?.ToString(), out float cenaJednostkowaValue);
+                        float result = iloscValue * cenaJednostkowaValue;
+                        resultCell.Value = result;
+                    }
+                }
+                if (e.ColumnIndex == dataGridView1.Columns["procentVat"]?.Index || e.ColumnIndex == dataGridView1.Columns["usluga"]?.Index || e.ColumnIndex == dataGridView1.Columns["ilosc"]?.Index)
+                {
+                    var procentVatCell = dataGridView1.Rows[e.RowIndex].Cells["procentVat"] as DataGridViewComboBoxCell;
+                    if (procentVatCell != null && procentVatCell.Value != null && !string.IsNullOrEmpty(procentVatCell.Value.ToString()))
+                    {
+                        int procentVatCellValue = int.Parse(ob.Select("STAWKA_VAT", "PROCENT_VAT", "ID_VAT", procentVatCell.Value.ToString()));
+                        var wartoscNettoCell = dataGridView1.Rows[e.RowIndex].Cells["wartoscNetto"];
+                        var wartoscVatCell = dataGridView1.Rows[e.RowIndex].Cells["wartoscVat"];
+                        var wartoscBruttoCell = dataGridView1.Rows[e.RowIndex].Cells["wartoscBrutto"];
+
+                        if (wartoscNettoCell != null && wartoscVatCell != null)
+                        {
+                            float.TryParse(wartoscNettoCell.Value?.ToString(), out float wartoscNettoValue);
+                            float wartoscVat = wartoscNettoValue * procentVatCellValue / 100;
+                            wartoscVatCell.Value = wartoscVat;
+                            wartoscBruttoCell.Value = wartoscNettoValue + wartoscVat;
+                        }
+                    }
                 }
             }
         }
@@ -185,5 +233,12 @@ namespace ProjektBD
                 }
             }
         }
+
+        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["ilosc"].Value = "0";
+            e.Row.Cells["cenaJednostkowa"].Value = "0";
+        }
+        #endregion
     }
 }

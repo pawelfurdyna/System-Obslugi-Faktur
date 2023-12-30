@@ -45,6 +45,7 @@
             this.lbData = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.zegar = new System.Windows.Forms.Timer(this.components);
+            this.btWyloguj = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -184,11 +185,22 @@
             // 
             this.zegar.Tick += new System.EventHandler(this.zegar_Tick);
             // 
+            // btWyloguj
+            // 
+            this.btWyloguj.Location = new System.Drawing.Point(497, 27);
+            this.btWyloguj.Name = "btWyloguj";
+            this.btWyloguj.Size = new System.Drawing.Size(75, 22);
+            this.btWyloguj.TabIndex = 11;
+            this.btWyloguj.Text = "Wyloguj";
+            this.btWyloguj.UseVisualStyleBackColor = true;
+            this.btWyloguj.Click += new System.EventHandler(this.btWyloguj_Click);
+            // 
             // SystemObslugiFaktur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 311);
+            this.Controls.Add(this.btWyloguj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnUzytkownicy);
             this.Controls.Add(this.btnFirma);
@@ -233,6 +245,7 @@
         private System.Windows.Forms.Label lbData;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer zegar;
+        private System.Windows.Forms.Button btWyloguj;
     }
 }
 

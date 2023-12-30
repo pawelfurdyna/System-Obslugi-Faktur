@@ -63,7 +63,6 @@
             this.tbHaslo.Size = new System.Drawing.Size(165, 20);
             this.tbHaslo.TabIndex = 2;
             this.tbHaslo.UseSystemPasswordChar = true;
-            this.tbHaslo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbHaslo_KeyDown);
             // 
             // tbLogin
             // 
@@ -71,7 +70,6 @@
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(165, 20);
             this.tbLogin.TabIndex = 1;
-            this.tbLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbLogin_KeyDown);
             // 
             // btZaloguj
             // 
@@ -86,6 +84,7 @@
             // 
             // btAnuluj
             // 
+            this.btAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btAnuluj.Location = new System.Drawing.Point(147, 86);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(75, 23);
@@ -96,8 +95,10 @@
             // 
             // FormLogowanie
             // 
+            this.AcceptButton = this.btZaloguj;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btAnuluj;
             this.ClientSize = new System.Drawing.Size(234, 121);
             this.Controls.Add(this.btAnuluj);
             this.Controls.Add(this.btZaloguj);
@@ -119,6 +120,7 @@
             this.PerformLayout();
 
         }
+        
 
         #endregion
         private System.Windows.Forms.Label label1;
