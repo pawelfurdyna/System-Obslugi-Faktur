@@ -66,6 +66,7 @@
             // 
             this.tbNazwaFirmy.Enabled = false;
             this.tbNazwaFirmy.Location = new System.Drawing.Point(102, 27);
+            this.tbNazwaFirmy.MaxLength = 255;
             this.tbNazwaFirmy.Name = "tbNazwaFirmy";
             this.tbNazwaFirmy.Size = new System.Drawing.Size(296, 20);
             this.tbNazwaFirmy.TabIndex = 1;
@@ -84,6 +85,7 @@
             // 
             this.tbNip.Enabled = false;
             this.tbNip.Location = new System.Drawing.Point(102, 53);
+            this.tbNip.MaxLength = 20;
             this.tbNip.Name = "tbNip";
             this.tbNip.Size = new System.Drawing.Size(296, 20);
             this.tbNip.TabIndex = 3;
@@ -92,6 +94,7 @@
             // 
             this.tbUlica.Enabled = false;
             this.tbUlica.Location = new System.Drawing.Point(102, 131);
+            this.tbUlica.MaxLength = 255;
             this.tbUlica.Name = "tbUlica";
             this.tbUlica.Size = new System.Drawing.Size(296, 20);
             this.tbUlica.TabIndex = 4;
@@ -100,6 +103,7 @@
             // 
             this.tbKodPocztowy.Enabled = false;
             this.tbKodPocztowy.Location = new System.Drawing.Point(102, 157);
+            this.tbKodPocztowy.MaxLength = 10;
             this.tbKodPocztowy.Name = "tbKodPocztowy";
             this.tbKodPocztowy.Size = new System.Drawing.Size(296, 20);
             this.tbKodPocztowy.TabIndex = 5;
@@ -108,6 +112,7 @@
             // 
             this.tbMiejscowosc.Enabled = false;
             this.tbMiejscowosc.Location = new System.Drawing.Point(102, 183);
+            this.tbMiejscowosc.MaxLength = 255;
             this.tbMiejscowosc.Name = "tbMiejscowosc";
             this.tbMiejscowosc.Size = new System.Drawing.Size(296, 20);
             this.tbMiejscowosc.TabIndex = 6;
@@ -116,6 +121,7 @@
             // 
             this.tbKontoBankowe.Enabled = false;
             this.tbKontoBankowe.Location = new System.Drawing.Point(102, 105);
+            this.tbKontoBankowe.MaxLength = 40;
             this.tbKontoBankowe.Name = "tbKontoBankowe";
             this.tbKontoBankowe.Size = new System.Drawing.Size(296, 20);
             this.tbKontoBankowe.TabIndex = 7;
@@ -124,6 +130,7 @@
             // 
             this.tbTelefonFirmowy.Enabled = false;
             this.tbTelefonFirmowy.Location = new System.Drawing.Point(102, 79);
+            this.tbTelefonFirmowy.MaxLength = 25;
             this.tbTelefonFirmowy.Name = "tbTelefonFirmowy";
             this.tbTelefonFirmowy.Size = new System.Drawing.Size(296, 20);
             this.tbTelefonFirmowy.TabIndex = 8;

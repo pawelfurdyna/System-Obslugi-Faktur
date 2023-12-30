@@ -51,7 +51,7 @@ namespace ProjektBD
         }
         #endregion
 
-        #region WypelnijTextBox
+        #region WypelnijComboBox
         public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
