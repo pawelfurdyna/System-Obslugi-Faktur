@@ -129,7 +129,7 @@
             // lbAdresKlienta
             // 
             this.lbAdresKlienta.AutoSize = true;
-            this.lbAdresKlienta.Location = new System.Drawing.Point(12, 112);
+            this.lbAdresKlienta.Location = new System.Drawing.Point(12, 108);
             this.lbAdresKlienta.Name = "lbAdresKlienta";
             this.lbAdresKlienta.Size = new System.Drawing.Size(71, 13);
             this.lbAdresKlienta.TabIndex = 32;
@@ -138,7 +138,7 @@
             // lbMiejsceWystawienia
             // 
             this.lbMiejsceWystawienia.AutoSize = true;
-            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(11, 131);
+            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(11, 134);
             this.lbMiejsceWystawienia.Name = "lbMiejsceWystawienia";
             this.lbMiejsceWystawienia.Size = new System.Drawing.Size(106, 13);
             this.lbMiejsceWystawienia.TabIndex = 31;
@@ -147,7 +147,7 @@
             // lbSposobZaplaty
             // 
             this.lbSposobZaplaty.AutoSize = true;
-            this.lbSposobZaplaty.Location = new System.Drawing.Point(428, 86);
+            this.lbSposobZaplaty.Location = new System.Drawing.Point(427, 82);
             this.lbSposobZaplaty.Name = "lbSposobZaplaty";
             this.lbSposobZaplaty.Size = new System.Drawing.Size(84, 13);
             this.lbSposobZaplaty.TabIndex = 30;
@@ -156,7 +156,7 @@
             // lbDataWykonaniaUslugi
             // 
             this.lbDataWykonaniaUslugi.AutoSize = true;
-            this.lbDataWykonaniaUslugi.Location = new System.Drawing.Point(427, 60);
+            this.lbDataWykonaniaUslugi.Location = new System.Drawing.Point(427, 55);
             this.lbDataWykonaniaUslugi.Name = "lbDataWykonaniaUslugi";
             this.lbDataWykonaniaUslugi.Size = new System.Drawing.Size(119, 13);
             this.lbDataWykonaniaUslugi.TabIndex = 29;
@@ -165,7 +165,7 @@
             // lbDataWystawienia
             // 
             this.lbDataWystawienia.AutoSize = true;
-            this.lbDataWystawienia.Location = new System.Drawing.Point(428, 34);
+            this.lbDataWystawienia.Location = new System.Drawing.Point(427, 30);
             this.lbDataWystawienia.Name = "lbDataWystawienia";
             this.lbDataWystawienia.Size = new System.Drawing.Size(93, 13);
             this.lbDataWystawienia.TabIndex = 28;
@@ -214,7 +214,7 @@
             // lbNipKlienta
             // 
             this.lbNipKlienta.AutoSize = true;
-            this.lbNipKlienta.Location = new System.Drawing.Point(12, 86);
+            this.lbNipKlienta.Location = new System.Drawing.Point(12, 82);
             this.lbNipKlienta.Name = "lbNipKlienta";
             this.lbNipKlienta.Size = new System.Drawing.Size(62, 13);
             this.lbNipKlienta.TabIndex = 21;
@@ -232,7 +232,7 @@
             // lbNrFaktury
             // 
             this.lbNrFaktury.AutoSize = true;
-            this.lbNrFaktury.Location = new System.Drawing.Point(12, 34);
+            this.lbNrFaktury.Location = new System.Drawing.Point(12, 30);
             this.lbNrFaktury.Name = "lbNrFaktury";
             this.lbNrFaktury.Size = new System.Drawing.Size(56, 13);
             this.lbNrFaktury.TabIndex = 19;
@@ -241,7 +241,7 @@
             // lbTerminZaplaty
             // 
             this.lbTerminZaplaty.AutoSize = true;
-            this.lbTerminZaplaty.Location = new System.Drawing.Point(428, 112);
+            this.lbTerminZaplaty.Location = new System.Drawing.Point(427, 108);
             this.lbTerminZaplaty.Name = "lbTerminZaplaty";
             this.lbTerminZaplaty.Size = new System.Drawing.Size(103, 13);
             this.lbTerminZaplaty.TabIndex = 34;
@@ -327,7 +327,7 @@
             // lbKlient
             // 
             this.lbKlient.AutoSize = true;
-            this.lbKlient.Location = new System.Drawing.Point(12, 60);
+            this.lbKlient.Location = new System.Drawing.Point(12, 55);
             this.lbKlient.Name = "lbKlient";
             this.lbKlient.Size = new System.Drawing.Size(36, 13);
             this.lbKlient.TabIndex = 39;
