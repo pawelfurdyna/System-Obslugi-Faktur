@@ -68,6 +68,14 @@
             this.uSLUGABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSLUGATableAdapter = new ProjektBD.BDDataSetTableAdapters.USLUGATableAdapter();
             this.sTAWKA_VATTableAdapter = new ProjektBD.BDDataSetTableAdapters.STAWKA_VATTableAdapter();
+            this.lbSumaNetto = new System.Windows.Forms.Label();
+            this.lbSumaVat = new System.Windows.Forms.Label();
+            this.lbSumaBrutto = new System.Windows.Forms.Label();
+            this.lbSumaNettoWartosc = new System.Windows.Forms.Label();
+            this.lbSumaVatWartosc = new System.Windows.Forms.Label();
+            this.lbSumaBruttoWartosc = new System.Windows.Forms.Label();
+            this.lbUwagi = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -264,7 +272,7 @@
             this.wartoscBrutto});
             this.dataGridView1.Location = new System.Drawing.Point(14, 170);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 220);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 194);
             this.dataGridView1.TabIndex = 35;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -392,6 +400,76 @@
             // 
             this.sTAWKA_VATTableAdapter.ClearBeforeFill = true;
             // 
+            // lbSumaNetto
+            // 
+            this.lbSumaNetto.AutoSize = true;
+            this.lbSumaNetto.Location = new System.Drawing.Point(503, 373);
+            this.lbSumaNetto.Name = "lbSumaNetto";
+            this.lbSumaNetto.Size = new System.Drawing.Size(66, 13);
+            this.lbSumaNetto.TabIndex = 47;
+            this.lbSumaNetto.Text = "Suma Netto:";
+            // 
+            // lbSumaVat
+            // 
+            this.lbSumaVat.AutoSize = true;
+            this.lbSumaVat.Location = new System.Drawing.Point(619, 373);
+            this.lbSumaVat.Name = "lbSumaVat";
+            this.lbSumaVat.Size = new System.Drawing.Size(61, 13);
+            this.lbSumaVat.TabIndex = 48;
+            this.lbSumaVat.Text = "Suma VAT:";
+            // 
+            // lbSumaBrutto
+            // 
+            this.lbSumaBrutto.AutoSize = true;
+            this.lbSumaBrutto.Location = new System.Drawing.Point(736, 373);
+            this.lbSumaBrutto.Name = "lbSumaBrutto";
+            this.lbSumaBrutto.Size = new System.Drawing.Size(68, 13);
+            this.lbSumaBrutto.TabIndex = 49;
+            this.lbSumaBrutto.Text = "Suma Brutto:";
+            // 
+            // lbSumaNettoWartosc
+            // 
+            this.lbSumaNettoWartosc.AutoSize = true;
+            this.lbSumaNettoWartosc.Location = new System.Drawing.Point(503, 390);
+            this.lbSumaNettoWartosc.Name = "lbSumaNettoWartosc";
+            this.lbSumaNettoWartosc.Size = new System.Drawing.Size(13, 13);
+            this.lbSumaNettoWartosc.TabIndex = 50;
+            this.lbSumaNettoWartosc.Text = "0";
+            // 
+            // lbSumaVatWartosc
+            // 
+            this.lbSumaVatWartosc.AutoSize = true;
+            this.lbSumaVatWartosc.Location = new System.Drawing.Point(619, 390);
+            this.lbSumaVatWartosc.Name = "lbSumaVatWartosc";
+            this.lbSumaVatWartosc.Size = new System.Drawing.Size(13, 13);
+            this.lbSumaVatWartosc.TabIndex = 51;
+            this.lbSumaVatWartosc.Text = "0";
+            // 
+            // lbSumaBruttoWartosc
+            // 
+            this.lbSumaBruttoWartosc.AutoSize = true;
+            this.lbSumaBruttoWartosc.Location = new System.Drawing.Point(736, 390);
+            this.lbSumaBruttoWartosc.Name = "lbSumaBruttoWartosc";
+            this.lbSumaBruttoWartosc.Size = new System.Drawing.Size(13, 13);
+            this.lbSumaBruttoWartosc.TabIndex = 52;
+            this.lbSumaBruttoWartosc.Text = "0";
+            // 
+            // lbUwagi
+            // 
+            this.lbUwagi.AutoSize = true;
+            this.lbUwagi.Location = new System.Drawing.Point(12, 373);
+            this.lbUwagi.Name = "lbUwagi";
+            this.lbUwagi.Size = new System.Drawing.Size(40, 13);
+            this.lbUwagi.TabIndex = 53;
+            this.lbUwagi.Text = "Uwagi:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(78, 370);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(320, 20);
+            this.textBox1.TabIndex = 54;
+            // 
             // usluga
             // 
             this.usluga.HeaderText = "Usługa";
@@ -403,6 +481,7 @@
             // 
             this.jm.HeaderText = "j.m.";
             this.jm.Name = "jm";
+            this.jm.Width = 57;
             // 
             // ilosc
             // 
@@ -441,6 +520,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 450);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbUwagi);
+            this.Controls.Add(this.lbSumaBruttoWartosc);
+            this.Controls.Add(this.lbSumaVatWartosc);
+            this.Controls.Add(this.lbSumaNettoWartosc);
+            this.Controls.Add(this.lbSumaBrutto);
+            this.Controls.Add(this.lbSumaVat);
+            this.Controls.Add(this.lbSumaNetto);
             this.Controls.Add(this.cbUzytkownik);
             this.Controls.Add(this.btAnuluj);
             this.Controls.Add(this.btZapisz);
@@ -526,6 +613,14 @@
         private System.Windows.Forms.BindingSource sTAWKAVATBindingSource;
         private BDDataSetTableAdapters.STAWKA_VATTableAdapter sTAWKA_VATTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn netto;
+        private System.Windows.Forms.Label lbSumaNetto;
+        private System.Windows.Forms.Label lbSumaVat;
+        private System.Windows.Forms.Label lbSumaBrutto;
+        private System.Windows.Forms.Label lbSumaNettoWartosc;
+        private System.Windows.Forms.Label lbSumaVatWartosc;
+        private System.Windows.Forms.Label lbSumaBruttoWartosc;
+        private System.Windows.Forms.Label lbUwagi;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewComboBoxColumn usluga;
         private System.Windows.Forms.DataGridViewTextBoxColumn jm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ilosc;

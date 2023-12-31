@@ -176,6 +176,7 @@ namespace ProjektBD
 
                         jmCell.Value = jmValue;
                         cenaJednostkowaCell.Value = cenaJednostkowaValue;
+                        WyswietlSumy();
                     }
                 }
                 if (e.ColumnIndex == dataGridView1.Columns["ilosc"]?.Index || e.ColumnIndex == dataGridView1.Columns["usluga"]?.Index)
@@ -189,6 +190,7 @@ namespace ProjektBD
                         float.TryParse(cenaJednostkowaCell.Value?.ToString(), out float cenaJednostkowaValue);
                         float result = iloscValue * cenaJednostkowaValue;
                         resultCell.Value = result;
+                        WyswietlSumy();
                     }
                 }
                 if (e.ColumnIndex == dataGridView1.Columns["procentVat"]?.Index || e.ColumnIndex == dataGridView1.Columns["usluga"]?.Index || e.ColumnIndex == dataGridView1.Columns["ilosc"]?.Index)
@@ -207,6 +209,7 @@ namespace ProjektBD
                             float wartoscVat = wartoscNettoValue * procentVatCellValue / 100;
                             wartoscVatCell.Value = wartoscVat;
                             wartoscBruttoCell.Value = wartoscNettoValue + wartoscVat;
+                            WyswietlSumy();
                         }
                     }
                 }
@@ -217,8 +220,17 @@ namespace ProjektBD
         {
             if (dataGridView1.IsCurrentCellDirty)
             {
-                dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                dataGridView1.EndEdit();
+                // Get the current cell and its column index
+                DataGridViewCell currentCell = dataGridView1.CurrentCell;
+                int columnIndex = currentCell.ColumnIndex;
+
+                // Check if the current cell belongs to 'usluga' or 'procentVat' column
+                if (dataGridView1.Columns["usluga"] != null && columnIndex == dataGridView1.Columns["usluga"].Index ||
+                    dataGridView1.Columns["procentVat"] != null && columnIndex == dataGridView1.Columns["procentVat"].Index)
+                {
+                    dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                    dataGridView1.EndEdit(); // This may not be necessary, as CommitEdit often suffices
+                }
             }
         }
 
@@ -238,6 +250,39 @@ namespace ProjektBD
         {
             e.Row.Cells["ilosc"].Value = "0";
             e.Row.Cells["cenaJednostkowa"].Value = "0";
+        }
+
+        private void WyswietlSumy()
+        {
+            float sumaWartoscNetto = 0f;
+            float sumaWartoscVat = 0f;
+            float sumaWartoscBrutto = 0f;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["wartoscNetto"].Value != null &&
+                    float.TryParse(row.Cells["wartoscNetto"].Value.ToString(), out float nettoValue))
+                {
+                    sumaWartoscNetto += nettoValue;
+                }
+
+                if (row.Cells["wartoscVat"].Value != null &&
+                    float.TryParse(row.Cells["wartoscVat"].Value.ToString(), out float vatValue))
+                {
+                    sumaWartoscVat += vatValue;
+                }
+
+                if (row.Cells["wartoscBrutto"].Value != null &&
+                    float.TryParse(row.Cells["wartoscBrutto"].Value.ToString(), out float bruttoValue))
+                {
+                    sumaWartoscBrutto += bruttoValue;
+                }
+            }
+
+            // Display the sums in the TextBox controls
+            lbSumaNettoWartosc.Text = sumaWartoscNetto.ToString();
+            lbSumaVatWartosc.Text = sumaWartoscVat.ToString();
+            lbSumaBruttoWartosc.Text = sumaWartoscBrutto.ToString();
         }
         #endregion
     }
