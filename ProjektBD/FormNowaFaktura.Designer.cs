@@ -34,22 +34,25 @@
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbAdresKlienta = new System.Windows.Forms.Label();
             this.lbMiejsceWystawienia = new System.Windows.Forms.Label();
             this.lbSposobZaplaty = new System.Windows.Forms.Label();
             this.lbDataWykonaniaUslugi = new System.Windows.Forms.Label();
             this.lbDataWystawienia = new System.Windows.Forms.Label();
-            this.tbAdresKlienta = new System.Windows.Forms.TextBox();
             this.tbMiejsceWystawienia = new System.Windows.Forms.TextBox();
             this.tbDataWykonaniaUslugi = new System.Windows.Forms.TextBox();
             this.tbDataWystawienia = new System.Windows.Forms.TextBox();
-            this.tbNipKlienta = new System.Windows.Forms.TextBox();
-            this.lbNipKlienta = new System.Windows.Forms.Label();
-            this.tbNrFaktury = new System.Windows.Forms.TextBox();
             this.lbNrFaktury = new System.Windows.Forms.Label();
             this.lbTerminZaplaty = new System.Windows.Forms.Label();
             this.tbTerminZaplaty = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cenaJednostkowa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.procentVat = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.wartoscVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTAWKAVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -75,15 +78,8 @@
             this.lbSumaVatWartosc = new System.Windows.Forms.Label();
             this.lbSumaBruttoWartosc = new System.Windows.Forms.Label();
             this.lbUwagi = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cenaJednostkowa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wartoscNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.procentVat = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.wartoscVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wartoscBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbUwagi = new System.Windows.Forms.TextBox();
+            this.lbNrFakturyWartosc = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAWKAVATBindingSource)).BeginInit();
@@ -126,19 +122,10 @@
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
-            // lbAdresKlienta
-            // 
-            this.lbAdresKlienta.AutoSize = true;
-            this.lbAdresKlienta.Location = new System.Drawing.Point(12, 108);
-            this.lbAdresKlienta.Name = "lbAdresKlienta";
-            this.lbAdresKlienta.Size = new System.Drawing.Size(71, 13);
-            this.lbAdresKlienta.TabIndex = 32;
-            this.lbAdresKlienta.Text = "Adres klienta:";
-            // 
             // lbMiejsceWystawienia
             // 
             this.lbMiejsceWystawienia.AutoSize = true;
-            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(11, 134);
+            this.lbMiejsceWystawienia.Location = new System.Drawing.Point(12, 82);
             this.lbMiejsceWystawienia.Name = "lbMiejsceWystawienia";
             this.lbMiejsceWystawienia.Size = new System.Drawing.Size(106, 13);
             this.lbMiejsceWystawienia.TabIndex = 31;
@@ -171,16 +158,9 @@
             this.lbDataWystawienia.TabIndex = 28;
             this.lbDataWystawienia.Text = "Data wystawienia:";
             // 
-            // tbAdresKlienta
-            // 
-            this.tbAdresKlienta.Location = new System.Drawing.Point(122, 105);
-            this.tbAdresKlienta.Name = "tbAdresKlienta";
-            this.tbAdresKlienta.Size = new System.Drawing.Size(276, 20);
-            this.tbAdresKlienta.TabIndex = 27;
-            // 
             // tbMiejsceWystawienia
             // 
-            this.tbMiejsceWystawienia.Location = new System.Drawing.Point(122, 131);
+            this.tbMiejsceWystawienia.Location = new System.Drawing.Point(123, 79);
             this.tbMiejsceWystawienia.Name = "tbMiejsceWystawienia";
             this.tbMiejsceWystawienia.Size = new System.Drawing.Size(276, 20);
             this.tbMiejsceWystawienia.TabIndex = 26;
@@ -188,6 +168,7 @@
             // tbDataWykonaniaUslugi
             // 
             this.tbDataWykonaniaUslugi.Location = new System.Drawing.Point(552, 53);
+            this.tbDataWykonaniaUslugi.MaxLength = 8;
             this.tbDataWykonaniaUslugi.Name = "tbDataWykonaniaUslugi";
             this.tbDataWykonaniaUslugi.Size = new System.Drawing.Size(262, 20);
             this.tbDataWykonaniaUslugi.TabIndex = 24;
@@ -197,37 +178,12 @@
             // tbDataWystawienia
             // 
             this.tbDataWystawienia.Location = new System.Drawing.Point(552, 27);
+            this.tbDataWystawienia.MaxLength = 8;
             this.tbDataWystawienia.Name = "tbDataWystawienia";
             this.tbDataWystawienia.Size = new System.Drawing.Size(262, 20);
             this.tbDataWystawienia.TabIndex = 23;
             this.tbDataWystawienia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWystawienia_KeyPress);
             this.tbDataWystawienia.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWystawienia_Validating);
-            // 
-            // tbNipKlienta
-            // 
-            this.tbNipKlienta.Location = new System.Drawing.Point(122, 79);
-            this.tbNipKlienta.MaxLength = 11;
-            this.tbNipKlienta.Name = "tbNipKlienta";
-            this.tbNipKlienta.Size = new System.Drawing.Size(276, 20);
-            this.tbNipKlienta.TabIndex = 22;
-            // 
-            // lbNipKlienta
-            // 
-            this.lbNipKlienta.AutoSize = true;
-            this.lbNipKlienta.Location = new System.Drawing.Point(12, 82);
-            this.lbNipKlienta.Name = "lbNipKlienta";
-            this.lbNipKlienta.Size = new System.Drawing.Size(62, 13);
-            this.lbNipKlienta.TabIndex = 21;
-            this.lbNipKlienta.Text = "NIP klienta:";
-            // 
-            // tbNrFaktury
-            // 
-            this.tbNrFaktury.Location = new System.Drawing.Point(122, 27);
-            this.tbNrFaktury.MaxLength = 4;
-            this.tbNrFaktury.Name = "tbNrFaktury";
-            this.tbNrFaktury.Size = new System.Drawing.Size(276, 20);
-            this.tbNrFaktury.TabIndex = 20;
-            this.tbNrFaktury.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNrFaktury_KeyPress);
             // 
             // lbNrFaktury
             // 
@@ -270,14 +226,59 @@
             this.procentVat,
             this.wartoscVat,
             this.wartoscBrutto});
-            this.dataGridView1.Location = new System.Drawing.Point(14, 170);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 131);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 194);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 233);
             this.dataGridView1.TabIndex = 35;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
+            // 
+            // usluga
+            // 
+            this.usluga.HeaderText = "Usługa";
+            this.usluga.Name = "usluga";
+            this.usluga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.usluga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // jm
+            // 
+            this.jm.HeaderText = "j.m.";
+            this.jm.Name = "jm";
+            this.jm.Width = 57;
+            // 
+            // ilosc
+            // 
+            this.ilosc.HeaderText = "Ilość";
+            this.ilosc.Name = "ilosc";
+            // 
+            // cenaJednostkowa
+            // 
+            this.cenaJednostkowa.HeaderText = "Cena jednostkowa";
+            this.cenaJednostkowa.Name = "cenaJednostkowa";
+            // 
+            // wartoscNetto
+            // 
+            this.wartoscNetto.HeaderText = "Wartość Netto";
+            this.wartoscNetto.Name = "wartoscNetto";
+            // 
+            // procentVat
+            // 
+            this.procentVat.HeaderText = "%VAT";
+            this.procentVat.Name = "procentVat";
+            this.procentVat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.procentVat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // wartoscVat
+            // 
+            this.wartoscVat.HeaderText = "Wartość VAT";
+            this.wartoscVat.Name = "wartoscVat";
+            // 
+            // wartoscBrutto
+            // 
+            this.wartoscBrutto.HeaderText = "Wartość Brutto";
+            this.wartoscBrutto.Name = "wartoscBrutto";
             // 
             // sTAWKAVATBindingSource
             // 
@@ -463,64 +464,30 @@
             this.lbUwagi.TabIndex = 53;
             this.lbUwagi.Text = "Uwagi:";
             // 
-            // textBox1
+            // tbUwagi
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 370);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
-            this.textBox1.TabIndex = 54;
+            this.tbUwagi.Location = new System.Drawing.Point(78, 370);
+            this.tbUwagi.Name = "tbUwagi";
+            this.tbUwagi.Size = new System.Drawing.Size(320, 20);
+            this.tbUwagi.TabIndex = 54;
             // 
-            // usluga
+            // lbNrFakturyWartosc
             // 
-            this.usluga.HeaderText = "Usługa";
-            this.usluga.Name = "usluga";
-            this.usluga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.usluga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // jm
-            // 
-            this.jm.HeaderText = "j.m.";
-            this.jm.Name = "jm";
-            this.jm.Width = 57;
-            // 
-            // ilosc
-            // 
-            this.ilosc.HeaderText = "Ilość";
-            this.ilosc.Name = "ilosc";
-            // 
-            // cenaJednostkowa
-            // 
-            this.cenaJednostkowa.HeaderText = "Cena jednostkowa";
-            this.cenaJednostkowa.Name = "cenaJednostkowa";
-            // 
-            // wartoscNetto
-            // 
-            this.wartoscNetto.HeaderText = "Wartość Netto";
-            this.wartoscNetto.Name = "wartoscNetto";
-            // 
-            // procentVat
-            // 
-            this.procentVat.HeaderText = "%VAT";
-            this.procentVat.Name = "procentVat";
-            this.procentVat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.procentVat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // wartoscVat
-            // 
-            this.wartoscVat.HeaderText = "Wartość VAT";
-            this.wartoscVat.Name = "wartoscVat";
-            // 
-            // wartoscBrutto
-            // 
-            this.wartoscBrutto.HeaderText = "Wartość Brutto";
-            this.wartoscBrutto.Name = "wartoscBrutto";
+            this.lbNrFakturyWartosc.AutoSize = true;
+            this.lbNrFakturyWartosc.Enabled = false;
+            this.lbNrFakturyWartosc.Location = new System.Drawing.Point(122, 29);
+            this.lbNrFakturyWartosc.Name = "lbNrFakturyWartosc";
+            this.lbNrFakturyWartosc.Size = new System.Drawing.Size(13, 13);
+            this.lbNrFakturyWartosc.TabIndex = 55;
+            this.lbNrFakturyWartosc.Text = "1";
             // 
             // FormNowaFaktura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbNrFakturyWartosc);
+            this.Controls.Add(this.tbUwagi);
             this.Controls.Add(this.lbUwagi);
             this.Controls.Add(this.lbSumaBruttoWartosc);
             this.Controls.Add(this.lbSumaVatWartosc);
@@ -538,18 +505,13 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbTerminZaplaty);
             this.Controls.Add(this.tbTerminZaplaty);
-            this.Controls.Add(this.lbAdresKlienta);
             this.Controls.Add(this.lbMiejsceWystawienia);
             this.Controls.Add(this.lbSposobZaplaty);
             this.Controls.Add(this.lbDataWykonaniaUslugi);
             this.Controls.Add(this.lbDataWystawienia);
-            this.Controls.Add(this.tbAdresKlienta);
             this.Controls.Add(this.tbMiejsceWystawienia);
             this.Controls.Add(this.tbDataWykonaniaUslugi);
             this.Controls.Add(this.tbDataWystawienia);
-            this.Controls.Add(this.tbNipKlienta);
-            this.Controls.Add(this.lbNipKlienta);
-            this.Controls.Add(this.tbNrFaktury);
             this.Controls.Add(this.lbNrFaktury);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -577,25 +539,19 @@
         private System.Windows.Forms.ToolStripMenuItem plikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
-        private System.Windows.Forms.Label lbAdresKlienta;
         private System.Windows.Forms.Label lbMiejsceWystawienia;
         private System.Windows.Forms.Label lbSposobZaplaty;
         private System.Windows.Forms.Label lbDataWykonaniaUslugi;
         private System.Windows.Forms.Label lbDataWystawienia;
-        private System.Windows.Forms.TextBox tbAdresKlienta;
         private System.Windows.Forms.TextBox tbMiejsceWystawienia;
         private System.Windows.Forms.TextBox tbDataWykonaniaUslugi;
         private System.Windows.Forms.TextBox tbDataWystawienia;
-        private System.Windows.Forms.TextBox tbNipKlienta;
-        private System.Windows.Forms.Label lbNipKlienta;
-        private System.Windows.Forms.TextBox tbNrFaktury;
         private System.Windows.Forms.Label lbNrFaktury;
         private System.Windows.Forms.Label lbTerminZaplaty;
         private System.Windows.Forms.TextBox tbTerminZaplaty;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbSporzadzil;
         private BDDataSet bDdataSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTAWKAVATDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pOZYCJAFAKTURYBindingSource;
         private BDDataSetTableAdapters.POZYCJA_FAKTURYTableAdapter pOZYCJA_FAKTURYTableAdapter;
         private System.Windows.Forms.ComboBox cbKlient;
@@ -612,7 +568,6 @@
         private BDDataSetTableAdapters.USLUGATableAdapter uSLUGATableAdapter;
         private System.Windows.Forms.BindingSource sTAWKAVATBindingSource;
         private BDDataSetTableAdapters.STAWKA_VATTableAdapter sTAWKA_VATTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn netto;
         private System.Windows.Forms.Label lbSumaNetto;
         private System.Windows.Forms.Label lbSumaVat;
         private System.Windows.Forms.Label lbSumaBrutto;
@@ -620,7 +575,7 @@
         private System.Windows.Forms.Label lbSumaVatWartosc;
         private System.Windows.Forms.Label lbSumaBruttoWartosc;
         private System.Windows.Forms.Label lbUwagi;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbUwagi;
         private System.Windows.Forms.DataGridViewComboBoxColumn usluga;
         private System.Windows.Forms.DataGridViewTextBoxColumn jm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ilosc;
@@ -629,5 +584,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn procentVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscBrutto;
+        private System.Windows.Forms.Label lbNrFakturyWartosc;
     }
 }

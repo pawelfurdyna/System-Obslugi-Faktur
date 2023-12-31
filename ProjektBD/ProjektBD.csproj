@@ -63,6 +63,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BDDataSetFaktura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDDataSetFaktura.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormFirma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +207,17 @@
     </None>
     <None Include="BDDataSet.xss">
       <DependentUpon>BDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BDDataSetFaktura.xsc">
+      <DependentUpon>BDDataSetFaktura.xsd</DependentUpon>
+    </None>
+    <None Include="BDDataSetFaktura.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDDataSetFaktura.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDDataSetFaktura.xss">
+      <DependentUpon>BDDataSetFaktura.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

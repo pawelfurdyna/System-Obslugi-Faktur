@@ -17,9 +17,14 @@ namespace ProjektBD
     public partial class FormNowaFaktura : Form
     {
         ObslugaBazy ob = new ObslugaBazy();
+        System.Windows.Forms.TextBox[] tb = new System.Windows.Forms.TextBox[] { };
+        System.Windows.Forms.ComboBox[] cb = new System.Windows.Forms.ComboBox[] { };
+
         public FormNowaFaktura()
         {
             InitializeComponent();
+            tb = new System.Windows.Forms.TextBox[] { tbDataWystawienia, tbDataWykonaniaUslugi, tbUwagi, tbTerminZaplaty };
+            cb = new System.Windows.Forms.ComboBox[] { cbKlient, cbUzytkownik };
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,8 +41,6 @@ namespace ProjektBD
             this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
             this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.POZYCJA_FAKTURY' . Możesz go przenieść lub usunąć.
-            this.pOZYCJA_FAKTURYTableAdapter.Fill(this.bDdataSet.POZYCJA_FAKTURY);
             #endregion
 
             cbKlient.SelectedItem = null;
@@ -73,22 +76,21 @@ namespace ProjektBD
             #endregion
 
             #region Wpisanie kolejnego numeru faktury
-            string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false);
+            string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false, true);
             if (int.TryParse(temp, out int number))
             {
                 number++;
-                tbNrFaktury.Text = number.ToString();
-                tbNrFaktury.Enabled = false;
+                lbNrFakturyWartosc.Text = number.ToString();
             }
             else
             {
-                tbNrFaktury.Enabled = true;
+                lbNrFakturyWartosc.Text = "1";
             }
             #endregion
 
             #region Wypełnienie domyślnymi wartościami dat i miejsca
-            tbDataWystawienia.Text = DateTime.Today.ToString("dd-MM-yyyy");
-            tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("dd-MM-yyyy");
+            tbDataWystawienia.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-","/");
+            tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-", "/");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
             #endregion
         }
@@ -96,7 +98,7 @@ namespace ProjektBD
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
         {
             string temp = ob.Select("KLIENT", "ID_KLIENTA", "NAZWA", cbKlient.Text);
-            ob.WypelnijTextBoxZEncji("KLIENT", "ID_KLIENTA", temp, new System.Windows.Forms.TextBox[] { tbAdresKlienta, tbNipKlienta, tbTerminZaplaty }, new string[] { "ADRES", "NIP", "TERMIN_PLATNOSCI" });
+            ob.WypelnijTextBoxZEncji("KLIENT", "ID_KLIENTA", temp, new System.Windows.Forms.TextBox[] { tbTerminZaplaty }, new string[] { "TERMIN_PLATNOSCI" });
         }
 
         private void cbSposobZaplaty_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,10 +113,17 @@ namespace ProjektBD
                 this.lbTerminZaplaty.Visible = true;
                 this.tbTerminZaplaty.Visible = true;
             }
+
         }
 
         private void btZapisz_Click(object sender, EventArgs e)
         {
+            if (cbSposobZaplaty.SelectedIndex == 0)
+            {
+                tbTerminZaplaty.Text = "0";
+            }
+            ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
+            this.Close();
             //pobierz tb nr faktury wyslij do encji
             //pobierz tb data wystawienia wyslij do encji
             //jesli sposob zaplaty przelew to pobierz tb termin zaplaty i dodaj do aktualnej daty wyslij do encji  jesli nie to pobierz dzisiejsza date i wyslij do encji

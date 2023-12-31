@@ -68,6 +68,7 @@ namespace ProjektBD
             int kolumna = dgvData.Columns.IndexOf(iDKLIENTADataGridViewTextBoxColumn);
             string nazwa = dgvData.Rows[wiersz].Cells[kolumna].Value.ToString();
             ob.UsunRekord(encja, klucz, nazwa);
+            this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
         }
     }
 }

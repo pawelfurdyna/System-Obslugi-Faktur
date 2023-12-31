@@ -68,6 +68,8 @@ namespace ProjektBD
             int kolumna = dataGridView1.Columns.IndexOf(iDVATDataGridViewTextBoxColumn);
             string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
             ob.UsunRekord(encja, klucz, nazwa);
+            this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

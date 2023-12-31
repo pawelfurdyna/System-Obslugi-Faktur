@@ -99,18 +99,7 @@ namespace ProjektBD
                     try
                     {
                         this.conn.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected != 0)
-                        {
-                            if (rowsAffected == 1)
-                            {
-                                MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Poprawnie usnięto {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
+                        cmd.ExecuteNonQuery();
                     }
                     catch (OracleException ex)
                     {
@@ -146,18 +135,7 @@ namespace ProjektBD
             try
             {
                 this.conn.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected != 0)
-                {
-                    if (rowsAffected == 1)
-                    {
-                        MessageBox.Show($"Poprawnie dodano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Poprawnie dodano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                cmd.ExecuteNonQuery();
             }
             catch (OracleException ex)
             {
@@ -188,18 +166,7 @@ namespace ProjektBD
             try
             {
                 this.conn.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if (rowsAffected != 0)
-                {
-                    if (rowsAffected == 1)
-                    {
-                        MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekord!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Poprawnie edytowano {rowsAffected} rekordów!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                cmd.ExecuteNonQuery();
             }
             catch (OracleException ex)
             {
@@ -213,13 +180,17 @@ namespace ProjektBD
         #endregion
 
         #region SELECT
-        public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true)
+        public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true, bool sort = false)
         {
             string query = "";
             string temp = "";
             if (warunek)
             {
                 query = $"SELECT {atrybut} FROM {encja} WHERE {klucz} = '{wartoscSzukana}'";
+            }
+            else if (sort)
+            {
+                query = $"SELECT {atrybut} FROM {encja} ORDER BY {atrybut} DESC";
             }
             else
             {
@@ -308,7 +279,7 @@ namespace ProjektBD
             int textLength = textBox.Text.Length;
 
             // Limit the total length to 10 characters (DD-MM-YYYY)
-            if (!char.IsControl(e.KeyChar) && textLength >= 10 && caretPosition >= textLength)
+            if (!char.IsControl(e.KeyChar) && textLength >= 8 && caretPosition >= textLength)
             {
                 e.Handled = true;
                 return;
@@ -318,7 +289,7 @@ namespace ProjektBD
             if (char.IsDigit(e.KeyChar) && (caretPosition == 1 || caretPosition == 4) && caretPosition == textLength)
             {
                 // Append the digit and a hyphen if the length allows
-                textBox.Text = textBox.Text.Insert(caretPosition, e.KeyChar + "-");
+                textBox.Text = textBox.Text.Insert(caretPosition, e.KeyChar + "/");
                 e.Handled = true;
                 textBox.SelectionStart = caretPosition + 2; // Move the caret after the new hyphen
             }
@@ -332,11 +303,121 @@ namespace ProjektBD
             DateTime parsedDate;
 
             // Check if the entered date is in the correct format and is a valid date
-            if (!DateTime.TryParseExact(textBox.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            if (!DateTime.TryParseExact(textBox.Text, "yy/MM/dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
-                MessageBox.Show("Zły format daty. Proszę wprowadzić datę w formacie DD-MM-YYYY.");
+                MessageBox.Show("Zły format daty. Proszę wprowadzić datę w formacie YY/MM/DD.");
                 e.Cancel = true; // Prevent focus from shifting away from the TextBox
             }
+        }
+        #endregion
+
+        #region ZapisywanieFaktury
+        public void ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
+        {
+            string query = "";
+            string encjaFaktura = "FAKTURA";
+            string encjaPozycjaFatury = "POZYCJA_FAKTURY";
+            string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
+            string[] atrybutyPozycjaFaktury = { "NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
+            string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
+            string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
+            string fPolaFaktura = "";
+            string klient = cb[0].Text;
+            string uzytkownik = cb[1].Text;
+            string idUzytkownika = "";
+            string idKlienta = "";
+            string nazwaUslugi, idUslugi, idVat;
+            float ilosc;
+
+            try
+            {
+#region WysłanieDoEncjiFaktura
+                int spaceIndex = uzytkownik.IndexOf(' ');
+                if (spaceIndex != -1)
+                {
+                    idUzytkownika = uzytkownik.Substring(0, spaceIndex);
+                }
+
+                fPolaFaktura += numerFaktury.Text;
+                fPolaFaktura += "', '";
+
+                for (int i = 0; i < tb.Length; i++)
+                {
+                    fPolaFaktura += tb[i].Text;
+                    if (i < tb.Length - 1)
+                    {
+                        fPolaFaktura += "', '";
+                    }
+                }
+
+                idKlienta = Select("KLIENT", "ID_KLIENTA", "NAZWA", klient);
+                fPolaFaktura += "', '";
+                fPolaFaktura += idKlienta;
+                fPolaFaktura += "', '";
+                fPolaFaktura += idUzytkownika;
+
+                query = $"INSERT INTO {encjaFaktura} ({fAtrybutyFaktura}) VALUES ('{fPolaFaktura}')";
+
+                OracleCommand cmd = new OracleCommand(query, this.conn);
+                try
+                {
+                    this.conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                }
+                catch (OracleException ex)
+                {
+                    MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    this.conn.Close();
+                }
+#endregion
+
+#region WysyłanieDoEncjiPozycjaFaktury
+
+                foreach (DataGridViewRow row in dbv.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
+                        idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
+                        idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
+                        ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
+                        fPolaFaktura = "";
+                        fPolaFaktura += numerFaktury.Text;
+                        fPolaFaktura += "', '";
+                        fPolaFaktura += idUslugi;
+                        fPolaFaktura += "', '";
+                        fPolaFaktura += idVat;
+                        fPolaFaktura += "', '";
+                        fPolaFaktura += ilosc;
+
+                        query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaFaktura}')";
+
+                        cmd = new OracleCommand(query, this.conn);
+                        try
+                        {
+                            this.conn.Open();
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                        }
+                        catch (OracleException ex)
+                        {
+                            MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            this.conn.Close();
+                        }
+                    }
+                }
+                MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+#endregion
         }
         #endregion
     }

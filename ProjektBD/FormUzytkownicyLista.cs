@@ -69,6 +69,7 @@ namespace ProjektBD
             int kolumna = dataGridView1.Columns.IndexOf(iDUZYTKOWNIKADataGridViewTextBoxColumn);
             string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
             ob.UsunRekord(encja,klucz,nazwa);
+            this.uZYTKOWNIKTableAdapter.Fill(this.bDdataSet.UZYTKOWNIK);
         }
     }
 }
