@@ -79,6 +79,11 @@ namespace ProjektBD
             dataGridView1.Columns["wartoscNetto"].ReadOnly = true;
             dataGridView1.Columns["wartoscVat"].ReadOnly = true;
             dataGridView1.Columns["wartoscBrutto"].ReadOnly = true;
+
+            dataGridView1.Columns["ilosc"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscNetto"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscVat"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscBrutto"].DefaultCellStyle.Format = "0.00";
             #endregion
 
             #region Wpisanie kolejnego numeru faktury
@@ -203,7 +208,7 @@ namespace ProjektBD
                         float.TryParse(iloscCell.Value?.ToString(), out float iloscValue);
                         float.TryParse(cenaJednostkowaCell.Value?.ToString(), out float cenaJednostkowaValue);
                         float result = iloscValue * cenaJednostkowaValue;
-                        resultCell.Value = result;
+                        resultCell.Value = Math.Round(result, 2);
                         WyswietlSumy();
                     }
                 }
@@ -221,8 +226,8 @@ namespace ProjektBD
                         {
                             float.TryParse(wartoscNettoCell.Value?.ToString(), out float wartoscNettoValue);
                             float wartoscVat = wartoscNettoValue * procentVatCellValue / 100;
-                            wartoscVatCell.Value = wartoscVat;
-                            wartoscBruttoCell.Value = wartoscNettoValue + wartoscVat;
+                            wartoscVatCell.Value = Math.Round(wartoscVat,2);
+                            wartoscBruttoCell.Value = Math.Round(wartoscNettoValue + wartoscVat, 2);
                             WyswietlSumy();
                         }
                     }
@@ -266,6 +271,21 @@ namespace ProjektBD
             e.Row.Cells["cenaJednostkowa"].Value = "0";
         }
 
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["ilosc"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscNetto"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscVat"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscBrutto"].Index)
+            {
+                if (!float.TryParse(e.FormattedValue.ToString(), out float value))
+                {
+                    MessageBox.Show("Wprowadzona wartość jest niepoprawna. Wartość należy wprowadzić z użyciem cyfr i przecinka jako separatora dziesiętnego.", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true; // Niepoprawna wartość, anuluj zmianę
+                }
+            }
+        }
+
         private void WyswietlSumy()
         {
             float sumaWartoscNetto = 0f;
@@ -294,9 +314,9 @@ namespace ProjektBD
             }
 
             // Display the sums in the TextBox controls
-            lbSumaNettoWartosc.Text = sumaWartoscNetto.ToString();
-            lbSumaVatWartosc.Text = sumaWartoscVat.ToString();
-            lbSumaBruttoWartosc.Text = sumaWartoscBrutto.ToString();
+            lbSumaNettoWartosc.Text = Math.Round(sumaWartoscNetto, 2).ToString();
+            lbSumaVatWartosc.Text = Math.Round(sumaWartoscVat, 2).ToString();
+            lbSumaBruttoWartosc.Text = Math.Round(sumaWartoscBrutto, 2).ToString();
         }
         #endregion
     }
