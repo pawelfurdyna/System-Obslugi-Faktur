@@ -72,6 +72,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1043, 338);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // fAKTURABindingSource
             // 
@@ -193,6 +194,7 @@
             this.Name = "FormHistoriaFakturLista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historia Faktur";
+            this.Activated += new System.EventHandler(this.FormHistoriaFakturLista_Activated);
             this.Load += new System.EventHandler(this.FormHistoriaFakturLista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).EndInit();

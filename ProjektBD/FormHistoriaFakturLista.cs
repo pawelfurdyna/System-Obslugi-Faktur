@@ -19,10 +19,15 @@ namespace ProjektBD
         public FormHistoriaFakturLista()
         {
             InitializeComponent();
-            this.Activated += new EventHandler(FormHistoriaFakturLista_Activated);
         }
 
         private void FormHistoriaFakturLista_Activated(object sender, EventArgs e)
+        {
+            // Refresh data when the form becomes active
+            this.fAKTURATableAdapter.Fill(this.bDDataSetFaktura.FAKTURA);
+            WczytajDane();
+        }
+        private void dataGridView1_Sorted(object sender, EventArgs e)
         {
             // Refresh data when the form becomes active
             this.fAKTURATableAdapter.Fill(this.bDDataSetFaktura.FAKTURA);
