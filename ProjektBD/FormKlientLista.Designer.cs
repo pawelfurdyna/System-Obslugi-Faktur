@@ -192,7 +192,7 @@
             this.btnUsun.Name = "btnUsun";
             this.btnUsun.Size = new System.Drawing.Size(75, 23);
             this.btnUsun.TabIndex = 12;
-            this.btnUsun.Text = "Usun";
+            this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
             this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
