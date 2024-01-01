@@ -37,8 +37,6 @@
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUsun = new System.Windows.Forms.Button();
-            this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.fAKTURATableAdapter = new ProjektBD.BDDataSetFakturaTableAdapters.FAKTURATableAdapter();
             this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,7 +70,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 338);
+            this.dataGridView1.Size = new System.Drawing.Size(1043, 338);
             this.dataGridView1.TabIndex = 14;
             // 
             // fAKTURABindingSource
@@ -92,7 +90,7 @@
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(808, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -117,32 +115,13 @@
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
-            // btnUsun
-            // 
-            this.btnUsun.Location = new System.Drawing.Point(712, 385);
-            this.btnUsun.Name = "btnUsun";
-            this.btnUsun.Size = new System.Drawing.Size(75, 23);
-            this.btnUsun.TabIndex = 19;
-            this.btnUsun.Text = "Usuń";
-            this.btnUsun.UseVisualStyleBackColor = true;
-            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
-            // 
-            // btnEdytuj
-            // 
-            this.btnEdytuj.Location = new System.Drawing.Point(631, 385);
-            this.btnEdytuj.Name = "btnEdytuj";
-            this.btnEdytuj.Size = new System.Drawing.Size(75, 23);
-            this.btnEdytuj.TabIndex = 18;
-            this.btnEdytuj.Text = "Edytuj";
-            this.btnEdytuj.UseVisualStyleBackColor = true;
-            // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(550, 385);
+            this.btnDodaj.Location = new System.Drawing.Point(943, 385);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(75, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(112, 23);
             this.btnDodaj.TabIndex = 17;
-            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.Text = "Dodaj nową fakturę";
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
@@ -203,13 +182,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 428);
+            this.ClientSize = new System.Drawing.Size(1067, 420);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnUsun);
-            this.Controls.Add(this.btnEdytuj);
             this.Controls.Add(this.btnDodaj);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1083, 459);
+            this.MinimumSize = new System.Drawing.Size(1083, 459);
             this.Name = "FormHistoriaFakturLista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historia Faktur";
@@ -230,8 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem plikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
-        private System.Windows.Forms.Button btnUsun;
-        private System.Windows.Forms.Button btnEdytuj;
         private System.Windows.Forms.Button btnDodaj;
         private BDDataSetFaktura bDDataSetFaktura;
         private System.Windows.Forms.BindingSource fAKTURABindingSource;
