@@ -28,7 +28,7 @@ namespace ProjektBD {
         
         private POZYCJA_FAKTURYDataTable tablePOZYCJA_FAKTURY;
         
-        private global::System.Data.DataRelation relationFK_NUMER_FAKTURY;
+        private global::System.Data.DataRelation relationNUMER_FAKTURY_FK;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -220,7 +220,7 @@ namespace ProjektBD {
                     this.tablePOZYCJA_FAKTURY.InitVars();
                 }
             }
-            this.relationFK_NUMER_FAKTURY = this.Relations["FK_NUMER_FAKTURY"];
+            this.relationNUMER_FAKTURY_FK = this.Relations["NUMER_FAKTURY_FK"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -235,10 +235,10 @@ namespace ProjektBD {
             base.Tables.Add(this.tableFAKTURA);
             this.tablePOZYCJA_FAKTURY = new POZYCJA_FAKTURYDataTable();
             base.Tables.Add(this.tablePOZYCJA_FAKTURY);
-            this.relationFK_NUMER_FAKTURY = new global::System.Data.DataRelation("FK_NUMER_FAKTURY", new global::System.Data.DataColumn[] {
+            this.relationNUMER_FAKTURY_FK = new global::System.Data.DataRelation("NUMER_FAKTURY_FK", new global::System.Data.DataColumn[] {
                         this.tableFAKTURA.NUMER_FAKTURYColumn}, new global::System.Data.DataColumn[] {
                         this.tablePOZYCJA_FAKTURY.NUMER_FAKTURYColumn}, false);
-            this.Relations.Add(this.relationFK_NUMER_FAKTURY);
+            this.Relations.Add(this.relationNUMER_FAKTURY_FK);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -532,7 +532,6 @@ namespace ProjektBD {
                 this.columnNUMER_FAKTURY.Unique = true;
                 this.columnDATA_WYSTAWIENIA.AllowDBNull = false;
                 this.columnDATA_WYKONANIA.AllowDBNull = false;
-                this.columnUWAGI.AllowDBNull = false;
                 this.columnUWAGI.MaxLength = 255;
                 this.columnTERMIN_ZAPLATY.AllowDBNull = false;
                 this.columnID_KLIENTA.AllowDBNull = false;
@@ -670,6 +669,8 @@ namespace ProjektBD {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class POZYCJA_FAKTURYDataTable : global::System.Data.TypedTableBase<POZYCJA_FAKTURYRow> {
             
+            private global::System.Data.DataColumn columnNUMER_POZYCJI;
+            
             private global::System.Data.DataColumn columnNUMER_FAKTURY;
             
             private global::System.Data.DataColumn columnID_USLUGI;
@@ -709,6 +710,14 @@ namespace ProjektBD {
             protected POZYCJA_FAKTURYDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NUMER_POZYCJIColumn {
+                get {
+                    return this.columnNUMER_POZYCJI;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -780,19 +789,28 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public POZYCJA_FAKTURYRow AddPOZYCJA_FAKTURYRow(FAKTURARow parentFAKTURARowByFK_NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, decimal ILOSC) {
+            public POZYCJA_FAKTURYRow AddPOZYCJA_FAKTURYRow(short NUMER_POZYCJI, FAKTURARow parentFAKTURARowByNUMER_FAKTURY_FK, short ID_USLUGI, string ID_VAT, decimal ILOSC) {
                 POZYCJA_FAKTURYRow rowPOZYCJA_FAKTURYRow = ((POZYCJA_FAKTURYRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        NUMER_POZYCJI,
                         null,
                         ID_USLUGI,
                         ID_VAT,
                         ILOSC};
-                if ((parentFAKTURARowByFK_NUMER_FAKTURY != null)) {
-                    columnValuesArray[0] = parentFAKTURARowByFK_NUMER_FAKTURY[0];
+                if ((parentFAKTURARowByNUMER_FAKTURY_FK != null)) {
+                    columnValuesArray[1] = parentFAKTURARowByNUMER_FAKTURY_FK[0];
                 }
                 rowPOZYCJA_FAKTURYRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPOZYCJA_FAKTURYRow);
                 return rowPOZYCJA_FAKTURYRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public POZYCJA_FAKTURYRow FindByNUMER_POZYCJINUMER_FAKTURY(short NUMER_POZYCJI, short NUMER_FAKTURY) {
+                return ((POZYCJA_FAKTURYRow)(this.Rows.Find(new object[] {
+                            NUMER_POZYCJI,
+                            NUMER_FAKTURY})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -812,6 +830,7 @@ namespace ProjektBD {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnNUMER_POZYCJI = base.Columns["NUMER_POZYCJI"];
                 this.columnNUMER_FAKTURY = base.Columns["NUMER_FAKTURY"];
                 this.columnID_USLUGI = base.Columns["ID_USLUGI"];
                 this.columnID_VAT = base.Columns["ID_VAT"];
@@ -821,6 +840,8 @@ namespace ProjektBD {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnNUMER_POZYCJI = new global::System.Data.DataColumn("NUMER_POZYCJI", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNUMER_POZYCJI);
                 this.columnNUMER_FAKTURY = new global::System.Data.DataColumn("NUMER_FAKTURY", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNUMER_FAKTURY);
                 this.columnID_USLUGI = new global::System.Data.DataColumn("ID_USLUGI", typeof(short), null, global::System.Data.MappingType.Element);
@@ -829,6 +850,10 @@ namespace ProjektBD {
                 base.Columns.Add(this.columnID_VAT);
                 this.columnILOSC = new global::System.Data.DataColumn("ILOSC", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnILOSC);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnNUMER_POZYCJI,
+                                this.columnNUMER_FAKTURY}, true));
+                this.columnNUMER_POZYCJI.AllowDBNull = false;
                 this.columnNUMER_FAKTURY.AllowDBNull = false;
                 this.columnID_USLUGI.AllowDBNull = false;
                 this.columnID_VAT.AllowDBNull = false;
@@ -1011,7 +1036,12 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string UWAGI {
                 get {
-                    return ((string)(this[this.tableFAKTURA.UWAGIColumn]));
+                    try {
+                        return ((string)(this[this.tableFAKTURA.UWAGIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Wartość z kolumny \'UWAGI\' w tabeli \'FAKTURA\' to DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableFAKTURA.UWAGIColumn] = value;
@@ -1053,12 +1083,24 @@ namespace ProjektBD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUWAGINull() {
+                return this.IsNull(this.tableFAKTURA.UWAGIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUWAGINull() {
+                this[this.tableFAKTURA.UWAGIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public POZYCJA_FAKTURYRow[] GetPOZYCJA_FAKTURYRows() {
-                if ((this.Table.ChildRelations["FK_NUMER_FAKTURY"] == null)) {
+                if ((this.Table.ChildRelations["NUMER_FAKTURY_FK"] == null)) {
                     return new POZYCJA_FAKTURYRow[0];
                 }
                 else {
-                    return ((POZYCJA_FAKTURYRow[])(base.GetChildRows(this.Table.ChildRelations["FK_NUMER_FAKTURY"])));
+                    return ((POZYCJA_FAKTURYRow[])(base.GetChildRows(this.Table.ChildRelations["NUMER_FAKTURY_FK"])));
                 }
             }
         }
@@ -1075,6 +1117,17 @@ namespace ProjektBD {
             internal POZYCJA_FAKTURYRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePOZYCJA_FAKTURY = ((POZYCJA_FAKTURYDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short NUMER_POZYCJI {
+                get {
+                    return ((short)(this[this.tablePOZYCJA_FAKTURY.NUMER_POZYCJIColumn]));
+                }
+                set {
+                    this[this.tablePOZYCJA_FAKTURY.NUMER_POZYCJIColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1125,10 +1178,10 @@ namespace ProjektBD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FAKTURARow FAKTURARow {
                 get {
-                    return ((FAKTURARow)(this.GetParentRow(this.Table.ParentRelations["FK_NUMER_FAKTURY"])));
+                    return ((FAKTURARow)(this.GetParentRow(this.Table.ParentRelations["NUMER_FAKTURY_FK"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_NUMER_FAKTURY"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["NUMER_FAKTURY_FK"]);
                 }
             }
         }
@@ -1336,7 +1389,7 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SYSTEM"".""FAKTURA"" WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""DATA_WYKONANIA"" = :Original_DATA_WYKONANIA) AND (""UWAGI"" = :Original_UWAGI) AND (""TERMIN_ZAPLATY"" = :Original_TERMIN_ZAPLATY) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""SYSTEM"".""FAKTURA"" WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""DATA_WYKONANIA"" = :Original_DATA_WYKONANIA) AND ((:IsNull_UWAGI = 1 AND ""UWAGI"" IS NULL) OR (""UWAGI"" = :Original_UWAGI)) AND (""TERMIN_ZAPLATY"" = :Original_TERMIN_ZAPLATY) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_NUMER_FAKTURY";
@@ -1364,6 +1417,16 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "DATA_WYKONANIA";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_UWAGI";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "UWAGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_UWAGI";
@@ -1461,7 +1524,7 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""FAKTURA"" SET ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""DATA_WYSTAWIENIA"" = :DATA_WYSTAWIENIA, ""DATA_WYKONANIA"" = :DATA_WYKONANIA, ""UWAGI"" = :UWAGI, ""TERMIN_ZAPLATY"" = :TERMIN_ZAPLATY, ""ID_KLIENTA"" = :ID_KLIENTA, ""ID_UZYTKOWNIKA"" = :ID_UZYTKOWNIKA WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""DATA_WYKONANIA"" = :Original_DATA_WYKONANIA) AND (""UWAGI"" = :Original_UWAGI) AND (""TERMIN_ZAPLATY"" = :Original_TERMIN_ZAPLATY) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""FAKTURA"" SET ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""DATA_WYSTAWIENIA"" = :DATA_WYSTAWIENIA, ""DATA_WYKONANIA"" = :DATA_WYKONANIA, ""UWAGI"" = :UWAGI, ""TERMIN_ZAPLATY"" = :TERMIN_ZAPLATY, ""ID_KLIENTA"" = :ID_KLIENTA, ""ID_UZYTKOWNIKA"" = :ID_UZYTKOWNIKA WHERE ((""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""DATA_WYSTAWIENIA"" = :Original_DATA_WYSTAWIENIA) AND (""DATA_WYKONANIA"" = :Original_DATA_WYKONANIA) AND ((:IsNull_UWAGI = 1 AND ""UWAGI"" IS NULL) OR (""UWAGI"" = :Original_UWAGI)) AND (""TERMIN_ZAPLATY"" = :Original_TERMIN_ZAPLATY) AND (""ID_KLIENTA"" = :Original_ID_KLIENTA) AND (""ID_UZYTKOWNIKA"" = :Original_ID_UZYTKOWNIKA))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NUMER_FAKTURY";
@@ -1546,6 +1609,16 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_UWAGI";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "UWAGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_UWAGI";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 255;
@@ -1592,11 +1665,11 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[2];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT NUMER_FAKTURY, DATA_WYSTAWIENIA, DATA_WYKONANIA, UWAGI, TERMIN_ZAPLATY, ID" +
-                "_KLIENTA, ID_UZYTKOWNIKA FROM SYSTEM.FAKTURA";
+                "_KLIENTA, ID_UZYTKOWNIKA FROM SYSTEM.FAKTURA ORDER BY NUMER_FAKTURY";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1662,14 +1735,16 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_DATA_WYSTAWIENIA));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_DATA_WYKONANIA));
             if ((Original_UWAGI == null)) {
-                throw new global::System.ArgumentNullException("Original_UWAGI");
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_UWAGI));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_UWAGI));
             }
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_TERMIN_ZAPLATY));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_ID_KLIENTA));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_ID_UZYTKOWNIKA));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_TERMIN_ZAPLATY));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_ID_KLIENTA));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((short)(Original_ID_UZYTKOWNIKA));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1695,7 +1770,7 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DATA_WYSTAWIENIA));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DATA_WYKONANIA));
             if ((UWAGI == null)) {
-                throw new global::System.ArgumentNullException("UWAGI");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(UWAGI));
@@ -1728,7 +1803,7 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DATA_WYSTAWIENIA));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DATA_WYKONANIA));
             if ((UWAGI == null)) {
-                throw new global::System.ArgumentNullException("UWAGI");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(UWAGI));
@@ -1740,14 +1815,16 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_DATA_WYSTAWIENIA));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DATA_WYKONANIA));
             if ((Original_UWAGI == null)) {
-                throw new global::System.ArgumentNullException("Original_UWAGI");
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_UWAGI));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_UWAGI));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(Original_TERMIN_ZAPLATY));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_ID_KLIENTA));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_ID_UZYTKOWNIKA));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_TERMIN_ZAPLATY));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_ID_KLIENTA));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((short)(Original_ID_UZYTKOWNIKA));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1894,17 +1971,78 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "POZYCJA_FAKTURY";
+            tableMapping.ColumnMappings.Add("NUMER_POZYCJI", "NUMER_POZYCJI");
             tableMapping.ColumnMappings.Add("NUMER_FAKTURY", "NUMER_FAKTURY");
             tableMapping.ColumnMappings.Add("ID_USLUGI", "ID_USLUGI");
             tableMapping.ColumnMappings.Add("ID_VAT", "ID_VAT");
             tableMapping.ColumnMappings.Add("ILOSC", "ILOSC");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"SYSTEM\".\"POZYCJA_FAKTURY\" WHERE ((\"NUMER_POZYCJI\" = :Original_NUMER_" +
+                "POZYCJI) AND (\"NUMER_FAKTURY\" = :Original_NUMER_FAKTURY) AND (\"ID_USLUGI\" = :Ori" +
+                "ginal_ID_USLUGI) AND (\"ID_VAT\" = :Original_ID_VAT) AND (\"ILOSC\" = :Original_ILOS" +
+                "C))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_POZYCJI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_POZYCJI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_USLUGI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_USLUGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_VAT";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_VAT";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ILOSC";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ILOSC";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"POZYCJA_FAKTURY\" (\"NUMER_FAKTURY\", \"ID_USLUGI\", \"ID_VAT\", \"" +
-                "ILOSC\") VALUES (:NUMER_FAKTURY, :ID_USLUGI, :ID_VAT, :ILOSC)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"SYSTEM\".\"POZYCJA_FAKTURY\" (\"NUMER_POZYCJI\", \"NUMER_FAKTURY\", \"ID_USL" +
+                "UGI\", \"ID_VAT\", \"ILOSC\") VALUES (:NUMER_POZYCJI, :NUMER_FAKTURY, :ID_USLUGI, :ID" +
+                "_VAT, :ILOSC)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "NUMER_POZYCJI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_POZYCJI";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "NUMER_FAKTURY";
             param.DbType = global::System.Data.DbType.Int16;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
@@ -1935,6 +2073,93 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "ILOSC";
             this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""SYSTEM"".""POZYCJA_FAKTURY"" SET ""NUMER_POZYCJI"" = :NUMER_POZYCJI, ""NUMER_FAKTURY"" = :NUMER_FAKTURY, ""ID_USLUGI"" = :ID_USLUGI, ""ID_VAT"" = :ID_VAT, ""ILOSC"" = :ILOSC WHERE ((""NUMER_POZYCJI"" = :Original_NUMER_POZYCJI) AND (""NUMER_FAKTURY"" = :Original_NUMER_FAKTURY) AND (""ID_USLUGI"" = :Original_ID_USLUGI) AND (""ID_VAT"" = :Original_ID_VAT) AND (""ILOSC"" = :Original_ILOSC))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "NUMER_POZYCJI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_POZYCJI";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_USLUGI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_USLUGI";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ID_VAT";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_VAT";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ILOSC";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ILOSC";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_POZYCJI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_POZYCJI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_NUMER_FAKTURY";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "NUMER_FAKTURY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_USLUGI";
+            param.DbType = global::System.Data.DbType.Int16;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_USLUGI";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ID_VAT";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 255;
+            param.IsNullable = true;
+            param.SourceColumn = "ID_VAT";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ILOSC";
+            param.DbType = global::System.Data.DbType.Decimal;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
+            param.Size = 22;
+            param.IsNullable = true;
+            param.SourceColumn = "ILOSC";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1950,7 +2175,8 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT NUMER_FAKTURY, ID_USLUGI, ID_VAT, ILOSC FROM SYSTEM.POZYCJA_FAKTURY";
+            this._commandCollection[0].CommandText = "SELECT NUMER_POZYCJI, NUMER_FAKTURY, ID_USLUGI, ID_VAT, ILOSC FROM SYSTEM.POZYCJA" +
+                "_FAKTURY";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2010,17 +2236,49 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(short Original_NUMER_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, decimal Original_ILOSC) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((short)(Original_NUMER_POZYCJI));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((short)(Original_NUMER_FAKTURY));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((short)(Original_ID_USLUGI));
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_ID_VAT));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_ILOSC));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, decimal ILOSC) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(NUMER_FAKTURY));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(ID_USLUGI));
+        public virtual int Insert(short NUMER_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, decimal ILOSC) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(NUMER_POZYCJI));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(NUMER_FAKTURY));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((short)(ID_USLUGI));
             if ((ID_VAT == null)) {
                 throw new global::System.ArgumentNullException("ID_VAT");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ID_VAT));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ID_VAT));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(ILOSC));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(ILOSC));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2035,6 +2293,55 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(short NUMER_POZYCJI, short NUMER_FAKTURY, short ID_USLUGI, string ID_VAT, decimal ILOSC, short Original_NUMER_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, decimal Original_ILOSC) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((short)(NUMER_POZYCJI));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((short)(NUMER_FAKTURY));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((short)(ID_USLUGI));
+            if ((ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("ID_VAT");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ID_VAT));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(ILOSC));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(Original_NUMER_POZYCJI));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(Original_NUMER_FAKTURY));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_ID_USLUGI));
+            if ((Original_ID_VAT == null)) {
+                throw new global::System.ArgumentNullException("Original_ID_VAT");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ID_VAT));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_ILOSC));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(short ID_USLUGI, string ID_VAT, decimal ILOSC, short Original_NUMER_POZYCJI, short Original_NUMER_FAKTURY, short Original_ID_USLUGI, string Original_ID_VAT, decimal Original_ILOSC) {
+            return this.Update(Original_NUMER_POZYCJI, Original_NUMER_FAKTURY, ID_USLUGI, ID_VAT, ILOSC, Original_NUMER_POZYCJI, Original_NUMER_FAKTURY, Original_ID_USLUGI, Original_ID_VAT, Original_ILOSC);
         }
     }
     

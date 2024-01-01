@@ -318,7 +318,7 @@ namespace ProjektBD
             string encjaFaktura = "FAKTURA";
             string encjaPozycjaFatury = "POZYCJA_FAKTURY";
             string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
-            string[] atrybutyPozycjaFaktury = { "NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
+            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
             string fPolaFaktura = "";
@@ -326,7 +326,7 @@ namespace ProjektBD
             string uzytkownik = cb[1].Text;
             string idUzytkownika = "";
             string idKlienta = "";
-            string nazwaUslugi, idUslugi, idVat;
+            string nazwaUslugi, idPozycji, idUslugi, idVat;
             float ilosc;
 
             try
@@ -380,11 +380,14 @@ namespace ProjektBD
                 {
                     if (!row.IsNewRow)
                     {
+                        idPozycji = (row.Index + 1).ToString();
                         nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
                         idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
                         ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
                         fPolaFaktura = "";
+                        fPolaFaktura += idPozycji;
+                        fPolaFaktura += "', '";
                         fPolaFaktura += numerFaktury.Text;
                         fPolaFaktura += "', '";
                         fPolaFaktura += idUslugi;

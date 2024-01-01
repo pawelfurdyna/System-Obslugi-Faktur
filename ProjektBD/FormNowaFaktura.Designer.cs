@@ -312,6 +312,7 @@
             // 
             this.cbKlient.DataSource = this.kLIENTBindingSource;
             this.cbKlient.DisplayMember = "NAZWA";
+            this.cbKlient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKlient.FormattingEnabled = true;
             this.cbKlient.Location = new System.Drawing.Point(122, 52);
             this.cbKlient.Name = "cbKlient";
@@ -336,6 +337,7 @@
             // 
             // cbSposobZaplaty
             // 
+            this.cbSposobZaplaty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSposobZaplaty.FormattingEnabled = true;
             this.cbSposobZaplaty.Items.AddRange(new object[] {
             "Gotówka",
@@ -372,6 +374,7 @@
             // 
             // cbUzytkownik
             // 
+            this.cbUzytkownik.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUzytkownik.FormattingEnabled = true;
             this.cbUzytkownik.Location = new System.Drawing.Point(78, 396);
             this.cbUzytkownik.Name = "cbUzytkownik";

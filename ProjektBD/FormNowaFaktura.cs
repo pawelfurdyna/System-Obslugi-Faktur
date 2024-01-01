@@ -73,6 +73,12 @@ namespace ProjektBD
                 AutoComplete = true
             };
             dataGridView1.Columns.Insert(5, procentVat);
+
+            dataGridView1.Columns["jm"].ReadOnly = true;
+            dataGridView1.Columns["cenaJednostkowa"].ReadOnly = true;
+            dataGridView1.Columns["wartoscNetto"].ReadOnly = true;
+            dataGridView1.Columns["wartoscVat"].ReadOnly = true;
+            dataGridView1.Columns["wartoscBrutto"].ReadOnly = true;
             #endregion
 
             #region Wpisanie kolejnego numeru faktury
@@ -124,23 +130,6 @@ namespace ProjektBD
             }
             ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
             this.Close();
-            //pobierz tb nr faktury wyslij do encji
-            //pobierz tb data wystawienia wyslij do encji
-            //jesli sposob zaplaty przelew to pobierz tb termin zaplaty i dodaj do aktualnej daty wyslij do encji  jesli nie to pobierz dzisiejsza date i wyslij do encji
-            //z cb klient pobierz nazwe klienta odpytaj baze o klucz i wyslij do encji
-            //z cb sporzadzil pobierz id uzytkownika i wyslij do encji
-            //odpytaj baze o nazwe firmy ???
-            //pobierz tb uwagi i wyslij do encji
-
-            //po wyslaniu do encji faktura
-
-            //jako id pozycji uzywaj kolejnych liczb od 1 do ...
-            //pobierz tb nr faktury wyslij do encji
-            //z biezacego row i columny usluga pobierz id uslugi
-            //z biezacego row i columny %vat pobierz id vat
-            //z biezacego row i columny pobierz ilosc
-            // wartosc netto
-            // wartosc vat
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)

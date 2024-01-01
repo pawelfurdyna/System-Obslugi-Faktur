@@ -21,7 +21,6 @@ namespace ProjektBD
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDDataSetFaktura.FAKTURA' . Możesz go przenieść lub usunąć.
             this.fAKTURATableAdapter.Fill(this.bDDataSetFaktura.FAKTURA);
-
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
