@@ -108,7 +108,7 @@ namespace ProjektBD
 
         private void zegar_Tick(object sender, EventArgs e)
         {
-            string today = DateTime.Now.ToString("dd/MM/yyyy   HH:mm:ss");
+            string today = DateTime.Now.ToString("dd/MM/yyyy \n HH:mm:ss");
             lbData.Text = today;
         }
 
