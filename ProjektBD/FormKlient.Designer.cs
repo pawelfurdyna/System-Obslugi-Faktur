@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKlient));
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.lbEmail = new System.Windows.Forms.Label();
@@ -45,6 +46,8 @@
             this.lbTerminPlatnosci = new System.Windows.Forms.Label();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbEmail
@@ -140,6 +143,7 @@
             this.tbIdKlienta.Size = new System.Drawing.Size(100, 20);
             this.tbIdKlienta.TabIndex = 13;
             this.tbIdKlienta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdKlienta_KeyPress);
+            this.tbIdKlienta.Leave += new System.EventHandler(this.tbIdKlienta_Leave);
             // 
             // lbIdKlienta
             // 
@@ -158,6 +162,7 @@
             this.tbTerminPlatnosci.Size = new System.Drawing.Size(100, 20);
             this.tbTerminPlatnosci.TabIndex = 25;
             this.tbTerminPlatnosci.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminPlatnosci_KeyPress);
+            this.tbTerminPlatnosci.Leave += new System.EventHandler(this.tbTerminPlatnosci_Leave);
             // 
             // lbTerminPlatnosci
             // 
@@ -189,6 +194,10 @@
             this.btnZapisz.UseVisualStyleBackColor = true;
             this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormKlient
             // 
             this.AcceptButton = this.btnZapisz;
@@ -219,6 +228,7 @@
             this.Name = "FormKlient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klient";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +252,6 @@
         private System.Windows.Forms.Label lbTerminPlatnosci;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnZapisz;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

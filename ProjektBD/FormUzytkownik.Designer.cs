@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUzytkownik));
             this.lbIdUzytkownika = new System.Windows.Forms.Label();
             this.tbIdUzytkownika = new System.Windows.Forms.TextBox();
@@ -43,6 +44,8 @@
             this.lbHaslo = new System.Windows.Forms.Label();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbIdUzytkownika
@@ -62,6 +65,7 @@
             this.tbIdUzytkownika.Size = new System.Drawing.Size(100, 20);
             this.tbIdUzytkownika.TabIndex = 1;
             this.tbIdUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUzytkownika_KeyPress);
+            this.tbIdUzytkownika.Leave += new System.EventHandler(this.tbIdUzytkownika_Leave);
             // 
             // tbImie
             // 
@@ -169,6 +173,10 @@
             this.btnZapisz.UseVisualStyleBackColor = true;
             this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormUzytkownik
             // 
             this.AcceptButton = this.btnZapisz;
@@ -197,6 +205,7 @@
             this.Name = "FormUzytkownik";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Użytkownik";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +227,6 @@
         private System.Windows.Forms.Label lbHaslo;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnZapisz;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

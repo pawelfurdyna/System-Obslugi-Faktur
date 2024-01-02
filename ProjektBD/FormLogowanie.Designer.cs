@@ -73,7 +73,7 @@
             // 
             // btZaloguj
             // 
-            this.btZaloguj.BackColor = System.Drawing.SystemColors.Info;
+            this.btZaloguj.BackColor = System.Drawing.SystemColors.Control;
             this.btZaloguj.Location = new System.Drawing.Point(66, 86);
             this.btZaloguj.Name = "btZaloguj";
             this.btZaloguj.Size = new System.Drawing.Size(75, 23);

@@ -47,7 +47,7 @@ namespace ProjektBD
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
             cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
 
-            #region Zmiana kolumn w DataGrid
+#region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
             DataGridViewComboBoxColumn uslugaColumn = new DataGridViewComboBoxColumn
             {
@@ -73,9 +73,20 @@ namespace ProjektBD
                 AutoComplete = true
             };
             dataGridView1.Columns.Insert(5, procentVat);
-            #endregion
 
-            #region Wpisanie kolejnego numeru faktury
+            dataGridView1.Columns["jm"].ReadOnly = true;
+            dataGridView1.Columns["cenaJednostkowa"].ReadOnly = true;
+            dataGridView1.Columns["wartoscNetto"].ReadOnly = true;
+            dataGridView1.Columns["wartoscVat"].ReadOnly = true;
+            dataGridView1.Columns["wartoscBrutto"].ReadOnly = true;
+
+            dataGridView1.Columns["ilosc"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscNetto"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscVat"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscBrutto"].DefaultCellStyle.Format = "0.00";
+#endregion
+
+#region Wpisanie kolejnego numeru faktury
             string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false, true);
             if (int.TryParse(temp, out int number))
             {
@@ -86,13 +97,13 @@ namespace ProjektBD
             {
                 lbNrFakturyWartosc.Text = "1";
             }
-            #endregion
+#endregion
 
-            #region Wypełnienie domyślnymi wartościami dat i miejsca
+#region Wypełnienie domyślnymi wartościami dat i miejsca
             tbDataWystawienia.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-","/");
             tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-", "/");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
-            #endregion
+#endregion
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,42 +135,29 @@ namespace ProjektBD
             }
             ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
             this.Close();
-            //pobierz tb nr faktury wyslij do encji
-            //pobierz tb data wystawienia wyslij do encji
-            //jesli sposob zaplaty przelew to pobierz tb termin zaplaty i dodaj do aktualnej daty wyslij do encji  jesli nie to pobierz dzisiejsza date i wyslij do encji
-            //z cb klient pobierz nazwe klienta odpytaj baze o klucz i wyslij do encji
-            //z cb sporzadzil pobierz id uzytkownika i wyslij do encji
-            //odpytaj baze o nazwe firmy ???
-            //pobierz tb uwagi i wyslij do encji
-
-            //po wyslaniu do encji faktura
-
-            //jako id pozycji uzywaj kolejnych liczb od 1 do ...
-            //pobierz tb nr faktury wyslij do encji
-            //z biezacego row i columny usluga pobierz id uslugi
-            //z biezacego row i columny %vat pobierz id vat
-            //z biezacego row i columny pobierz ilosc
-            // wartosc netto
-            // wartosc vat
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        #region Zdarzenia do sprawdzania typów pól numerycznych
-        private void tbNrFaktury_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ob.SprawdzTyp(sender, e);
-        }
+#region Zdarzenia do sprawdzania typów pól numerycznych
 
         private void tbTerminZaplaty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbTerminZaplaty, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbTerminZaplaty, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbTerminZaplaty, string.Empty);
+            }
         }
-        #endregion
+#endregion
 
-        #region Zdarzenia do pól dat
+#region Zdarzenia do pól dat
         private void tbDataWystawienia_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.FormatowanieDaty(sender, e);
@@ -179,9 +177,9 @@ namespace ProjektBD
         {
             ob.WalidacjaDaty(sender, e);
         }
-        #endregion
+#endregion
 
-        #region Zdarzenia do obsługi DataGridView
+#region Zdarzenia do obsługi DataGridView
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e != null && e.RowIndex >= 0)
@@ -214,7 +212,7 @@ namespace ProjektBD
                         float.TryParse(iloscCell.Value?.ToString(), out float iloscValue);
                         float.TryParse(cenaJednostkowaCell.Value?.ToString(), out float cenaJednostkowaValue);
                         float result = iloscValue * cenaJednostkowaValue;
-                        resultCell.Value = result;
+                        resultCell.Value = Math.Round(result, 2);
                         WyswietlSumy();
                     }
                 }
@@ -232,8 +230,8 @@ namespace ProjektBD
                         {
                             float.TryParse(wartoscNettoCell.Value?.ToString(), out float wartoscNettoValue);
                             float wartoscVat = wartoscNettoValue * procentVatCellValue / 100;
-                            wartoscVatCell.Value = wartoscVat;
-                            wartoscBruttoCell.Value = wartoscNettoValue + wartoscVat;
+                            wartoscVatCell.Value = Math.Round(wartoscVat,2);
+                            wartoscBruttoCell.Value = Math.Round(wartoscNettoValue + wartoscVat, 2);
                             WyswietlSumy();
                         }
                     }
@@ -275,6 +273,24 @@ namespace ProjektBD
         {
             e.Row.Cells["ilosc"].Value = "0";
             e.Row.Cells["cenaJednostkowa"].Value = "0";
+            e.Row.Cells["wartoscNetto"].Value = "0,00";
+            e.Row.Cells["wartoscVat"].Value = "0,00";
+            e.Row.Cells["wartoscBrutto"].Value = "0,00";
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["ilosc"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscNetto"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscVat"].Index ||
+                e.ColumnIndex == dataGridView1.Columns["wartoscBrutto"].Index)
+            {
+                if (!float.TryParse(e.FormattedValue.ToString(), out float value))
+                {
+                    MessageBox.Show("Wprowadzona wartość jest niepoprawna. Wartość należy wprowadzić z użyciem cyfr i przecinka jako separatora dziesiętnego.", "Błąd formatu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true; // Niepoprawna wartość, anuluj zmianę
+                }
+            }
         }
 
         private void WyswietlSumy()
@@ -305,10 +321,15 @@ namespace ProjektBD
             }
 
             // Display the sums in the TextBox controls
-            lbSumaNettoWartosc.Text = sumaWartoscNetto.ToString();
-            lbSumaVatWartosc.Text = sumaWartoscVat.ToString();
-            lbSumaBruttoWartosc.Text = sumaWartoscBrutto.ToString();
+            lbSumaNettoWartosc.Text = Math.Round(sumaWartoscNetto, 2).ToString();
+            lbSumaVatWartosc.Text = Math.Round(sumaWartoscVat, 2).ToString();
+            lbSumaBruttoWartosc.Text = Math.Round(sumaWartoscBrutto, 2).ToString();
         }
         #endregion
+
+        private void tbTerminZaplaty_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbTerminZaplaty, string.Empty);
+        }
     }
 }

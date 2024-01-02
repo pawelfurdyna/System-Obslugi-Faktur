@@ -71,5 +71,13 @@ namespace ProjektBD
             ob.UsunRekord(encja,klucz,nazwa);
             this.uZYTKOWNIKTableAdapter.Fill(this.bDdataSet.UZYTKOWNIK);
         }
+
+        private void FormUzytkownicyLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -222,7 +223,7 @@ namespace ProjektBD
         #endregion
 
         #region SprawdzTyp
-        public void SprawdzTyp(object sender, KeyPressEventArgs e, bool typFloat = false)
+        public bool SprawdzTyp(object sender, KeyPressEventArgs e, bool typFloat = false)
         {
             TextBox textBox = sender as TextBox;
             if (typFloat)
@@ -231,12 +232,14 @@ namespace ProjektBD
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
                 {
                     e.Handled = true;
+                    return false;
                 }
 
                 // Check if the decimal point is already there in the TextBox
                 if (e.KeyChar == ',' && textBox.Text.IndexOf(',') > -1)
                 {
                     e.Handled = true;
+                    return false;
                 }
 
                 // Allow only two numbers after the decimal point
@@ -249,6 +252,7 @@ namespace ProjektBD
                     if (cursorPosition > decimalPointPosition && textBox.Text.Length - decimalPointPosition > 2)
                     {
                         e.Handled = true;
+                        return false;
                     }
                 }
             }
@@ -258,8 +262,10 @@ namespace ProjektBD
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
                     e.Handled = true;
+                    return false;
                 }
             }
+            return true;
         }
         #endregion
 
@@ -314,11 +320,12 @@ namespace ProjektBD
         #region ZapisywanieFaktury
         public void ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
         {
+            CultureInfo culture = new CultureInfo("pl-PL");
             string query = "";
             string encjaFaktura = "FAKTURA";
             string encjaPozycjaFatury = "POZYCJA_FAKTURY";
             string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
-            string[] atrybutyPozycjaFaktury = { "NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
+            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
             string fPolaFaktura = "";
@@ -326,8 +333,9 @@ namespace ProjektBD
             string uzytkownik = cb[1].Text;
             string idUzytkownika = "";
             string idKlienta = "";
-            string nazwaUslugi, idUslugi, idVat;
+            string nazwaUslugi, idPozycji, idUslugi, idVat;
             float ilosc;
+            
 
             try
             {
@@ -380,11 +388,22 @@ namespace ProjektBD
                 {
                     if (!row.IsNewRow)
                     {
+                        idPozycji = (row.Index + 1).ToString();
                         nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
                         idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
-                        ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
+                        if (float.TryParse((string)(row.Cells["ilosc"].Value), NumberStyles.Any, culture, out ilosc))
+                        {
+                            // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
+                        }
+                        else
+                        {
+                            ilosc = 0;
+                        }
+                        //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
                         fPolaFaktura = "";
+                        fPolaFaktura += idPozycji;
+                        fPolaFaktura += "', '";
                         fPolaFaktura += numerFaktury.Text;
                         fPolaFaktura += "', '";
                         fPolaFaktura += idUslugi;

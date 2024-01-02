@@ -184,10 +184,12 @@
             this.Controls.Add(this.btnEdytuj);
             this.Controls.Add(this.btnDodaj);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FormUslugiLista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Uslugi";
             this.Load += new System.EventHandler(this.FormUslugiLista_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormUslugiLista_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).EndInit();

@@ -61,7 +61,20 @@ namespace ProjektBD
 
         private void tbIdUzytkownika_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbIdUzytkownika, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbIdUzytkownika, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbIdUzytkownika, string.Empty);
+            }
+        }
+
+        private void tbIdUzytkownika_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbIdUzytkownika, string.Empty);
         }
     }
 }
