@@ -60,12 +60,38 @@ namespace ProjektBD
 
         private void tbCenaJednostkowa_KeyPress(object sender, KeyPressEventArgs e)
         {
-           ob.SprawdzTyp(sender, e, true);
+            if (!ob.SprawdzTyp(sender, e,true))
+            {
+                errorProvider1.SetError(tbCenaJednostkowa, "Wprowadz wartość z użyciem cyfr i przecinka jako speratatora dziesiętnego!");
+                this.errorProvider1.SetIconPadding(this.tbCenaJednostkowa, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
+            }
         }
 
         private void tbIdUslugi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbIdUslugi, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbIdUslugi, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbIdUslugi, string.Empty);
+            }
+        }
+
+        private void tbIdUslugi_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbIdUslugi, string.Empty);
+        }
+
+        private void tbCenaJednostkowa_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
         }
     }
 }

@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoriaFakturLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dATAWYKONANIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uWAGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tERMINZAPLATYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fAKTURABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDDataSetFaktura = new ProjektBD.BDDataSetFaktura();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,13 +46,6 @@
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.fAKTURATableAdapter = new ProjektBD.BDDataSetFakturaTableAdapters.FAKTURATableAdapter();
-            this.nUMERFAKTURYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dATAWYKONANIADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uWAGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tERMINZAPLATYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDDataSetFaktura)).BeginInit();
@@ -73,6 +73,55 @@
             this.dataGridView1.Size = new System.Drawing.Size(1043, 338);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
+            // 
+            // nUMERFAKTURYDataGridViewTextBoxColumn
+            // 
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.DataPropertyName = "NUMER_FAKTURY";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.HeaderText = "Nr faktury";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.Name = "nUMERFAKTURYDataGridViewTextBoxColumn";
+            this.nUMERFAKTURYDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dATAWYSTAWIENIADataGridViewTextBoxColumn
+            // 
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYSTAWIENIA";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.HeaderText = "Data wystawienia";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.Name = "dATAWYSTAWIENIADataGridViewTextBoxColumn";
+            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dATAWYKONANIADataGridViewTextBoxColumn
+            // 
+            this.dATAWYKONANIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYKONANIA";
+            this.dATAWYKONANIADataGridViewTextBoxColumn.HeaderText = "Data wykonania";
+            this.dATAWYKONANIADataGridViewTextBoxColumn.Name = "dATAWYKONANIADataGridViewTextBoxColumn";
+            this.dATAWYKONANIADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uWAGIDataGridViewTextBoxColumn
+            // 
+            this.uWAGIDataGridViewTextBoxColumn.DataPropertyName = "UWAGI";
+            this.uWAGIDataGridViewTextBoxColumn.HeaderText = "Uwagi";
+            this.uWAGIDataGridViewTextBoxColumn.Name = "uWAGIDataGridViewTextBoxColumn";
+            this.uWAGIDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tERMINZAPLATYDataGridViewTextBoxColumn
+            // 
+            this.tERMINZAPLATYDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_ZAPLATY";
+            this.tERMINZAPLATYDataGridViewTextBoxColumn.HeaderText = "Termin zaplaty(dni)";
+            this.tERMINZAPLATYDataGridViewTextBoxColumn.Name = "tERMINZAPLATYDataGridViewTextBoxColumn";
+            this.tERMINZAPLATYDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDKLIENTADataGridViewTextBoxColumn
+            // 
+            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
+            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "Id Klienta";
+            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
+            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDUZYTKOWNIKADataGridViewTextBoxColumn
+            // 
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "Id Użytkownika";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fAKTURABindingSource
             // 
@@ -130,55 +179,6 @@
             // 
             this.fAKTURATableAdapter.ClearBeforeFill = true;
             // 
-            // nUMERFAKTURYDataGridViewTextBoxColumn
-            // 
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.DataPropertyName = "NUMER_FAKTURY";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.HeaderText = "Nr faktury";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.Name = "nUMERFAKTURYDataGridViewTextBoxColumn";
-            this.nUMERFAKTURYDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dATAWYSTAWIENIADataGridViewTextBoxColumn
-            // 
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYSTAWIENIA";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.HeaderText = "Data wystawienia";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.Name = "dATAWYSTAWIENIADataGridViewTextBoxColumn";
-            this.dATAWYSTAWIENIADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dATAWYKONANIADataGridViewTextBoxColumn
-            // 
-            this.dATAWYKONANIADataGridViewTextBoxColumn.DataPropertyName = "DATA_WYKONANIA";
-            this.dATAWYKONANIADataGridViewTextBoxColumn.HeaderText = "Data wykonania";
-            this.dATAWYKONANIADataGridViewTextBoxColumn.Name = "dATAWYKONANIADataGridViewTextBoxColumn";
-            this.dATAWYKONANIADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uWAGIDataGridViewTextBoxColumn
-            // 
-            this.uWAGIDataGridViewTextBoxColumn.DataPropertyName = "UWAGI";
-            this.uWAGIDataGridViewTextBoxColumn.HeaderText = "Uwagi";
-            this.uWAGIDataGridViewTextBoxColumn.Name = "uWAGIDataGridViewTextBoxColumn";
-            this.uWAGIDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tERMINZAPLATYDataGridViewTextBoxColumn
-            // 
-            this.tERMINZAPLATYDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_ZAPLATY";
-            this.tERMINZAPLATYDataGridViewTextBoxColumn.HeaderText = "Termin zaplaty(dni)";
-            this.tERMINZAPLATYDataGridViewTextBoxColumn.Name = "tERMINZAPLATYDataGridViewTextBoxColumn";
-            this.tERMINZAPLATYDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDKLIENTADataGridViewTextBoxColumn
-            // 
-            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
-            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "Id Klienta";
-            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
-            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDUZYTKOWNIKADataGridViewTextBoxColumn
-            // 
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "Id Użytkownika";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FormHistoriaFakturLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +189,7 @@
             this.Controls.Add(this.btnDodaj);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1083, 459);
             this.MinimumSize = new System.Drawing.Size(1083, 459);
             this.Name = "FormHistoriaFakturLista";
@@ -196,6 +197,7 @@
             this.Text = "Historia Faktur";
             this.Activated += new System.EventHandler(this.FormHistoriaFakturLista_Activated);
             this.Load += new System.EventHandler(this.FormHistoriaFakturLista_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormHistoriaFakturLista_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fAKTURABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDDataSetFaktura)).EndInit();

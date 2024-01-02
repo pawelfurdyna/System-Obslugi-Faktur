@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStawkaVAT));
             this.lbNazwa = new System.Windows.Forms.Label();
             this.tbNazwa = new System.Windows.Forms.TextBox();
@@ -35,6 +36,8 @@
             this.lbProcentVAT = new System.Windows.Forms.Label();
             this.btnZapisz = new System.Windows.Forms.Button();
             this.btnAnuluj = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNazwa
@@ -62,6 +65,7 @@
             this.tbProcentVAT.Size = new System.Drawing.Size(100, 20);
             this.tbProcentVAT.TabIndex = 3;
             this.tbProcentVAT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProcentVAT_KeyPress);
+            this.tbProcentVAT.Leave += new System.EventHandler(this.tbProcentVAT_Leave);
             // 
             // lbProcentVAT
             // 
@@ -93,6 +97,10 @@
             this.btnAnuluj.UseVisualStyleBackColor = true;
             this.btnAnuluj.Click += new System.EventHandler(this.btnAnuluj_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormStawkaVAT
             // 
             this.AcceptButton = this.btnZapisz;
@@ -113,6 +121,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stawka VAT";
             this.Load += new System.EventHandler(this.FormStawkaVAT_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +135,6 @@
         private System.Windows.Forms.Label lbProcentVAT;
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.Button btnAnuluj;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -60,12 +60,38 @@ namespace ProjektBD
 
         private void tbIdKlienta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbIdKlienta, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbIdKlienta, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbIdKlienta, string.Empty);
+            }
         }
 
         private void tbTerminPlatnosci_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbTerminPlatnosci, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbTerminPlatnosci, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbTerminPlatnosci, string.Empty);
+            }
+        }
+
+        private void tbIdKlienta_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbIdKlienta, string.Empty);
+        }
+
+        private void tbTerminPlatnosci_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbTerminPlatnosci, string.Empty);
         }
     }
 }

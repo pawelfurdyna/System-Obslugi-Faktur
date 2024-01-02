@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsluga));
             this.tbJednostkaMiary = new System.Windows.Forms.TextBox();
             this.lbJednostkaMiary = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             this.lbIdUslugi = new System.Windows.Forms.Label();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbJednostkaMiary
@@ -65,6 +68,7 @@
             this.tbCenaJednostkowa.Size = new System.Drawing.Size(100, 20);
             this.tbCenaJednostkowa.TabIndex = 13;
             this.tbCenaJednostkowa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCenaJednostkowa_KeyPress);
+            this.tbCenaJednostkowa.Leave += new System.EventHandler(this.tbCenaJednostkowa_Leave);
             // 
             // lbCenaJednostkowa
             // 
@@ -100,6 +104,7 @@
             this.tbIdUslugi.Size = new System.Drawing.Size(100, 20);
             this.tbIdUslugi.TabIndex = 9;
             this.tbIdUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUslugi_KeyPress);
+            this.tbIdUslugi.Leave += new System.EventHandler(this.tbIdUslugi_Leave);
             // 
             // lbIdUslugi
             // 
@@ -131,6 +136,10 @@
             this.btnZapisz.UseVisualStyleBackColor = true;
             this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormUsluga
             // 
             this.AcceptButton = this.btnZapisz;
@@ -155,6 +164,7 @@
             this.Name = "FormUsluga";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usługa";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +182,6 @@
         private System.Windows.Forms.Label lbIdUslugi;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnZapisz;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

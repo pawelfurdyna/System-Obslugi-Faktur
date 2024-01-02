@@ -80,6 +80,7 @@
             this.lbUwagi = new System.Windows.Forms.Label();
             this.tbUwagi = new System.Windows.Forms.TextBox();
             this.lbNrFakturyWartosc = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAWKAVATBindingSource)).BeginInit();
@@ -88,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,7 +99,7 @@
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(826, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(824, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,7 +165,7 @@
             this.tbMiejsceWystawienia.Location = new System.Drawing.Point(123, 79);
             this.tbMiejsceWystawienia.Name = "tbMiejsceWystawienia";
             this.tbMiejsceWystawienia.Size = new System.Drawing.Size(276, 20);
-            this.tbMiejsceWystawienia.TabIndex = 26;
+            this.tbMiejsceWystawienia.TabIndex = 2;
             // 
             // tbDataWykonaniaUslugi
             // 
@@ -171,7 +173,7 @@
             this.tbDataWykonaniaUslugi.MaxLength = 8;
             this.tbDataWykonaniaUslugi.Name = "tbDataWykonaniaUslugi";
             this.tbDataWykonaniaUslugi.Size = new System.Drawing.Size(262, 20);
-            this.tbDataWykonaniaUslugi.TabIndex = 24;
+            this.tbDataWykonaniaUslugi.TabIndex = 4;
             this.tbDataWykonaniaUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWykonaniaUslugi_KeyPress);
             this.tbDataWykonaniaUslugi.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWykonaniaUslugi_Validating);
             // 
@@ -181,7 +183,7 @@
             this.tbDataWystawienia.MaxLength = 8;
             this.tbDataWystawienia.Name = "tbDataWystawienia";
             this.tbDataWystawienia.Size = new System.Drawing.Size(262, 20);
-            this.tbDataWystawienia.TabIndex = 23;
+            this.tbDataWystawienia.TabIndex = 3;
             this.tbDataWystawienia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDataWystawienia_KeyPress);
             this.tbDataWystawienia.Validating += new System.ComponentModel.CancelEventHandler(this.tbDataWystawienia_Validating);
             // 
@@ -210,9 +212,10 @@
             this.tbTerminZaplaty.MaxLength = 2;
             this.tbTerminZaplaty.Name = "tbTerminZaplaty";
             this.tbTerminZaplaty.Size = new System.Drawing.Size(262, 20);
-            this.tbTerminZaplaty.TabIndex = 33;
+            this.tbTerminZaplaty.TabIndex = 6;
             this.tbTerminZaplaty.Visible = false;
             this.tbTerminZaplaty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminZaplaty_KeyPress);
+            this.tbTerminZaplaty.Leave += new System.EventHandler(this.tbTerminZaplaty_Leave);
             // 
             // dataGridView1
             // 
@@ -229,7 +232,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(14, 131);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(800, 233);
-            this.dataGridView1.TabIndex = 35;
+            this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -318,7 +321,7 @@
             this.cbKlient.Location = new System.Drawing.Point(122, 52);
             this.cbKlient.Name = "cbKlient";
             this.cbKlient.Size = new System.Drawing.Size(276, 21);
-            this.cbKlient.TabIndex = 38;
+            this.cbKlient.TabIndex = 1;
             this.cbKlient.ValueMember = "ID_KLIENTA";
             this.cbKlient.SelectedIndexChanged += new System.EventHandler(this.cbKlient_SelectedIndexChanged);
             // 
@@ -346,7 +349,7 @@
             this.cbSposobZaplaty.Location = new System.Drawing.Point(552, 79);
             this.cbSposobZaplaty.Name = "cbSposobZaplaty";
             this.cbSposobZaplaty.Size = new System.Drawing.Size(262, 21);
-            this.cbSposobZaplaty.TabIndex = 40;
+            this.cbSposobZaplaty.TabIndex = 5;
             this.cbSposobZaplaty.SelectedIndexChanged += new System.EventHandler(this.cbSposobZaplaty_SelectedIndexChanged);
             // 
             // kLIENTTableAdapter
@@ -358,17 +361,18 @@
             this.btZapisz.Location = new System.Drawing.Point(658, 415);
             this.btZapisz.Name = "btZapisz";
             this.btZapisz.Size = new System.Drawing.Size(75, 23);
-            this.btZapisz.TabIndex = 41;
+            this.btZapisz.TabIndex = 9;
             this.btZapisz.Text = "Zapisz";
             this.btZapisz.UseVisualStyleBackColor = true;
             this.btZapisz.Click += new System.EventHandler(this.btZapisz_Click);
             // 
             // btAnuluj
             // 
+            this.btAnuluj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btAnuluj.Location = new System.Drawing.Point(739, 415);
             this.btAnuluj.Name = "btAnuluj";
             this.btAnuluj.Size = new System.Drawing.Size(75, 23);
-            this.btAnuluj.TabIndex = 42;
+            this.btAnuluj.TabIndex = 10;
             this.btAnuluj.Text = "Anuluj";
             this.btAnuluj.UseVisualStyleBackColor = true;
             this.btAnuluj.Click += new System.EventHandler(this.btAnuluj_Click);
@@ -380,7 +384,7 @@
             this.cbUzytkownik.Location = new System.Drawing.Point(78, 396);
             this.cbUzytkownik.Name = "cbUzytkownik";
             this.cbUzytkownik.Size = new System.Drawing.Size(319, 21);
-            this.cbUzytkownik.TabIndex = 43;
+            this.cbUzytkownik.TabIndex = 8;
             this.cbUzytkownik.Tag = "";
             // 
             // uZYTKOWNIKBindingSource
@@ -473,7 +477,7 @@
             this.tbUwagi.Location = new System.Drawing.Point(78, 370);
             this.tbUwagi.Name = "tbUwagi";
             this.tbUwagi.Size = new System.Drawing.Size(320, 20);
-            this.tbUwagi.TabIndex = 54;
+            this.tbUwagi.TabIndex = 7;
             // 
             // lbNrFakturyWartosc
             // 
@@ -485,11 +489,16 @@
             this.lbNrFakturyWartosc.TabIndex = 55;
             this.lbNrFakturyWartosc.Text = "1";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormNowaFaktura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 450);
+            this.CancelButton = this.btAnuluj;
+            this.ClientSize = new System.Drawing.Size(824, 451);
             this.Controls.Add(this.lbNrFakturyWartosc);
             this.Controls.Add(this.tbUwagi);
             this.Controls.Add(this.lbUwagi);
@@ -518,7 +527,10 @@
             this.Controls.Add(this.tbDataWystawienia);
             this.Controls.Add(this.lbNrFaktury);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(840, 490);
+            this.MinimumSize = new System.Drawing.Size(840, 490);
             this.Name = "FormNowaFaktura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nowa Faktura";
@@ -532,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,5 +602,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscBrutto;
         private System.Windows.Forms.Label lbNrFakturyWartosc;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

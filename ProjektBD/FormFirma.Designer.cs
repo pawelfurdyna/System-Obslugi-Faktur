@@ -88,7 +88,7 @@
             this.tbNip.MaxLength = 20;
             this.tbNip.Name = "tbNip";
             this.tbNip.Size = new System.Drawing.Size(296, 20);
-            this.tbNip.TabIndex = 3;
+            this.tbNip.TabIndex = 2;
             // 
             // tbUlica
             // 
@@ -97,7 +97,7 @@
             this.tbUlica.MaxLength = 255;
             this.tbUlica.Name = "tbUlica";
             this.tbUlica.Size = new System.Drawing.Size(296, 20);
-            this.tbUlica.TabIndex = 4;
+            this.tbUlica.TabIndex = 5;
             // 
             // tbKodPocztowy
             // 
@@ -106,7 +106,7 @@
             this.tbKodPocztowy.MaxLength = 10;
             this.tbKodPocztowy.Name = "tbKodPocztowy";
             this.tbKodPocztowy.Size = new System.Drawing.Size(296, 20);
-            this.tbKodPocztowy.TabIndex = 5;
+            this.tbKodPocztowy.TabIndex = 6;
             // 
             // tbMiejscowosc
             // 
@@ -115,7 +115,7 @@
             this.tbMiejscowosc.MaxLength = 255;
             this.tbMiejscowosc.Name = "tbMiejscowosc";
             this.tbMiejscowosc.Size = new System.Drawing.Size(296, 20);
-            this.tbMiejscowosc.TabIndex = 6;
+            this.tbMiejscowosc.TabIndex = 7;
             // 
             // tbKontoBankowe
             // 
@@ -124,7 +124,7 @@
             this.tbKontoBankowe.MaxLength = 40;
             this.tbKontoBankowe.Name = "tbKontoBankowe";
             this.tbKontoBankowe.Size = new System.Drawing.Size(296, 20);
-            this.tbKontoBankowe.TabIndex = 7;
+            this.tbKontoBankowe.TabIndex = 4;
             // 
             // tbTelefonFirmowy
             // 
@@ -133,7 +133,7 @@
             this.tbTelefonFirmowy.MaxLength = 25;
             this.tbTelefonFirmowy.Name = "tbTelefonFirmowy";
             this.tbTelefonFirmowy.Size = new System.Drawing.Size(296, 20);
-            this.tbTelefonFirmowy.TabIndex = 8;
+            this.tbTelefonFirmowy.TabIndex = 3;
             // 
             // lbUlica
             // 
@@ -222,7 +222,8 @@
             this.btnEdytuj.Location = new System.Drawing.Point(319, 229);
             this.btnEdytuj.Name = "btnEdytuj";
             this.btnEdytuj.Size = new System.Drawing.Size(75, 23);
-            this.btnEdytuj.TabIndex = 18;
+            this.btnEdytuj.TabIndex = 9;
+            this.btnEdytuj.TabStop = false;
             this.btnEdytuj.Text = "Edytuj";
             this.btnEdytuj.UseVisualStyleBackColor = true;
             this.btnEdytuj.Click += new System.EventHandler(this.btnEdit_Click);
@@ -233,7 +234,7 @@
             this.btnZapisz.Location = new System.Drawing.Point(238, 231);
             this.btnZapisz.Name = "btnZapisz";
             this.btnZapisz.Size = new System.Drawing.Size(75, 23);
-            this.btnZapisz.TabIndex = 19;
+            this.btnZapisz.TabIndex = 8;
             this.btnZapisz.Text = "Zapisz";
             this.btnZapisz.UseVisualStyleBackColor = false;
             this.btnZapisz.Visible = false;
@@ -241,6 +242,7 @@
             // 
             // FormFirma
             // 
+            this.AcceptButton = this.btnZapisz;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 261);
@@ -263,12 +265,14 @@
             this.Controls.Add(this.lbNazwaFirmy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(420, 300);
             this.MinimumSize = new System.Drawing.Size(420, 300);
             this.Name = "FormFirma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Firma";
             this.Load += new System.EventHandler(this.FormFirma_Load_1);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormFirma_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

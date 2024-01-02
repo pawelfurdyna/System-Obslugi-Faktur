@@ -63,7 +63,20 @@ namespace ProjektBD
 
         private void tbProcentVAT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbProcentVAT, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbProcentVAT, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbProcentVAT, string.Empty);
+            }
+        }
+
+        private void tbProcentVAT_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbProcentVAT, string.Empty);
         }
     }
 }

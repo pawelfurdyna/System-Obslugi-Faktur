@@ -47,7 +47,7 @@ namespace ProjektBD
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
             cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
 
-            #region Zmiana kolumn w DataGrid
+#region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
             DataGridViewComboBoxColumn uslugaColumn = new DataGridViewComboBoxColumn
             {
@@ -84,9 +84,9 @@ namespace ProjektBD
             dataGridView1.Columns["wartoscNetto"].DefaultCellStyle.Format = "0.00";
             dataGridView1.Columns["wartoscVat"].DefaultCellStyle.Format = "0.00";
             dataGridView1.Columns["wartoscBrutto"].DefaultCellStyle.Format = "0.00";
-            #endregion
+#endregion
 
-            #region Wpisanie kolejnego numeru faktury
+#region Wpisanie kolejnego numeru faktury
             string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false, true);
             if (int.TryParse(temp, out int number))
             {
@@ -97,13 +97,13 @@ namespace ProjektBD
             {
                 lbNrFakturyWartosc.Text = "1";
             }
-            #endregion
+#endregion
 
-            #region Wypełnienie domyślnymi wartościami dat i miejsca
+#region Wypełnienie domyślnymi wartościami dat i miejsca
             tbDataWystawienia.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-","/");
             tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-", "/");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
-            #endregion
+#endregion
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,19 +141,23 @@ namespace ProjektBD
         {
             this.Close();
         }
-        #region Zdarzenia do sprawdzania typów pól numerycznych
-        private void tbNrFaktury_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ob.SprawdzTyp(sender, e);
-        }
+#region Zdarzenia do sprawdzania typów pól numerycznych
 
         private void tbTerminZaplaty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ob.SprawdzTyp(sender, e);
+            if (!ob.SprawdzTyp(sender, e))
+            {
+                errorProvider1.SetError(tbTerminZaplaty, "Można wprowadzać tylko cyfry!");
+                this.errorProvider1.SetIconPadding(this.tbTerminZaplaty, -20);
+            }
+            else
+            {
+                errorProvider1.SetError(tbTerminZaplaty, string.Empty);
+            }
         }
-        #endregion
+#endregion
 
-        #region Zdarzenia do pól dat
+#region Zdarzenia do pól dat
         private void tbDataWystawienia_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.FormatowanieDaty(sender, e);
@@ -173,9 +177,9 @@ namespace ProjektBD
         {
             ob.WalidacjaDaty(sender, e);
         }
-        #endregion
+#endregion
 
-        #region Zdarzenia do obsługi DataGridView
+#region Zdarzenia do obsługi DataGridView
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e != null && e.RowIndex >= 0)
@@ -269,6 +273,9 @@ namespace ProjektBD
         {
             e.Row.Cells["ilosc"].Value = "0";
             e.Row.Cells["cenaJednostkowa"].Value = "0";
+            e.Row.Cells["wartoscNetto"].Value = "0,00";
+            e.Row.Cells["wartoscVat"].Value = "0,00";
+            e.Row.Cells["wartoscBrutto"].Value = "0,00";
         }
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -319,5 +326,10 @@ namespace ProjektBD
             lbSumaBruttoWartosc.Text = Math.Round(sumaWartoscBrutto, 2).ToString();
         }
         #endregion
+
+        private void tbTerminZaplaty_Leave(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbTerminZaplaty, string.Empty);
+        }
     }
 }

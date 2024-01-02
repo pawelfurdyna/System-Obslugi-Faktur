@@ -70,5 +70,13 @@ namespace ProjektBD
             ob.UsunRekord(encja, klucz, nazwa);
             this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
         }
+
+        private void FormUslugiLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

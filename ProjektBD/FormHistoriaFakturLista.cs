@@ -39,6 +39,7 @@ namespace ProjektBD
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDDataSetFaktura.FAKTURA' . Możesz go przenieść lub usunąć.
 
             this.fAKTURATableAdapter.Fill(this.bDDataSetFaktura.FAKTURA);
+
             DataGridViewTextBoxColumn terminZaplatyColumn = new DataGridViewTextBoxColumn
             {
                 Name = "terminZaplaty",
@@ -84,6 +85,9 @@ namespace ProjektBD
             dataGridView1.Columns["tERMINZAPLATYDataGridViewTextBoxColumn"].Visible = false;
             dataGridView1.Columns["iDKLIENTADataGridViewTextBoxColumn"].Visible = false;
             dataGridView1.Columns["iDUZYTKOWNIKADataGridViewTextBoxColumn"].Visible = false;
+            dataGridView1.Columns["wartoscNetto"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscVat"].DefaultCellStyle.Format = "0.00";
+            dataGridView1.Columns["wartoscBrutto"].DefaultCellStyle.Format = "0.00";
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +106,7 @@ namespace ProjektBD
 
         private void WczytajDane()
         {
-            #region Kolumny terminZaplaty, klient, uzytkownik
+#region Kolumny terminZaplaty, klient, uzytkownik
             
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -126,9 +130,10 @@ namespace ProjektBD
                     row.Cells["uzytkownik"].Value = temp;
                 }
             }
-            #endregion
+#endregion
 
-            #region Kolumny wartoscNetto, wartoscVat, wartoscBrutto
+#region Kolumny wartoscNetto, wartoscVat, wartoscBrutto
+
             CultureInfo culture = new CultureInfo("pl-PL");
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -183,7 +188,15 @@ namespace ProjektBD
                 row.Cells["wartoscVat"].Value = wartoscVatSuma;
                 row.Cells["wartoscBrutto"].Value = wartoscBruttoSuma;
             }
-            #endregion
+#endregion
+        }
+
+        private void FormHistoriaFakturLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

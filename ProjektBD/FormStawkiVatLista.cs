@@ -33,6 +33,7 @@ namespace ProjektBD
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
             this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
+            dataGridView1.Focus();
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,9 +72,13 @@ namespace ProjektBD
             this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
 
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void FormStawkiVatLista_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }
