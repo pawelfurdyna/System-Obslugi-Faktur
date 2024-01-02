@@ -329,6 +329,7 @@ namespace ProjektBD
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
             string fPolaFaktura = "";
+            string fPolaPozycjaFaktury = "";
             string klient = cb[0].Text;
             string uzytkownik = cb[1].Text;
             string idUzytkownika = "";
@@ -370,7 +371,7 @@ namespace ProjektBD
                 try
                 {
                     this.conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
                 catch (OracleException ex)
                 {
@@ -380,9 +381,9 @@ namespace ProjektBD
                 {
                     this.conn.Close();
                 }
-#endregion
+                #endregion
 
-#region WysyłanieDoEncjiPozycjaFaktury
+                #region WysyłanieDoEncjiPozycjaFaktury
 
                 foreach (DataGridViewRow row in dbv.Rows)
                 {
@@ -401,36 +402,39 @@ namespace ProjektBD
                             ilosc = 0;
                         }
                         //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
-                        fPolaFaktura = "";
-                        fPolaFaktura += idPozycji;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += numerFaktury.Text;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += idUslugi;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += idVat;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += ilosc;
 
-                        query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaFaktura}')";
+                        fPolaPozycjaFaktury += idPozycji;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += numerFaktury.Text;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += idUslugi;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += idVat;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += ilosc;
+
+                        query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaPozycjaFaktury}')";
 
                         cmd = new OracleCommand(query, this.conn);
                         try
                         {
                             this.conn.Open();
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (OracleException ex)
                         {
                             MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            query = $"DELETE FROM FAKTURA WHERE NUMER_FAKTURY='{numerFaktury.Text}'";
+                            cmd = new OracleCommand(query, this.conn);
+                            cmd.ExecuteNonQuery();
                         }
                         finally
                         {
                             this.conn.Close();
                         }
                     }
-                }
-                MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } 
             }
             catch (OracleException ex)
             {
