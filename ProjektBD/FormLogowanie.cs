@@ -40,8 +40,9 @@ namespace ProjektBD
                     obecnyUzytkownik += " ";
                     obecnyUzytkownik += ob.Select("UZYTKOWNIK", "NAZWISKO", "LOGIN", tbLogin.Text.ToString(), true);
                     Form menu = new SystemObslugiFaktur();
-                    menu.Show();
                     this.Hide();
+                    menu.Show();
+                    
                 }
                 else
                 {
