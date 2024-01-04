@@ -335,5 +335,14 @@ namespace ProjektBD
         {
             errorProvider1.SetError(tbTerminZaplaty, string.Empty);
         }
+
+        private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((Application.OpenForms["FormPomoc"] as FormPomoc) == null)
+            {
+                FormPomoc pomoc = new FormPomoc();
+                pomoc.Show();
+            }
+        }
     }
 }

@@ -110,6 +110,12 @@
     <Compile Include="FormNowaFaktura.Designer.cs">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPomoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPomoc.Designer.cs">
+      <DependentUpon>FormPomoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStawka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNowaFaktura.resx">
       <DependentUpon>FormNowaFaktura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPomoc.resx">
+      <DependentUpon>FormPomoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStawka.resx">
       <DependentUpon>FormStawka.cs</DependentUpon>
