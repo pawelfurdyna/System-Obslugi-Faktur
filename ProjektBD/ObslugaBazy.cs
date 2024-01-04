@@ -26,7 +26,7 @@ namespace ProjektBD
             this.conn = new OracleConnection(connectionString);
         }
 
-        #region WypelnijTextBox
+    #region WypelnijTextBox
         public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
         {
             for (int i = 0; i < atrybuty.Length; i++)
@@ -52,9 +52,9 @@ namespace ProjektBD
                 }
             }
         }
-        #endregion
+    #endregion
 
-        #region WypelnijComboBox
+    #region WypelnijComboBox
         public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
@@ -86,9 +86,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region UsunRekord
+    #region UsunRekord
         public void UsunRekord(string encja, string klucz, string nazwa)
         {
             DialogResult dr = MessageBox.Show($"Czy napewno chcesz usunąć \"{nazwa}\" ?",
@@ -115,9 +115,9 @@ namespace ProjektBD
                     break;
             }
         }
-        #endregion
+    #endregion
 
-        #region DodajRekord
+    #region DodajRekord
         public void DodajRekord(string encja, TextBox[] tb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
@@ -147,9 +147,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region EdytujRekord
+    #region EdytujRekord
         public void EdytujRekord(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
         {
             string formattedString = "";
@@ -178,9 +178,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region SELECT
+    #region SELECT
         public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true, bool sort = false)
         {
             string query = "";
@@ -220,9 +220,9 @@ namespace ProjektBD
             }
 
         }
-        #endregion
+    #endregion
 
-        #region SprawdzTyp
+    #region SprawdzTyp
         public bool SprawdzTyp(object sender, KeyPressEventArgs e, bool typFloat = false)
         {
             TextBox textBox = sender as TextBox;
@@ -267,9 +267,9 @@ namespace ProjektBD
             }
             return true;
         }
-        #endregion
+    #endregion
 
-        #region FormatowanieDaty
+    #region FormatowanieDaty
         public void FormatowanieDaty(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -300,9 +300,9 @@ namespace ProjektBD
                 textBox.SelectionStart = caretPosition + 2; // Move the caret after the new hyphen
             }
         }
-        #endregion
+    #endregion
 
-        #region WalidacjaDaty
+    #region WalidacjaDaty
         public void WalidacjaDaty(object sender, CancelEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -315,35 +315,43 @@ namespace ProjektBD
                 e.Cancel = true; // Prevent focus from shifting away from the TextBox
             }
         }
-        #endregion
+    #endregion
 
-        #region ZapisywanieFaktury
-        public void ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
+    #region ZapisywanieFaktury
+        public int ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
         {
             CultureInfo culture = new CultureInfo("pl-PL");
             string query = "";
             string encjaFaktura = "FAKTURA";
             string encjaPozycjaFatury = "POZYCJA_FAKTURY";
-            string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
-            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
+            string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "MIEJSCE_WYSTAWIENIA", "ID_KLIENTA", "ID_UZYTKOWNIKA"};
+            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC", "WARTOSC_NETTO", "WARTOSC_VAT" };
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
             string fPolaFaktura = "";
+            string fPolaPozycjaFaktury = "";
             string klient = cb[0].Text;
             string uzytkownik = cb[1].Text;
             string idUzytkownika = "";
             string idKlienta = "";
             string nazwaUslugi, idPozycji, idUslugi, idVat;
-            float ilosc;
-            
+            float ilosc, wartoscNetto, wartoscVat;
+
 
             try
             {
-#region WysłanieDoEncjiFaktura
+
+    #region WysłanieDoEncjiFaktura
+
                 int spaceIndex = uzytkownik.IndexOf(' ');
                 if (spaceIndex != -1)
                 {
                     idUzytkownika = uzytkownik.Substring(0, spaceIndex);
+                    if (string.IsNullOrEmpty(idUzytkownika))
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Sporządził'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
                 }
 
                 fPolaFaktura += numerFaktury.Text;
@@ -351,6 +359,16 @@ namespace ProjektBD
 
                 for (int i = 0; i < tb.Length; i++)
                 {
+                    if (tb[i].Name == "tbTerminZaplaty" && string.IsNullOrEmpty(tb[i].Text))
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Termin zapłaty (dni)'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
+                    if (tb[i].Name == "tbMiejsceWystawienia" && string.IsNullOrEmpty(tb[i].Text))
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Miejsce wystawienia'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
                     fPolaFaktura += tb[i].Text;
                     if (i < tb.Length - 1)
                     {
@@ -358,6 +376,11 @@ namespace ProjektBD
                     }
                 }
 
+                if (string.IsNullOrEmpty(klient))
+                {
+                    MessageBox.Show($"Proszę uzupełnić pole 'Klient'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
                 idKlienta = Select("KLIENT", "ID_KLIENTA", "NAZWA", klient);
                 fPolaFaktura += "', '";
                 fPolaFaktura += idKlienta;
@@ -370,28 +393,55 @@ namespace ProjektBD
                 try
                 {
                     this.conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
                 catch (OracleException ex)
                 {
                     MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
                 }
                 finally
                 {
                     this.conn.Close();
                 }
-#endregion
 
-#region WysyłanieDoEncjiPozycjaFaktury
+    #endregion
+
+    #region WysyłanieDoEncjiPozycjaFaktury
 
                 foreach (DataGridViewRow row in dbv.Rows)
                 {
+                    if (dbv.Rows.Count == 1)
+                    {
+                        MessageBox.Show($"Proszę uzupełnić tabelę", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        UsuwanieZBazy(numerFaktury.Text, 0);
+                        return 1;
+                    }
                     if (!row.IsNewRow)
                     {
+                        fPolaPozycjaFaktury = "";
                         idPozycji = (row.Index + 1).ToString();
                         nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
+                        if (string.IsNullOrEmpty(nazwaUslugi))
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Usługa'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
                         idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
+                        if (string.IsNullOrEmpty(idVat))
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole '%VAT'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
+                        if (string.IsNullOrEmpty((string)row.Cells["ilosc"].Value))
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Ilość'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
                         if (float.TryParse((string)(row.Cells["ilosc"].Value), NumberStyles.Any, culture, out ilosc))
                         {
                             // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
@@ -400,25 +450,54 @@ namespace ProjektBD
                         {
                             ilosc = 0;
                         }
-                        //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
-                        fPolaFaktura = "";
-                        fPolaFaktura += idPozycji;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += numerFaktury.Text;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += idUslugi;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += idVat;
-                        fPolaFaktura += "', '";
-                        fPolaFaktura += ilosc;
 
-                        query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaFaktura}')";
+                        if (ilosc == 0)
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Ilość'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
+                        //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
+
+                        if (row.Cells["wartoscNetto"].Value is double doubleWartoscNetto)
+                        {
+                            wartoscNetto = (float)doubleWartoscNetto;
+                        }
+                        else
+                        {
+                            wartoscNetto = 0;
+                        }
+
+                        if (row.Cells["wartoscVat"].Value is double doubleWartoscVat)
+                        {
+                            wartoscVat = (float)doubleWartoscVat;
+                        }
+                        else
+                        {
+                            wartoscVat = 0;
+                        }
+
+                        fPolaPozycjaFaktury += idPozycji;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += numerFaktury.Text;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += idUslugi;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += idVat;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += ilosc;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += wartoscNetto;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += wartoscVat;
+
+                        query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaPozycjaFaktury}')";
 
                         cmd = new OracleCommand(query, this.conn);
                         try
                         {
                             this.conn.Open();
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
                         }
                         catch (OracleException ex)
                         {
@@ -430,15 +509,35 @@ namespace ProjektBD
                         }
                     }
                 }
-                MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (OracleException ex)
             {
                 MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-#endregion
+    #endregion
+
+            return 0;
         }
-        #endregion
+
+        private void UsuwanieZBazy(string nrFaktury, int row)
+        {
+            this.conn.Open();
+            string query = "";
+            OracleCommand cmd;
+            for (int i = 1; i < row; i++)
+            {
+                query = $"DELETE FROM POZYCJA_FAKTURY WHERE NUMER_FAKTURY='{nrFaktury}' AND NUMER_POZYCJI='{i}'";
+                cmd = new OracleCommand(query, this.conn);
+                cmd.ExecuteNonQuery();
+            }
+            query = $"DELETE FROM FAKTURA WHERE NUMER_FAKTURY='{nrFaktury}'";
+            cmd = new OracleCommand(query, this.conn);
+            cmd.ExecuteNonQuery();
+
+            this.conn.Close();
+        }
+    #endregion
+
     }
 }
 

@@ -39,11 +39,6 @@ namespace ProjektBD
             }
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNowaFaktura_Click(object sender, EventArgs e)
         {
             if ((Application.OpenForms["FormNowaFaktura"] as FormNowaFaktura) == null)
@@ -61,6 +56,7 @@ namespace ProjektBD
                 historia.Show();
             }
         }
+
         private void btnKlienci_Click(object sender, EventArgs e)
         {
             if ((Application.OpenForms["FormKlientLista"] as FormKlientLista) == null)
@@ -108,13 +104,8 @@ namespace ProjektBD
 
         private void zegar_Tick(object sender, EventArgs e)
         {
-            string today = DateTime.Now.ToString("dd/MM/yyyy   HH:mm:ss");
+            string today = DateTime.Now.ToString("dd/MM/yyyy \n HH:mm:ss");
             lbData.Text = today;
-        }
-
-        private void plikToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)

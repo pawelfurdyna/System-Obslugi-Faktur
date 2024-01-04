@@ -68,7 +68,6 @@
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.plikToolStripMenuItem.Text = "Plik";
-            this.plikToolStripMenuItem.Click += new System.EventHandler(this.plikToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
@@ -165,7 +164,7 @@
             // lbData
             // 
             this.lbData.AutoSize = true;
-            this.lbData.Location = new System.Drawing.Point(448, 14);
+            this.lbData.Location = new System.Drawing.Point(474, 7);
             this.lbData.Name = "lbData";
             this.lbData.Size = new System.Drawing.Size(53, 13);
             this.lbData.TabIndex = 9;

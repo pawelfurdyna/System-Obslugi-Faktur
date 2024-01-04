@@ -23,7 +23,7 @@ namespace ProjektBD
         public FormNowaFaktura()
         {
             InitializeComponent();
-            tb = new System.Windows.Forms.TextBox[] { tbDataWystawienia, tbDataWykonaniaUslugi, tbUwagi, tbTerminZaplaty };
+            tb = new System.Windows.Forms.TextBox[] { tbDataWystawienia, tbDataWykonaniaUslugi, tbUwagi, tbTerminZaplaty, tbMiejsceWystawienia };
             cb = new System.Windows.Forms.ComboBox[] { cbKlient, cbUzytkownik };
         }
 
@@ -34,20 +34,20 @@ namespace ProjektBD
 
         private void FormNowaFaktura_Load(object sender, EventArgs e)
         {
-            #region Adaptery
+    #region Adaptery
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.STAWKA_VAT' . Możesz go przenieść lub usunąć.
             this.sTAWKA_VATTableAdapter.Fill(this.bDdataSet.STAWKA_VAT);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.USLUGA' . Możesz go przenieść lub usunąć.
             this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
             this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
-            #endregion
-
+     #endregion
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
             cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
+            cbSposobZaplaty.SelectedIndex = 1;
 
-#region Zmiana kolumn w DataGrid
+    #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
             DataGridViewComboBoxColumn uslugaColumn = new DataGridViewComboBoxColumn
             {
@@ -84,9 +84,9 @@ namespace ProjektBD
             dataGridView1.Columns["wartoscNetto"].DefaultCellStyle.Format = "0.00";
             dataGridView1.Columns["wartoscVat"].DefaultCellStyle.Format = "0.00";
             dataGridView1.Columns["wartoscBrutto"].DefaultCellStyle.Format = "0.00";
-#endregion
+    #endregion
 
-#region Wpisanie kolejnego numeru faktury
+    #region Wpisanie kolejnego numeru faktury
             string temp = ob.Select("FAKTURA", "NUMER_FAKTURY", "", "", false, true);
             if (int.TryParse(temp, out int number))
             {
@@ -97,13 +97,14 @@ namespace ProjektBD
             {
                 lbNrFakturyWartosc.Text = "1";
             }
-#endregion
+    #endregion
 
-#region Wypełnienie domyślnymi wartościami dat i miejsca
+    #region Wypełnienie domyślnymi wartościami dat i miejsca
             tbDataWystawienia.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-","/");
             tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-", "/");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
-#endregion
+    #endregion
+
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,7 +125,6 @@ namespace ProjektBD
                 this.lbTerminZaplaty.Visible = true;
                 this.tbTerminZaplaty.Visible = true;
             }
-
         }
 
         private void btZapisz_Click(object sender, EventArgs e)
@@ -133,15 +133,19 @@ namespace ProjektBD
             {
                 tbTerminZaplaty.Text = "0";
             }
-            ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
-            this.Close();
+            int r = ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
+            if (r == 0) 
+            {
+                MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close(); 
+            }
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-#region Zdarzenia do sprawdzania typów pól numerycznych
+    #region Zdarzenia do sprawdzania typów pól numerycznych
 
         private void tbTerminZaplaty_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -155,9 +159,9 @@ namespace ProjektBD
                 errorProvider1.SetError(tbTerminZaplaty, string.Empty);
             }
         }
-#endregion
+    #endregion
 
-#region Zdarzenia do pól dat
+    #region Zdarzenia do pól dat
         private void tbDataWystawienia_KeyPress(object sender, KeyPressEventArgs e)
         {
             ob.FormatowanieDaty(sender, e);
@@ -177,9 +181,9 @@ namespace ProjektBD
         {
             ob.WalidacjaDaty(sender, e);
         }
-#endregion
+    #endregion
 
-#region Zdarzenia do obsługi DataGridView
+    #region Zdarzenia do obsługi DataGridView
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e != null && e.RowIndex >= 0)
@@ -325,7 +329,7 @@ namespace ProjektBD
             lbSumaVatWartosc.Text = Math.Round(sumaWartoscVat, 2).ToString();
             lbSumaBruttoWartosc.Text = Math.Round(sumaWartoscBrutto, 2).ToString();
         }
-        #endregion
+    #endregion
 
         private void tbTerminZaplaty_Leave(object sender, EventArgs e)
         {
