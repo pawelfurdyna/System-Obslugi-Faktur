@@ -324,7 +324,7 @@ namespace ProjektBD
             string query = "";
             string encjaFaktura = "FAKTURA";
             string encjaPozycjaFatury = "POZYCJA_FAKTURY";
-            string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
+            string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "MIEJSCE_WYSTAWIENIA", "ID_KLIENTA", "ID_UZYTKOWNIKA"};
             string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC", "WARTOSC_NETTO", "WARTOSC_VAT" };
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
@@ -360,6 +360,11 @@ namespace ProjektBD
                     if (tb[i].Name == "tbTerminZaplaty" && string.IsNullOrEmpty(tb[i].Text)) 
                     {
                         MessageBox.Show($"Proszę uzupełnić pole 'Termin zapłaty (dni)'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
+                    if (tb[i].Name == "tbMiejsceWystawienia" && string.IsNullOrEmpty(tb[i].Text))
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Miejsce wystawienia'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return 1;
                     }
                     fPolaFaktura += tb[i].Text;

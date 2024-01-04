@@ -23,7 +23,7 @@ namespace ProjektBD
         public FormNowaFaktura()
         {
             InitializeComponent();
-            tb = new System.Windows.Forms.TextBox[] { tbDataWystawienia, tbDataWykonaniaUslugi, tbUwagi, tbTerminZaplaty };
+            tb = new System.Windows.Forms.TextBox[] { tbDataWystawienia, tbDataWykonaniaUslugi, tbUwagi, tbTerminZaplaty, tbMiejsceWystawienia };
             cb = new System.Windows.Forms.ComboBox[] { cbKlient, cbUzytkownik };
         }
 
