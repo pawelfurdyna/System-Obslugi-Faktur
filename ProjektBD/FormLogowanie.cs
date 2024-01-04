@@ -42,7 +42,6 @@ namespace ProjektBD
                     Form menu = new SystemObslugiFaktur();
                     this.Hide();
                     menu.Show();
-                    
                 }
                 else
                 {
@@ -63,7 +62,6 @@ namespace ProjektBD
             Int32.TryParse(idPobrane, out idUzytkownika);
             return (idUzytkownika - 1);
         }
-
         private void btAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();

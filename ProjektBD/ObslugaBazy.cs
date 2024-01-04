@@ -26,7 +26,7 @@ namespace ProjektBD
             this.conn = new OracleConnection(connectionString);
         }
 
-        #region WypelnijTextBox
+    #region WypelnijTextBox
         public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
         {
             for (int i = 0; i < atrybuty.Length; i++)
@@ -52,9 +52,9 @@ namespace ProjektBD
                 }
             }
         }
-        #endregion
+    #endregion
 
-        #region WypelnijComboBox
+    #region WypelnijComboBox
         public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
@@ -86,9 +86,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region UsunRekord
+    #region UsunRekord
         public void UsunRekord(string encja, string klucz, string nazwa)
         {
             DialogResult dr = MessageBox.Show($"Czy napewno chcesz usunąć \"{nazwa}\" ?",
@@ -115,9 +115,9 @@ namespace ProjektBD
                     break;
             }
         }
-        #endregion
+    #endregion
 
-        #region DodajRekord
+    #region DodajRekord
         public void DodajRekord(string encja, TextBox[] tb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
@@ -147,9 +147,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region EdytujRekord
+    #region EdytujRekord
         public void EdytujRekord(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
         {
             string formattedString = "";
@@ -178,9 +178,9 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-        #endregion
+    #endregion
 
-        #region SELECT
+    #region SELECT
         public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true, bool sort = false)
         {
             string query = "";
@@ -220,9 +220,9 @@ namespace ProjektBD
             }
 
         }
-        #endregion
+    #endregion
 
-        #region SprawdzTyp
+    #region SprawdzTyp
         public bool SprawdzTyp(object sender, KeyPressEventArgs e, bool typFloat = false)
         {
             TextBox textBox = sender as TextBox;
@@ -267,9 +267,9 @@ namespace ProjektBD
             }
             return true;
         }
-        #endregion
+    #endregion
 
-        #region FormatowanieDaty
+    #region FormatowanieDaty
         public void FormatowanieDaty(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -300,9 +300,9 @@ namespace ProjektBD
                 textBox.SelectionStart = caretPosition + 2; // Move the caret after the new hyphen
             }
         }
-        #endregion
+    #endregion
 
-        #region WalidacjaDaty
+    #region WalidacjaDaty
         public void WalidacjaDaty(object sender, CancelEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -315,9 +315,9 @@ namespace ProjektBD
                 e.Cancel = true; // Prevent focus from shifting away from the TextBox
             }
         }
-        #endregion
+    #endregion
 
-        #region ZapisywanieFaktury
+    #region ZapisywanieFaktury
         public int ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
         {
             CultureInfo culture = new CultureInfo("pl-PL");
@@ -336,11 +336,13 @@ namespace ProjektBD
             string idKlienta = "";
             string nazwaUslugi, idPozycji, idUslugi, idVat;
             float ilosc, wartoscNetto, wartoscVat;
-            
+
 
             try
             {
-#region WysłanieDoEncjiFaktura
+
+    #region WysłanieDoEncjiFaktura
+
                 int spaceIndex = uzytkownik.IndexOf(' ');
                 if (spaceIndex != -1)
                 {
@@ -357,7 +359,7 @@ namespace ProjektBD
 
                 for (int i = 0; i < tb.Length; i++)
                 {
-                    if (tb[i].Name == "tbTerminZaplaty" && string.IsNullOrEmpty(tb[i].Text)) 
+                    if (tb[i].Name == "tbTerminZaplaty" && string.IsNullOrEmpty(tb[i].Text))
                     {
                         MessageBox.Show($"Proszę uzupełnić pole 'Termin zapłaty (dni)'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return 1;
@@ -374,7 +376,7 @@ namespace ProjektBD
                     }
                 }
 
-                if (string.IsNullOrEmpty(klient)) 
+                if (string.IsNullOrEmpty(klient))
                 {
                     MessageBox.Show($"Proszę uzupełnić pole 'Klient'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 1;
@@ -402,9 +404,10 @@ namespace ProjektBD
                 {
                     this.conn.Close();
                 }
-                #endregion
 
-                #region WysyłanieDoEncjiPozycjaFaktury
+    #endregion
+
+    #region WysyłanieDoEncjiPozycjaFaktury
 
                 foreach (DataGridViewRow row in dbv.Rows)
                 {
@@ -427,7 +430,7 @@ namespace ProjektBD
                         }
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
                         idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
-                        if (string.IsNullOrEmpty(idVat)) 
+                        if (string.IsNullOrEmpty(idVat))
                         {
                             MessageBox.Show($"Proszę uzupełnić pole '%VAT'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
@@ -505,17 +508,18 @@ namespace ProjektBD
                             this.conn.Close();
                         }
                     }
-                } 
+                }
             }
             catch (OracleException ex)
             {
                 MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            #endregion
+    #endregion
+
             return 0;
         }
 
-        private void UsuwanieZBazy(string nrFaktury, int row) 
+        private void UsuwanieZBazy(string nrFaktury, int row)
         {
             this.conn.Open();
             string query = "";
@@ -529,10 +533,11 @@ namespace ProjektBD
             query = $"DELETE FROM FAKTURA WHERE NUMER_FAKTURY='{nrFaktury}'";
             cmd = new OracleCommand(query, this.conn);
             cmd.ExecuteNonQuery();
-            
+
             this.conn.Close();
         }
-        #endregion
+    #endregion
+
     }
 }
 
