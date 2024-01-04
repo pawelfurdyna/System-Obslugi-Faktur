@@ -137,9 +137,8 @@ namespace ProjektBD
             CultureInfo culture = new CultureInfo("pl-PL");
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                string numerFaktury, idUslugi, idVat, iloscString, cenaJednostkowaString, procentVatString;
-                int iloscPozycji, procentVat;
-                float ilosc, cenaJednostkowa;
+                string numerFaktury, wartoscNettoString, wartoscVatString;
+                int iloscPozycji;
                 float wartoscNetto, wartoscVat, wartoscBrutto = 0;
                 float wartoscNettoSuma = 0;
                 float wartoscVatSuma = 0;
@@ -150,34 +149,26 @@ namespace ProjektBD
                     iloscPozycji = Convert.ToInt32(ob.Select("POZYCJA_FAKTURY", "COUNT(NUMER_POZYCJI)", "NUMER_FAKTURY", numerFaktury));
                     for (int i = 1; i <= iloscPozycji; i++)
                     {
-                        idUslugi = ob.Select("POZYCJA_FAKTURY", "ID_USLUGI", "NUMER_FAKTURY", $"{numerFaktury}' and NUMER_POZYCJI = '{i}");
-                        idVat = ob.Select("POZYCJA_FAKTURY", "ID_VAT", "NUMER_FAKTURY", $"{numerFaktury}' and NUMER_POZYCJI = '{i}");
-                        iloscString = ob.Select("POZYCJA_FAKTURY", "ILOSC", "NUMER_FAKTURY", $"{numerFaktury}' and NUMER_POZYCJI = '{i}");
-                        if (float.TryParse(iloscString, NumberStyles.Any, culture, out ilosc))
+                        wartoscNettoString = ob.Select("POZYCJA_FAKTURY", "WARTOSC_NETTO", "NUMER_FAKTURY", $"{numerFaktury}' and NUMER_POZYCJI = '{i}");
+                        if (float.TryParse(wartoscNettoString, NumberStyles.Any, culture, out wartoscNetto))
                         {
                             // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
                         }
                         else
                         {
-                            ilosc = 0;
+                            wartoscNetto = 0;
                         }
-
-                        cenaJednostkowaString = ob.Select("USLUGA", "CENA_JEDNOSTKOWA", "ID_USLUGI", idUslugi);
-                        if (float.TryParse(cenaJednostkowaString, NumberStyles.Any, culture, out cenaJednostkowa))
-                        {
-                            // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
-                        }
-                        else
-                        {
-                            cenaJednostkowa = 0;
-                        }
-
-                        wartoscNetto = (float)Math.Round(ilosc * cenaJednostkowa, 2);
                         wartoscNettoSuma += wartoscNetto;
 
-                        procentVatString = ob.Select("STAWKA_VAT", "PROCENT_VAT", "ID_VAT", idVat);
-                        procentVat = Convert.ToInt32(procentVatString);
-                        wartoscVat = (float)Math.Round(wartoscNetto * procentVat / 100, 2);
+                        wartoscVatString = ob.Select("POZYCJA_FAKTURY", "WARTOSC_VAT", "NUMER_FAKTURY", $"{numerFaktury}' and NUMER_POZYCJI = '{i}");
+                        if (float.TryParse(wartoscVatString, NumberStyles.Any, culture, out wartoscVat))
+                        {
+                            // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
+                        }
+                        else
+                        {
+                            wartoscVat = 0;
+                        }
                         wartoscVatSuma += wartoscVat;
 
                         wartoscBrutto = wartoscNetto + wartoscVat;

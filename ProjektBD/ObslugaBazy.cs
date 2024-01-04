@@ -325,7 +325,7 @@ namespace ProjektBD
             string encjaFaktura = "FAKTURA";
             string encjaPozycjaFatury = "POZYCJA_FAKTURY";
             string[] atrybutyFaktura = { "NUMER_FAKTURY", "DATA_WYSTAWIENIA", "DATA_WYKONANIA", "UWAGI", "TERMIN_ZAPLATY", "ID_KLIENTA", "ID_UZYTKOWNIKA" };
-            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC" };
+            string[] atrybutyPozycjaFaktury = { "NUMER_POZYCJI","NUMER_FAKTURY", "ID_USLUGI", "ID_VAT", "ILOSC", "WARTOSC_NETTO", "WARTOSC_VAT" };
             string fAtrybutyFaktura = string.Join(", ", atrybutyFaktura);
             string fAtrybutyPozycjaFaktury = string.Join(", ", atrybutyPozycjaFaktury);
             string fPolaFaktura = "";
@@ -335,7 +335,7 @@ namespace ProjektBD
             string idUzytkownika = "";
             string idKlienta = "";
             string nazwaUslugi, idPozycji, idUslugi, idVat;
-            float ilosc;
+            float ilosc, wartoscNetto, wartoscVat;
             
 
             try
@@ -389,6 +389,7 @@ namespace ProjektBD
                 {
                     if (!row.IsNewRow)
                     {
+                        fPolaPozycjaFaktury = "";
                         idPozycji = (row.Index + 1).ToString();
                         nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
@@ -403,6 +404,24 @@ namespace ProjektBD
                         }
                         //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
 
+                        if (row.Cells["wartoscNetto"].Value is double doubleWartoscNetto)
+                        {
+                            wartoscNetto = (float)doubleWartoscNetto;
+                        }
+                        else
+                        {
+                            wartoscNetto = 0;
+                        }
+
+                        if (row.Cells["wartoscVat"].Value is double doubleWartoscVat)
+                        {
+                            wartoscVat = (float)doubleWartoscVat;
+                        }
+                        else
+                        {
+                            wartoscVat = 0;
+                        }
+
                         fPolaPozycjaFaktury += idPozycji;
                         fPolaPozycjaFaktury += "', '";
                         fPolaPozycjaFaktury += numerFaktury.Text;
@@ -412,6 +431,10 @@ namespace ProjektBD
                         fPolaPozycjaFaktury += idVat;
                         fPolaPozycjaFaktury += "', '";
                         fPolaPozycjaFaktury += ilosc;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += wartoscNetto;
+                        fPolaPozycjaFaktury += "', '";
+                        fPolaPozycjaFaktury += wartoscVat;
 
                         query = $"INSERT INTO {encjaPozycjaFatury} ({fAtrybutyPozycjaFaktury}) VALUES ('{fPolaPozycjaFaktury}')";
 
@@ -420,7 +443,6 @@ namespace ProjektBD
                         {
                             this.conn.Open();
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show($"Faktura została poprawnie dodana!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (OracleException ex)
                         {
