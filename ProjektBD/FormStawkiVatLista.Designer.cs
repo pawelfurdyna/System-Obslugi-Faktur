@@ -74,6 +74,7 @@
             // 
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             resources.ApplyResources(this.pomocToolStripMenuItem, "pomocToolStripMenuItem");
+            this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
             // btnDodaj
             // 

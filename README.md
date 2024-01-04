@@ -19,6 +19,6 @@ System Obsługi Faktur to aplikacja umożliwiająca zarządzanie fakturami w ram
 - Windows Forms
 - Oracle SQL
 
-## Autor
+## Autorzy
 
 Projekt został stworzony przez [Paweł Furdyna](https://github.com/pawelfurdyna) oraz [Mateusz Drabowicz](https://github.com/Drabiii).
