@@ -87,7 +87,7 @@
             // tbNip
             // 
             this.tbNip.Location = new System.Drawing.Point(104, 90);
-            this.tbNip.MaxLength = 11;
+            this.tbNip.MaxLength = 13;
             this.tbNip.Name = "tbNip";
             this.tbNip.Size = new System.Drawing.Size(100, 20);
             this.tbNip.TabIndex = 19;

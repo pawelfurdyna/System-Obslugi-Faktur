@@ -46,6 +46,7 @@ namespace ProjektBD
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
             cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
+            cbSposobZaplaty.SelectedIndex = 1;
 
 #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
@@ -133,8 +134,8 @@ namespace ProjektBD
             {
                 tbTerminZaplaty.Text = "0";
             }
-            ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
-            this.Close();
+            int r = ob.ZapisywanieFaktury(lbNrFakturyWartosc, tb, cb, dataGridView1);
+            if (r == 0) { this.Close(); }
         }
 
         private void btAnuluj_Click(object sender, EventArgs e)

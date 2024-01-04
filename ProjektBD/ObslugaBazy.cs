@@ -318,7 +318,7 @@ namespace ProjektBD
         #endregion
 
         #region ZapisywanieFaktury
-        public void ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
+        public int ZapisywanieFaktury(Label numerFaktury, TextBox[] tb, ComboBox[] cb, DataGridView dbv)
         {
             CultureInfo culture = new CultureInfo("pl-PL");
             string query = "";
@@ -345,6 +345,11 @@ namespace ProjektBD
                 if (spaceIndex != -1)
                 {
                     idUzytkownika = uzytkownik.Substring(0, spaceIndex);
+                    if (string.IsNullOrEmpty(idUzytkownika))
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Sporządził'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
                 }
 
                 fPolaFaktura += numerFaktury.Text;
@@ -352,6 +357,11 @@ namespace ProjektBD
 
                 for (int i = 0; i < tb.Length; i++)
                 {
+                    if (tb[i].Name == "tbTerminZaplaty" && string.IsNullOrEmpty(tb[i].Text)) 
+                    {
+                        MessageBox.Show($"Proszę uzupełnić pole 'Termin zapłaty (dni)'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
                     fPolaFaktura += tb[i].Text;
                     if (i < tb.Length - 1)
                     {
@@ -359,6 +369,11 @@ namespace ProjektBD
                     }
                 }
 
+                if (string.IsNullOrEmpty(klient)) 
+                {
+                    MessageBox.Show($"Proszę uzupełnić pole 'Klient'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
                 idKlienta = Select("KLIENT", "ID_KLIENTA", "NAZWA", klient);
                 fPolaFaktura += "', '";
                 fPolaFaktura += idKlienta;
@@ -376,6 +391,7 @@ namespace ProjektBD
                 catch (OracleException ex)
                 {
                     MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
                 }
                 finally
                 {
@@ -387,13 +403,37 @@ namespace ProjektBD
 
                 foreach (DataGridViewRow row in dbv.Rows)
                 {
+                    if (dbv.Rows.Count == 1)
+                    {
+                        MessageBox.Show($"Proszę uzupełnić tabelę", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        UsuwanieZBazy(numerFaktury.Text, 0);
+                        return 1;
+                    }
                     if (!row.IsNewRow)
                     {
                         fPolaPozycjaFaktury = "";
                         idPozycji = (row.Index + 1).ToString();
                         nazwaUslugi = (string)(row.Cells["usluga"] as DataGridViewComboBoxCell).Value;
+                        if (string.IsNullOrEmpty(nazwaUslugi))
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Usługa'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
                         idUslugi = Select("USLUGA", "ID_USLUGI", "NAZWA", nazwaUslugi);
                         idVat = (string)(row.Cells["procentVat"] as DataGridViewComboBoxCell).Value;
+                        if (string.IsNullOrEmpty(idVat)) 
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole '%VAT'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
+                        if (string.IsNullOrEmpty((string)row.Cells["ilosc"].Value))
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Ilość'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
+                        }
                         if (float.TryParse((string)(row.Cells["ilosc"].Value), NumberStyles.Any, culture, out ilosc))
                         {
                             // Konwersja się powiodła, ilosc zawiera przekonwertowaną wartość
@@ -401,6 +441,13 @@ namespace ProjektBD
                         else
                         {
                             ilosc = 0;
+                        }
+
+                        if (ilosc == 0)
+                        {
+                            MessageBox.Show($"Proszę uzupełnić pole 'Ilość'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UsuwanieZBazy(numerFaktury.Text, Convert.ToInt32(idPozycji));
+                            return 1;
                         }
                         //ilosc = float.Parse((string)(row.Cells["ilosc"].Value), CultureInfo.InvariantCulture);
 
@@ -447,9 +494,6 @@ namespace ProjektBD
                         catch (OracleException ex)
                         {
                             MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            query = $"DELETE FROM FAKTURA WHERE NUMER_FAKTURY='{numerFaktury.Text}'";
-                            cmd = new OracleCommand(query, this.conn);
-                            cmd.ExecuteNonQuery();
                         }
                         finally
                         {
@@ -462,7 +506,26 @@ namespace ProjektBD
             {
                 MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-#endregion
+            #endregion
+            return 0;
+        }
+
+        private void UsuwanieZBazy(string nrFaktury, int row) 
+        {
+            this.conn.Open();
+            string query = "";
+            OracleCommand cmd;
+            for (int i = 1; i < row; i++)
+            {
+                query = $"DELETE FROM POZYCJA_FAKTURY WHERE NUMER_FAKTURY='{nrFaktury}' AND NUMER_POZYCJI='{i}'";
+                cmd = new OracleCommand(query, this.conn);
+                cmd.ExecuteNonQuery();
+            }
+            query = $"DELETE FROM FAKTURA WHERE NUMER_FAKTURY='{nrFaktury}'";
+            cmd = new OracleCommand(query, this.conn);
+            cmd.ExecuteNonQuery();
+            
+            this.conn.Close();
         }
         #endregion
     }
