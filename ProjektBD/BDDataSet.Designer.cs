@@ -1459,7 +1459,7 @@ namespace ProjektBD {
                 this.columnADRES.AllowDBNull = false;
                 this.columnADRES.MaxLength = 255;
                 this.columnNIP.AllowDBNull = false;
-                this.columnNIP.MaxLength = 11;
+                this.columnNIP.MaxLength = 13;
                 this.columnNUMER_TELEFONU.AllowDBNull = false;
                 this.columnNUMER_TELEFONU.MaxLength = 20;
                 this.columnEMAIL.AllowDBNull = false;

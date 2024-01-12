@@ -58,7 +58,7 @@ namespace ProjektBD
         public void WypelnijComboBoxZEncji(string encja, ComboBox cb, string[] atrybuty)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
-            OracleCommand cmd = new OracleCommand($"SELECT {formattedStringAtrybuty} FROM {encja}", this.conn);
+            OracleCommand cmd = new OracleCommand($"SELECT {formattedStringAtrybuty} FROM {encja} ORDER BY {atrybuty[0]} ASC", this.conn);
             try
             {
                 this.conn.Open();
