@@ -20,7 +20,8 @@ namespace ProjektBD
         string encja = "UZYTKOWNIK";
         string klucz = "ID_UZYTKOWNIKA";
         TextBox[] tb = new TextBox[] { };
-        string[] atrybuty = { "IMIE", "NAZWISKO", "ROLA", "LOGIN", "HASLO" };
+        ComboBox cb;
+        string[] atrybuty = { "IMIE", "NAZWISKO", "LOGIN", "HASLO", "ROLA" };
         ObslugaBazy ob = new ObslugaBazy();
 
         public FormUzytkownik(bool edycja = false, string nazwa = "")
@@ -28,7 +29,8 @@ namespace ProjektBD
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            tb = new TextBox[] { tbImie, tbNazwisko, tbRola, tbLogin, tbHaslo };
+            tb = new TextBox[] { tbImie, tbNazwisko, tbLogin, tbHaslo };
+            cb = cbRola;
             this.Load += FormUzytkownik_Load;
         }
 
@@ -65,15 +67,15 @@ namespace ProjektBD
                 errorProvider1.SetError(tbNazwisko, string.Empty);
             }
 
-            if (string.IsNullOrWhiteSpace(tbRola.Text))
+            if (string.IsNullOrWhiteSpace(cbRola.Text))
             {
-                errorProvider1.SetError(tbRola, "Pole nie może być puste!");
-                this.errorProvider1.SetIconPadding(this.tbRola, -20);
+                errorProvider1.SetError(cbRola, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.cbRola, -20);
                 this.errorProvider1.BlinkRate = 0;
             }
             else
             {
-                errorProvider1.SetError(tbRola, string.Empty);
+                errorProvider1.SetError(cbRola, string.Empty);
             }
 
             if (string.IsNullOrWhiteSpace(tbLogin.Text))
@@ -98,7 +100,7 @@ namespace ProjektBD
                 errorProvider1.SetError(tbHaslo, string.Empty);
             }
             #endregion
-            if (!string.IsNullOrWhiteSpace(tbImie.Text) && !string.IsNullOrWhiteSpace(tbNazwisko.Text) && !string.IsNullOrWhiteSpace(tbRola.Text) && !string.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbHaslo.Text))
+            if (!string.IsNullOrWhiteSpace(tbImie.Text) && !string.IsNullOrWhiteSpace(tbNazwisko.Text) && !string.IsNullOrWhiteSpace(cbRola.Text) && !string.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbHaslo.Text))
             {
                 if (edycja)
                 {
@@ -107,7 +109,7 @@ namespace ProjektBD
                 }
                 else
                 {
-                    ob.DodajRekord(encja, tb, atrybuty);
+                    ob.DodajRekord(encja, tb, atrybuty, cb);
                     this.Close();
                 }
             }

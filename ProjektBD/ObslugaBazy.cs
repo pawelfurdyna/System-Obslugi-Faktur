@@ -115,10 +115,10 @@ namespace ProjektBD
                     break;
             }
         }
-    #endregion
+        #endregion
 
-    #region DodajRekord
-        public void DodajRekord(string encja, TextBox[] tb, string[] atrybuty)
+        #region DodajRekord
+        public void DodajRekord(string encja, TextBox[] tb, string[] atrybuty, ComboBox cb = null)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);
             string formattedStringTb = "";
@@ -129,6 +129,11 @@ namespace ProjektBD
                 {
                     formattedStringTb += "', '";
                 }
+            }
+            if (cb != null)
+            { 
+                formattedStringTb += "', '";
+                formattedStringTb += cb.Text;
             }
             string query = $"INSERT INTO {encja} ({formattedStringAtrybuty}) VALUES ('{formattedStringTb}')";
 
@@ -147,10 +152,11 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
+
     #endregion
 
     #region EdytujRekord
-        public void EdytujRekord(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
+        public void EdytujRekord(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty, ComboBox cb = null)
         {
             string formattedString = "";
             for (int i = 0; i < tb.Length; i++)
@@ -160,6 +166,11 @@ namespace ProjektBD
                 {
                     formattedString += ", ";
                 }
+            }
+            if (cb != null)
+            {
+                formattedString += "', '";
+                formattedString += cb.Text;
             }
             string query = $"UPDATE {encja} SET {formattedString} WHERE {klucz}='{nazwa}'";
 

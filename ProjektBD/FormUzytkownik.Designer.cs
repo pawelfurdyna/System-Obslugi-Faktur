@@ -34,7 +34,6 @@
             this.lbImie = new System.Windows.Forms.Label();
             this.tbNazwisko = new System.Windows.Forms.TextBox();
             this.lbNazwisko = new System.Windows.Forms.Label();
-            this.tbRola = new System.Windows.Forms.TextBox();
             this.lbRola = new System.Windows.Forms.Label();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.lbLogin = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbRola = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,14 +79,6 @@
             this.lbNazwisko.Size = new System.Drawing.Size(56, 13);
             this.lbNazwisko.TabIndex = 4;
             this.lbNazwisko.Text = "Nazwisko:";
-            // 
-            // tbRola
-            // 
-            this.tbRola.Location = new System.Drawing.Point(100, 70);
-            this.tbRola.MaxLength = 255;
-            this.tbRola.Name = "tbRola";
-            this.tbRola.Size = new System.Drawing.Size(100, 20);
-            this.tbRola.TabIndex = 7;
             // 
             // lbRola
             // 
@@ -156,6 +148,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cbRola
+            // 
+            this.cbRola.FormattingEnabled = true;
+            this.cbRola.Items.AddRange(new object[] {
+            "Admin",
+            "Użytkownik"});
+            this.cbRola.Location = new System.Drawing.Point(100, 69);
+            this.cbRola.Name = "cbRola";
+            this.cbRola.Size = new System.Drawing.Size(100, 21);
+            this.cbRola.TabIndex = 14;
+            // 
             // FormUzytkownik
             // 
             this.AcceptButton = this.btnZapisz;
@@ -163,13 +166,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnuluj;
             this.ClientSize = new System.Drawing.Size(214, 211);
+            this.Controls.Add(this.cbRola);
             this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.btnZapisz);
             this.Controls.Add(this.tbHaslo);
             this.Controls.Add(this.lbHaslo);
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.lbLogin);
-            this.Controls.Add(this.tbRola);
             this.Controls.Add(this.lbRola);
             this.Controls.Add(this.tbNazwisko);
             this.Controls.Add(this.lbNazwisko);
@@ -193,7 +196,6 @@
         private System.Windows.Forms.Label lbImie;
         private System.Windows.Forms.TextBox tbNazwisko;
         private System.Windows.Forms.Label lbNazwisko;
-        private System.Windows.Forms.TextBox tbRola;
         private System.Windows.Forms.Label lbRola;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Label lbLogin;
@@ -202,5 +204,6 @@
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbRola;
     }
 }
