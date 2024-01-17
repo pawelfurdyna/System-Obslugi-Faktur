@@ -42,15 +42,74 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            if (edycja)
+            #region Walidacja
+            if (string.IsNullOrWhiteSpace(tbImie.Text))
             {
-                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbImie, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbImie, -20);
+                this.errorProvider1.BlinkRate = 0;
             }
             else
             {
-                ob.DodajRekord(encja, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbImie, string.Empty);
+            }
+
+            if (string.IsNullOrWhiteSpace(tbNazwisko.Text))
+            {
+                errorProvider1.SetError(tbNazwisko, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbNazwisko, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbNazwisko, string.Empty);
+            }
+
+            if (string.IsNullOrWhiteSpace(tbRola.Text))
+            {
+                errorProvider1.SetError(tbRola, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbRola, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbRola, string.Empty);
+            }
+
+            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            {
+                errorProvider1.SetError(tbLogin, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbLogin, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbLogin, string.Empty);
+            }
+
+            if (string.IsNullOrWhiteSpace(tbHaslo.Text))
+            {
+                errorProvider1.SetError(tbHaslo, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbHaslo, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbHaslo, string.Empty);
+            }
+            #endregion
+            if (!string.IsNullOrWhiteSpace(tbImie.Text) && !string.IsNullOrWhiteSpace(tbNazwisko.Text) && !string.IsNullOrWhiteSpace(tbRola.Text) && !string.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbHaslo.Text))
+            {
+                if (edycja)
+                {
+                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                    this.Close();
+                }
+                else
+                {
+                    ob.DodajRekord(encja, tb, atrybuty);
+                    this.Close();
+                }
             }
         }
 

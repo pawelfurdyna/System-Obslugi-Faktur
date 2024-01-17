@@ -41,16 +41,53 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            if (edycja)
+            #region Walidacja
+            if (string.IsNullOrWhiteSpace(tbNazwa.Text))
             {
-                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbNazwa, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbNazwa, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else 
+            {
+                errorProvider1.SetError(tbNazwa, string.Empty);
+            }
+
+            if (string.IsNullOrWhiteSpace(tbCenaJednostkowa.Text))
+            {
+                errorProvider1.SetError(tbCenaJednostkowa, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbCenaJednostkowa, -20);
+                this.errorProvider1.BlinkRate = 0;
             }
             else
             {
-                ob.DodajRekord(encja, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
             }
+
+            if (string.IsNullOrWhiteSpace(tbJednostkaMiary.Text))
+            {
+                errorProvider1.SetError(tbJednostkaMiary, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbJednostkaMiary, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else 
+            {
+                errorProvider1.SetError(tbJednostkaMiary, string.Empty);
+            }
+            #endregion
+            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) && !string.IsNullOrWhiteSpace(tbCenaJednostkowa.Text) && !string.IsNullOrWhiteSpace(tbJednostkaMiary.Text))
+            {
+                if (edycja)
+                {
+                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                    this.Close();
+                }
+                else
+                {
+                    ob.DodajRekord(encja, tb, atrybuty);
+                    this.Close();
+                }
+            }  
         }
 
         private void btnAnuluj_Click(object sender, EventArgs e)
@@ -62,18 +99,21 @@ namespace ProjektBD
         {
             if (!ob.SprawdzTyp(sender, e,true))
             {
-                errorProvider1.SetError(tbCenaJednostkowa, "Wprowadz wartość z użyciem cyfr i przecinka jako speratatora dziesiętnego!");
-                this.errorProvider1.SetIconPadding(this.tbCenaJednostkowa, -20);
+                errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
+                errorProvider2.SetError(tbCenaJednostkowa, "Wprowadz wartość z użyciem cyfr i przecinka jako speratatora dziesiętnego!");
+                errorProvider2.Icon = new IconEx(IconEx.SystemIcons.Warning, SystemInformation.SmallIconSize).Icon;
+                this.errorProvider2.SetIconPadding(this.tbCenaJednostkowa, -20);
             }
             else
             {
-                errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
+                errorProvider2.SetError(tbCenaJednostkowa, string.Empty);
+                //errorProvider1.Icon = SystemIcons.Error;
             }
         }
 
         private void tbCenaJednostkowa_Leave(object sender, EventArgs e)
         {
-            errorProvider1.SetError(tbCenaJednostkowa, string.Empty);
+            errorProvider2.SetError(tbCenaJednostkowa, string.Empty);
         }
     }
 }

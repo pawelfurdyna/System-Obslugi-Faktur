@@ -152,6 +152,7 @@
     <Compile Include="FormUzytkownik.Designer.cs">
       <DependentUpon>FormUzytkownik.cs</DependentUpon>
     </Compile>
+    <Compile Include="IconEx.cs" />
     <Compile Include="ObslugaBazy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

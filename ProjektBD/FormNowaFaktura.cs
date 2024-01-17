@@ -151,6 +151,7 @@ namespace ProjektBD
         {
             if (!ob.SprawdzTyp(sender, e))
             {
+                errorProvider1.Icon = new IconEx(IconEx.SystemIcons.Warning, SystemInformation.SmallIconSize).Icon;
                 errorProvider1.SetError(tbTerminZaplaty, "Można wprowadzać tylko cyfry!");
                 this.errorProvider1.SetIconPadding(this.tbTerminZaplaty, -20);
             }
