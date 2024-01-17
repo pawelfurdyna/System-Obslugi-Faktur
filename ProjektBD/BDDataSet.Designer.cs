@@ -4172,7 +4172,7 @@ namespace ProjektBD.BDDataSetTableAdapters {
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT NUMER_FAKTURY, DATA_WYSTAWIENIA, TERMIN_PLATNOSCI, ID_KLIENTA, ID_UZYTKOWN" +
-                "IKA, NAZWA_FIRMY, UWAGI FROM SYSTEM.FAKTURA";
+                "IKA, NAZWA_FIRMY, UWAGI FROM SYSTEM.FAKTURA ORDER BY NUMER_FAKTURY ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5408,11 +5408,11 @@ namespace ProjektBD.BDDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[2];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_KLIENTA, NAZWA, ADRES, NIP, NUMER_TELEFONU, EMAIL, TERMIN_PLATNOSCI FRO" +
-                "M SYSTEM.KLIENT";
+                "M SYSTEM.KLIENT ORDER BY NAZWA ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5438,6 +5438,19 @@ namespace ProjektBD.BDDataSetTableAdapters {
             BDDataSet.KLIENTDataTable dataTable = new BDDataSet.KLIENTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(BDDataSet.KLIENTDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6458,7 +6471,7 @@ namespace ProjektBD.BDDataSetTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_VAT, PROCENT_VAT FROM SYSTEM.STAWKA_VAT";
+            this._commandCollection[0].CommandText = "SELECT ID_VAT, PROCENT_VAT FROM SYSTEM.STAWKA_VAT ORDER BY ID_VAT ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6899,7 +6912,7 @@ namespace ProjektBD.BDDataSetTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_USLUGI, NAZWA, CENA_JEDNOSTKOWA, JEDNOSTKA_MIARY FROM SYSTEM.USLUGA";
+            this._commandCollection[0].CommandText = "SELECT ID_USLUGI, NAZWA, CENA_JEDNOSTKOWA, JEDNOSTKA_MIARY FROM SYSTEM.USLUGA ORDER BY NAZWA ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7428,7 +7441,7 @@ namespace ProjektBD.BDDataSetTableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_UZYTKOWNIKA, IMIE, NAZWISKO, ROLA, LOGIN, HASLO FROM SYSTEM.UZYTKOWNIK";
+            this._commandCollection[0].CommandText = "SELECT ID_UZYTKOWNIKA, IMIE, NAZWISKO, ROLA, LOGIN, HASLO FROM SYSTEM.UZYTKOWNIK ORDER BY LOGIN ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

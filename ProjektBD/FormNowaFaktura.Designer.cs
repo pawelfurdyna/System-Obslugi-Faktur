@@ -45,14 +45,6 @@
             this.lbTerminZaplaty = new System.Windows.Forms.Label();
             this.tbTerminZaplaty = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cenaJednostkowa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wartoscNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.procentVat = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.wartoscVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wartoscBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sTAWKAVATBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.pOZYCJAFAKTURYBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -81,6 +73,14 @@
             this.tbUwagi = new System.Windows.Forms.TextBox();
             this.lbNrFakturyWartosc = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.usluga = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.jm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cenaJednostkowa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.procentVat = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.wartoscVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wartoscBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAWKAVATBindingSource)).BeginInit();
@@ -240,51 +240,6 @@
             this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
             // 
-            // usluga
-            // 
-            this.usluga.HeaderText = "Usługa";
-            this.usluga.Name = "usluga";
-            this.usluga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.usluga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // jm
-            // 
-            this.jm.HeaderText = "j.m.";
-            this.jm.Name = "jm";
-            this.jm.Width = 57;
-            // 
-            // ilosc
-            // 
-            this.ilosc.HeaderText = "Ilość";
-            this.ilosc.Name = "ilosc";
-            // 
-            // cenaJednostkowa
-            // 
-            this.cenaJednostkowa.HeaderText = "Cena jednostkowa";
-            this.cenaJednostkowa.Name = "cenaJednostkowa";
-            // 
-            // wartoscNetto
-            // 
-            this.wartoscNetto.HeaderText = "Wartość Netto";
-            this.wartoscNetto.Name = "wartoscNetto";
-            // 
-            // procentVat
-            // 
-            this.procentVat.HeaderText = "%VAT";
-            this.procentVat.Name = "procentVat";
-            this.procentVat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.procentVat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // wartoscVat
-            // 
-            this.wartoscVat.HeaderText = "Wartość VAT";
-            this.wartoscVat.Name = "wartoscVat";
-            // 
-            // wartoscBrutto
-            // 
-            this.wartoscBrutto.HeaderText = "Wartość Brutto";
-            this.wartoscBrutto.Name = "wartoscBrutto";
-            // 
             // sTAWKAVATBindingSource
             // 
             this.sTAWKAVATBindingSource.DataMember = "STAWKA_VAT";
@@ -315,10 +270,14 @@
             // 
             // cbKlient
             // 
+            this.cbKlient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbKlient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbKlient.DataSource = this.kLIENTBindingSource;
             this.cbKlient.DisplayMember = "NAZWA";
+            this.cbKlient.DropDownHeight = 70;
             this.cbKlient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKlient.FormattingEnabled = true;
+            this.cbKlient.IntegralHeight = false;
             this.cbKlient.Location = new System.Drawing.Point(122, 52);
             this.cbKlient.Name = "cbKlient";
             this.cbKlient.Size = new System.Drawing.Size(276, 21);
@@ -494,10 +453,60 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // usluga
+            // 
+            this.usluga.HeaderText = "Usługa";
+            this.usluga.MaxDropDownItems = 4;
+            this.usluga.AutoComplete = true;
+            this.usluga.Name = "usluga";
+            this.usluga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.usluga.Sorted = true;
+            this.usluga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // jm
+            // 
+            this.jm.HeaderText = "j.m.";
+            this.jm.Name = "jm";
+            this.jm.Width = 57;
+            // 
+            // ilosc
+            // 
+            this.ilosc.HeaderText = "Ilość";
+            this.ilosc.Name = "ilosc";
+            // 
+            // cenaJednostkowa
+            // 
+            this.cenaJednostkowa.HeaderText = "Cena jednostkowa";
+            this.cenaJednostkowa.Name = "cenaJednostkowa";
+            // 
+            // wartoscNetto
+            // 
+            this.wartoscNetto.HeaderText = "Wartość Netto";
+            this.wartoscNetto.Name = "wartoscNetto";
+            // 
+            // procentVat
+            // 
+            this.procentVat.HeaderText = "%VAT";
+            this.procentVat.Name = "procentVat";
+            this.procentVat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.procentVat.Sorted = true;
+            this.procentVat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // wartoscVat
+            // 
+            this.wartoscVat.HeaderText = "Wartość VAT";
+            this.wartoscVat.Name = "wartoscVat";
+            // 
+            // wartoscBrutto
+            // 
+            this.wartoscBrutto.HeaderText = "Wartość Brutto";
+            this.wartoscBrutto.Name = "wartoscBrutto";
+            // 
             // FormNowaFaktura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.CancelButton = this.btAnuluj;
             this.ClientSize = new System.Drawing.Size(824, 451);
             this.Controls.Add(this.lbNrFakturyWartosc);
@@ -594,6 +603,8 @@
         private System.Windows.Forms.Label lbSumaBruttoWartosc;
         private System.Windows.Forms.Label lbUwagi;
         private System.Windows.Forms.TextBox tbUwagi;
+        private System.Windows.Forms.Label lbNrFakturyWartosc;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewComboBoxColumn usluga;
         private System.Windows.Forms.DataGridViewTextBoxColumn jm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ilosc;
@@ -602,7 +613,5 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn procentVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn wartoscBrutto;
-        private System.Windows.Forms.Label lbNrFakturyWartosc;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -40,8 +40,6 @@
             this.lbAdres = new System.Windows.Forms.Label();
             this.tbNazwa = new System.Windows.Forms.TextBox();
             this.lbNazwa = new System.Windows.Forms.Label();
-            this.tbIdKlienta = new System.Windows.Forms.TextBox();
-            this.lbIdKlienta = new System.Windows.Forms.Label();
             this.tbTerminPlatnosci = new System.Windows.Forms.TextBox();
             this.lbTerminPlatnosci = new System.Windows.Forms.Label();
             this.btnAnuluj = new System.Windows.Forms.Button();
@@ -52,7 +50,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(104, 142);
+            this.tbEmail.Location = new System.Drawing.Point(104, 125);
             this.tbEmail.MaxLength = 255;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(100, 20);
@@ -61,7 +59,7 @@
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(11, 149);
+            this.lbEmail.Location = new System.Drawing.Point(11, 132);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(38, 13);
             this.lbEmail.TabIndex = 22;
@@ -69,7 +67,7 @@
             // 
             // tbNumerTelefonu
             // 
-            this.tbNumerTelefonu.Location = new System.Drawing.Point(104, 116);
+            this.tbNumerTelefonu.Location = new System.Drawing.Point(104, 99);
             this.tbNumerTelefonu.MaxLength = 20;
             this.tbNumerTelefonu.Name = "tbNumerTelefonu";
             this.tbNumerTelefonu.Size = new System.Drawing.Size(100, 20);
@@ -78,7 +76,7 @@
             // lbNumerTelefonu
             // 
             this.lbNumerTelefonu.AutoSize = true;
-            this.lbNumerTelefonu.Location = new System.Drawing.Point(11, 123);
+            this.lbNumerTelefonu.Location = new System.Drawing.Point(11, 106);
             this.lbNumerTelefonu.Name = "lbNumerTelefonu";
             this.lbNumerTelefonu.Size = new System.Drawing.Size(82, 13);
             this.lbNumerTelefonu.TabIndex = 20;
@@ -86,7 +84,7 @@
             // 
             // tbNip
             // 
-            this.tbNip.Location = new System.Drawing.Point(104, 90);
+            this.tbNip.Location = new System.Drawing.Point(104, 73);
             this.tbNip.MaxLength = 13;
             this.tbNip.Name = "tbNip";
             this.tbNip.Size = new System.Drawing.Size(100, 20);
@@ -95,7 +93,7 @@
             // lbNip
             // 
             this.lbNip.AutoSize = true;
-            this.lbNip.Location = new System.Drawing.Point(11, 97);
+            this.lbNip.Location = new System.Drawing.Point(11, 80);
             this.lbNip.Name = "lbNip";
             this.lbNip.Size = new System.Drawing.Size(28, 13);
             this.lbNip.TabIndex = 18;
@@ -103,7 +101,7 @@
             // 
             // tbAdres
             // 
-            this.tbAdres.Location = new System.Drawing.Point(104, 64);
+            this.tbAdres.Location = new System.Drawing.Point(104, 47);
             this.tbAdres.MaxLength = 255;
             this.tbAdres.Name = "tbAdres";
             this.tbAdres.Size = new System.Drawing.Size(100, 20);
@@ -112,7 +110,7 @@
             // lbAdres
             // 
             this.lbAdres.AutoSize = true;
-            this.lbAdres.Location = new System.Drawing.Point(11, 71);
+            this.lbAdres.Location = new System.Drawing.Point(11, 54);
             this.lbAdres.Name = "lbAdres";
             this.lbAdres.Size = new System.Drawing.Size(37, 13);
             this.lbAdres.TabIndex = 16;
@@ -120,7 +118,7 @@
             // 
             // tbNazwa
             // 
-            this.tbNazwa.Location = new System.Drawing.Point(104, 38);
+            this.tbNazwa.Location = new System.Drawing.Point(104, 21);
             this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
@@ -129,34 +127,15 @@
             // lbNazwa
             // 
             this.lbNazwa.AutoSize = true;
-            this.lbNazwa.Location = new System.Drawing.Point(11, 45);
+            this.lbNazwa.Location = new System.Drawing.Point(11, 28);
             this.lbNazwa.Name = "lbNazwa";
             this.lbNazwa.Size = new System.Drawing.Size(43, 13);
             this.lbNazwa.TabIndex = 14;
             this.lbNazwa.Text = "Nazwa:";
             // 
-            // tbIdKlienta
-            // 
-            this.tbIdKlienta.Location = new System.Drawing.Point(104, 12);
-            this.tbIdKlienta.MaxLength = 4;
-            this.tbIdKlienta.Name = "tbIdKlienta";
-            this.tbIdKlienta.Size = new System.Drawing.Size(100, 20);
-            this.tbIdKlienta.TabIndex = 13;
-            this.tbIdKlienta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdKlienta_KeyPress);
-            this.tbIdKlienta.Leave += new System.EventHandler(this.tbIdKlienta_Leave);
-            // 
-            // lbIdKlienta
-            // 
-            this.lbIdKlienta.AutoSize = true;
-            this.lbIdKlienta.Location = new System.Drawing.Point(11, 19);
-            this.lbIdKlienta.Name = "lbIdKlienta";
-            this.lbIdKlienta.Size = new System.Drawing.Size(56, 13);
-            this.lbIdKlienta.TabIndex = 12;
-            this.lbIdKlienta.Text = "ID Klienta:";
-            // 
             // tbTerminPlatnosci
             // 
-            this.tbTerminPlatnosci.Location = new System.Drawing.Point(104, 168);
+            this.tbTerminPlatnosci.Location = new System.Drawing.Point(104, 151);
             this.tbTerminPlatnosci.MaxLength = 2;
             this.tbTerminPlatnosci.Name = "tbTerminPlatnosci";
             this.tbTerminPlatnosci.Size = new System.Drawing.Size(100, 20);
@@ -167,7 +146,7 @@
             // lbTerminPlatnosci
             // 
             this.lbTerminPlatnosci.AutoSize = true;
-            this.lbTerminPlatnosci.Location = new System.Drawing.Point(11, 175);
+            this.lbTerminPlatnosci.Location = new System.Drawing.Point(11, 158);
             this.lbTerminPlatnosci.Name = "lbTerminPlatnosci";
             this.lbTerminPlatnosci.Size = new System.Drawing.Size(89, 13);
             this.lbTerminPlatnosci.TabIndex = 24;
@@ -219,8 +198,6 @@
             this.Controls.Add(this.lbAdres);
             this.Controls.Add(this.tbNazwa);
             this.Controls.Add(this.lbNazwa);
-            this.Controls.Add(this.tbIdKlienta);
-            this.Controls.Add(this.lbIdKlienta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(230, 270);
@@ -246,8 +223,6 @@
         private System.Windows.Forms.Label lbAdres;
         private System.Windows.Forms.TextBox tbNazwa;
         private System.Windows.Forms.Label lbNazwa;
-        private System.Windows.Forms.TextBox tbIdKlienta;
-        private System.Windows.Forms.Label lbIdKlienta;
         private System.Windows.Forms.TextBox tbTerminPlatnosci;
         private System.Windows.Forms.Label lbTerminPlatnosci;
         private System.Windows.Forms.Button btnAnuluj;

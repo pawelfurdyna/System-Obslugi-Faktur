@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUzytkownicyLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iMIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nAZWISKODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rOLADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lOGINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uZYTKOWNIKBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -46,6 +41,11 @@
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.uZYTKOWNIKTableAdapter = new ProjektBD.BDDataSetTableAdapters.UZYTKOWNIKTableAdapter();
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iMIEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nAZWISKODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rOLADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lOGINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uZYTKOWNIKBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
@@ -70,41 +70,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 338);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // iDUZYTKOWNIKADataGridViewTextBoxColumn
-            // 
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
-            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iMIEDataGridViewTextBoxColumn
-            // 
-            this.iMIEDataGridViewTextBoxColumn.DataPropertyName = "IMIE";
-            this.iMIEDataGridViewTextBoxColumn.HeaderText = "IMIE";
-            this.iMIEDataGridViewTextBoxColumn.Name = "iMIEDataGridViewTextBoxColumn";
-            this.iMIEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nAZWISKODataGridViewTextBoxColumn
-            // 
-            this.nAZWISKODataGridViewTextBoxColumn.DataPropertyName = "NAZWISKO";
-            this.nAZWISKODataGridViewTextBoxColumn.HeaderText = "NAZWISKO";
-            this.nAZWISKODataGridViewTextBoxColumn.Name = "nAZWISKODataGridViewTextBoxColumn";
-            this.nAZWISKODataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rOLADataGridViewTextBoxColumn
-            // 
-            this.rOLADataGridViewTextBoxColumn.DataPropertyName = "ROLA";
-            this.rOLADataGridViewTextBoxColumn.HeaderText = "ROLA";
-            this.rOLADataGridViewTextBoxColumn.Name = "rOLADataGridViewTextBoxColumn";
-            this.rOLADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lOGINDataGridViewTextBoxColumn
-            // 
-            this.lOGINDataGridViewTextBoxColumn.DataPropertyName = "LOGIN";
-            this.lOGINDataGridViewTextBoxColumn.HeaderText = "LOGIN";
-            this.lOGINDataGridViewTextBoxColumn.Name = "lOGINDataGridViewTextBoxColumn";
-            this.lOGINDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // uZYTKOWNIKBindingSource
             // 
@@ -182,6 +147,42 @@
             // uZYTKOWNIKTableAdapter
             // 
             this.uZYTKOWNIKTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDUZYTKOWNIKADataGridViewTextBoxColumn
+            // 
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.DataPropertyName = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.HeaderText = "ID_UZYTKOWNIKA";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Name = "iDUZYTKOWNIKADataGridViewTextBoxColumn";
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDUZYTKOWNIKADataGridViewTextBoxColumn.Visible = false;
+            // 
+            // iMIEDataGridViewTextBoxColumn
+            // 
+            this.iMIEDataGridViewTextBoxColumn.DataPropertyName = "IMIE";
+            this.iMIEDataGridViewTextBoxColumn.HeaderText = "IMIE";
+            this.iMIEDataGridViewTextBoxColumn.Name = "iMIEDataGridViewTextBoxColumn";
+            this.iMIEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nAZWISKODataGridViewTextBoxColumn
+            // 
+            this.nAZWISKODataGridViewTextBoxColumn.DataPropertyName = "NAZWISKO";
+            this.nAZWISKODataGridViewTextBoxColumn.HeaderText = "NAZWISKO";
+            this.nAZWISKODataGridViewTextBoxColumn.Name = "nAZWISKODataGridViewTextBoxColumn";
+            this.nAZWISKODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rOLADataGridViewTextBoxColumn
+            // 
+            this.rOLADataGridViewTextBoxColumn.DataPropertyName = "ROLA";
+            this.rOLADataGridViewTextBoxColumn.HeaderText = "ROLA";
+            this.rOLADataGridViewTextBoxColumn.Name = "rOLADataGridViewTextBoxColumn";
+            this.rOLADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lOGINDataGridViewTextBoxColumn
+            // 
+            this.lOGINDataGridViewTextBoxColumn.DataPropertyName = "LOGIN";
+            this.lOGINDataGridViewTextBoxColumn.HeaderText = "LOGIN";
+            this.lOGINDataGridViewTextBoxColumn.Name = "lOGINDataGridViewTextBoxColumn";
+            this.lOGINDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormUzytkownicyLista
             // 

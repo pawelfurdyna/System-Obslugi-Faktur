@@ -20,7 +20,7 @@ namespace ProjektBD
         string encja = "UZYTKOWNIK";
         string klucz = "ID_UZYTKOWNIKA";
         TextBox[] tb = new TextBox[] { };
-        string[] atrybuty = { "ID_UZYTKOWNIKA", "IMIE", "NAZWISKO", "ROLA", "LOGIN", "HASLO" };
+        string[] atrybuty = { "IMIE", "NAZWISKO", "ROLA", "LOGIN", "HASLO" };
         ObslugaBazy ob = new ObslugaBazy();
 
         public FormUzytkownik(bool edycja = false, string nazwa = "")
@@ -28,7 +28,7 @@ namespace ProjektBD
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            tb = new TextBox[] { tbIdUzytkownika, tbImie, tbNazwisko, tbRola, tbLogin, tbHaslo };
+            tb = new TextBox[] { tbImie, tbNazwisko, tbRola, tbLogin, tbHaslo };
             this.Load += FormUzytkownik_Load;
         }
 
@@ -59,22 +59,5 @@ namespace ProjektBD
             this.Close();
         }
 
-        private void tbIdUzytkownika_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!ob.SprawdzTyp(sender, e))
-            {
-                errorProvider1.SetError(tbIdUzytkownika, "Można wprowadzać tylko cyfry!");
-                this.errorProvider1.SetIconPadding(this.tbIdUzytkownika, -20);
-            }
-            else
-            {
-                errorProvider1.SetError(tbIdUzytkownika, string.Empty);
-            }
-        }
-
-        private void tbIdUzytkownika_Leave(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(tbIdUzytkownika, string.Empty);
-        }
     }
 }

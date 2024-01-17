@@ -1665,11 +1665,11 @@ namespace ProjektBD.BDDataSetFakturaTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[2];
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT NUMER_FAKTURY, DATA_WYSTAWIENIA, DATA_WYKONANIA, UWAGI, TERMIN_ZAPLATY, ID" +
-                "_KLIENTA, ID_UZYTKOWNIKA FROM SYSTEM.FAKTURA ORDER BY NUMER_FAKTURY";
+                "_KLIENTA, ID_UZYTKOWNIKA FROM SYSTEM.FAKTURA ORDER BY NUMER_FAKTURY ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

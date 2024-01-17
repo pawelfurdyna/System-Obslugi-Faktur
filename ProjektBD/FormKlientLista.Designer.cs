@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKlientLista));
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aDRESDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nUMERTELEFONUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMAILDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kLIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -48,6 +41,13 @@
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnUsun = new System.Windows.Forms.Button();
             this.kLIENTTableAdapter = new ProjektBD.BDDataSetTableAdapters.KLIENTTableAdapter();
+            this.iDKLIENTADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aDRESDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nUMERTELEFONUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMAILDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kLIENTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
@@ -74,55 +74,6 @@
             this.dgvData.ReadOnly = true;
             this.dgvData.Size = new System.Drawing.Size(776, 342);
             this.dgvData.TabIndex = 0;
-            // 
-            // iDKLIENTADataGridViewTextBoxColumn
-            // 
-            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
-            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "ID_KLIENTA";
-            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
-            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nAZWADataGridViewTextBoxColumn
-            // 
-            this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
-            this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
-            this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
-            this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aDRESDataGridViewTextBoxColumn
-            // 
-            this.aDRESDataGridViewTextBoxColumn.DataPropertyName = "ADRES";
-            this.aDRESDataGridViewTextBoxColumn.HeaderText = "ADRES";
-            this.aDRESDataGridViewTextBoxColumn.Name = "aDRESDataGridViewTextBoxColumn";
-            this.aDRESDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nIPDataGridViewTextBoxColumn
-            // 
-            this.nIPDataGridViewTextBoxColumn.DataPropertyName = "NIP";
-            this.nIPDataGridViewTextBoxColumn.HeaderText = "NIP";
-            this.nIPDataGridViewTextBoxColumn.Name = "nIPDataGridViewTextBoxColumn";
-            this.nIPDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nUMERTELEFONUDataGridViewTextBoxColumn
-            // 
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.DataPropertyName = "NUMER_TELEFONU";
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.HeaderText = "NUMER_TELEFONU";
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.Name = "nUMERTELEFONUDataGridViewTextBoxColumn";
-            this.nUMERTELEFONUDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eMAILDataGridViewTextBoxColumn
-            // 
-            this.eMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL";
-            this.eMAILDataGridViewTextBoxColumn.HeaderText = "EMAIL";
-            this.eMAILDataGridViewTextBoxColumn.Name = "eMAILDataGridViewTextBoxColumn";
-            this.eMAILDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tERMINPLATNOSCIDataGridViewTextBoxColumn
-            // 
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_PLATNOSCI";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.HeaderText = "TERMIN_PLATNOSCI";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Name = "tERMINPLATNOSCIDataGridViewTextBoxColumn";
-            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // kLIENTBindingSource
             // 
@@ -200,6 +151,56 @@
             // kLIENTTableAdapter
             // 
             this.kLIENTTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDKLIENTADataGridViewTextBoxColumn
+            // 
+            this.iDKLIENTADataGridViewTextBoxColumn.DataPropertyName = "ID_KLIENTA";
+            this.iDKLIENTADataGridViewTextBoxColumn.HeaderText = "ID_KLIENTA";
+            this.iDKLIENTADataGridViewTextBoxColumn.Name = "iDKLIENTADataGridViewTextBoxColumn";
+            this.iDKLIENTADataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDKLIENTADataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nAZWADataGridViewTextBoxColumn
+            // 
+            this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
+            this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
+            this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
+            this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aDRESDataGridViewTextBoxColumn
+            // 
+            this.aDRESDataGridViewTextBoxColumn.DataPropertyName = "ADRES";
+            this.aDRESDataGridViewTextBoxColumn.HeaderText = "ADRES";
+            this.aDRESDataGridViewTextBoxColumn.Name = "aDRESDataGridViewTextBoxColumn";
+            this.aDRESDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nIPDataGridViewTextBoxColumn
+            // 
+            this.nIPDataGridViewTextBoxColumn.DataPropertyName = "NIP";
+            this.nIPDataGridViewTextBoxColumn.HeaderText = "NIP";
+            this.nIPDataGridViewTextBoxColumn.Name = "nIPDataGridViewTextBoxColumn";
+            this.nIPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nUMERTELEFONUDataGridViewTextBoxColumn
+            // 
+            this.nUMERTELEFONUDataGridViewTextBoxColumn.DataPropertyName = "NUMER_TELEFONU";
+            this.nUMERTELEFONUDataGridViewTextBoxColumn.HeaderText = "NUMER_TELEFONU";
+            this.nUMERTELEFONUDataGridViewTextBoxColumn.Name = "nUMERTELEFONUDataGridViewTextBoxColumn";
+            this.nUMERTELEFONUDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eMAILDataGridViewTextBoxColumn
+            // 
+            this.eMAILDataGridViewTextBoxColumn.DataPropertyName = "EMAIL";
+            this.eMAILDataGridViewTextBoxColumn.HeaderText = "EMAIL";
+            this.eMAILDataGridViewTextBoxColumn.Name = "eMAILDataGridViewTextBoxColumn";
+            this.eMAILDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tERMINPLATNOSCIDataGridViewTextBoxColumn
+            // 
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.DataPropertyName = "TERMIN_PLATNOSCI";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.HeaderText = "TERMIN_PLATNOSCI";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.Name = "tERMINPLATNOSCIDataGridViewTextBoxColumn";
+            this.tERMINPLATNOSCIDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormKlientLista
             // 

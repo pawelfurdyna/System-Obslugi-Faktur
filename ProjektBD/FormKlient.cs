@@ -19,7 +19,7 @@ namespace ProjektBD
         string encja = "KLIENT";
         string klucz = "ID_KLIENTA";
         TextBox[] tb = new TextBox[] { };
-        string[] atrybuty = { "ID_KLIENTA", "NAZWA", "ADRES", "NIP", "NUMER_TELEFONU", "EMAIL", "TERMIN_PLATNOSCI" };
+        string[] atrybuty = { "NAZWA", "ADRES", "NIP", "NUMER_TELEFONU", "EMAIL", "TERMIN_PLATNOSCI" };
         ObslugaBazy ob = new ObslugaBazy();
 
         public FormKlient(bool edycja = false, string nazwa = "")
@@ -27,7 +27,7 @@ namespace ProjektBD
             InitializeComponent();
             this.edycja = edycja;
             this.nazwa = nazwa;
-            tb = new TextBox[] { tbIdKlienta, tbNazwa, tbAdres, tbNip, tbNumerTelefonu, tbEmail, tbTerminPlatnosci };
+            tb = new TextBox[] { tbNazwa, tbAdres, tbNip, tbNumerTelefonu, tbEmail, tbTerminPlatnosci };
             this.Load += FormKlient_Load;
         }
 
@@ -58,19 +58,6 @@ namespace ProjektBD
             this.Close();
         }
 
-        private void tbIdKlienta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!ob.SprawdzTyp(sender, e))
-            {
-                errorProvider1.SetError(tbIdKlienta, "Można wprowadzać tylko cyfry!");
-                this.errorProvider1.SetIconPadding(this.tbIdKlienta, -20);
-            }
-            else
-            {
-                errorProvider1.SetError(tbIdKlienta, string.Empty);
-            }
-        }
-
         private void tbTerminPlatnosci_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!ob.SprawdzTyp(sender, e))
@@ -82,11 +69,6 @@ namespace ProjektBD
             {
                 errorProvider1.SetError(tbTerminPlatnosci, string.Empty);
             }
-        }
-
-        private void tbIdKlienta_Leave(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(tbIdKlienta, string.Empty);
         }
 
         private void tbTerminPlatnosci_Leave(object sender, EventArgs e)

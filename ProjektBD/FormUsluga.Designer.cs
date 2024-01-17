@@ -36,8 +36,6 @@
             this.lbCenaJednostkowa = new System.Windows.Forms.Label();
             this.tbNazwa = new System.Windows.Forms.TextBox();
             this.lbNazwa = new System.Windows.Forms.Label();
-            this.tbIdUslugi = new System.Windows.Forms.TextBox();
-            this.lbIdUslugi = new System.Windows.Forms.Label();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -46,7 +44,7 @@
             // 
             // tbJednostkaMiary
             // 
-            this.tbJednostkaMiary.Location = new System.Drawing.Point(108, 94);
+            this.tbJednostkaMiary.Location = new System.Drawing.Point(108, 74);
             this.tbJednostkaMiary.MaxLength = 255;
             this.tbJednostkaMiary.Name = "tbJednostkaMiary";
             this.tbJednostkaMiary.Size = new System.Drawing.Size(100, 20);
@@ -55,7 +53,7 @@
             // lbJednostkaMiary
             // 
             this.lbJednostkaMiary.AutoSize = true;
-            this.lbJednostkaMiary.Location = new System.Drawing.Point(10, 97);
+            this.lbJednostkaMiary.Location = new System.Drawing.Point(10, 77);
             this.lbJednostkaMiary.Name = "lbJednostkaMiary";
             this.lbJednostkaMiary.Size = new System.Drawing.Size(86, 13);
             this.lbJednostkaMiary.TabIndex = 14;
@@ -63,7 +61,7 @@
             // 
             // tbCenaJednostkowa
             // 
-            this.tbCenaJednostkowa.Location = new System.Drawing.Point(108, 68);
+            this.tbCenaJednostkowa.Location = new System.Drawing.Point(108, 48);
             this.tbCenaJednostkowa.Name = "tbCenaJednostkowa";
             this.tbCenaJednostkowa.Size = new System.Drawing.Size(100, 20);
             this.tbCenaJednostkowa.TabIndex = 13;
@@ -73,7 +71,7 @@
             // lbCenaJednostkowa
             // 
             this.lbCenaJednostkowa.AutoSize = true;
-            this.lbCenaJednostkowa.Location = new System.Drawing.Point(10, 71);
+            this.lbCenaJednostkowa.Location = new System.Drawing.Point(10, 51);
             this.lbCenaJednostkowa.Name = "lbCenaJednostkowa";
             this.lbCenaJednostkowa.Size = new System.Drawing.Size(98, 13);
             this.lbCenaJednostkowa.TabIndex = 12;
@@ -81,7 +79,7 @@
             // 
             // tbNazwa
             // 
-            this.tbNazwa.Location = new System.Drawing.Point(108, 42);
+            this.tbNazwa.Location = new System.Drawing.Point(108, 22);
             this.tbNazwa.MaxLength = 255;
             this.tbNazwa.Name = "tbNazwa";
             this.tbNazwa.Size = new System.Drawing.Size(100, 20);
@@ -90,30 +88,11 @@
             // lbNazwa
             // 
             this.lbNazwa.AutoSize = true;
-            this.lbNazwa.Location = new System.Drawing.Point(10, 45);
+            this.lbNazwa.Location = new System.Drawing.Point(10, 25);
             this.lbNazwa.Name = "lbNazwa";
             this.lbNazwa.Size = new System.Drawing.Size(43, 13);
             this.lbNazwa.TabIndex = 10;
             this.lbNazwa.Text = "Nazwa:";
-            // 
-            // tbIdUslugi
-            // 
-            this.tbIdUslugi.Location = new System.Drawing.Point(108, 16);
-            this.tbIdUslugi.MaxLength = 4;
-            this.tbIdUslugi.Name = "tbIdUslugi";
-            this.tbIdUslugi.Size = new System.Drawing.Size(100, 20);
-            this.tbIdUslugi.TabIndex = 9;
-            this.tbIdUslugi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUslugi_KeyPress);
-            this.tbIdUslugi.Leave += new System.EventHandler(this.tbIdUslugi_Leave);
-            // 
-            // lbIdUslugi
-            // 
-            this.lbIdUslugi.AutoSize = true;
-            this.lbIdUslugi.Location = new System.Drawing.Point(10, 19);
-            this.lbIdUslugi.Name = "lbIdUslugi";
-            this.lbIdUslugi.Size = new System.Drawing.Size(55, 13);
-            this.lbIdUslugi.TabIndex = 8;
-            this.lbIdUslugi.Text = "ID Usługi:";
             // 
             // btnAnuluj
             // 
@@ -155,8 +134,6 @@
             this.Controls.Add(this.lbCenaJednostkowa);
             this.Controls.Add(this.tbNazwa);
             this.Controls.Add(this.lbNazwa);
-            this.Controls.Add(this.tbIdUslugi);
-            this.Controls.Add(this.lbIdUslugi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(230, 200);
@@ -178,8 +155,6 @@
         private System.Windows.Forms.Label lbCenaJednostkowa;
         private System.Windows.Forms.TextBox tbNazwa;
         private System.Windows.Forms.Label lbNazwa;
-        private System.Windows.Forms.TextBox tbIdUslugi;
-        private System.Windows.Forms.Label lbIdUslugi;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnZapisz;
         private System.Windows.Forms.ErrorProvider errorProvider1;

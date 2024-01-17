@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUzytkownik));
-            this.lbIdUzytkownika = new System.Windows.Forms.Label();
-            this.tbIdUzytkownika = new System.Windows.Forms.TextBox();
             this.tbImie = new System.Windows.Forms.TextBox();
             this.lbImie = new System.Windows.Forms.Label();
             this.tbNazwisko = new System.Windows.Forms.TextBox();
@@ -48,28 +46,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbIdUzytkownika
-            // 
-            this.lbIdUzytkownika.AutoSize = true;
-            this.lbIdUzytkownika.Location = new System.Drawing.Point(12, 20);
-            this.lbIdUzytkownika.Name = "lbIdUzytkownika";
-            this.lbIdUzytkownika.Size = new System.Drawing.Size(85, 13);
-            this.lbIdUzytkownika.TabIndex = 0;
-            this.lbIdUzytkownika.Text = "ID Użytkownika:";
-            // 
-            // tbIdUzytkownika
-            // 
-            this.tbIdUzytkownika.Location = new System.Drawing.Point(100, 13);
-            this.tbIdUzytkownika.MaxLength = 4;
-            this.tbIdUzytkownika.Name = "tbIdUzytkownika";
-            this.tbIdUzytkownika.Size = new System.Drawing.Size(100, 20);
-            this.tbIdUzytkownika.TabIndex = 1;
-            this.tbIdUzytkownika.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIdUzytkownika_KeyPress);
-            this.tbIdUzytkownika.Leave += new System.EventHandler(this.tbIdUzytkownika_Leave);
-            // 
             // tbImie
             // 
-            this.tbImie.Location = new System.Drawing.Point(100, 39);
+            this.tbImie.Location = new System.Drawing.Point(100, 18);
             this.tbImie.MaxLength = 255;
             this.tbImie.Name = "tbImie";
             this.tbImie.Size = new System.Drawing.Size(100, 20);
@@ -78,7 +57,7 @@
             // lbImie
             // 
             this.lbImie.AutoSize = true;
-            this.lbImie.Location = new System.Drawing.Point(12, 46);
+            this.lbImie.Location = new System.Drawing.Point(12, 25);
             this.lbImie.Name = "lbImie";
             this.lbImie.Size = new System.Drawing.Size(29, 13);
             this.lbImie.TabIndex = 2;
@@ -86,7 +65,7 @@
             // 
             // tbNazwisko
             // 
-            this.tbNazwisko.Location = new System.Drawing.Point(100, 65);
+            this.tbNazwisko.Location = new System.Drawing.Point(100, 44);
             this.tbNazwisko.MaxLength = 255;
             this.tbNazwisko.Name = "tbNazwisko";
             this.tbNazwisko.Size = new System.Drawing.Size(100, 20);
@@ -95,7 +74,7 @@
             // lbNazwisko
             // 
             this.lbNazwisko.AutoSize = true;
-            this.lbNazwisko.Location = new System.Drawing.Point(12, 72);
+            this.lbNazwisko.Location = new System.Drawing.Point(12, 51);
             this.lbNazwisko.Name = "lbNazwisko";
             this.lbNazwisko.Size = new System.Drawing.Size(56, 13);
             this.lbNazwisko.TabIndex = 4;
@@ -103,7 +82,7 @@
             // 
             // tbRola
             // 
-            this.tbRola.Location = new System.Drawing.Point(100, 91);
+            this.tbRola.Location = new System.Drawing.Point(100, 70);
             this.tbRola.MaxLength = 255;
             this.tbRola.Name = "tbRola";
             this.tbRola.Size = new System.Drawing.Size(100, 20);
@@ -112,7 +91,7 @@
             // lbRola
             // 
             this.lbRola.AutoSize = true;
-            this.lbRola.Location = new System.Drawing.Point(12, 98);
+            this.lbRola.Location = new System.Drawing.Point(12, 77);
             this.lbRola.Name = "lbRola";
             this.lbRola.Size = new System.Drawing.Size(32, 13);
             this.lbRola.TabIndex = 6;
@@ -120,7 +99,7 @@
             // 
             // tbLogin
             // 
-            this.tbLogin.Location = new System.Drawing.Point(100, 117);
+            this.tbLogin.Location = new System.Drawing.Point(100, 96);
             this.tbLogin.MaxLength = 255;
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(100, 20);
@@ -129,7 +108,7 @@
             // lbLogin
             // 
             this.lbLogin.AutoSize = true;
-            this.lbLogin.Location = new System.Drawing.Point(12, 124);
+            this.lbLogin.Location = new System.Drawing.Point(12, 103);
             this.lbLogin.Name = "lbLogin";
             this.lbLogin.Size = new System.Drawing.Size(36, 13);
             this.lbLogin.TabIndex = 8;
@@ -137,7 +116,7 @@
             // 
             // tbHaslo
             // 
-            this.tbHaslo.Location = new System.Drawing.Point(100, 143);
+            this.tbHaslo.Location = new System.Drawing.Point(100, 122);
             this.tbHaslo.MaxLength = 255;
             this.tbHaslo.Name = "tbHaslo";
             this.tbHaslo.Size = new System.Drawing.Size(100, 20);
@@ -146,7 +125,7 @@
             // lbHaslo
             // 
             this.lbHaslo.AutoSize = true;
-            this.lbHaslo.Location = new System.Drawing.Point(12, 150);
+            this.lbHaslo.Location = new System.Drawing.Point(12, 129);
             this.lbHaslo.Name = "lbHaslo";
             this.lbHaslo.Size = new System.Drawing.Size(39, 13);
             this.lbHaslo.TabIndex = 10;
@@ -196,8 +175,6 @@
             this.Controls.Add(this.lbNazwisko);
             this.Controls.Add(this.tbImie);
             this.Controls.Add(this.lbImie);
-            this.Controls.Add(this.tbIdUzytkownika);
-            this.Controls.Add(this.lbIdUzytkownika);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(230, 250);
@@ -212,9 +189,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbIdUzytkownika;
-        private System.Windows.Forms.TextBox tbIdUzytkownika;
         private System.Windows.Forms.TextBox tbImie;
         private System.Windows.Forms.Label lbImie;
         private System.Windows.Forms.TextBox tbNazwisko;

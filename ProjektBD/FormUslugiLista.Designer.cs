@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUslugiLista));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uSLUGABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDdataSet = new ProjektBD.BDDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -45,6 +41,10 @@
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.uSLUGATableAdapter = new ProjektBD.BDDataSetTableAdapters.USLUGATableAdapter();
+            this.iDUSLUGIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nAZWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSLUGABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDdataSet)).BeginInit();
@@ -68,34 +68,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 338);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // iDUSLUGIDataGridViewTextBoxColumn
-            // 
-            this.iDUSLUGIDataGridViewTextBoxColumn.DataPropertyName = "ID_USLUGI";
-            this.iDUSLUGIDataGridViewTextBoxColumn.HeaderText = "ID_USLUGI";
-            this.iDUSLUGIDataGridViewTextBoxColumn.Name = "iDUSLUGIDataGridViewTextBoxColumn";
-            this.iDUSLUGIDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nAZWADataGridViewTextBoxColumn
-            // 
-            this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
-            this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
-            this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
-            this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cENAJEDNOSTKOWADataGridViewTextBoxColumn
-            // 
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.DataPropertyName = "CENA_JEDNOSTKOWA";
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.HeaderText = "CENA_JEDNOSTKOWA";
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.Name = "cENAJEDNOSTKOWADataGridViewTextBoxColumn";
-            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // jEDNOSTKAMIARYDataGridViewTextBoxColumn
-            // 
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.DataPropertyName = "JEDNOSTKA_MIARY";
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.HeaderText = "JEDNOSTKA_MIARY";
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.Name = "jEDNOSTKAMIARYDataGridViewTextBoxColumn";
-            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // uSLUGABindingSource
             // 
@@ -173,6 +145,35 @@
             // uSLUGATableAdapter
             // 
             this.uSLUGATableAdapter.ClearBeforeFill = true;
+            // 
+            // iDUSLUGIDataGridViewTextBoxColumn
+            // 
+            this.iDUSLUGIDataGridViewTextBoxColumn.DataPropertyName = "ID_USLUGI";
+            this.iDUSLUGIDataGridViewTextBoxColumn.HeaderText = "ID_USLUGI";
+            this.iDUSLUGIDataGridViewTextBoxColumn.Name = "iDUSLUGIDataGridViewTextBoxColumn";
+            this.iDUSLUGIDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDUSLUGIDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nAZWADataGridViewTextBoxColumn
+            // 
+            this.nAZWADataGridViewTextBoxColumn.DataPropertyName = "NAZWA";
+            this.nAZWADataGridViewTextBoxColumn.HeaderText = "NAZWA";
+            this.nAZWADataGridViewTextBoxColumn.Name = "nAZWADataGridViewTextBoxColumn";
+            this.nAZWADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cENAJEDNOSTKOWADataGridViewTextBoxColumn
+            // 
+            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.DataPropertyName = "CENA_JEDNOSTKOWA";
+            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.HeaderText = "CENA_JEDNOSTKOWA";
+            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.Name = "cENAJEDNOSTKOWADataGridViewTextBoxColumn";
+            this.cENAJEDNOSTKOWADataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jEDNOSTKAMIARYDataGridViewTextBoxColumn
+            // 
+            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.DataPropertyName = "JEDNOSTKA_MIARY";
+            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.HeaderText = "JEDNOSTKA_MIARY";
+            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.Name = "jEDNOSTKAMIARYDataGridViewTextBoxColumn";
+            this.jEDNOSTKAMIARYDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FormUslugiLista
             // 

@@ -44,8 +44,8 @@ namespace ProjektBD
      #endregion
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
-            cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
-            cbSposobZaplaty.SelectedIndex = 1;
+            //cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
+            //cbSposobZaplaty.SelectedIndex = 1;
 
     #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
@@ -344,5 +344,6 @@ namespace ProjektBD
                 pomoc.Show();
             }
         }
+
     }
 }
