@@ -27,7 +27,7 @@ namespace ProjektBD
         }
 
     #region WypelnijTextBox
-        public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty)
+        public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty, ComboBox cb = null)
         {
             for (int i = 0; i < atrybuty.Length; i++)
             {
@@ -117,7 +117,7 @@ namespace ProjektBD
         }
         #endregion
 
-        #region DodajRekord
+    #region DodajRekord
         public void DodajRekord(string encja, TextBox[] tb, string[] atrybuty, ComboBox cb = null)
         {
             string formattedStringAtrybuty = string.Join(", ", atrybuty);

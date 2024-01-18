@@ -13,17 +13,19 @@ namespace ProjektBD
     public partial class SystemObslugiFaktur : Form
     {
         ObslugaBazy ob = new ObslugaBazy();
+        
         public SystemObslugiFaktur()
         {
             InitializeComponent();
         }
-
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            string zmienna = "Użytkownik: " + FormLogowanie.obecnyUzytkownik;
+            string rolaUzytkownika = "";
+            string zmienna = "Użytkownik: \n" + FormLogowanie.obecnyUzytkownik;
             lbUzytkownik.Text = zmienna;
             zegar.Start();
             ObslugaBazy ob = new ObslugaBazy();
+            FormLogowanie formLogowanie = new FormLogowanie();
             if (ob.Select("FIRMA","NAZWA_FIRMY","","",false) == "")
             {
                 if ((Application.OpenForms["FormFirma"] as FormFirma) == null)
@@ -37,6 +39,42 @@ namespace ProjektBD
             {
                 Application.Exit();
             }
+    #region FormatowanieDlaRoliUzytkownika
+            rolaUzytkownika = ob.Select("UZYTKOWNIK", "ROLA", "LOGIN", FormLogowanie.login, true);
+            if (rolaUzytkownika == "Admin")
+            {
+                this.btnFirma.Visible = true;
+                this.btnUzytkownicy.Visible = true;
+                this.btnStawkiVAT.Visible = true;
+                System.Drawing.Point pointForm = new System.Drawing.Point(600, 350);
+                this.Size = new System.Drawing.Size(pointForm);
+                this.MaximumSize = new System.Drawing.Size(pointForm);
+                this.MinimumSize = new System.Drawing.Size(pointForm);
+                this.btWyloguj.Location = new System.Drawing.Point(500, 30);
+                this.lbData.Location = new System.Drawing.Point(474, 7);
+                this.btnNowaFaktura.Location = new System.Drawing.Point(12, 51);
+                this.btnHistoriaFaktur.Location = new System.Drawing.Point(122, 51);
+                this.btnKlienci.Location = new System.Drawing.Point(12, 169);
+                this.btnUslugi.Location = new System.Drawing.Point(122, 169);
+
+            }
+            else
+            {
+                this.btnFirma.Visible=false;
+                this.btnUzytkownicy.Visible=false;
+                this.btnStawkiVAT.Visible=false;
+                System.Drawing.Point point = new System.Drawing.Point(330, 355);
+                this.Size = new System.Drawing.Size(point);
+                this.MaximumSize = new System.Drawing.Size(point);
+                this.MinimumSize = new System.Drawing.Size(point);
+                this.lbData.Location = new System.Drawing.Point(240,7);
+                this.btWyloguj.Location = new System.Drawing.Point(230, 30);
+                this.btnNowaFaktura.Location = new System.Drawing.Point(52, 58);
+                this.btnHistoriaFaktur.Location = new System.Drawing.Point(162, 58);
+                this.btnKlienci.Location = new System.Drawing.Point(52, 176);
+                this.btnUslugi.Location = new System.Drawing.Point(162, 176);
+            }
+    #endregion
         }
 
         private void btnNowaFaktura_Click(object sender, EventArgs e)

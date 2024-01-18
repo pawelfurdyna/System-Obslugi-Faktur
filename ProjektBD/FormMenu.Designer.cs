@@ -41,11 +41,11 @@
             this.btnStawkiVAT = new System.Windows.Forms.Button();
             this.btnFirma = new System.Windows.Forms.Button();
             this.btnUzytkownicy = new System.Windows.Forms.Button();
+            this.zegar = new System.Windows.Forms.Timer(this.components);
+            this.btWyloguj = new System.Windows.Forms.Button();
             this.lbUzytkownik = new System.Windows.Forms.Label();
             this.lbData = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.zegar = new System.Windows.Forms.Timer(this.components);
-            this.btWyloguj = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(579, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -153,10 +153,24 @@
             this.btnUzytkownicy.UseVisualStyleBackColor = true;
             this.btnUzytkownicy.Click += new System.EventHandler(this.btnUzytkownicy_Click);
             // 
+            // zegar
+            // 
+            this.zegar.Tick += new System.EventHandler(this.zegar_Tick);
+            // 
+            // btWyloguj
+            // 
+            this.btWyloguj.Location = new System.Drawing.Point(500, 30);
+            this.btWyloguj.Name = "btWyloguj";
+            this.btWyloguj.Size = new System.Drawing.Size(75, 22);
+            this.btWyloguj.TabIndex = 11;
+            this.btWyloguj.Text = "Wyloguj";
+            this.btWyloguj.UseVisualStyleBackColor = true;
+            this.btWyloguj.Click += new System.EventHandler(this.btWyloguj_Click);
+            // 
             // lbUzytkownik
             // 
             this.lbUzytkownik.AutoSize = true;
-            this.lbUzytkownik.Location = new System.Drawing.Point(11, 14);
+            this.lbUzytkownik.Location = new System.Drawing.Point(11, 7);
             this.lbUzytkownik.Name = "lbUzytkownik";
             this.lbUzytkownik.Size = new System.Drawing.Size(52, 13);
             this.lbUzytkownik.TabIndex = 8;
@@ -177,29 +191,15 @@
             this.groupBox1.Controls.Add(this.lbUzytkownik);
             this.groupBox1.Location = new System.Drawing.Point(1, 275);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(584, 36);
+            this.groupBox1.Size = new System.Drawing.Size(584, 39);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            // 
-            // zegar
-            // 
-            this.zegar.Tick += new System.EventHandler(this.zegar_Tick);
-            // 
-            // btWyloguj
-            // 
-            this.btWyloguj.Location = new System.Drawing.Point(497, 27);
-            this.btWyloguj.Name = "btWyloguj";
-            this.btWyloguj.Size = new System.Drawing.Size(75, 22);
-            this.btWyloguj.TabIndex = 11;
-            this.btWyloguj.Text = "Wyloguj";
-            this.btWyloguj.UseVisualStyleBackColor = true;
-            this.btWyloguj.Click += new System.EventHandler(this.btWyloguj_Click);
             // 
             // SystemObslugiFaktur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 311);
+            this.ClientSize = new System.Drawing.Size(579, 311);
             this.Controls.Add(this.btWyloguj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnUzytkownicy);
@@ -213,8 +213,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(600, 350);
-            this.MinimumSize = new System.Drawing.Size(600, 350);
             this.Name = "SystemObslugiFaktur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "System Obslugi Faktur";
@@ -241,11 +239,11 @@
         private System.Windows.Forms.Button btnFirma;
         private System.Windows.Forms.Button btnUzytkownicy;
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.Timer zegar;
+        private System.Windows.Forms.Button btWyloguj;
         private System.Windows.Forms.Label lbUzytkownik;
         private System.Windows.Forms.Label lbData;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Timer zegar;
-        private System.Windows.Forms.Button btWyloguj;
     }
 }
 

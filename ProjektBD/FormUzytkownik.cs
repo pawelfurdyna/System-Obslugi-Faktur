@@ -36,6 +36,7 @@ namespace ProjektBD
 
         private void FormUzytkownik_Load(object sender, EventArgs e)
         {
+            //ToDo wywala błąd przy edycji. Naprawić wypełnianie combobox z metody.
             if (edycja)
             {
                 ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
@@ -44,7 +45,8 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            #region Walidacja
+    #region Walidacja
+
             if (string.IsNullOrWhiteSpace(tbImie.Text))
             {
                 errorProvider1.SetError(tbImie, "Pole nie może być puste!");
@@ -99,7 +101,9 @@ namespace ProjektBD
             {
                 errorProvider1.SetError(tbHaslo, string.Empty);
             }
-            #endregion
+
+    #endregion
+
             if (!string.IsNullOrWhiteSpace(tbImie.Text) && !string.IsNullOrWhiteSpace(tbNazwisko.Text) && !string.IsNullOrWhiteSpace(cbRola.Text) && !string.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbHaslo.Text))
             {
                 if (edycja)
@@ -120,5 +124,9 @@ namespace ProjektBD
             this.Close();
         }
 
+        private void cbRola_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

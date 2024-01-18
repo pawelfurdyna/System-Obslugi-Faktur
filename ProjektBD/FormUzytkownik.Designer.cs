@@ -159,6 +159,7 @@
             this.cbRola.Name = "cbRola";
             this.cbRola.Size = new System.Drawing.Size(100, 21);
             this.cbRola.TabIndex = 14;
+            this.cbRola.SelectedIndexChanged += new System.EventHandler(this.cbRola_SelectedIndexChanged);
             // 
             // FormUzytkownik
             // 

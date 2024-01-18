@@ -44,6 +44,7 @@ namespace ProjektBD
      #endregion
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
+            //todo naprawić bo nie działa
             //cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
             //cbSposobZaplaty.SelectedIndex = 1;
 

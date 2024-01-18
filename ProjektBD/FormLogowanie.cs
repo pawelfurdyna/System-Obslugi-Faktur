@@ -19,6 +19,7 @@ namespace ProjektBD
         internal static string login = "";
         internal static string idPobrane = "";
         internal static int idUzytkownika;
+        
         public FormLogowanie()
         {
             InitializeComponent();
@@ -61,6 +62,11 @@ namespace ProjektBD
             idPobrane = ob.Select("UZYTKOWNIK", "ID_UZYTKOWNIKA", "LOGIN", login, true);
             Int32.TryParse(idPobrane, out idUzytkownika);
             return (idUzytkownika - 1);
+        }
+        public string RolaUzytkownika()
+        {
+            idPobrane = ob.Select("UZYTKOWNIK", "ROLA", "LOGIN", login, true);
+            return idPobrane.ToString();
         }
         private void btAnuluj_Click(object sender, EventArgs e)
         {
