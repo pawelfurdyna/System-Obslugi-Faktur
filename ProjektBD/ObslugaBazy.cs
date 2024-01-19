@@ -39,8 +39,16 @@ namespace ProjektBD
                     OracleDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
-                        string temp = rdr[atrybuty[i]].ToString();
-                        tb[i].Text = temp;
+                        if (cb != null && i == atrybuty.Length - 1)
+                        {
+                            string temp = rdr[atrybuty[i]].ToString();
+                            cb.Text = temp;
+                        }
+                        else
+                        {
+                            string temp = rdr[atrybuty[i]].ToString();
+                            tb[i].Text = temp;
+                        }
                     }
                 }
                 catch (OracleException ex)

@@ -42,13 +42,10 @@ namespace ProjektBD
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
             this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
      #endregion
+            
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
 
-            //todo naprawić bo nie działa. walidacja wrazie braku wyboru, ewentualnie naprawić automatyczne wypełnianie.
-
-            //cbUzytkownik.SelectedIndex = FormLogowanie.AktywnyUzytkownik();
-            //cbSposobZaplaty.SelectedIndex = 1;
 
     #region Zmiana kolumn w DataGrid
             dataGridView1.Columns.Remove("usluga");
@@ -106,8 +103,21 @@ namespace ProjektBD
             tbDataWystawienia.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-","/");
             tbDataWykonaniaUslugi.Text = DateTime.Today.ToString("yy-MM-dd").Replace("-", "/");
             tbMiejsceWystawienia.Text = ob.Select("FIRMA", "MIEJSCOWOSC", "", "", false);
-    #endregion
+            #endregion
 
+    #region Wypełnienie pola sporządził
+            int aktywnyUzytkownik = FormLogowanie.AktywnyUzytkownik() + 1;
+            for (int i = 0; i < cbUzytkownik.Items.Count; i++)
+            {
+                string item = cbUzytkownik.Items[i].ToString();
+                string numberAsString = item.Split(' ')[0];
+                if (int.TryParse(numberAsString, out int n) && n == aktywnyUzytkownik)
+                {
+                    cbUzytkownik.SelectedIndex = i;
+                    break;
+                }
+            }
+    #endregion
         }
 
         private void cbKlient_SelectedIndexChanged(object sender, EventArgs e)

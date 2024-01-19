@@ -36,10 +36,9 @@ namespace ProjektBD
 
         private void FormUzytkownik_Load(object sender, EventArgs e)
         {
-            //ToDo wywala błąd przy edycji. Naprawić wypełnianie combobox z metody.
             if (edycja)
             {
-                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
+                ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty, cb);
             }
         }
 
