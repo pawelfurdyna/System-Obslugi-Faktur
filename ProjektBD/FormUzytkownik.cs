@@ -39,6 +39,7 @@ namespace ProjektBD
             if (edycja)
             {
                 ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty, cb);
+                tbLogin.Enabled = false;
             }
         }
 
@@ -107,13 +108,20 @@ namespace ProjektBD
             {
                 if (edycja)
                 {
-                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty, cb);
                     this.Close();
                 }
                 else
                 {
-                    ob.DodajRekord(encja, tb, atrybuty, cb);
-                    this.Close();
+                    if (ob.CzyNazwaJestWBazie(encja, "LOGIN", tbLogin.Text))
+                    {
+                        MessageBox.Show("Proszę zmienić login użytkownika");
+                    }
+                    else
+                    {
+                        ob.DodajRekord(encja, tb, atrybuty, cb);
+                        this.Close();
+                    }
                 }
             }
         }

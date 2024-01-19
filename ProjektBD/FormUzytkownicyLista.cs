@@ -66,9 +66,11 @@ namespace ProjektBD
         private void btnUsun_Click(object sender, EventArgs e)
         {
             int wiersz = dataGridView1.CurrentRow.Index;
-            int kolumna = dataGridView1.Columns.IndexOf(iDUZYTKOWNIKADataGridViewTextBoxColumn);
-            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
-            ob.UsunRekord(encja,klucz,nazwa);
+            int kolumnaId = dataGridView1.Columns.IndexOf(iDUZYTKOWNIKADataGridViewTextBoxColumn);
+            int kolumnaNazwa = dataGridView1.Columns.IndexOf(lOGINDataGridViewTextBoxColumn);
+            string id = dataGridView1.Rows[wiersz].Cells[kolumnaId].Value.ToString();
+            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumnaNazwa].Value.ToString();
+            ob.UsunRekord(encja, klucz, id, nazwa);
             this.uZYTKOWNIKTableAdapter.Fill(this.bDdataSet.UZYTKOWNIK);
         }
 

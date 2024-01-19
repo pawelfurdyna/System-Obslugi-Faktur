@@ -3,6 +3,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
 using System.Globalization;
@@ -98,14 +99,14 @@ namespace ProjektBD
     #endregion
 
     #region UsunRekord
-        public void UsunRekord(string encja, string klucz, string nazwa)
+        public void UsunRekord(string encja, string klucz, string id, string nazwa)
         {
             DialogResult dr = MessageBox.Show($"Czy napewno chcesz usunąć \"{nazwa}\" ?",
                      "Usunąć?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             switch (dr)
             {
                 case DialogResult.Yes:
-                    OracleCommand cmd = new OracleCommand($"DELETE FROM {encja} WHERE {klucz}='{nazwa}'", this.conn);
+                    OracleCommand cmd = new OracleCommand($"DELETE FROM {encja} WHERE {klucz}='{id}'", this.conn);
                     try
                     {
                         this.conn.Open();
@@ -176,11 +177,16 @@ namespace ProjektBD
                     formattedString += ", ";
                 }
             }
+
             if (cb != null)
             {
-                formattedString += "', '";
-                formattedString += cb.Text;
+                if (formattedString != "")
+                {
+                    formattedString += ", ";
+                }
+                formattedString += $"{atrybuty[atrybuty.Length - 1]}='{cb.SelectedItem}'";
             }
+
             string query = $"UPDATE {encja} SET {formattedString} WHERE {klucz}='{nazwa}'";
 
             OracleCommand cmd = new OracleCommand(query, this.conn);
@@ -198,7 +204,42 @@ namespace ProjektBD
                 this.conn.Close();
             }
         }
-    #endregion
+        #endregion
+
+        public bool CzyNazwaJestWBazie(string encja, string klucz, string nazwa)
+        {
+            string query = $"SELECT COUNT(*) FROM {encja} WHERE {klucz} = '{nazwa}'";
+
+            OracleCommand cmd = new OracleCommand(query, this.conn);
+            try
+            {
+                this.conn.Open();
+                OracleDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    int count = rdr.GetInt32(0);
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                cmd.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show($"Wystąpił błąd bazy danych. \nError : {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return true;
+        }
 
     #region SELECT
         public string Select(string encja, string atrybut, string klucz, string wartoscSzukana, bool warunek = true, bool sort = false)
@@ -557,6 +598,8 @@ namespace ProjektBD
             this.conn.Close();
         }
     #endregion
+
+
 
     }
 }

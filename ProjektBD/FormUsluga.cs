@@ -36,6 +36,7 @@ namespace ProjektBD
             if (edycja)
             {
                 ob.WypelnijTextBoxZEncji(encja, klucz, nazwa, tb, atrybuty);
+                tbNazwa.Enabled = false;
             }
         }
 
@@ -84,8 +85,15 @@ namespace ProjektBD
                 }
                 else
                 {
-                    ob.DodajRekord(encja, tb, atrybuty);
-                    this.Close();
+                    if (ob.CzyNazwaJestWBazie(encja, "NAZWA", tbNazwa.Text))
+                    {
+                        MessageBox.Show("Proszę zmienić nazwę usługi");
+                    }
+                    else
+                    {
+                        ob.DodajRekord(encja, tb, atrybuty);
+                        this.Close();
+                    }
                 }
             }  
         }

@@ -65,9 +65,11 @@ namespace ProjektBD
         {
             ObslugaBazy ob = new ObslugaBazy();
             int wiersz = dataGridView1.CurrentRow.Index;
-            int kolumna = dataGridView1.Columns.IndexOf(iDUSLUGIDataGridViewTextBoxColumn);
-            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumna].Value.ToString();
-            ob.UsunRekord(encja, klucz, nazwa);
+            int kolumnaId = dataGridView1.Columns.IndexOf(iDUSLUGIDataGridViewTextBoxColumn);
+            int kolumnaNazwa = dataGridView1.Columns.IndexOf(nAZWADataGridViewTextBoxColumn);
+            string id = dataGridView1.Rows[wiersz].Cells[kolumnaId].Value.ToString();
+            string nazwa = dataGridView1.Rows[wiersz].Cells[kolumnaNazwa].Value.ToString();
+            ob.UsunRekord(encja, klucz, id, nazwa);
             this.uSLUGATableAdapter.Fill(this.bDdataSet.USLUGA);
         }
 
