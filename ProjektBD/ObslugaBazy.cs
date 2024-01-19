@@ -29,6 +29,7 @@ namespace ProjektBD
     #region WypelnijTextBox
         public void WypelnijTextBoxZEncji(string encja, string klucz, string nazwa, TextBox[] tb, string[] atrybuty, ComboBox cb = null)
         {
+            //ToDo obsłużyć wypełnianie combobox przy edycji 
             for (int i = 0; i < atrybuty.Length; i++)
             {
                 OracleCommand cmd = new OracleCommand($"SELECT {atrybuty[i]} FROM {encja} WHERE {klucz} = '{nazwa}'", this.conn);
