@@ -1,9 +1,19 @@
 --------------------------------------------------------
---  File created - czwartek-stycznia-04-2024   
+--  File created - wtorek-stycznia-23-2024   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Type LOGMNR$COL_GG_REC
 --------------------------------------------------------
+DROP TABLE FIRMA;
+DROP TABLE POZYCJA_FAKTURY;
+DROP TABLE FAKTURA;
+DROP TABLE KLIENT;
+DROP TABLE STAWKA_VAT;
+DROP TABLE UZYTKOWNIK;
+DROP TABLE USLUGA;
+DROP SEQUENCE KLIENT_SEQ;
+DROP SEQUENCE USLUGA_SEQ;
+DROP SEQUENCE UZYTKOWNIK_SEQ;
 
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$COL_GG_REC" as object
 (
@@ -83,6 +93,8 @@ ACDRRESCOL# NUMBER
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$COL_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$COL_GG_REC;
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Type LOGMNR$GSBA_GG_REC
@@ -105,6 +117,8 @@ LOGMNR_SPARE4  DATE
 --------------------------------------------------------
 
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$GSBA_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$GSBA_GG_REC;
+
+
 
 
 /
@@ -141,6 +155,8 @@ SPARE6  VARCHAR2(4000)
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$KEY_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$KEY_GG_REC;
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Type LOGMNR$SEQ_GG_REC
@@ -170,6 +186,8 @@ SPARE6  VARCHAR2(4000)
 --------------------------------------------------------
 
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$SEQ_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$SEQ_GG_REC;
+
+
 
 
 /
@@ -253,6 +271,8 @@ ACDRROWTSINTCOL# NUMBER                                     /* automatic CDR */
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$TAB_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$TAB_GG_REC;
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Type LOGMNR$USER_GG_REC
@@ -277,7 +297,14 @@ LOGMNR_SPARE4  DATE
   CREATE OR REPLACE NONEDITIONABLE TYPE "SYSTEM"."LOGMNR$USER_GG_RECS" AS TABLE OF  SYSTEM.LOGMNR$USER_GG_REC;
 
 
+
+
 /
+--------------------------------------------------------
+--  DDL for Sequence KLIENT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SYSTEM"."KLIENT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence LOGMNR_DIDS$
 --------------------------------------------------------
@@ -313,6 +340,16 @@ LOGMNR_SPARE4  DATE
 --------------------------------------------------------
 
    CREATE SEQUENCE  "SYSTEM"."ROLLING_EVENT_SEQ$"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  ORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence USLUGA_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SYSTEM"."USLUGA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence UZYTKOWNIK_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SYSTEM"."UZYTKOWNIK_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 2 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Table FAKTURA
 --------------------------------------------------------
@@ -358,7 +395,7 @@ LOGMNR_SPARE4  DATE
    (	"ID_KLIENTA" NUMBER(4,0), 
 	"NAZWA" VARCHAR2(255 BYTE), 
 	"ADRES" VARCHAR2(255 BYTE), 
-	"NIP" VARCHAR2(20 BYTE), 
+	"NIP" VARCHAR2(11 BYTE), 
 	"NUMER_TELEFONU" VARCHAR2(20 BYTE), 
 	"EMAIL" VARCHAR2(255 BYTE), 
 	"TERMIN_PLATNOSCI" NUMBER(2,0)
@@ -422,9 +459,9 @@ LOGMNR_SPARE4  DATE
    (	"ID_UZYTKOWNIKA" NUMBER(4,0), 
 	"IMIE" VARCHAR2(255 BYTE), 
 	"NAZWISKO" VARCHAR2(255 BYTE), 
-	"ROLA" VARCHAR2(255 BYTE), 
 	"LOGIN" VARCHAR2(255 BYTE), 
-	"HASLO" VARCHAR2(255 BYTE)
+	"HASLO" VARCHAR2(255 BYTE), 
+	"ROLA" VARCHAR2(255 BYTE)
    ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -612,6 +649,29 @@ AND d.user_id = userenv('SCHEMAID');
 ;
   GRANT READ ON "SYSTEM"."PRODUCT_PRIVS" TO PUBLIC;
 --------------------------------------------------------
+--  DDL for View SALES
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE NONEDITIONABLE VIEW "SYSTEM"."SALES" ("SALESPERSON_ID", "CUSTOMER_ID", "CUSTOMER", "PRODUCT_ID", "PRODUCT", "AMOUNT") AS 
+  SELECT SALESPERSON_ID, SALES_ORDER.CUSTOMER_ID, CUSTOMER.NAME CUSTOMER,
+       PRODUCT.PRODUCT_ID, DESCRIPTION PRODUCT, SUM(ITEM.TOTAL) AMOUNT
+FROM SALES_ORDER, ITEM, CUSTOMER, PRODUCT
+WHERE SALES_ORDER.ORDER_ID = ITEM.ORDER_ID
+AND SALES_ORDER.CUSTOMER_ID = CUSTOMER.CUSTOMER_ID
+AND ITEM.PRODUCT_ID = PRODUCT.PRODUCT_ID
+GROUP BY SALESPERSON_ID, SALES_ORDER.CUSTOMER_ID, CUSTOMER.NAME,
+         PRODUCT.PRODUCT_ID, DESCRIPTION;
+
+   COMMENT ON COLUMN "SYSTEM"."SALES"."SALESPERSON_ID" IS 'Employee number of sales representative handling customer''s account.  Employee information can be found in the EMPLOYEE table. (Same as CUSTOMER.SALESPERSON_ID)';
+   COMMENT ON COLUMN "SYSTEM"."SALES"."CUSTOMER_ID" IS 'Unique 6 digit number assigned to all customers.  Number generated by the sequence CUSTOMER_ID. (Same as CUSTOMER.CUSTOMER_ID)';
+   COMMENT ON COLUMN "SYSTEM"."SALES"."CUSTOMER" IS 'Full store name of every customer (up to 45 characters).  Storing names in all caps is recommended but not required. (Same as CUSTOMER.NAME)';
+   COMMENT ON COLUMN "SYSTEM"."SALES"."PRODUCT_ID" IS 'Unique 6 digit number assigned to all products.  Number generated by sequence PRODUCT_ID. (Same as PRODUCT.PRODUCT_ID)';
+   COMMENT ON COLUMN "SYSTEM"."SALES"."PRODUCT" IS 'Full product name (up to 30 characters).  Storing product names in all caps is recommended but not required. (Same as PRODUCT.PRODUCT_NAME)';
+   COMMENT ON COLUMN "SYSTEM"."SALES"."AMOUNT" IS 'Total sales in (U.S. dollars) of the product sold by the representative to the customer.';
+   COMMENT ON TABLE "SYSTEM"."SALES"  IS 'Summary view joining tables SALES_ORDER, ITEM, CUSTOMER, and PRODUCT.  Summarizes the item total grouped by sales representative, customer, and product.  Used by the SALES ORDERS application.'
+;
+  GRANT SELECT ON "SYSTEM"."SALES" TO PUBLIC;
+--------------------------------------------------------
 --  DDL for View SCHEDULER_JOB_ARGS
 --------------------------------------------------------
 
@@ -641,7 +701,7 @@ REM INSERTING into SYSTEM.USLUGA
 SET DEFINE OFF;
 REM INSERTING into SYSTEM.UZYTKOWNIK
 SET DEFINE OFF;
-Insert into SYSTEM.UZYTKOWNIK (ID_UZYTKOWNIKA,IMIE,NAZWISKO,ROLA,LOGIN,HASLO) values ('1','admin','admin','admin','admin','admin');
+Insert into SYSTEM.UZYTKOWNIK (ID_UZYTKOWNIKA,IMIE,NAZWISKO,LOGIN,HASLO,ROLA) values ('1','admin','admin','admin','admin','Administrator');
 --------------------------------------------------------
 --  DDL for Index FAKTURA_PK
 --------------------------------------------------------
@@ -713,6 +773,57 @@ Insert into SYSTEM.UZYTKOWNIK (ID_UZYTKOWNIKA,IMIE,NAZWISKO,ROLA,LOGIN,HASLO) va
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
 --------------------------------------------------------
+--  DDL for Trigger KLIENT_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SYSTEM"."KLIENT_TRG" 
+BEFORE INSERT ON KLIENT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID_KLIENTA IS NULL THEN
+      SELECT KLIENT_SEQ.NEXTVAL INTO :NEW.ID_KLIENTA FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SYSTEM"."KLIENT_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger USLUGA_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SYSTEM"."USLUGA_TRG" 
+BEFORE INSERT ON USLUGA 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID_USLUGI IS NULL THEN
+      SELECT USLUGA_SEQ.NEXTVAL INTO :NEW.ID_USLUGI FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SYSTEM"."USLUGA_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger UZYTKOWNIK_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SYSTEM"."UZYTKOWNIK_TRG" 
+BEFORE INSERT ON UZYTKOWNIK 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID_UZYTKOWNIKA IS NULL THEN
+      SELECT UZYTKOWNIK_SEQ.NEXTVAL INTO :NEW.ID_UZYTKOWNIKA FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SYSTEM"."UZYTKOWNIK_TRG" ENABLE;
+--------------------------------------------------------
 --  DDL for Function LOGMNR$COL_GG_TABF_PUBLIC
 --------------------------------------------------------
 
@@ -742,6 +853,8 @@ ypwrP1U/Pf6MLZONN8LUaVqHCN87T14HqHs5taX7LhLXQ2lCVBE1Ll8dyB9CDOlbyvQS/lrb
 +0n1pQi9IJAWySL85ChAqnTaqFJm0YeToD4lZ8UUPQqIZNoX0x73WK9OzsmdBrvEC97iduxe
 PEXVkxF6xklPod6yOGBvW7DAFMBgf+LajDLVKOAwB2EAiKCXYMuTUTtMYYkCFFf4sj1rCpsj
 TLth6TSru530aM2HP6bEbm3m
+
+
 
 
 /
@@ -777,6 +890,8 @@ rHEIFzHOFyxBEdulRGq4ngSgcm7l2yOdSHgNM8rO2vUH4gozvJoLE1S8GBBzG/wrvHPhACQ/
 2w==
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Function LOGMNR$KEY_GG_TABF_PUBLIC
@@ -808,6 +923,8 @@ nUSfE2lbvUYgk3JHySIe28XxC3xIYYpPGQjxwa3GzPw0FN5aN6kerQQTHUBp29Dd+vLSgBaC
 o1AvhjaORi898/KiPtOqv7LpsPFbyNuMnZEG48cxtZuesMBJFP/bKtgU2DN69xiT8Pxf+N2n
 g0D2ximYzZqwY/4dBQj9dyQDuXRFo40hdqtWw0L96zV6723aQ8Xp0cqBaZj2wWTI4+6Ikry9
 zY0Mdm3bV8TYqsOa+zT4fnikGO0eYbTFHEiW9QUbl/UwzuERwk8p
+
+
 
 
 /
@@ -843,6 +960,8 @@ BhkPglLbvQDPzxWTnmu4ZuJIlTiNwTf1R0WxghyyKFjES9CJsCrGT8Fn7prlF4Mr5kx1YBGf
 +L9osPQJjZYkNrD0pQ==
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Function LOGMNR$TAB_GG_TABF_PUBLIC
@@ -876,6 +995,8 @@ XrP7WgavVdNS3Yikz88VupZG21hTuAGspJBgCagmNWIwi9pgCIWP3rxF4p+uMps/ABEg+MBP
 ubv6GXL0aM0PP/t+DfSl
 
 
+
+
 /
 --------------------------------------------------------
 --  DDL for Function LOGMNR$USER_GG_TABF_PUBLIC
@@ -907,6 +1028,8 @@ c/U0JxdiAl0qIPzsltBjeoGAEsxUk0aubCMJmysgc2d8ojil6ixQ37D7RA0HWMkh27QdOuXF
 vSwuufDunMMT8Hue9dvy4vRXj+PhuyylJSukStsxyIb234EahCXyrjDlnzbC91eoU7v5sb4D
 OvtDmggQCEViyhFXwspP9P0dOObin8JENsDJeFZYr/oVAgSHa97LRKvNZgd+f//XHlpEAOP4
 rNm5mF0wTCABbb7tc5c7uo09M+79i7en8g==
+
+
 
 
 /

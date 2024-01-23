@@ -42,7 +42,7 @@ namespace ProjektBD
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bDdataSet.KLIENT' . Możesz go przenieść lub usunąć.
             this.kLIENTTableAdapter.Fill(this.bDdataSet.KLIENT);
      #endregion
-            
+            cbSposobZaplaty.SelectedIndex = 0;
             cbKlient.SelectedItem = null;
             ob.WypelnijComboBoxZEncji("UZYTKOWNIK",cbUzytkownik,new string[] { "ID_UZYTKOWNIKA","IMIE","NAZWISKO" });
 
