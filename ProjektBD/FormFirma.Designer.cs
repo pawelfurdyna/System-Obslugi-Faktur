@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFirma));
             this.lbNazwaFirmy = new System.Windows.Forms.Label();
             this.tbNazwaFirmy = new System.Windows.Forms.TextBox();
@@ -49,7 +50,9 @@
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEdytuj = new System.Windows.Forms.Button();
             this.btnZapisz = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNazwaFirmy
@@ -241,6 +244,10 @@
             this.btnZapisz.Visible = false;
             this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormFirma
             // 
             this.AcceptButton = this.btnZapisz;
@@ -276,6 +283,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormFirma_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +311,6 @@
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.Button btnEdytuj;
         private System.Windows.Forms.Button btnZapisz;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

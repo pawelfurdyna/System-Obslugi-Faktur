@@ -111,15 +111,96 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            if (nowy)
+            #region Walidacja
+            if (string.IsNullOrWhiteSpace(tbNazwaFirmy.Text))
             {
-                ob.DodajRekord(encja, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbNazwaFirmy, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbNazwaFirmy, -20);
+                this.errorProvider1.BlinkRate = 0;
             }
             else
             {
-                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
-                btnEdit_Click(sender, e);
+                errorProvider1.SetError(tbNazwaFirmy, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbNip.Text))
+            {
+                errorProvider1.SetError(tbNip, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbNip, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbNip, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbTelefonFirmowy.Text))
+            {
+                errorProvider1.SetError(tbTelefonFirmowy, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbTelefonFirmowy, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbTelefonFirmowy, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbKontoBankowe.Text))
+            {
+                errorProvider1.SetError(tbKontoBankowe, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbKontoBankowe, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbKontoBankowe, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbUlica.Text))
+            {
+                errorProvider1.SetError(tbUlica, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbUlica, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbUlica, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbKodPocztowy.Text))
+            {
+                errorProvider1.SetError(tbKodPocztowy, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbKodPocztowy, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbKodPocztowy, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbMiejscowosc.Text))
+            {
+                errorProvider1.SetError(tbMiejscowosc, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbMiejscowosc, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbMiejscowosc, string.Empty);
+            }
+            #endregion
+            if (!string.IsNullOrWhiteSpace(tbNazwaFirmy.Text) &&
+                !string.IsNullOrWhiteSpace(tbNip.Text) &&
+                !string.IsNullOrWhiteSpace(tbTelefonFirmowy.Text) &&
+                !string.IsNullOrWhiteSpace(tbKontoBankowe.Text) &&
+                !string.IsNullOrWhiteSpace(tbUlica.Text) &&
+                !string.IsNullOrWhiteSpace(tbKodPocztowy.Text) &&
+                !string.IsNullOrWhiteSpace(tbMiejscowosc.Text))
+            {
+                if (nowy)
+                {
+                    ob.DodajRekord(encja, tb, atrybuty);
+                    this.Close();
+                }
+                else
+                {
+                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                    btnEdit_Click(sender, e);
+                }
             }
         }
 

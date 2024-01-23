@@ -104,7 +104,11 @@ namespace ProjektBD
 
     #endregion
 
-            if (!string.IsNullOrWhiteSpace(tbImie.Text) && !string.IsNullOrWhiteSpace(tbNazwisko.Text) && !string.IsNullOrWhiteSpace(cbRola.Text) && !string.IsNullOrWhiteSpace(tbLogin.Text) && !string.IsNullOrWhiteSpace(tbHaslo.Text))
+            if (!string.IsNullOrWhiteSpace(tbImie.Text) &&
+                !string.IsNullOrWhiteSpace(tbNazwisko.Text) &&
+                !string.IsNullOrWhiteSpace(cbRola.Text) &&
+                !string.IsNullOrWhiteSpace(tbLogin.Text) &&
+                !string.IsNullOrWhiteSpace(tbHaslo.Text))
             {
                 if (edycja)
                 {

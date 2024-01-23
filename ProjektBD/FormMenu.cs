@@ -41,7 +41,7 @@ namespace ProjektBD
             }
     #region FormatowanieDlaRoliUzytkownika
             rolaUzytkownika = ob.Select("UZYTKOWNIK", "ROLA", "LOGIN", FormLogowanie.login, true);
-            if (rolaUzytkownika == "Admin")
+            if (rolaUzytkownika == "Administrator")
             {
                 this.btnFirma.Visible = true;
                 this.btnUzytkownicy.Visible = true;

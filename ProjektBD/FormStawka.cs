@@ -45,21 +45,49 @@ namespace ProjektBD
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
-            if (edycja)
+            #region Walidacja
+            if (string.IsNullOrWhiteSpace(tbNazwa.Text))
             {
-                ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
-                this.Close();
+                errorProvider1.SetError(tbNazwa, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbNazwa, -20);
+                this.errorProvider1.BlinkRate = 0;
             }
             else
             {
-                if (ob.CzyNazwaJestWBazie(encja, "ID_VAT", tbNazwa.Text))
+                errorProvider1.SetError(tbNazwa, string.Empty);
+            }
+            if (string.IsNullOrWhiteSpace(tbProcentVAT.Text))
+            {
+                errorProvider2.SetError(tbProcentVAT, string.Empty);
+                errorProvider1.SetError(tbProcentVAT, "Pole nie może być puste!");
+                this.errorProvider1.SetIconPadding(this.tbProcentVAT, -20);
+                this.errorProvider1.BlinkRate = 0;
+            }
+            else
+            {
+                errorProvider1.SetError(tbProcentVAT, string.Empty);
+            }
+            #endregion
+            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) &&
+                !string.IsNullOrWhiteSpace(tbProcentVAT.Text))
+            {
+
+                if (edycja)
                 {
-                    MessageBox.Show("Proszę zmienić nazwę stawki");
+                    ob.EdytujRekord(encja, klucz, nazwa, tb, atrybuty);
+                    this.Close();
                 }
                 else
                 {
-                    ob.DodajRekord(encja, tb, atrybuty);
-                    this.Close();
+                    if (ob.CzyNazwaJestWBazie(encja, "ID_VAT", tbNazwa.Text))
+                    {
+                        MessageBox.Show("Proszę zmienić nazwę stawki");
+                    }
+                    else
+                    {
+                        ob.DodajRekord(encja, tb, atrybuty);
+                        this.Close();
+                    }
                 }
             }
         }
@@ -71,10 +99,12 @@ namespace ProjektBD
 
         private void tbProcentVAT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!ob.SprawdzTyp(sender, e))
+            if (!ob.SprawdzTyp(sender, e,true))
             {
-                errorProvider1.SetError(tbProcentVAT, "Można wprowadzać tylko cyfry!");
-                this.errorProvider1.SetIconPadding(this.tbProcentVAT, -20);
+                errorProvider1.SetError(tbProcentVAT, string.Empty);
+                errorProvider2.SetError(tbProcentVAT, "Wprowadz wartość z użyciem cyfr i przecinka jako speratatora dziesiętnego!");
+                errorProvider2.Icon = new IconEx(IconEx.SystemIcons.Warning, SystemInformation.SmallIconSize).Icon;
+                this.errorProvider2.SetIconPadding(this.tbProcentVAT, -20);
             }
             else
             {

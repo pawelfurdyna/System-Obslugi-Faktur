@@ -76,7 +76,9 @@ namespace ProjektBD
                 errorProvider1.SetError(tbJednostkaMiary, string.Empty);
             }
             #endregion
-            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) && !string.IsNullOrWhiteSpace(tbCenaJednostkowa.Text) && !string.IsNullOrWhiteSpace(tbJednostkaMiary.Text))
+            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) &&
+                !string.IsNullOrWhiteSpace(tbCenaJednostkowa.Text) &&
+                !string.IsNullOrWhiteSpace(tbJednostkaMiary.Text))
             {
                 if (edycja)
                 {

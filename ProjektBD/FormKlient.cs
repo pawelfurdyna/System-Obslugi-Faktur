@@ -109,7 +109,12 @@ namespace ProjektBD
                 errorProvider1.SetError(tbTerminPlatnosci, string.Empty);
             }
             #endregion
-            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) && !string.IsNullOrWhiteSpace(tbAdres.Text) && !string.IsNullOrWhiteSpace(tbNip.Text) && !string.IsNullOrWhiteSpace(tbNumerTelefonu.Text) && !string.IsNullOrWhiteSpace(tbEmail.Text) && !string.IsNullOrWhiteSpace(tbTerminPlatnosci.Text))
+            if (!string.IsNullOrWhiteSpace(tbNazwa.Text) &&
+                !string.IsNullOrWhiteSpace(tbAdres.Text) &&
+                !string.IsNullOrWhiteSpace(tbNip.Text) &&
+                !string.IsNullOrWhiteSpace(tbNumerTelefonu.Text) &&
+                !string.IsNullOrWhiteSpace(tbEmail.Text) &&
+                !string.IsNullOrWhiteSpace(tbTerminPlatnosci.Text))
             {
                 if (edycja)
                 {

@@ -153,7 +153,7 @@
             this.cbRola.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRola.FormattingEnabled = true;
             this.cbRola.Items.AddRange(new object[] {
-            "Admin",
+            "Administrator",
             "Użytkownik"});
             this.cbRola.Location = new System.Drawing.Point(100, 69);
             this.cbRola.Name = "cbRola";
